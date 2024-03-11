@@ -1,5 +1,8 @@
+import { translate } from "@i18n";
+
 const App = () => {
-  return <div>App</div>;
+  const { t } = translate("translate");
+  return <div>{t("welcome")}</div>;
 };
 
 export default App;
