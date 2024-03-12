@@ -1,12 +1,14 @@
 import { useLocation } from "react-router-dom";
+import SignIn from "@components/signin/SignIn";
+import SignUp from "@components/signup/SignUp";
 
 const AuthPage = () => {
   const { pathname } = useLocation();
 
   return (
     <>
-      {pathname === "/login" && <div>Login</div>}
-      {pathname === "/registration" && <div>Registration</div>}
+      {pathname === "/login" && <SignIn />}
+      {pathname === "/registration" && <SignUp />}
     </>
   );
 };
