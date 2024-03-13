@@ -1,0 +1,85 @@
+@import "../../variables";
+
+.controlledFieldBox {
+  width: 100%;
+  margin-bottom: 20px;
+  .controlledField,
+  .passwordField {
+    width: 100%;
+    height: 45px;
+    background-color: map-get($theme-colors, "white");
+    border-radius: 20px;
+    label {
+      margin-top: -3px;
+    }
+    .MuiInputBase-root.MuiInputBase-formControl {
+      height: 45px;
+      border-radius: 20px;
+      input {
+        height: 45px;
+        padding: 0 15px;
+      }
+      fieldset {
+        border: solid 1px map-get($theme-colors, "gray-2");
+      }
+    }
+    .MuiInputBase-root.MuiInputBase-formControl.Mui-error {
+      border: none;
+      fieldset {
+        border: solid 2px map-get($theme-colors, "red");
+      }
+    }
+    .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+      border: none;
+      fieldset {
+        border: solid 2px map-get($theme-colors, "blue");
+      }
+    }
+  }
+
+  .errorIcon,
+  .errorMessage {
+    color: map-get($theme-colors, "red");
+  }
+
+  .passwordField.errorField {
+    .MuiInputBase-root.MuiInputBase-formControl {
+      fieldset {
+        border: solid 2px map-get($theme-colors, "red");
+      }
+    }
+    .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+      border: none;
+      fieldset {
+        border: solid 2px map-get($theme-colors, "blue");
+      }
+    }
+    .errorIcon {
+      margin-left: 10px;
+    }
+  }
+  .passwordField {
+    .listHintsPassword {
+      z-index: 1;
+      background-color: map-get($theme-colors, "white");
+      border-radius: 20px;
+      li {
+        color: map-get($theme-colors, "black") !important;
+        padding: 5px 10px;
+      }
+      .iconHints {
+        min-width: 20px;
+        .circleHints {
+          color: map-deep-get($theme-colors, "text", "gray-3");
+          width: 10px;
+          height: 10px;
+        }
+        .checkedHints {
+          color: map-get($theme-colors, "green");
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+  }
+}

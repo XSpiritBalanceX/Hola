@@ -1,5 +1,24 @@
 {
   "translate": {
-    "welcome": "Привет"
+    "signIn": {
+      "email": "E-mail",
+      "password": "Пароль",
+      "forgotPassword": "Забыли пароль?",
+      "login": "Войти",
+      "signInWith": "или войти с помощью",
+      "donotHaveAcc": "Нет еще аккаунта?",
+      "signUp": "Зарегистрироваться",
+      "errorRequiredEmail": "Email обязателен",
+      "errIncorrectEmail": "Неверный email",
+      "errorRequiredPassword": "Пароль обязателен",
+      "errorMeetPassword": "Пароль не соответствует критериям"
+    },
+    "passwordHints": {
+      "hintLenghtPass": "От 8 до 25 символов",
+      "hintNumberPass": "Хотя бы одно число",
+      "hintUpperLetter": "Заглавная буква",
+      "hintLoweLetter": "Строчная буква",
+      "hintLetters": "Буквы латинского алфавита"
+    }
   }
 }

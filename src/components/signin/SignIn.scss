@@ -10,4 +10,38 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  .signInForm {
+    margin-top: 85px;
+    min-width: 335px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    @media all and (max-width: 60em) {
+      width: 80%;
+    }
+    @media all and (max-width: 40em) {
+      width: 100%;
+    }
+    .signInEmailField,
+    .signInPasswordField {
+      .MuiFormLabel-root.Mui-focused,
+      .MuiFormLabel-root.MuiFormLabel-filled {
+        display: none;
+      }
+      .MuiInputBase-root.MuiInputBase-formControl.Mui-error {
+        border: solid 2px map-get($theme-colors, "red");
+        fieldset {
+          border: none;
+        }
+      }
+      .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+        border: solid 2px map-get($theme-colors, "blue");
+        fieldset {
+          border: none;
+        }
+      }
+    }
+  }
 }

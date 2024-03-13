@@ -1,5 +1,24 @@
 {
   "translate": {
-    "welcome": "Welcome"
+    "signIn": {
+      "email": "E-mail",
+      "password": "Password",
+      "forgotPassword": "Forgot password?",
+      "login": "Log in",
+      "signInWith": "or sign in with",
+      "donotHaveAcc": "Don’t have an account?",
+      "signUp": "Sign up",
+      "errorRequiredEmail": "Email is required",
+      "errIncorrectEmail": "Invalid email",
+      "errorRequiredPassword": "Password is required",
+      "errorMeetPassword": "Password does not meet the criteria"
+    },
+    "passwordHints": {
+      "hintLenghtPass": "From 8 to 25 characters",
+      "hintNumberPass": "One number",
+      "hintUpperLetter": "One uppercase letter",
+      "hintLoweLetter": "One lowercase letter",
+      "hintLetters": "Letters of the Latin alphabet"
+    }
   }
 }
