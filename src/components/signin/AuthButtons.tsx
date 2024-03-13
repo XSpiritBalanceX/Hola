@@ -8,12 +8,12 @@ const AuthButtons = () => {
   const { t } = translate("translate", { keyPrefix: "signIn" });
   return (
     <>
-      <p>{t("signInWith")}</p>
-      <Box>
-        <Button type="button">
+      <p className="signInTitle">{t("signInWith")}</p>
+      <Box className="containerButtonsSignIn">
+        <Button type="button" className="buttonSignInWith">
           <img src={google} alt="google icon" />
         </Button>
-        <Button type="button">
+        <Button type="button" className="buttonSignInWith">
           <img src={apple} alt="apple icon" />
         </Button>
       </Box>

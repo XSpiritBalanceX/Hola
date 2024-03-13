@@ -11,13 +11,17 @@
     border-radius: 20px;
     label {
       margin-top: -3px;
+      @extend %body-1;
+      color: map-get($theme-colors, "gray-2");
     }
     .MuiInputBase-root.MuiInputBase-formControl {
       height: 45px;
       border-radius: 20px;
+      @extend %body-1;
       input {
         height: 45px;
         padding: 0 15px;
+        color: map-get($theme-colors, "black");
       }
       fieldset {
         border: solid 1px map-get($theme-colors, "gray-2");
@@ -39,7 +43,11 @@
 
   .errorIcon,
   .errorMessage {
-    color: map-get($theme-colors, "red");
+    color: map-get($theme-colors, "error");
+  }
+  .errorMessage {
+    @extend %body-1;
+    margin-left: 10px;
   }
 
   .passwordField.errorField {

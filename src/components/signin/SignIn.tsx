@@ -44,7 +44,7 @@ const SignIn = () => {
 
   return (
     <Container className="signInContainer">
-      <img src={logo} alt="logo" />
+      <img src={logo} alt="logo" className="logoPicture" />
       <form onSubmit={handleSubmit(onSubmitSignIn)} className="signInForm">
         <ControlledInput
           name="email"
@@ -62,13 +62,19 @@ const SignIn = () => {
           lengthValue={watch("password") && watch("password").length}
           className="signInPasswordField"
         />
-        <Link to={"/"}>{t("forgotPassword")}</Link>
-        <Button type="submit">{t("login")}</Button>
+        <Link to={"/"} className="forgotPasswordLink">
+          {t("forgotPassword")}
+        </Link>
+        <Button type="submit" className="submitLoginForm">
+          {t("login")}
+        </Button>
       </form>
       <AuthButtons />
-      <Box>
-        <p>{t("donotHaveAcc")}</p>
-        <Link to={"/registration"}>{t("signUp")}</Link>
+      <Box className="registrationButtonBox">
+        <p className="titleRegistration">{t("donotHaveAcc")}</p>
+        <Link to={"/registration"} className="linkRegistration">
+          {t("signUp")}
+        </Link>
       </Box>
     </Container>
   );
