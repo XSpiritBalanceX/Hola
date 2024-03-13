@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   Box,
   FormControlLabel,
@@ -6,6 +7,7 @@ import {
   RadioGroup,
   Radio,
   InputAdornment,
+  FormHelperText,
 } from "@mui/material";
 import { translate } from "@i18n";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -16,6 +18,7 @@ import ControlledPassword from "@components/fields/ControlledPassword";
 import moment from "moment";
 import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
 import InputMask from "react-input-mask";
+import "./PersonalInfo.scss";
 
 interface ISignUpInfo {
   gender: "man" | "woman";
@@ -29,6 +32,7 @@ interface ISignUpInfo {
 
 const PersonalInfo = () => {
   const { t } = translate("translate", { keyPrefix: "signUp.personalInfo" });
+  const [isDisableButton, setIsDisableButton] = useState(true);
 
   const validationSchema = Yup.object().shape({
     gender: Yup.string().oneOf(["man", "woman"]).required(t("errReqGender")),
@@ -70,7 +74,24 @@ const PersonalInfo = () => {
     formState: { errors },
   } = useForm<ISignUpInfo>({
     resolver: yupResolver(validationSchema),
+    defaultValues: {
+      date_of_birth: "",
+    },
   });
+
+  useEffect(() => {
+    if (watch()) {
+      const valuesPersonalInfo = [];
+      for (const key in watch()) {
+        valuesPersonalInfo.push(watch(key as Path<ISignUpInfo>));
+      }
+      const isEmptyFields = valuesPersonalInfo.some(
+        (value) => value === "" || value === null
+      );
+      setIsDisableButton(isEmptyFields);
+    }
+    // eslint-disable-next-line
+  }, [watch()]);
 
   const onSubmitSignIn = (data: ISignUpInfo) => {
     console.log(data);
@@ -104,12 +125,15 @@ const PersonalInfo = () => {
   ];
 
   return (
-    <Box>
-      <p>{t("title")}</p>
-      <p>{t("iAm")}</p>
-      <form onSubmit={handleSubmit(onSubmitSignIn)}>
-        <Box>
-          <RadioGroup>
+    <Box className="personalInfoBox">
+      <p className="mainTitle">{t("title")}</p>
+      <p className="title">{t("iAm")}</p>
+      <form
+        onSubmit={handleSubmit(onSubmitSignIn)}
+        className="personalInfoForm"
+      >
+        <Box className="genderBox">
+          <RadioGroup className="radioGenderGroup">
             {fieldsGender.map((el, ind) => {
               return (
                 <FormControlLabel
@@ -118,11 +142,14 @@ const PersonalInfo = () => {
                   control={<Radio />}
                   label={t(el)}
                   {...register("gender")}
+                  className="radioGender"
                 />
               );
             })}
           </RadioGroup>
-          <p>{errors && errors.gender?.message}</p>
+          <FormHelperText className="errorMessage">
+            {errors && errors.gender?.message}
+          </FormHelperText>
         </Box>
         <ControlledInput
           name={"name"}
@@ -153,9 +180,9 @@ const PersonalInfo = () => {
               />
             )}
           </InputMask>
-          <p className="errorMessage">
+          <FormHelperText className="errorMessage">
             {errors && errors.date_of_birth?.message}
-          </p>
+          </FormHelperText>
         </Box>
         {fieldsMainCountry.map((el, ind) => {
           return (
@@ -184,7 +211,13 @@ const PersonalInfo = () => {
             />
           );
         })}
-        <Button type="submit">{t("next")}</Button>
+        <Button
+          type="submit"
+          className="submitPersonalInfo"
+          disabled={isDisableButton}
+        >
+          {t("next")}
+        </Button>
       </form>
     </Box>
   );

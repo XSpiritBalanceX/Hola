@@ -9,10 +9,19 @@
     height: 45px;
     background-color: map-get($theme-colors, "white");
     border-radius: 20px;
-    label {
+    .MuiFormLabel-root {
       margin-top: -3px;
       @extend %body-1;
       color: map-get($theme-colors, "gray-2");
+    }
+    .MuiFormLabel-root.MuiFormLabel-filled {
+      @extend %body-1;
+      margin-top: 0;
+    }
+    .MuiFormLabel-root.MuiFormLabel-filled.Mui-focused,
+    .MuiFormLabel-root.Mui-focused {
+      color: map-get($theme-colors, "blue");
+      @extend %body-1-medium;
     }
     .MuiInputBase-root.MuiInputBase-formControl {
       height: 45px;
@@ -68,8 +77,9 @@
   }
   .passwordField {
     .listHintsPassword {
-      z-index: 1;
+      z-index: 2;
       background-color: map-get($theme-colors, "white");
+      border: solid 1px map-get($theme-colors, "gray-2");
       border-radius: 20px;
       li {
         color: map-get($theme-colors, "black") !important;
