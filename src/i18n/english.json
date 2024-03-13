@@ -21,7 +21,27 @@
       "hintLetters": "Letters of the Latin alphabet"
     },
     "signUp": {
-      "skip": "Skip"
+      "skip": "Skip",
+      "personalInfo": {
+        "title": "Personal Info",
+        "iAm": "I am",
+        "man": "Man",
+        "woman": "Woman",
+        "errIncorrectEmail": "Invalid email",
+        "errorMeetPassword": "Password does not meet the criteria",
+        "errorRequiredField": "This field is required",
+        "mismatchPassword": "Password mismatch",
+        "errReqGender": "Indicate your gender",
+        "name": "Name",
+        "birthDate": "Birth Date",
+        "country": "Country",
+        "email": "E-mail",
+        "password": "Password",
+        "confirmPass": "Confirm password",
+        "next": "Next",
+        "invalidDate": "Invalid date",
+        "errDateOfBirth": "You cannot be under 18 years old"
+      }
     }
   }
 }

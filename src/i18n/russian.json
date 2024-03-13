@@ -21,7 +21,27 @@
       "hintLetters": "Буквы латинского алфавита"
     },
     "signUp": {
-      "skip": "Пропустить"
+      "skip": "Пропустить",
+      "personalInfo": {
+        "title": "Персональная информация",
+        "iAm": "Я",
+        "man": "Мужчина",
+        "woman": "Женщина",
+        "errIncorrectEmail": "Неверный email",
+        "errorMeetPassword": "Пароль не соответствует критериям",
+        "errorRequiredField": "Заполните это поле",
+        "mismatchPassword": "Пароли не совпадают",
+        "errReqGender": "Укажите свой пол",
+        "name": "Имя",
+        "birthDate": "Дата рождения",
+        "country": "Страна",
+        "email": "E-mail",
+        "password": "Пароль",
+        "confirmPass": "Повторите пароль",
+        "next": "Дальше",
+        "invalidDate": "Неверная дата",
+        "errDateOfBirth": "Вам не может быть меньше 18 лет"
+      }
     }
   }
 }

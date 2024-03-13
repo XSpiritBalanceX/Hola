@@ -3,6 +3,7 @@ import { Box, Container, Button } from "@mui/material";
 import Stepper from "@components/stepper/Stepper";
 import { useLocation } from "react-router-dom";
 import { translate } from "@i18n";
+import PersonalInfo from "@components/personalInfo/PersonalInfo";
 import "./SignUp.scss";
 
 const SignUp = () => {
@@ -11,7 +12,7 @@ const SignUp = () => {
   const { t } = translate("translate", { keyPrefix: "signUp" });
 
   const steps = [
-    { path: "/registration/info", element: <div>info</div>, step: 0 },
+    { path: "/registration/info", element: <PersonalInfo />, step: 0 },
     { path: "/registration/interests", element: <div>interests</div>, step: 1 },
     { path: "/registration/photos", element: <div>photos</div>, step: 2 },
   ];
