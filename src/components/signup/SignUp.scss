@@ -1,0 +1,22 @@
+@import "../../variables";
+
+.signUpContainer {
+  padding: 15px 20px 34px 20px !important;
+  min-height: 100vh;
+
+  .stepperButtonBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 20px;
+    max-height: 20px;
+    margin-bottom: 30px;
+    .skipStepButton {
+      width: auto;
+      height: 20px;
+      @extend %body-1;
+      padding: 0;
+      color: map-get($theme-colors, "gray-2");
+    }
+  }
+}

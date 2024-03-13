@@ -19,6 +19,9 @@
       "hintUpperLetter": "One uppercase letter",
       "hintLoweLetter": "One lowercase letter",
       "hintLetters": "Letters of the Latin alphabet"
+    },
+    "signUp": {
+      "skip": "Skip"
     }
   }
 }

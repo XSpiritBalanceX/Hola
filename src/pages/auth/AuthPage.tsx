@@ -8,7 +8,7 @@ const AuthPage = () => {
   return (
     <>
       {pathname === "/login" && <SignIn />}
-      {pathname === "/registration" && <SignUp />}
+      {pathname.includes("/registration") && <SignUp />}
     </>
   );
 };

@@ -72,7 +72,7 @@ const SignIn = () => {
       <AuthButtons />
       <Box className="registrationButtonBox">
         <p className="titleRegistration">{t("donotHaveAcc")}</p>
-        <Link to={"/registration"} className="linkRegistration">
+        <Link to={"/registration/info"} className="linkRegistration">
           {t("signUp")}
         </Link>
       </Box>

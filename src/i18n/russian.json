@@ -19,6 +19,9 @@
       "hintUpperLetter": "Заглавная буква",
       "hintLoweLetter": "Строчная буква",
       "hintLetters": "Буквы латинского алфавита"
+    },
+    "signUp": {
+      "skip": "Пропустить"
     }
   }
 }
