@@ -1,0 +1,16 @@
+@import "../../variables";
+
+.customStepper {
+  padding: 0 !important;
+  height: 20px;
+  .MuiMobileStepper-dot {
+    width: 20px;
+    height: 10px;
+    border-radius: 6px;
+    background-color: map-get($theme-colors, "gray-2");
+  }
+  .MuiMobileStepper-dot.MuiMobileStepper-dotActive {
+    width: 40px;
+    background-color: map-get($theme-colors, "blue");
+  }
+}

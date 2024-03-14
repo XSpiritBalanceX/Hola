@@ -1,0 +1,252 @@
+@use "sass:map";
+
+$theme-colors: (
+  "black": #000,
+  "white": #ffffff,
+  "blue": #554cb6,
+  "light-blue-1": #d1cdff,
+  "light-blue-2": #e3e1ff,
+  "light-blue-3": #e9f6ff,
+  "light-blue-4": #beb8ff,
+  "gray-1": #dee0e7,
+  "gray-2": #bfc3cf,
+  "red": #b6000b,
+  "error": #f01321,
+  "purple": #b84397,
+  "green": #20dc55,
+  "text": (
+    "gray-1": #c6c5c7,
+    "gray-2": #c6c5c780,
+    "gray-3": #707070,
+    "gray-4": #999999,
+    "black": #262626,
+  ),
+  "background": (
+    "gray-1": #f8f7ff,
+    "gray-2": #f5f5f5,
+    "gray-3": #e7e9ee,
+    "gray-4": #00000040,
+  ),
+  "box-shadow": (
+    "bid-shadow": (
+      0px 3px 30px 0px #0000001a,
+    ),
+    "small-shadow": (
+      0px 1px 30px 0px #0000001a,
+    ),
+    "blue-shadow": (
+      0px 5px 15px 0px #554cb626,
+    ),
+    "blue-shadow-like": (
+      0px 10px 30px 0px #554cb666,
+    ),
+  ),
+  "gradient": (
+    "blue": (
+      153.93deg,
+      #554cb6 27.05%,
+      #efadff 65.48%,
+    ),
+  ),
+);
+
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}
+
+%button-white {
+  background-color: #ffffff;
+  border-radius: 20px;
+  height: 50px;
+  color: #554cb6;
+  border: none;
+  &:disabled {
+    color: #bfc3cf;
+  }
+}
+
+%button-blue {
+  background-color: #554cb6;
+  border-radius: 20px;
+  height: 50px;
+  color: #ffffff;
+  border: none;
+  &:active,
+  :hover {
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.25);
+  }
+  &:disabled {
+    background-color: #bfc3cf;
+  }
+}
+
+%button-menu {
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  border: none;
+  border-radius: 50%;
+  color: #ffffff;
+}
+
+%button-menu-active {
+  background-color: #ffffff;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  border: none;
+  border-radius: 50%;
+  color: #554cb6;
+}
+
+%like-button {
+  background-color: #554cb6;
+  border: none;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  color: #ffffff;
+}
+
+%dislike-button {
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  color: #554cb6;
+}
+
+%h1 {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 140%;
+  letter-spacing: 4%;
+}
+
+%h2 {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 34px;
+  letter-spacing: 0;
+}
+
+%h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 29px;
+  letter-spacing: 1%;
+}
+
+%h4 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0;
+}
+
+%h5 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0;
+}
+
+%body-1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0;
+}
+
+%body-1-medium {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+%body-1-bold {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0;
+}
+
+%body-2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 23px;
+  letter-spacing: 0;
+}
+
+%body-2-medium {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+%body-2-bold {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+%messages {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0;
+}
+
+%caption {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0;
+}
+
+%caption-bold {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0;
+}
+
+%button {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0;
+}
+
+%text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 23px;
+  letter-spacing: 0;
+}
