@@ -1,6 +1,11 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
+import { jwtDecode } from "jwt-decode";
 
-export const BASE_URL = "https://212.193.62.231:8000/api/v1";
+interface IToken {
+  exp: number;
+}
+
+export const BASE_URL = "http://212.193.62.231:8000/api/v1";
 export const TOKEN_KEY = "hola_access_token";
 export const REFRESH_TOKEN_KEY = "hola_refresh_token";
 export const TOKEN_EXPIRES_KEY = "tokenExpires";
@@ -63,15 +68,15 @@ class AxiosAPI {
     const refreshToken = this.getItem(REFRESH_TOKEN_KEY);
     if (!refreshToken) throw Error("some err");
 
-    const result = await axios.post(`${BASE_URL}/auth/refresh`, {
+    const result = await axios.post(`${BASE_URL}/auth/refresh/`, {
       refresh: refreshToken,
     });
 
-    /* const tokenExpires =
-      new Date().getTime() + result.data.AuthenticationResult.ExpiresIn * 1000; */
+    const decodeToken: IToken = jwtDecode(result.data.access);
+    const tokenExpires = new Date().getTime() + decodeToken.exp * 1000;
 
     this.setItem(TOKEN_KEY, result.data.access);
-    //this.setItem(TOKEN_EXPIRES_KEY, tokenExpires.toString());
+    this.setItem(TOKEN_EXPIRES_KEY, tokenExpires.toString());
   }
 
   getAxiosInstance() {
@@ -98,7 +103,7 @@ axiosInstance.interceptors.request.use(
           // @ts-ignore
           config.headers = {
             ...config.headers,
-            authorization: updToken,
+            authorization: `Bearer ${updToken}`,
           };
         }
         resolve(config);

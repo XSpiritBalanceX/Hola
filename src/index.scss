@@ -22,16 +22,17 @@ code {
     box-shadow: map-deep-get($theme-colors, "box-shadow", "shadow");
     border-radius: 0;
     position: relative;
+    padding: 5px 10px;
     .Toastify__progress-bar--wrp {
       position: absolute;
       top: 0px;
       left: 0px;
       width: 6px;
-      height: 50px;
+      height: 110%;
       border-radius: 0;
     }
     > div {
-      @extend %body-1;
+      @extend %body-2;
     }
     .toastProgress {
       height: 100%;

@@ -11,7 +11,8 @@
       "errorRequiredEmail": "Email обязателен",
       "errIncorrectEmail": "Неверный email",
       "errorRequiredPassword": "Пароль обязателен",
-      "errorMeetPassword": "Пароль не соответствует критериям"
+      "errorMeetPassword": "Пароль не соответствует критериям",
+      "errSignIn": "Возникла ошибка. Проверьте свои данные"
     },
     "passwordHints": {
       "hintLenghtPass": "От 8 до 25 символов",

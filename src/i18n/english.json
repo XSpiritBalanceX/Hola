@@ -11,7 +11,8 @@
       "errorRequiredEmail": "Email is required",
       "errIncorrectEmail": "Invalid email",
       "errorRequiredPassword": "Password is required",
-      "errorMeetPassword": "Password does not meet the criteria"
+      "errorMeetPassword": "Password does not meet the criteria",
+      "errSignIn": "An error has occurred. Check your credentials"
     },
     "passwordHints": {
       "hintLenghtPass": "From 8 to 25 characters",
