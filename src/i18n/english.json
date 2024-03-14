@@ -41,7 +41,8 @@
         "confirmPass": "Confirm password",
         "next": "Next",
         "invalidDate": "Invalid date",
-        "errDateOfBirth": "You cannot be under 18 years old"
+        "errDateOfBirth": "You cannot be under 18 years old",
+        "errSignUp": "An unexpected error occurred"
       }
     }
   }

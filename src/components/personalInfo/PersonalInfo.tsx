@@ -21,6 +21,7 @@ import InputMask from "react-input-mask";
 import Loader from "@components/loader/Loader";
 import { toast } from "react-toastify";
 import { signUp } from "@api/auth/signUp";
+import { useNavigate } from "react-router-dom";
 import "./PersonalInfo.scss";
 
 interface ISignUpInfo {
@@ -37,6 +38,7 @@ const PersonalInfo = () => {
   const { t } = translate("translate", { keyPrefix: "signUp.personalInfo" });
   const [isDisableButton, setIsDisableButton] = useState(true);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const validationSchema = Yup.object().shape({
     gender: Yup.string().oneOf(["man", "woman"]).required(t("errReqGender")),
@@ -112,9 +114,13 @@ const PersonalInfo = () => {
     try {
       setLoading(true);
       const response = await signUp(compiledData);
-      console.log(response);
+      if (!response.data.detail) {
+        navigate("/registration/interests");
+      } else {
+        toast.error(t("errSignUp"));
+      }
     } catch (err) {
-      console.log(err);
+      toast.error(t("errSignUp"));
     } finally {
       setLoading(false);
     }
