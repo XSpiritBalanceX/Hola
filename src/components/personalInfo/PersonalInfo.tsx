@@ -18,6 +18,8 @@ import ControlledPassword from "@components/fields/ControlledPassword";
 import moment from "moment";
 import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
 import InputMask from "react-input-mask";
+import Loader from "@components/loader/Loader";
+import { toast } from "react-toastify";
 import "./PersonalInfo.scss";
 
 interface ISignUpInfo {
@@ -33,6 +35,7 @@ interface ISignUpInfo {
 const PersonalInfo = () => {
   const { t } = translate("translate", { keyPrefix: "signUp.personalInfo" });
   const [isDisableButton, setIsDisableButton] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const validationSchema = Yup.object().shape({
     gender: Yup.string().oneOf(["man", "woman"]).required(t("errReqGender")),
@@ -95,6 +98,12 @@ const PersonalInfo = () => {
 
   const onSubmitSignIn = (data: ISignUpInfo) => {
     console.log(data);
+    try {
+      setIsLoading(true);
+    } catch (err) {
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleDateOfBirth = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -126,6 +135,7 @@ const PersonalInfo = () => {
 
   return (
     <Box className="personalInfoBox">
+      <Loader isLoading={isLoading} />
       <p className="mainTitle">{t("title")}</p>
       <p className="title">{t("iAm")}</p>
       <form

@@ -1,3 +1,5 @@
+@import "./variables";
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -10,4 +12,32 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.notificationToast {
+  width: 450px;
+  .toastBody {
+    width: 100%;
+    min-height: 48px;
+    box-shadow: map-deep-get($theme-colors, "box-shadow", "shadow");
+    border-radius: 0;
+    position: relative;
+    .Toastify__progress-bar--wrp {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 6px;
+      height: 50px;
+      border-radius: 0;
+    }
+    > div {
+      @extend %body-1;
+    }
+    .toastProgress {
+      height: 100%;
+      width: 6px;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+  }
 }

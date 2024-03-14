@@ -6,6 +6,8 @@ import ScrollToTop from "@components/scrollToTop/ScrollToTop";
 import RouterComponent from "@components/router/RouterComponent";
 import { axiosAPI } from "@axiosApi/axiosAPI";
 import { loginUser } from "@store/holaSlice";
+import { ToastContainer, Zoom } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 axiosAPI.setGetItem((key) => localStorage.getItem(key));
 axiosAPI.setSetItem((key, value) => localStorage.setItem(key, value));
@@ -36,6 +38,15 @@ const App = () => {
 
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        theme="light"
+        className={"notificationToast"}
+        toastClassName={"toastBody"}
+        progressClassName={"toastProgress"}
+        transition={Zoom}
+      />
       <ScrollToTop />
       <RouterComponent />
     </>
