@@ -1,0 +1,49 @@
+@import "../../variables";
+
+.interestsBox {
+  .mainTitle {
+    margin: 0;
+    @extend %body-1-bold;
+  }
+  .mainTitle.registration {
+    @extend %h1;
+  }
+  .title {
+    margin: 6px 0 0 0;
+    @extend %body-1-medium;
+    color: map-get($theme-colors, "gray-2");
+  }
+
+  .interestsForm {
+    margin: 16px 0 0 0;
+    .itemInterest {
+      position: relative;
+      height: 32px;
+      width: auto;
+      padding: 6px 12px;
+      border: solid 1.5px map-get($theme-colors, "gray-2");
+      border-radius: 100px;
+      margin: 0 10px 10px 0;
+      .MuiTypography-root {
+        @extend %body-1-medium;
+        color: map-get($theme-colors, "gray-2");
+      }
+      .checkBoxInterest {
+        display: none;
+      }
+    }
+    .itemInterest.checked {
+      border: solid 2px map-get($theme-colors, "blue");
+      .MuiTypography-root {
+        @extend %body-1-bold;
+        color: map-get($theme-colors, "blue");
+      }
+    }
+    .buttonSubmitInterests {
+      @extend %button-blue;
+      @extend %button;
+      text-transform: none;
+      width: 100%;
+    }
+  }
+}

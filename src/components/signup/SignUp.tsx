@@ -4,6 +4,7 @@ import Stepper from "@components/stepper/Stepper";
 import { useLocation } from "react-router-dom";
 import { translate } from "@i18n";
 import PersonalInfo from "@components/personalInfo/PersonalInfo";
+import UserInterests from "@components/userInterests/UserInterests";
 import "./SignUp.scss";
 
 const SignUp = () => {
@@ -13,7 +14,7 @@ const SignUp = () => {
 
   const steps = [
     { path: "/registration/info", element: <PersonalInfo />, step: 0 },
-    { path: "/registration/interests", element: <div>interests</div>, step: 1 },
+    { path: "/registration/interests", element: <UserInterests />, step: 1 },
     { path: "/registration/photos", element: <div>photos</div>, step: 2 },
   ];
 
