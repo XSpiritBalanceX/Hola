@@ -97,7 +97,8 @@
         "science": "Science",
         "jiuJitsu": "Jiu-jitsu",
         "karaoke": "Karaoke",
-        "homeWorkout": "Home Workout"
+        "homeWorkout": "Home Workout",
+        "errInterests": "An unexpected error occurred"
       }
     }
   }

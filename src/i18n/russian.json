@@ -97,7 +97,8 @@
         "science": "Наука",
         "jiuJitsu": "Джиу-Джитсу",
         "karaoke": "Караоке",
-        "homeWorkout": "Тренировки"
+        "homeWorkout": "Тренировки",
+        "errInterests": "Возникла непредвиденная ошибка"
       }
     }
   }

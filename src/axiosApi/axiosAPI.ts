@@ -8,8 +8,8 @@ interface IToken {
 export const BASE_URL = "http://212.193.62.231:8000/api/v1";
 export const TOKEN_KEY = "hola_access_token";
 export const REFRESH_TOKEN_KEY = "hola_refresh_token";
-export const TOKEN_EXPIRES_KEY = "tokenExpires";
-export const LOGIN_KEY = "login";
+export const TOKEN_EXPIRES_KEY = "hola_tokenExpires";
+export const LOGIN_KEY = "hola_login";
 
 class AxiosAPI {
   //@ts-ignore
