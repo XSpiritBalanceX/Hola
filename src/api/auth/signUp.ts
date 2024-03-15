@@ -11,7 +11,7 @@ interface IUserInformation {
 }
 
 interface IResponse {
-  data: { detail?: string };
+  data: { detail?: string; id?: number };
 }
 
 export const signUp = async (data: IUserInformation) => {
