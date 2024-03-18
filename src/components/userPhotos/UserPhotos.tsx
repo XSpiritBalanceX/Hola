@@ -9,7 +9,11 @@ import { toast } from "react-toastify";
 import { addImage } from "@api/image/addImage";
 import "./UserPhotos.scss";
 
-const UserPhotos = () => {
+interface IUserPhotosProps {
+  cbHandleOpenModal?: () => void;
+}
+
+const UserPhotos = ({ cbHandleOpenModal }: IUserPhotosProps) => {
   const { t } = translate("translate", { keyPrefix: "signUp.photos" });
   const { pathname } = useLocation();
 
@@ -50,6 +54,9 @@ const UserPhotos = () => {
       formData.append("person", userID!);
       const response = await addImage(formData);
       if (!response.data.detail) {
+        pathname.includes("registration") &&
+          cbHandleOpenModal &&
+          cbHandleOpenModal();
       }
     } catch (err) {
       toast.error(t("errPhotos"));

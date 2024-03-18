@@ -105,6 +105,13 @@
         "next": "Next",
         "errPhotos": "An unexpected error occurred"
       }
+    },
+    "modals": {
+      "registration": {
+        "mainTitle": "Please check your inbox!",
+        "title": "To confirm your e-mail address, tap the link in the email we sent to:",
+        "button": "Open email app"
+      }
     }
   }
 }

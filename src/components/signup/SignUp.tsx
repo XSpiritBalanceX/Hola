@@ -6,16 +6,30 @@ import PersonalInfo from "@components/personalInfo/PersonalInfo";
 import UserInterests from "@components/userInterests/UserInterests";
 import UserPhotos from "@components/userPhotos/UserPhotos";
 import SkipButton from "./SkipButton";
+import RegistrationModal from "@components/modal/RegistrationModal";
 import "./SignUp.scss";
 
 const SignUp = () => {
   const { pathname } = useLocation();
   const [activeStep, setActiveStep] = useState(0);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsOpenModal(false);
+  };
 
   const steps = [
     { path: "/registration/info", element: <PersonalInfo />, step: 0 },
     { path: "/registration/interests", element: <UserInterests />, step: 1 },
-    { path: "/registration/photos", element: <UserPhotos />, step: 2 },
+    {
+      path: "/registration/photos",
+      element: <UserPhotos cbHandleOpenModal={handleOpenModal} />,
+      step: 2,
+    },
   ];
 
   useEffect(() => {
@@ -26,6 +40,7 @@ const SignUp = () => {
 
   return (
     <Container className="signUpContainer">
+      <RegistrationModal isOpen={isOpenModal} cbCloseModal={handleCloseModal} />
       <Box className="stepperButtonBox">
         <Stepper activeStep={activeStep} />
         {pathname !== steps[0].path && <SkipButton pathname={pathname} />}
