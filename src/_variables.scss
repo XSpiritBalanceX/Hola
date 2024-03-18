@@ -81,9 +81,15 @@ $theme-colors: (
   height: 50px;
   color: #ffffff;
   border: none;
-  &:active,
-  :hover {
+  &:hover {
     box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.25);
+    background-color: #554cb6;
+    color: #ffffff;
+  }
+  &:active {
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.25);
+    background-color: #554cb6;
+    color: #ffffff;
   }
   &:disabled {
     background-color: #bfc3cf;

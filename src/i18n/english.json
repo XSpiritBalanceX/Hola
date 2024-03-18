@@ -102,7 +102,8 @@
       },
       "photos": {
         "addPhotos": "Add Photos",
-        "next": "Next"
+        "next": "Next",
+        "errPhotos": "An unexpected error occurred"
       }
     }
   }

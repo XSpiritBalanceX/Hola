@@ -4,6 +4,9 @@ import { translate } from "@i18n";
 import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
 import { useLocation } from "react-router-dom";
+import Loader from "@components/loader/Loader";
+import { toast } from "react-toastify";
+import { addImage } from "@api/image/addImage";
 import "./UserPhotos.scss";
 
 const UserPhotos = () => {
@@ -11,6 +14,7 @@ const UserPhotos = () => {
   const { pathname } = useLocation();
 
   const [photos, setPhotos] = useState(Array(9).fill(null));
+  const [loading, setLoading] = useState(false);
 
   const handlePhotoUpload = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -33,10 +37,32 @@ const UserPhotos = () => {
     });
   };
 
+  const handleSavePhoto = async () => {
+    try {
+      setLoading(true);
+      const formData = new FormData();
+      photos.forEach((el) => {
+        if (el) {
+          formData.append("file", el);
+        }
+      });
+      const userID = localStorage.getItem("hola_user_id");
+      formData.append("person", userID!);
+      const response = await addImage(formData);
+      if (!response.data.detail) {
+      }
+    } catch (err) {
+      toast.error(t("errPhotos"));
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const isDisabledButton = photos.some((el) => el !== null);
 
   return (
     <Box className="userPhotosBox">
+      <Loader isLoading={loading} />
       {pathname.includes("registration") && (
         <p className="titlePhotos">{t("addPhotos")}</p>
       )}
@@ -81,6 +107,7 @@ const UserPhotos = () => {
         type="button"
         className="savePhotosButton"
         disabled={!isDisabledButton}
+        onClick={handleSavePhoto}
       >
         {t("next")}
       </Button>
