@@ -1,5 +1,4 @@
-import { BASE_URL } from "@axiosApi/axiosAPI";
-import axios from "axios";
+import { axiosInstance } from "@axiosApi/axiosAPI";
 
 interface IResponse {
   data: { detail?: string };
@@ -7,8 +6,8 @@ interface IResponse {
 
 export const addInterest = async (data: Array<number>) => {
   const userID = localStorage.getItem("hola_user_id");
-  const response: IResponse = await axios.post(
-    `${BASE_URL}/person/${userID}/interests/`,
+  const response: IResponse = await axiosInstance.post(
+    `/person/${userID}/interests/`,
     { interests: data }
   );
 

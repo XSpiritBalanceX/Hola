@@ -95,7 +95,7 @@ axiosInstance.interceptors.request.use(
         const token = axiosAPI.getItem(TOKEN_KEY);
         const expTime = Number(axiosAPI.getItem(TOKEN_EXPIRES_KEY) ?? "0") ?? 0;
         const curTime = new Date().getTime();
-        if (expTime && (expTime - curTime <= -3000 || !token)) {
+        if (token && expTime && expTime - curTime <= -3000) {
           await axiosAPI.fetchToken();
         }
         const updToken = axiosAPI.getItem(TOKEN_KEY);

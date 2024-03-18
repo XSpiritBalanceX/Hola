@@ -1,5 +1,4 @@
-import { BASE_URL } from "@axiosApi/axiosAPI";
-import axios from "axios";
+import { axiosInstance } from "@axiosApi/axiosAPI";
 
 interface IUserInformation {
   gender: string;
@@ -15,7 +14,7 @@ interface IResponse {
 }
 
 export const signUp = async (data: IUserInformation) => {
-  const response: IResponse = await axios.post(`${BASE_URL}/person/`, data);
+  const response: IResponse = await axiosInstance.post("/person/", data);
 
   return response;
 };
