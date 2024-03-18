@@ -4,6 +4,7 @@ import Stepper from "@components/stepper/Stepper";
 import { useLocation } from "react-router-dom";
 import PersonalInfo from "@components/personalInfo/PersonalInfo";
 import UserInterests from "@components/userInterests/UserInterests";
+import UserPhotos from "@components/userPhotos/UserPhotos";
 import SkipButton from "./SkipButton";
 import "./SignUp.scss";
 
@@ -14,7 +15,7 @@ const SignUp = () => {
   const steps = [
     { path: "/registration/info", element: <PersonalInfo />, step: 0 },
     { path: "/registration/interests", element: <UserInterests />, step: 1 },
-    { path: "/registration/photos", element: <div>photos</div>, step: 2 },
+    { path: "/registration/photos", element: <UserPhotos />, step: 2 },
   ];
 
   useEffect(() => {

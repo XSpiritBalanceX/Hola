@@ -26,6 +26,7 @@ $theme-colors: (
     "gray-2": #f5f5f5,
     "gray-3": #e7e9ee,
     "gray-4": #00000040,
+    "gray-5": #f3f3f3,
   ),
   "box-shadow": (
     "shadow": (
@@ -42,6 +43,9 @@ $theme-colors: (
     ),
     "blue-shadow-like": (
       0px 10px 30px 0px #554cb666,
+    ),
+    "button": (
+      0px 3.02px 5.04px 0px rgba(0, 0, 0, 0.15),
     ),
   ),
   "gradient": (

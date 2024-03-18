@@ -99,6 +99,10 @@
         "karaoke": "Karaoke",
         "homeWorkout": "Home Workout",
         "errInterests": "An unexpected error occurred"
+      },
+      "photos": {
+        "addPhotos": "Add Photos",
+        "next": "Next"
       }
     }
   }
