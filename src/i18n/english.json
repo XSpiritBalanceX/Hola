@@ -117,7 +117,9 @@
       "edit": "Edit Profile",
       "settings": "Settings",
       "privacy": "Privacy Policy",
-      "help": "Help"
+      "help": "Help",
+      "logOut": "Log out",
+      "complete": "Complete"
     }
   }
 }

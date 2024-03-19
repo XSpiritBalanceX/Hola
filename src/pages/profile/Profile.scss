@@ -1,0 +1,108 @@
+@import "../../variables";
+
+.profileContainer {
+  padding: 15px 20px 34px 20px !important;
+
+  .profilePictureAndLogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .profilePictureBox {
+      margin-top: 20px;
+      width: 220px;
+      height: 200px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+      }
+      .profileCompleteness {
+        position: absolute;
+        top: -7px;
+        left: 3px;
+        width: 215px !important;
+        height: 215px !important;
+        svg {
+          .MuiCircularProgress-circle {
+            stroke-width: 1px;
+            stroke: map-get($theme-colors, "blue");
+          }
+        }
+      }
+      .completeRate {
+        margin: 0;
+        position: absolute;
+        bottom: -30px;
+        text-transform: uppercase;
+        width: auto;
+        height: 35px;
+        background-color: map-get($theme-colors, "blue");
+        color: map-get($theme-colors, "white");
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 7px 16px;
+        @extend %body-2-bold;
+      }
+    }
+  }
+
+  .userInformationBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 45px 0 15px 0;
+    p {
+      margin: 0;
+      @extend %h2;
+    }
+  }
+
+  .profileLinksBox {
+    margin-bottom: 27px;
+    .linkItem {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 15px;
+      .iconLinks {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: map-get($theme-colors, "light-blue-2");
+        border-radius: 50%;
+        margin-right: 15px;
+      }
+      .linkProfile {
+        text-decoration: none;
+        color: map-get($theme-colors, "black");
+        @extend %body-1-medium;
+      }
+    }
+  }
+  .LogOutButtonBox {
+    margin-bottom: 81px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button {
+      text-transform: none;
+      @extend %button-white;
+      .textButton {
+        @extend %body-1-medium;
+        color: map-get($theme-colors, "blue");
+        margin-left: 5px;
+      }
+    }
+  }
+}

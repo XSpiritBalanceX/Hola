@@ -1,22 +1,27 @@
 import { Box, CircularProgress } from "@mui/material";
+import user from "@assets/user.png";
+import { translate } from "@i18n";
+import "./Profile.scss";
 
 interface IUserPictureProps {
   photo: string;
+  complete: number;
 }
 
-const UserPicture = ({ photo }: IUserPictureProps) => {
-  const gradient = `radial-gradient(ellipse at center, rgba(0, 0, 255, ${40}) 0%, transparent 100%)`;
-
-  const imageStyle = {
-    display: "block",
-    width: "100px",
-    height: "100px",
-  };
+const UserPicture = ({ photo, complete }: IUserPictureProps) => {
+  const { t } = translate("translate", { keyPrefix: "profile" });
 
   return (
-    <Box>
-      <CircularProgress variant="determinate" value={25} />
-      <img src={photo} alt="user" style={imageStyle} />
+    <Box className="profilePictureBox">
+      <CircularProgress
+        variant="determinate"
+        value={complete}
+        className="profileCompleteness"
+      />
+      <p className="completeRate">
+        {complete}% {t("complete")}
+      </p>
+      <img src={photo || user} alt="user" />
     </Box>
   );
 };

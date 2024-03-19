@@ -5,6 +5,7 @@ import edit from "@assets/editicon.png";
 import setting from "@assets/settings.png";
 import privacy from "@assets/privacy.png";
 import help from "@assets/help.png";
+import "./Profile.scss";
 
 const ProfileLinks = () => {
   const { t } = translate("translate", { keyPrefix: "profile" });
@@ -17,14 +18,16 @@ const ProfileLinks = () => {
   ];
 
   return (
-    <Box>
+    <Box className="profileLinksBox">
       {links.map((el, ind) => {
         return (
-          <Box key={ind}>
-            <Box>
+          <Box key={ind} className="linkItem">
+            <Box className="iconLinks">
               <img src={el.icon} alt="icon" />
             </Box>
-            <Link to={el.path}>{t(el.title)}</Link>
+            <Link to={el.path} className="linkProfile">
+              {t(el.title)}
+            </Link>
           </Box>
         );
       })}
