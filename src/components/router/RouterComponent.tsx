@@ -2,6 +2,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import ProtectedRouter from "./ProtectedRouter";
 import ProtectedRouterForLogged from "./ProtectedRouterForLogged";
 import AuthPage from "@pages/auth/AuthPage";
+import ProfilePage from "@pages/profile/ProfilePage";
 
 const RouterComponent = () => {
   return (
@@ -38,6 +39,7 @@ const RouterComponent = () => {
           </ProtectedRouterForLogged>
         }
       />
+      <Route path="/profile" element={<ProfilePage />} />
       <Route path="*" element={<Navigate to={"/login"} />} />
     </Routes>
   );

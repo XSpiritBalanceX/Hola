@@ -112,6 +112,12 @@
         "title": "To confirm your e-mail address, tap the link in the email we sent to:",
         "button": "Open email app"
       }
+    },
+    "profile": {
+      "edit": "Edit Profile",
+      "settings": "Settings",
+      "privacy": "Privacy Policy",
+      "help": "Help"
     }
   }
 }

@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { translate } from "@i18n";
 import ControlledInput from "@components/fields/ControlledInput";
 import ControlledPassword from "@components/fields/ControlledPassword";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthButtons from "./AuthButtons";
 import Loader from "@components/loader/Loader";
 import { signIn } from "@api/auth/signIn";
@@ -30,6 +30,7 @@ const SignIn = () => {
   const { t } = translate("translate", { keyPrefix: "signIn" });
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -69,6 +70,7 @@ const SignIn = () => {
             email: data.email,
           })
         );
+        navigate("/profile");
       }
     } catch (err) {
       toast.error(t("errSignIn"));
