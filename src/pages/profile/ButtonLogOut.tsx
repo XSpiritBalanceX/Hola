@@ -19,6 +19,7 @@ const ButtonLogOut = () => {
         expiresIn: 0,
         email: "",
         refreshToken: "",
+        user_id: "",
       })
     );
     navigate("/login");

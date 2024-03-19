@@ -24,6 +24,7 @@ interface ISignIn {
 
 interface IToken {
   exp: number;
+  user_id: number;
 }
 
 const SignIn = () => {
@@ -68,6 +69,7 @@ const SignIn = () => {
             refreshToken: response.data.refresh,
             expiresIn: decodeToken.exp,
             email: data.email,
+            user_id: decodeToken.user_id.toString(),
           })
         );
         navigate("/profile");

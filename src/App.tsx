@@ -31,6 +31,7 @@ const App = () => {
           expiresIn: 0,
           email: "",
           refreshToken: "",
+          user_id: "",
         })
       )
     );
