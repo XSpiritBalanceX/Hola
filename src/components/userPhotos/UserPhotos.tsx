@@ -53,7 +53,7 @@ const UserPhotos = ({ cbHandleOpenModal }: IUserPhotosProps) => {
       const userID = localStorage.getItem("hola_user_id");
       formData.append("person", userID!);
       const response = await addImage(formData);
-      if (!response.data.detail) {
+      if (response.data.detail === "ok") {
         pathname.includes("registration") &&
           cbHandleOpenModal &&
           cbHandleOpenModal();
