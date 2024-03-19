@@ -1,0 +1,56 @@
+@import "../../variables";
+
+.modalContainerRegistration {
+  .contentRegistrationModalBox {
+    border: solid 1px transparent;
+    width: 100%;
+    height: 100%;
+    background-color: map-get($theme-colors, "white");
+    .closeModalButton {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 10px;
+      svg {
+        fill: map-get($theme-colors, "black");
+      }
+    }
+    .contentRegistrationModal {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: 0 20px;
+      .iconModal {
+        width: 43px;
+        height: 43px;
+        fill: map-get($theme-colors, "blue");
+      }
+      .mainTitleModal {
+        @extend %h3;
+        margin: 27px 0 20px 0;
+        text-align: center;
+      }
+      .titleModal {
+        @extend %body-1;
+        margin: 0 0 10px 0;
+        text-align: center;
+      }
+      .userEmail {
+        @extend %h5;
+        margin: 0 0 20px 0;
+      }
+      .buttonOpenEmail {
+        @extend %button-blue;
+        text-transform: none;
+        width: 40%;
+        @media all and (max-width: 55em) {
+          width: 60%;
+        }
+        @media all and (max-width: 40em) {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

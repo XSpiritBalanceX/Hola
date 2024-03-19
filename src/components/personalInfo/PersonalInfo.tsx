@@ -18,6 +18,10 @@ import ControlledPassword from "@components/fields/ControlledPassword";
 import moment from "moment";
 import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
 import InputMask from "react-input-mask";
+import Loader from "@components/loader/Loader";
+import { toast } from "react-toastify";
+import { signUp } from "@api/auth/signUp";
+import { useNavigate } from "react-router-dom";
 import "./PersonalInfo.scss";
 
 interface ISignUpInfo {
@@ -33,6 +37,8 @@ interface ISignUpInfo {
 const PersonalInfo = () => {
   const { t } = translate("translate", { keyPrefix: "signUp.personalInfo" });
   const [isDisableButton, setIsDisableButton] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const validationSchema = Yup.object().shape({
     gender: Yup.string().oneOf(["man", "woman"]).required(t("errReqGender")),
@@ -93,8 +99,32 @@ const PersonalInfo = () => {
     // eslint-disable-next-line
   }, [watch()]);
 
-  const onSubmitSignIn = (data: ISignUpInfo) => {
-    console.log(data);
+  const onSubmitSignIn = async (data: ISignUpInfo) => {
+    const compiledData = {
+      gender: data.gender,
+      name: data.name,
+      date_of_birth: moment(data.date_of_birth, "DD.MM.YYYY").format(
+        "YYYY-MM-DD"
+      ),
+      country: data.country,
+      email: data.email,
+      password: data.password,
+    };
+
+    try {
+      setLoading(true);
+      const response = await signUp(compiledData);
+      if (response.data.id) {
+        localStorage.setItem("hola_user_id", response.data.id.toString());
+        navigate("/registration/interests");
+      } else {
+        toast.error(t("errSignUp"));
+      }
+    } catch (err) {
+      toast.error(t("errSignUp"));
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleDateOfBirth = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -126,6 +156,7 @@ const PersonalInfo = () => {
 
   return (
     <Box className="personalInfoBox">
+      <Loader isLoading={loading} />
       <p className="mainTitle">{t("title")}</p>
       <p className="title">{t("iAm")}</p>
       <form

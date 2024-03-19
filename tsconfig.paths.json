@@ -6,7 +6,10 @@
       "@components/*": ["./components/*"],
       "@i18n": ["./i18n/index.tsx"],
       "@store/*": ["./store/*"],
-      "@assets/*": ["./assets/*"]
+      "@assets/*": ["./assets/*"],
+      "@axiosApi/*": ["./axiosApi/*"],
+      "@api/*": ["./api/*"],
+      "@utils/*": ["./utils/*"]
     }
   }
 }

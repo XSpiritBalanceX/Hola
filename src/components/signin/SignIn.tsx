@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Box, Button, Container } from "@mui/material";
 import logo from "@assets/logo.svg";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -8,6 +9,12 @@ import ControlledInput from "@components/fields/ControlledInput";
 import ControlledPassword from "@components/fields/ControlledPassword";
 import { Link } from "react-router-dom";
 import AuthButtons from "./AuthButtons";
+import Loader from "@components/loader/Loader";
+import { signIn } from "@api/auth/signIn";
+import { useAppDispatch } from "@store/hook";
+import { loginUser } from "@store/holaSlice";
+import { jwtDecode } from "jwt-decode";
+import { toast } from "react-toastify";
 import "./SignIn.scss";
 
 interface ISignIn {
@@ -15,8 +22,14 @@ interface ISignIn {
   password: string;
 }
 
+interface IToken {
+  exp: number;
+}
+
 const SignIn = () => {
   const { t } = translate("translate", { keyPrefix: "signIn" });
+  const [loading, setLoading] = useState(false);
+  const dispatch = useAppDispatch();
 
   const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -38,12 +51,35 @@ const SignIn = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmitSignIn = (data: ISignIn) => {
-    console.log(data);
+  const onSubmitSignIn = async (data: ISignIn) => {
+    try {
+      setLoading(true);
+      const response = await signIn({
+        email: data.email,
+        password: data.password,
+      });
+      if (response.data.access) {
+        const decodeToken: IToken = jwtDecode(response.data.access);
+        dispatch(
+          loginUser({
+            isLogin: true,
+            token: response.data.access,
+            refreshToken: response.data.refresh,
+            expiresIn: decodeToken.exp,
+            email: data.email,
+          })
+        );
+      }
+    } catch (err) {
+      toast.error(t("errSignIn"));
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <Container className="signInContainer">
+      <Loader isLoading={loading} />
       <img src={logo} alt="logo" className="logoPicture" />
       <form onSubmit={handleSubmit(onSubmitSignIn)} className="signInForm">
         <ControlledInput

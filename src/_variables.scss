@@ -26,8 +26,12 @@ $theme-colors: (
     "gray-2": #f5f5f5,
     "gray-3": #e7e9ee,
     "gray-4": #00000040,
+    "gray-5": #f3f3f3,
   ),
   "box-shadow": (
+    "shadow": (
+      0px 4px 4px 0px rgba(0, 0, 0, 0.25),
+    ),
     "bid-shadow": (
       0px 3px 30px 0px #0000001a,
     ),
@@ -39,6 +43,9 @@ $theme-colors: (
     ),
     "blue-shadow-like": (
       0px 10px 30px 0px #554cb666,
+    ),
+    "button": (
+      0px 3.02px 5.04px 0px rgba(0, 0, 0, 0.15),
     ),
   ),
   "gradient": (
@@ -74,9 +81,15 @@ $theme-colors: (
   height: 50px;
   color: #ffffff;
   border: none;
-  &:active,
-  :hover {
+  &:hover {
     box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.25);
+    background-color: #554cb6;
+    color: #ffffff;
+  }
+  &:active {
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.25);
+    background-color: #554cb6;
+    color: #ffffff;
   }
   &:disabled {
     background-color: #bfc3cf;

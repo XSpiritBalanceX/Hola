@@ -44,6 +44,20 @@
         }
       }
     }
+    .signInPasswordField.errorField {
+      .MuiInputBase-root.MuiInputBase-formControl {
+        border: solid 2px map-get($theme-colors, "red");
+        fieldset {
+          border: none;
+        }
+      }
+      .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+        border: solid 2px map-get($theme-colors, "blue");
+        fieldset {
+          border: none;
+        }
+      }
+    }
     .forgotPasswordLink {
       color: map-get($theme-colors, "white");
       text-decoration: none;

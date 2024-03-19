@@ -11,7 +11,8 @@
       "errorRequiredEmail": "Email обязателен",
       "errIncorrectEmail": "Неверный email",
       "errorRequiredPassword": "Пароль обязателен",
-      "errorMeetPassword": "Пароль не соответствует критериям"
+      "errorMeetPassword": "Пароль не соответствует критериям",
+      "errSignIn": "Возникла ошибка. Проверьте свои данные"
     },
     "passwordHints": {
       "hintLenghtPass": "От 8 до 25 символов",
@@ -40,7 +41,76 @@
         "confirmPass": "Повторите пароль",
         "next": "Дальше",
         "invalidDate": "Неверная дата",
-        "errDateOfBirth": "Вам не может быть меньше 18 лет"
+        "errDateOfBirth": "Вам не может быть меньше 18 лет",
+        "errSignUp": "Возникла непредвиденная ошибка"
+      },
+      "interests": {
+        "interests": "Интересы",
+        "title": "Расскажите всем, что вас интересует, добавив это в свой профиль.",
+        "next": "Дальше",
+        "90s": "Ребенок 90-х",
+        "HarryPotter": "Гарри Поттер",
+        "music": "Музыка",
+        "tea": "Чай",
+        "hiphop": "Хип-Хоп",
+        "vampires": "Вампиры",
+        "wine": "Вино",
+        "ginTonic": "Джин-тоник",
+        "gymnastics": "Гимнастика",
+        "hapkido": "Дзюдо",
+        "beerYoga": "Пивная йога",
+        "meditation": "Медитация",
+        "catLover": "Коты",
+        "standUp": "Стендап",
+        "hockey": "Хоккей",
+        "basketball": "Баскетбол",
+        "fixedGear": "Фиксд Гир",
+        "dogLover": "Собаки",
+        "sushi": "Суши",
+        "pasta": "Паста",
+        "walking": "Прогулки",
+        "videoGames": "Видео игры",
+        "coffee": "Кофе",
+        "surfing": "Сёрфинг",
+        "running": "Бег",
+        "travel": "Путешествия",
+        "reading": "Чтение",
+        "cycling": "Велосипед",
+        "art": "Искусство",
+        "hobbyHorsing": "Хобби-хорсинг",
+        "swimming": "Плаванье",
+        "climbing": "Скалолазание",
+        "football": "Футбол",
+        "cooking": "Готовка",
+        "theater": "Театр",
+        "tarot": "Таро",
+        "sneakers": "Кроссовки",
+        "politics": "Политика",
+        "boardGames": "Настольные игры",
+        "gardening": "Садоводство",
+        "baking": "Выпечка",
+        "hiking": "Походы",
+        "dancing": "Танцы",
+        "fashion": "Мода",
+        "feminism": "Феминизм",
+        "investment": "Инвестиции",
+        "science": "Наука",
+        "jiuJitsu": "Джиу-Джитсу",
+        "karaoke": "Караоке",
+        "homeWorkout": "Тренировки",
+        "errInterests": "Возникла непредвиденная ошибка"
+      },
+      "photos": {
+        "addPhotos": "Добавить фотографии",
+        "next": "Дальше",
+        "errPhotos": "Возникла непредвиденная ошибка"
+      }
+    },
+    "modals": {
+      "registration": {
+        "mainTitle": "Пожалуйста, проверьте свой почтовый ящик!",
+        "title": "Чтобы подтвердить свой адрес электронной почты, нажмите ссылку в письме, которое мы отправили на:",
+        "button": "Открыть почтовое приложение"
       }
     }
   }

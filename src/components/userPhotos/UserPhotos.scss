@@ -1,0 +1,83 @@
+@import "../../variables";
+
+.userPhotosBox {
+  .titlePhotos {
+    @extend %h1;
+    margin: 0 0 16px 0;
+  }
+
+  .itemsPhotosBox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    @media all and (max-width: 40em) {
+      justify-content: space-between;
+    }
+    .itemPhoto {
+      width: 105px;
+      height: 145px;
+      border-radius: 8px;
+      margin: 0 10px 20px 0;
+      position: relative;
+      @media all and (max-width: 40em) {
+        margin: 0 0 20px 0;
+      }
+      label,
+      .deletePhotoButton {
+        position: absolute;
+        bottom: -7px;
+        right: 3px;
+        box-shadow: map-deep-get($theme-colors, "box-shadow", "button");
+        width: 31px;
+        height: 31px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border-radius: 50%;
+        &:hover {
+          cursor: pointer;
+        }
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+    .itemPhoto.withoutPhoto {
+      background-color: map-deep-get($theme-colors, "background", "gray-5");
+      border: dashed 2px map-get($theme-colors, "light-blue-2");
+      input {
+        display: none;
+      }
+      label {
+        background-color: map-get($theme-colors, "blue");
+        svg {
+          fill: map-get($theme-colors, "white");
+        }
+      }
+    }
+    .itemPhoto.withPhoto {
+      img {
+        width: 105px;
+        height: 145px;
+        border-radius: 8px;
+      }
+      .deletePhotoButton {
+        background-color: map-get($theme-colors, "white");
+        min-width: 31px;
+        svg {
+          fill: map-get($theme-colors, "blue");
+        }
+      }
+    }
+  }
+
+  .savePhotosButton {
+    @extend %button-blue;
+    @extend %button;
+    width: 100%;
+    margin: 82px 0 0 0;
+    text-transform: none;
+  }
+}
