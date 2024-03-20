@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 import Loader from "@components/loader/Loader";
 import { toast } from "react-toastify";
 import { addImage } from "@api/image/addImage";
+import classNames from "classnames";
 import "./UserPhotos.scss";
 
 interface IUserPhotosProps {
@@ -67,6 +68,10 @@ const UserPhotos = ({ cbHandleOpenModal }: IUserPhotosProps) => {
 
   const isDisabledButton = photos.some((el) => el !== null);
 
+  const classButton: string = classNames("savePhotosButton", {
+    registrationPart: pathname.includes("registration"),
+  });
+
   return (
     <Box className="userPhotosBox">
       <Loader isLoading={loading} />
@@ -112,11 +117,11 @@ const UserPhotos = ({ cbHandleOpenModal }: IUserPhotosProps) => {
       </Box>
       <Button
         type="button"
-        className="savePhotosButton"
+        className={classButton}
         disabled={!isDisabledButton}
         onClick={handleSavePhoto}
       >
-        {t("next")}
+        {pathname.includes("registration") ? t("next") : t("save")}
       </Button>
     </Box>
   );

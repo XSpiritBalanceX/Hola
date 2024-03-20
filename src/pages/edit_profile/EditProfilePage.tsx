@@ -4,10 +4,20 @@ import { translate } from "@i18n";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import UserInterests from "@components/userInterests/UserInterests";
 import MainEditProfile from "./MainEditProfile";
+import "./EditProfile.scss";
 
 const mockData = {
   user_description: "some text with description about user",
-  user_interests: ["Coffee", "Walking", "Art"],
+  user_interests: [
+    "Coffee",
+    "Walking",
+    "Art",
+    "Some",
+    "Coffee",
+    "Walking",
+    "Art",
+    "Some",
+  ],
 };
 
 const EditProfilePage = () => {
@@ -22,8 +32,8 @@ const EditProfilePage = () => {
   };
 
   return (
-    <Container>
-      <Box>
+    <Container className="containerEditProfile">
+      <Box className="navigationEditProfile">
         <Button type="button" onClick={handleNavigate}>
           <ArrowBackIosNewIcon />
         </Button>

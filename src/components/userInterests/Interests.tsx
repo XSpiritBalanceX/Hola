@@ -22,6 +22,7 @@ interface IInterests {
 const Interests = ({ cbHandleLoading, pathname }: IInterestsProps) => {
   const { t } = translate("translate", { keyPrefix: "signUp.interests" });
   const navigate = useNavigate();
+
   const [isDisableButton, setIsDisableButton] = useState(true);
 
   const validationSchema = Yup.object().shape({
@@ -88,7 +89,7 @@ const Interests = ({ cbHandleLoading, pathname }: IInterestsProps) => {
         disabled={isDisableButton}
         className="buttonSubmitInterests"
       >
-        {t("next")}
+        {pathname.includes("registration") ? t("next") : t("save")}
       </Button>
     </form>
   );

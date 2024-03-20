@@ -48,6 +48,7 @@
         "interests": "Interests",
         "title": "Let everyone know what you’re interested in by adding it to your profile.",
         "next": "Next",
+        "save": "Save",
         "90s": "90s Kid",
         "HarryPotter": "Harry Potter",
         "music": "Music",
@@ -103,6 +104,7 @@
       "photos": {
         "addPhotos": "Add Photos",
         "next": "Next",
+        "save": "Save",
         "errPhotos": "An unexpected error occurred"
       }
     },

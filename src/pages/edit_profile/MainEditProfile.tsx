@@ -2,6 +2,8 @@ import { Box } from "@mui/material";
 import UserPhotos from "@components/userPhotos/UserPhotos";
 import { translate } from "@i18n";
 import { Link } from "react-router-dom";
+import edit from "@assets/editblue.png";
+import "./EditProfile.scss";
 
 interface IMainEditProfileProps {
   user_description: string;
@@ -15,17 +17,27 @@ const MainEditProfile = ({
   const { t } = translate("translate", { keyPrefix: "profile.editing" });
 
   return (
-    <Box>
+    <Box className="mainContentEditing">
       <UserPhotos />
-      <Box>
-        <Link to={"/profile/edit/description"}>{t("description")}</Link>
-        <p>{user_description}</p>
+      <Box className="editingInfoBox">
+        <Link to={"/profile/edit/description"} className="editingLink">
+          {t("description")} <img src={edit} alt="icon" />
+        </Link>
+        <p className="userDescription">{user_description}</p>
       </Box>
-      <Box>
-        <Link to={"/profile/edit/interests"}>{t("interests")}</Link>
-        {user_interests.map((el, ind) => {
-          return <p key={ind}>{el}</p>;
-        })}
+      <Box className="editingInfoBox">
+        <Link to={"/profile/edit/interests"} className="editingLink">
+          {t("interests")} <img src={edit} alt="icon" />
+        </Link>
+        <Box className="userInterestsBox">
+          {user_interests.map((el, ind) => {
+            return (
+              <p key={ind} className="userInterestItem">
+                {el}
+              </p>
+            );
+          })}
+        </Box>
       </Box>
     </Box>
   );
