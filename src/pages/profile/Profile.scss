@@ -63,6 +63,9 @@
       margin: 0;
       @extend %h2;
     }
+    p:last-child {
+      margin-left: 10px;
+    }
   }
 
   .profileLinksBox {

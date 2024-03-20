@@ -3,21 +3,33 @@ import logo from "@assets/logoblue.svg";
 import ProfileLinks from "./ProfileLinks";
 import UserPicture from "./UserPicture";
 import ButtonLogOut from "./ButtonLogOut";
+import Loader from "@components/loader/Loader";
+import { useGetProfile } from "@hook/useGetProfile";
 import "./Profile.scss";
 
 const ProfilePage = () => {
+  const { data, loading, error } = useGetProfile();
+
   return (
     <Container className="profileContainer">
-      <Box className="profilePictureAndLogo">
-        <img src={logo} alt="logo" />
-        <UserPicture photo="" complete={75} />
-      </Box>
-      <Box className="userInformationBox">
-        <p>user name,</p>
-        <p>user age</p>
-      </Box>
-      <ProfileLinks />
-      <ButtonLogOut />
+      <Loader isLoading={loading} />
+      {data && !error && (
+        <>
+          <Box className="profilePictureAndLogo">
+            <img src={logo} alt="logo" />
+            <UserPicture
+              photo={data.avatar || ""}
+              complete={data.complete || 0}
+            />
+          </Box>
+          <Box className="userInformationBox">
+            <p>{data.name},</p>
+            <p>{data.age}</p>
+          </Box>
+          <ProfileLinks />
+          <ButtonLogOut />
+        </>
+      )}
     </Container>
   );
 };
