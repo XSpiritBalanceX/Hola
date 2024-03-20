@@ -119,7 +119,12 @@
       "privacy": "Политика конфиденциальности",
       "help": "Помощь",
       "logOut": "Выйти",
-      "complete": "Заполненности"
+      "complete": "Заполненности",
+      "editing": {
+        "editProfile": "Редактирование профиля",
+        "description": "Описание",
+        "interests": "Интересы"
+      }
     },
     "errorScreen": {
       "pageNotFound": "Страница не найдена",

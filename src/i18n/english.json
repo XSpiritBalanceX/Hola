@@ -119,7 +119,12 @@
       "privacy": "Privacy Policy",
       "help": "Help",
       "logOut": "Log out",
-      "complete": "Complete"
+      "complete": "Complete",
+      "editing": {
+        "editProfile": "Edit Profile",
+        "description": "Description",
+        "interests": "Interests"
+      }
     },
     "errorScreen": {
       "pageNotFound": "Page not found",
