@@ -5,12 +5,15 @@ import UserPicture from "./UserPicture";
 import ButtonLogOut from "./ButtonLogOut";
 import Loader from "@components/loader/Loader";
 import { useGetProfile } from "@hook/useGetProfile";
+import CustomError from "@components/error/CustomError";
 import "./Profile.scss";
 
 const ProfilePage = () => {
   const { data, loading, error } = useGetProfile();
 
-  return (
+  return error ? (
+    <CustomError />
+  ) : (
     <Container className="profileContainer">
       <Loader isLoading={loading} />
       {data && !error && (
