@@ -9,16 +9,19 @@ import Loader from "@components/loader/Loader";
 import CustomError from "@components/error/CustomError";
 import { useGetProfileQuery } from "@store/profileApi";
 import { listOfInterests } from "@utils/listOfInterests";
+import { useAddPhotosMutation } from "@store/profileApi";
 import "./EditProfile.scss";
 
 const EditProfilePage = () => {
   const { t } = translate("translate", { keyPrefix: "profile.editing" });
 
-  const { data, error, isLoading } = useGetProfileQuery();
+  const { data, error, isLoading: loading } = useGetProfileQuery();
 
   const [userInterests, setUserInterests] = useState<
     { indInt: number; label: string }[]
   >([]);
+
+  const [, { isLoading }] = useAddPhotosMutation();
 
   useEffect(() => {
     if (data) {
@@ -43,7 +46,7 @@ const EditProfilePage = () => {
 
   return (
     <>
-      <Loader isLoading={isLoading} />
+      <Loader isLoading={loading || isLoading} />
       {error ? (
         <CustomError />
       ) : (

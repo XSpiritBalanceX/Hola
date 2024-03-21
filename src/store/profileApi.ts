@@ -84,7 +84,29 @@ export const profileApi = createApi({
       }),
       invalidatesTags: ["Profile"],
     }),
+    addPhotos: builder.mutation<void, FormData>({
+      //@ts-ignore
+      query: (images) => ({
+        url: `/images/`,
+        method: "POST",
+        body: images,
+      }),
+      invalidatesTags: ["Profile"],
+    }),
+    deletePhoto: builder.mutation<void, number>({
+      //@ts-ignore
+      query: (imageID) => ({
+        url: `/images/${imageID}/`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Profile"],
+    }),
   }),
 });
 
-export const { useGetProfileQuery, useAddInterestsMutation } = profileApi;
+export const {
+  useGetProfileQuery,
+  useAddInterestsMutation,
+  useAddPhotosMutation,
+  useDeletePhotoMutation,
+} = profileApi;

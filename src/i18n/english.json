@@ -105,7 +105,8 @@
         "addPhotos": "Add Photos",
         "next": "Next",
         "save": "Save",
-        "errPhotos": "An unexpected error occurred"
+        "errPhotos": "An unexpected error occurred",
+        "successDeletePhoto": "The photo was successfully deleted"
       }
     },
     "modals": {

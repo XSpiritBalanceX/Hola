@@ -11,6 +11,10 @@ import classNames from "classnames";
 import { useAppSelector } from "@store/hook";
 import * as holaSelectors from "@store/selectors";
 import { HOST } from "@axiosApi/axiosAPI";
+import {
+  useAddPhotosMutation,
+  useDeletePhotoMutation,
+} from "@store/profileApi";
 import "./UserPhotos.scss";
 
 interface IUserPhotosProps {
@@ -25,11 +29,17 @@ const UserPhotos = ({ cbHandleOpenModal }: IUserPhotosProps) => {
   const [photos, setPhotos] = useState(Array(9).fill(null));
   const [loading, setLoading] = useState(false);
 
+  const [addPhotos] = useAddPhotosMutation();
+  const [deletePhoto] = useDeletePhotoMutation();
+
   useEffect(() => {
     if (userPhotos) {
       const compiledDataPhotos = Array.from({ length: 9 }, (_, ind) => {
         if (ind < userPhotos.images.length && userPhotos.images[ind].file) {
-          return userPhotos.images[ind].file.replace("minio", HOST);
+          return {
+            id: userPhotos.images[ind].id,
+            path: userPhotos.images[ind].file.replace("minio", HOST),
+          };
         } else {
           return null;
         }
@@ -52,39 +62,59 @@ const UserPhotos = ({ cbHandleOpenModal }: IUserPhotosProps) => {
     });
   };
 
-  const handlePhotoDelete = (index: number) => {
-    setPhotos((prevPhotos) => {
-      const updatedPhotos = [...prevPhotos];
-      updatedPhotos[index] = null;
-      return updatedPhotos;
-    });
-  };
-
-  const handleSavePhoto = async () => {
-    try {
-      setLoading(true);
-      const formData = new FormData();
-      photos.forEach((el) => {
-        if (el) {
-          formData.append("file", el);
-        }
+  const handlePhotoDelete = (photoID: number, index: number) => {
+    if (photoID) {
+      deletePhoto(photoID)
+        .unwrap()
+        .then(() => {
+          setPhotos((prevPhotos) => {
+            const updatedPhotos = [...prevPhotos];
+            updatedPhotos[index] = null;
+            return updatedPhotos;
+          });
+          toast.success(t("successDeletePhoto"));
+        })
+        .catch(() => toast.error(t("errPhotos")));
+    } else {
+      setPhotos((prevPhotos) => {
+        const updatedPhotos = [...prevPhotos];
+        updatedPhotos[index] = null;
+        return updatedPhotos;
       });
-      const userID = localStorage.getItem("hola_user_id");
-      formData.append("person", userID!);
-      const response = await addImage(formData);
-      if (response.data.detail === "ok") {
-        pathname.includes("registration") &&
-          cbHandleOpenModal &&
-          cbHandleOpenModal();
-      }
-    } catch (err) {
-      toast.error(t("errPhotos"));
-    } finally {
-      setLoading(false);
     }
   };
 
-  const isDisabledButton = photos.some((el) => el !== null);
+  const handleSavePhoto = async () => {
+    const formData = new FormData();
+    photos.forEach((el) => {
+      if (el && typeof el !== "string") {
+        formData.append("file", el);
+      }
+    });
+    const userID = localStorage.getItem("hola_user_id");
+    formData.append("person", userID!);
+    if (pathname.includes("registration")) {
+      try {
+        setLoading(true);
+        const response = await addImage(formData);
+        if (response.data.detail === "ok") {
+          pathname.includes("registration") &&
+            cbHandleOpenModal &&
+            cbHandleOpenModal();
+        }
+      } catch (err) {
+        toast.error(t("errPhotos"));
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      addPhotos(formData)
+        .unwrap()
+        .catch(() => toast.error(t("errPhotos")));
+    }
+  };
+
+  const isDisabledButton = photos.some((el) => el !== null && !el.path);
 
   const classButton: string = classNames("savePhotosButton", {
     registrationPart: pathname.includes("registration"),
@@ -107,15 +137,15 @@ const UserPhotos = ({ cbHandleOpenModal }: IUserPhotosProps) => {
                 <>
                   <img
                     src={
-                      typeof photo === "string"
-                        ? photo
+                      typeof photo.path === "string"
+                        ? photo.path
                         : URL.createObjectURL(photo)
                     }
                     alt={`Photo_${ind + 1}`}
                   />
                   <Button
                     type="button"
-                    onClick={() => handlePhotoDelete(ind)}
+                    onClick={() => handlePhotoDelete(photo.id, ind)}
                     className="deletePhotoButton"
                   >
                     <CloseIcon />
