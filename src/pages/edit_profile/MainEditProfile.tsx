@@ -7,7 +7,7 @@ import "./EditProfile.scss";
 
 interface IMainEditProfileProps {
   user_description: string;
-  user_interests: Array<string>;
+  user_interests: Array<{ indInt: number; label: string }>;
 }
 
 const MainEditProfile = ({
@@ -33,7 +33,7 @@ const MainEditProfile = ({
           {user_interests.map((el, ind) => {
             return (
               <p key={ind} className="userInterestItem">
-                {el}
+                {t(el.label)}
               </p>
             );
           })}
