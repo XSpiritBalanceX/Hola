@@ -47,9 +47,6 @@
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
-        @media all and (max-width: 40em) {
-          justify-content: space-between;
-        }
         .userInterestItem {
           padding: 6px 12px 8px 12px;
           border: solid 1px map-get($theme-colors, "black");

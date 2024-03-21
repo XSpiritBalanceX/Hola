@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Box, Button } from "@mui/material";
 import { translate } from "@i18n";
 import CloseIcon from "@mui/icons-material/Close";
@@ -8,6 +8,9 @@ import Loader from "@components/loader/Loader";
 import { toast } from "react-toastify";
 import { addImage } from "@api/image/addImage";
 import classNames from "classnames";
+import { useAppSelector } from "@store/hook";
+import * as holaSelectors from "@store/selectors";
+import { HOST } from "@axiosApi/axiosAPI";
 import "./UserPhotos.scss";
 
 interface IUserPhotosProps {
@@ -17,9 +20,24 @@ interface IUserPhotosProps {
 const UserPhotos = ({ cbHandleOpenModal }: IUserPhotosProps) => {
   const { t } = translate("translate", { keyPrefix: "signUp.photos" });
   const { pathname } = useLocation();
+  const userPhotos = useAppSelector(holaSelectors.profileEditSelect);
 
   const [photos, setPhotos] = useState(Array(9).fill(null));
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (userPhotos) {
+      const compiledDataPhotos = Array.from({ length: 9 }, (_, ind) => {
+        if (ind < userPhotos.images.length && userPhotos.images[ind].file) {
+          return userPhotos.images[ind].file.replace("minio", HOST);
+        } else {
+          return null;
+        }
+      });
+      setPhotos(compiledDataPhotos);
+    }
+    // eslint-disable-next-line
+  }, [userPhotos]);
 
   const handlePhotoUpload = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -88,7 +106,11 @@ const UserPhotos = ({ cbHandleOpenModal }: IUserPhotosProps) => {
               {photo ? (
                 <>
                   <img
-                    src={URL.createObjectURL(photo)}
+                    src={
+                      typeof photo === "string"
+                        ? photo
+                        : URL.createObjectURL(photo)
+                    }
                     alt={`Photo_${ind + 1}`}
                   />
                   <Button
