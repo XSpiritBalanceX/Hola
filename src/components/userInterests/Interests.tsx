@@ -8,6 +8,9 @@ import { listOfInterests } from "@utils/listOfInterests";
 import { addInterest } from "@api/interest/addInterest";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "@store/hook";
+import * as holaSelectors from "@store/selectors";
+import { useAddInterestsMutation } from "@store/profileApi";
 import "./UserInterests.scss";
 
 interface IInterestsProps {
@@ -23,7 +26,22 @@ const Interests = ({ cbHandleLoading, pathname }: IInterestsProps) => {
   const { t } = translate("translate", { keyPrefix: "signUp.interests" });
   const navigate = useNavigate();
 
+  const userInterests = useAppSelector(holaSelectors.profileEditSelect);
+
+  const [initialData, setInitialData] = useState<Array<string>>([]);
   const [isDisableButton, setIsDisableButton] = useState(true);
+
+  const [addInterests] = useAddInterestsMutation();
+
+  useEffect(() => {
+    if (userInterests) {
+      const compiledData = userInterests.interests.map((el) =>
+        el.id.toString()
+      );
+      setInitialData(compiledData);
+    }
+    // eslint-disable-next-line
+  }, [userInterests]);
 
   const validationSchema = Yup.object().shape({
     interests: Yup.array().of(Yup.string().required()).required(),
@@ -31,26 +49,34 @@ const Interests = ({ cbHandleLoading, pathname }: IInterestsProps) => {
 
   const { handleSubmit, watch, register } = useForm<IInterests>({
     resolver: yupResolver(validationSchema),
-    defaultValues: {
-      interests: [],
-    },
+    values: { interests: initialData },
   });
 
   const onSubmitInterests = async (data: IInterests) => {
     const compiledData = data.interests.map((el) => Number(el));
-    try {
-      cbHandleLoading(true);
-      const response = await addInterest(compiledData);
-      if (!response.data.detail) {
-        pathname === "/registration/interests" &&
-          navigate("/registration/photos");
-      } else {
+    const newInterests = data.interests.filter(
+      (el) => !initialData.includes(el)
+    );
+
+    if (pathname === "/registration/interests") {
+      try {
+        cbHandleLoading(true);
+        const response = await addInterest(compiledData);
+        if (!response.data.detail) {
+          pathname === "/registration/interests" &&
+            navigate("/registration/photos");
+        } else {
+          toast.error(t("errInterests"));
+        }
+      } catch (err) {
         toast.error(t("errInterests"));
+      } finally {
+        cbHandleLoading(false);
       }
-    } catch (err) {
-      toast.error(t("errInterests"));
-    } finally {
-      cbHandleLoading(false);
+    } else {
+      addInterests({ interests: newInterests })
+        .unwrap()
+        .catch(() => toast.error(t("errInterests")));
     }
   };
 

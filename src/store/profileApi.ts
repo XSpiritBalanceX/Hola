@@ -3,7 +3,7 @@ import { BASE_URL } from "@axiosApi/axiosAPI";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
-type TProfileInfo = {
+export type TProfileInfo = {
   id: number;
   description: string | null;
   interests: Array<{ id: number; name: string }>;
@@ -14,6 +14,8 @@ type TProfileInfo = {
 interface IToken {
   exp: number;
 }
+
+type TInterest = { interests: string[] };
 
 const userID = localStorage.getItem("hola_user_id");
 
@@ -67,11 +69,22 @@ const requestHandler = async (url: string, config: any, extraOptions: any) => {
 export const profileApi = createApi({
   reducerPath: "profileApi",
   baseQuery: requestHandler,
+  tagTypes: ["Profile"],
   endpoints: (builder) => ({
     getProfile: builder.query<TProfileInfo, void>({
       query: () => `/persons/${userID}/profile_edit/`,
+      providesTags: ["Profile"],
+    }),
+    addInterests: builder.mutation<void, TInterest>({
+      //@ts-ignore
+      query: (interests) => ({
+        url: `/person/${userID}/interests/`,
+        method: "POST",
+        body: interests,
+      }),
+      invalidatesTags: ["Profile"],
     }),
   }),
 });
 
-export const { useGetProfileQuery } = profileApi;
+export const { useGetProfileQuery, useAddInterestsMutation } = profileApi;
