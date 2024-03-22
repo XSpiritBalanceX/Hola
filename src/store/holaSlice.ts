@@ -46,11 +46,12 @@ const holaSlice = createSlice({
     ) {
       state.isLogin = action.payload.isLogin;
       if (action.payload.isLogin) {
-        const tokenExpires =
-          new Date().getTime() + action.payload.expiresIn * 1000;
         localStorage.setItem(TOKEN_KEY, action.payload.token);
         localStorage.setItem(REFRESH_TOKEN_KEY, action.payload.refreshToken);
-        localStorage.setItem(TOKEN_EXPIRES_KEY, String(tokenExpires));
+        localStorage.setItem(
+          TOKEN_EXPIRES_KEY,
+          String(action.payload.expiresIn)
+        );
         localStorage.setItem(LOGIN_KEY, action.payload.email);
         localStorage.setItem("hola_user_id", action.payload.user_id);
       } else {

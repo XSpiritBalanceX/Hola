@@ -38,11 +38,21 @@ class AxiosAPI {
         if (error.response?.status === 401 && !error.config._retry) {
           error.config._retry = true;
           try {
-            const newToken = await this.fetchToken();
-            this.setItem(TOKEN_KEY, newToken);
-            this.axiosInstance.defaults.headers.common.Authorization = `Bearer ${newToken}`;
+            /* const newToken = await this.fetchToken();
+            this.setItem(TOKEN_KEY, newToken); */
+            /* this.axiosInstance.defaults.headers.common.Authorization = `Bearer ${newToken}`;
             error.config.headers.Authorization = `Bearer ${newToken}`;
-            return this.axiosInstance(error.config);
+            return this.axiosInstance(error.config); */
+            await this.fetchToken();
+            const newToken = axiosAPI.getItem(TOKEN_KEY);
+            if (newToken) {
+              this.axiosInstance.defaults.headers.common.Authorization = `Bearer ${newToken}`;
+              error.config.headers.Authorization = `Bearer ${newToken}`;
+              return this.axiosInstance(error.config);
+            } else {
+              this.logout();
+              return Promise.reject(error);
+            }
           } catch (refreshError) {
             this.logout();
             return Promise.reject(refreshError);
@@ -74,7 +84,7 @@ class AxiosAPI {
     });
 
     const decodeToken: IToken = jwtDecode(result.data.access);
-    const tokenExpires = new Date().getTime() + decodeToken.exp * 1000;
+    const tokenExpires = decodeToken.exp;
 
     this.setItem(TOKEN_KEY, result.data.access);
     this.setItem(TOKEN_EXPIRES_KEY, tokenExpires.toString());
@@ -95,8 +105,9 @@ axiosInstance.interceptors.request.use(
       try {
         const token = axiosAPI.getItem(TOKEN_KEY);
         const expTime = Number(axiosAPI.getItem(TOKEN_EXPIRES_KEY) ?? "0") ?? 0;
-        const curTime = new Date().getTime();
-        if (token && expTime && expTime - curTime <= -3000) {
+        const curTime = Math.floor(Date.now() / 1000);
+        const threeMinutes = 3 * 60;
+        if (token && expTime && expTime - curTime <= threeMinutes) {
           await axiosAPI.fetchToken();
         }
         const updToken = axiosAPI.getItem(TOKEN_KEY);
