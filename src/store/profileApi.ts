@@ -101,6 +101,15 @@ export const profileApi = createApi({
       }),
       invalidatesTags: ["Profile"],
     }),
+    updateDescription: builder.mutation<void, string>({
+      //@ts-ignore
+      query: (description) => ({
+        url: `/persons/${userID}/`,
+        method: "PATCH",
+        body: { description },
+      }),
+      invalidatesTags: ["Profile"],
+    }),
   }),
 });
 
@@ -109,4 +118,5 @@ export const {
   useAddInterestsMutation,
   useAddPhotosMutation,
   useDeletePhotoMutation,
+  useUpdateDescriptionMutation,
 } = profileApi;

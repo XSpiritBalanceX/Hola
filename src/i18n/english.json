@@ -177,7 +177,9 @@
         "jiuJitsu": "Jiu-jitsu",
         "karaoke": "Karaoke",
         "homeWorkout": "Home Workout",
-        "save": "Save"
+        "save": "Save",
+        "errEditing": "An unexpected error occurred",
+        "successUpdate": "Information has been successfully updated"
       }
     },
     "errorScreen": {
