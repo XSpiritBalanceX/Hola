@@ -1,20 +1,24 @@
 import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import { translate } from "@i18n";
-import edit from "@assets/editicon.png";
-import setting from "@assets/settings.png";
-import privacy from "@assets/privacy.png";
-import help from "@assets/help.png";
+import EditIcon from "@components/icons/EditIcon";
+import SettingIcon from "@components/icons/SettingIcon";
+import PrivacyIcon from "@components/icons/PrivacyIcon";
+import HelpIcon from "@components/icons/HelpIcon";
 import "./Profile.scss";
 
 const ProfileLinks = () => {
   const { t } = translate("translate", { keyPrefix: "profile" });
 
   const links = [
-    { icon: edit, title: "edit", path: "/profile/edit" },
-    { icon: setting, title: "settings", path: "/profile/settings" },
-    { icon: privacy, title: "privacy", path: "/privacy" },
-    { icon: help, title: "help", path: "/help" },
+    { icon: <EditIcon fill="black" />, title: "edit", path: "/profile/edit" },
+    {
+      icon: <SettingIcon fill="black" />,
+      title: "settings",
+      path: "/profile/settings",
+    },
+    { icon: <PrivacyIcon fill="black" />, title: "privacy", path: "/privacy" },
+    { icon: <HelpIcon fill="black" />, title: "help", path: "/help" },
   ];
 
   return (
@@ -22,9 +26,7 @@ const ProfileLinks = () => {
       {links.map((el, ind) => {
         return (
           <Box key={ind} className="linkItem">
-            <Box className="iconLinks">
-              <img src={el.icon} alt="icon" />
-            </Box>
+            <Box className="iconLinks">{el.icon}</Box>
             <Link to={el.path} className="linkProfile">
               {t(el.title)}
             </Link>

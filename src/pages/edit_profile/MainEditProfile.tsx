@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import UserPhotos from "@components/userPhotos/UserPhotos";
 import { translate } from "@i18n";
 import { Link } from "react-router-dom";
-import edit from "@assets/editblue.png";
+import EditIcon from "@components/icons/EditIcon";
 import "./EditProfile.scss";
 
 interface IMainEditProfileProps {
@@ -21,13 +21,13 @@ const MainEditProfile = ({
       <UserPhotos />
       <Box className="editingInfoBox">
         <Link to={"/profile/edit/description"} className="editingLink">
-          {t("description")} <img src={edit} alt="icon" />
+          {t("description")} <EditIcon fill="#554CB6" />
         </Link>
         <p className="userDescription">{user_description}</p>
       </Box>
       <Box className="editingInfoBox">
         <Link to={"/profile/edit/interests"} className="editingLink">
-          {t("interests")} <img src={edit} alt="icon" />
+          {t("interests")} <EditIcon fill="#554CB6" />
         </Link>
         <Box className="userInterestsBox">
           {user_interests.map((el, ind) => {

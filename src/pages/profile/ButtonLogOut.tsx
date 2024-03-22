@@ -4,6 +4,7 @@ import logout from "@assets/logout.png";
 import { useAppDispatch } from "@store/hook";
 import { loginUser } from "@store/holaSlice";
 import { useNavigate } from "react-router";
+import LogOutIcon from "@components/icons/LogOutIcon";
 import "./Profile.scss";
 
 const ButtonLogOut = () => {
@@ -28,7 +29,7 @@ const ButtonLogOut = () => {
   return (
     <Box className="LogOutButtonBox">
       <Button type="button" onClick={handleLogOut}>
-        <img src={logout} alt="log out" />
+        <LogOutIcon fill="#554CB6" />
         <span className="textButton">{t("logOut")}</span>
       </Button>
     </Box>
