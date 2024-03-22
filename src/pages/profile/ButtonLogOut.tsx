@@ -1,6 +1,5 @@
 import { Box, Button } from "@mui/material";
 import { translate } from "@i18n";
-import logout from "@assets/logout.png";
 import { useAppDispatch } from "@store/hook";
 import { loginUser } from "@store/holaSlice";
 import { useNavigate } from "react-router";
