@@ -176,7 +176,8 @@
         "science": "Наука",
         "jiuJitsu": "Джиу-Джитсу",
         "karaoke": "Караоке",
-        "homeWorkout": "Тренировки"
+        "homeWorkout": "Тренировки",
+        "save": "Сохранить"
       }
     },
     "errorScreen": {

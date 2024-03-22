@@ -1,0 +1,46 @@
+@import "../../variables";
+
+.userDescriptionBox {
+  position: relative;
+  height: calc(100vh - 101px);
+  .titleDescription {
+    margin: 0 0 10px 0;
+    @extend %body-1-bold;
+  }
+  .contentDescription {
+    position: relative;
+    .descriptionField {
+      width: 100%;
+      background-color: map-get($theme-colors, "white");
+      border-radius: 20px;
+      .MuiInputBase-root {
+        padding: 10px 10px 40px 10px;
+        border-radius: 20px;
+        fieldset {
+          border: none;
+        }
+      }
+      .MuiInputBase-root.Mui-focused {
+        fieldset {
+          border: solid 1px map-get($theme-colors, "gray-1");
+        }
+      }
+    }
+    .countOfText {
+      position: absolute;
+      bottom: 7px;
+      right: 10px;
+      margin: 0;
+      @extend %caption;
+      color: map-get($theme-colors, "gray-2");
+    }
+  }
+  .saveDescriptionButton {
+    position: absolute;
+    bottom: 0px;
+    @extend %button;
+    text-transform: none;
+    @extend %button-blue;
+    width: 100%;
+  }
+}

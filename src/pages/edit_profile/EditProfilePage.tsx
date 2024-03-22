@@ -10,6 +10,7 @@ import CustomError from "@components/error/CustomError";
 import { useGetProfileQuery } from "@store/profileApi";
 import { listOfInterests } from "@utils/listOfInterests";
 import { useAddPhotosMutation } from "@store/profileApi";
+import UserDescription from "@components/userDescription/UserDescription";
 import "./EditProfile.scss";
 
 const EditProfilePage = () => {
@@ -35,6 +36,11 @@ const EditProfilePage = () => {
     }
     // eslint-disable-next-line
   }, [data]);
+
+  useEffect(() => {
+    document.body.style.backgroundColor = "#F8F7FF";
+    // eslint-disable-next-line
+  }, []);
 
   const { step } = useParams();
   const navigate = useNavigate();
@@ -66,6 +72,7 @@ const EditProfilePage = () => {
                 />
               )}
               {step === "interests" && <UserInterests />}
+              {step === "description" && <UserDescription />}
             </>
           )}
         </Container>
