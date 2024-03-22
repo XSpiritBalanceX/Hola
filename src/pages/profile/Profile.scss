@@ -101,6 +101,7 @@
     button {
       text-transform: none;
       @extend %button-white;
+      background-color: map-deep-get($theme-colors, "background", "gray-1");
       .textButton {
         @extend %body-1-medium;
         color: map-get($theme-colors, "blue");

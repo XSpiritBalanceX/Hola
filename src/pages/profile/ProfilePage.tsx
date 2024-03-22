@@ -6,6 +6,7 @@ import ButtonLogOut from "./ButtonLogOut";
 import Loader from "@components/loader/Loader";
 import { useGetProfile } from "@hook/useGetProfile";
 import CustomError from "@components/error/CustomError";
+import TabMenu from "@components/tabMenu/TabMenu";
 import "./Profile.scss";
 
 const ProfilePage = () => {
@@ -31,6 +32,7 @@ const ProfilePage = () => {
           </Box>
           <ProfileLinks />
           <ButtonLogOut />
+          <TabMenu />
         </>
       )}
     </Container>
