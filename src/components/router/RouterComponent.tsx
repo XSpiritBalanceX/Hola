@@ -5,6 +5,7 @@ import AuthPage from "@pages/auth/AuthPage";
 import ProfilePage from "@pages/profile/ProfilePage";
 import EditProfilePage from "@pages/edit_profile/EditProfilePage";
 import ProfileSettingsPage from "@pages/profile_settings/ProfileSettingsPage";
+import AccountSettingsPage from "@pages/account_settings/AccountSettingsPage";
 
 const RouterComponent = () => {
   return (
@@ -70,6 +71,14 @@ const RouterComponent = () => {
         element={
           <ProtectedRouter>
             <ProfileSettingsPage />
+          </ProtectedRouter>
+        }
+      />
+      <Route
+        path="/settings/account"
+        element={
+          <ProtectedRouter>
+            <AccountSettingsPage />
           </ProtectedRouter>
         }
       />

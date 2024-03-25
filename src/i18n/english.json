@@ -192,6 +192,24 @@
       "account": "Account",
       "subscription": "Subscription",
       "resetPassword": "Reset Password"
+    },
+    "accountSettings": {
+      "account": "Account",
+      "name": "Name",
+      "email": "E-mail",
+      "dateOfBirth": "Date of birth",
+      "language": "Language",
+      "location": "Location",
+      "currentLocation": "My current location",
+      "setNewLocation": "set new location",
+      "titleNewLocation": "Set new locations to see Hola members from other cities",
+      "maxDistance": "Maximum distance",
+      "globalSearch": "Global search",
+      "titleGlobalSearch": "Going global allows to see people from around the world",
+      "ageRange": "Show age range",
+      "deleteAcc": "Delete account",
+      "save": "Save changes",
+      "km": "km"
     }
   }
 }
