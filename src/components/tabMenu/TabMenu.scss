@@ -1,0 +1,39 @@
+@import "../../variables";
+
+.tabMenuBox {
+  width: 30%;
+  height: 60px;
+  padding: 0 18px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: map-deep-get($theme-colors, "background", "tab-menu");
+  border-radius: 100px;
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, -10px);
+  @media all and (max-width: 55em) {
+    width: 60%;
+  }
+  @media all and (max-width: 40em) {
+    width: 85%;
+  }
+  .nav-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+  .nav-link.active {
+    background-color: map-get($theme-colors, "white");
+  }
+}

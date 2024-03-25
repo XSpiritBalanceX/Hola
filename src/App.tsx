@@ -7,6 +7,7 @@ import RouterComponent from "@components/router/RouterComponent";
 import { axiosAPI } from "@axiosApi/axiosAPI";
 import { loginUser } from "@store/holaSlice";
 import { ToastContainer, Zoom } from "react-toastify";
+import ErrorBoundary from "@components/error/ErrorBoundary";
 import "react-toastify/dist/ReactToastify.css";
 
 axiosAPI.setGetItem((key) => localStorage.getItem(key));
@@ -31,13 +32,14 @@ const App = () => {
           expiresIn: 0,
           email: "",
           refreshToken: "",
+          user_id: "",
         })
       )
     );
   }, [dispatch]);
 
   return (
-    <>
+    <ErrorBoundary>
       <ToastContainer
         position="top-center"
         autoClose={5000}
@@ -49,7 +51,7 @@ const App = () => {
       />
       <ScrollToTop />
       <RouterComponent />
-    </>
+    </ErrorBoundary>
   );
 };
 

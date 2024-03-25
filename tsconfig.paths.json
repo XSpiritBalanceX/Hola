@@ -9,7 +9,8 @@
       "@assets/*": ["./assets/*"],
       "@axiosApi/*": ["./axiosApi/*"],
       "@api/*": ["./api/*"],
-      "@utils/*": ["./utils/*"]
+      "@utils/*": ["./utils/*"],
+      "@hook/*": ["./hook/*"]
     }
   }
 }

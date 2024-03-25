@@ -2,6 +2,7 @@ import { Modal, Box, Button } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { translate } from "@i18n";
+import { useNavigate } from "react-router";
 import "./Modals.scss";
 
 interface IRegistrationModalProps {
@@ -15,6 +16,7 @@ const RegistrationModal = ({
 }: IRegistrationModalProps) => {
   const { t } = translate("translate", { keyPrefix: "modals.registration" });
   const emailUser = localStorage.getItem("hola_login");
+  const navigate = useNavigate();
 
   const siteEmail = [
     {
@@ -37,6 +39,7 @@ const RegistrationModal = ({
 
   const handleCloseModal = () => {
     cbCloseModal();
+    navigate("/login");
   };
 
   const handleOpenMain = () => {
@@ -45,6 +48,7 @@ const RegistrationModal = ({
       emailUser?.includes(el.email)
     );
     window.open(foundUserEmail?.site, "_blank");
+    navigate("/login");
   };
 
   return (

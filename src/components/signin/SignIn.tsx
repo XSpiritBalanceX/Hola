@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { translate } from "@i18n";
 import ControlledInput from "@components/fields/ControlledInput";
 import ControlledPassword from "@components/fields/ControlledPassword";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthButtons from "./AuthButtons";
 import Loader from "@components/loader/Loader";
 import { signIn } from "@api/auth/signIn";
@@ -24,12 +24,14 @@ interface ISignIn {
 
 interface IToken {
   exp: number;
+  user_id: number;
 }
 
 const SignIn = () => {
   const { t } = translate("translate", { keyPrefix: "signIn" });
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -67,8 +69,10 @@ const SignIn = () => {
             refreshToken: response.data.refresh,
             expiresIn: decodeToken.exp,
             email: data.email,
+            user_id: decodeToken.user_id.toString(),
           })
         );
+        navigate("/profile");
       }
     } catch (err) {
       toast.error(t("errSignIn"));

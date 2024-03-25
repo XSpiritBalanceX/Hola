@@ -1,7 +1,9 @@
 import { RootState } from ".";
+import { TProfileInfo } from "./profileApi";
 
-const allState = (state: RootState) => state.hola;
+export const localeSelect = (state: RootState) => state.hola.locale;
 
-export const localeSelect = (state: RootState) => allState(state).locale;
+export const isLoginSelect = (state: RootState) => state.hola.isLogin;
 
-export const isLoginSelect = (state: RootState) => allState(state).isLogin;
+export const profileEditSelect = (state: RootState) =>
+  state.profileApi.queries["getProfile(undefined)"]?.data as TProfileInfo;

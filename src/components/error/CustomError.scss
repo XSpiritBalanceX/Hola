@@ -1,0 +1,41 @@
+@import "../../variables";
+
+.customErrorContainer {
+  height: 100vh;
+  padding: 10px 20px !important;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  .numberOfError {
+    margin: 210px 0 0 0;
+    @extend %h3;
+    font-size: 90px;
+    line-height: 110px;
+    color: map-get($theme-colors, "light-blue-2");
+  }
+  .firstTextError {
+    margin: 0 0 10px 0;
+    @extend %h3;
+  }
+  .secondTextError {
+    margin: 0;
+    @extend %body-2;
+    text-align: center;
+  }
+  .buttonRedirectError {
+    @extend %button;
+    @extend %button-blue;
+    text-transform: none;
+    width: 40%;
+    position: absolute;
+    bottom: 10px;
+    @media all and (max-width: 55em) {
+      width: 60%;
+    }
+    @media all and (max-width: 40em) {
+      width: 90%;
+    }
+  }
+}

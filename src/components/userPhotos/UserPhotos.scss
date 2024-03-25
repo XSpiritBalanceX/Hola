@@ -77,7 +77,10 @@
     @extend %button-blue;
     @extend %button;
     width: 100%;
-    margin: 82px 0 0 0;
+    margin: 15px 0 0 0;
     text-transform: none;
+  }
+  .savePhotosButton.registrationPart {
+    margin: 82px 0 0 0;
   }
 }

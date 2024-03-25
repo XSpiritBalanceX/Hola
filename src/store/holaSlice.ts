@@ -41,21 +41,25 @@ const holaSlice = createSlice({
         refreshToken: string;
         expiresIn: number;
         email: string;
+        user_id: string;
       }>
     ) {
       state.isLogin = action.payload.isLogin;
       if (action.payload.isLogin) {
-        const tokenExpires =
-          new Date().getTime() + action.payload.expiresIn * 1000;
         localStorage.setItem(TOKEN_KEY, action.payload.token);
         localStorage.setItem(REFRESH_TOKEN_KEY, action.payload.refreshToken);
-        localStorage.setItem(TOKEN_EXPIRES_KEY, String(tokenExpires));
+        localStorage.setItem(
+          TOKEN_EXPIRES_KEY,
+          String(action.payload.expiresIn)
+        );
         localStorage.setItem(LOGIN_KEY, action.payload.email);
+        localStorage.setItem("hola_user_id", action.payload.user_id);
       } else {
         localStorage.removeItem(TOKEN_KEY);
         localStorage.removeItem(REFRESH_TOKEN_KEY);
         localStorage.removeItem(TOKEN_EXPIRES_KEY);
         localStorage.removeItem(LOGIN_KEY);
+        localStorage.removeItem("hola_user_id");
       }
     },
   },

@@ -13,7 +13,7 @@ const SkipButton = ({ pathname }: ISkipButtonProps) => {
 
   const handleSkip = () => {
     pathname === "/registration/interests" && navigate("/registration/photos");
-    pathname === "/registration/photos" && navigate("/profile");
+    pathname === "/registration/photos" && navigate("/login");
   };
 
   return (
