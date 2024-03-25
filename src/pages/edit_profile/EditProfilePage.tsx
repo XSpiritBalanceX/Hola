@@ -45,11 +45,6 @@ const EditProfilePage = () => {
     // eslint-disable-next-line
   }, [data]);
 
-  useEffect(() => {
-    document.body.style.backgroundColor = "#F8F7FF";
-    // eslint-disable-next-line
-  }, []);
-
   const { step } = useParams();
   const navigate = useNavigate();
 

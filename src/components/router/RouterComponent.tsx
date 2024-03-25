@@ -4,6 +4,7 @@ import ProtectedRouterForLogged from "./ProtectedRouterForLogged";
 import AuthPage from "@pages/auth/AuthPage";
 import ProfilePage from "@pages/profile/ProfilePage";
 import EditProfilePage from "@pages/edit_profile/EditProfilePage";
+import ProfileSettingsPage from "@pages/profile_settings/ProfileSettingsPage";
 
 const RouterComponent = () => {
   return (
@@ -48,8 +49,30 @@ const RouterComponent = () => {
           </ProtectedRouter>
         }
       />
-      <Route path="/profile/edit" element={<EditProfilePage />} />
-      <Route path="/profile/edit/:step" element={<EditProfilePage />} />
+      <Route
+        path="/profile/edit"
+        element={
+          <ProtectedRouter>
+            <EditProfilePage />
+          </ProtectedRouter>
+        }
+      />
+      <Route
+        path="/profile/edit/:step"
+        element={
+          <ProtectedRouter>
+            <EditProfilePage />
+          </ProtectedRouter>
+        }
+      />
+      <Route
+        path="/profile/settings"
+        element={
+          <ProtectedRouter>
+            <ProfileSettingsPage />
+          </ProtectedRouter>
+        }
+      />
       <Route path="*" element={<Navigate to={"/login"} />} />
     </Routes>
   );

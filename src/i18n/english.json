@@ -186,6 +186,12 @@
       "pageNotFound": "Page not found",
       "textInErrorPage": "The page you’re looking for has been removed, had its’ name changed or is temporarile unavailable",
       "goToToHome": "Back to Home Page"
+    },
+    "profileSettings": {
+      "settings": "Settings",
+      "account": "Account",
+      "subscription": "Subscription",
+      "resetPassword": "Reset Password"
     }
   }
 }

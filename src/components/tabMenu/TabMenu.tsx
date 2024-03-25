@@ -22,7 +22,7 @@ const TabMenu = () => {
         <LikeIcon fill={pathname === "/search" ? "#554CB6" : "#FFFFFF"} />
       </NavLink>
       <NavLink to={"/profile"} className="nav-link">
-        <UserIcon fill={pathname === "/profile" ? "#554CB6" : "#FFFFFF"} />
+        <UserIcon fill={pathname.includes("profile") ? "#554CB6" : "#FFFFFF"} />
       </NavLink>
     </Box>
   );
