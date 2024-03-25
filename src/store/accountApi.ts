@@ -1,7 +1,15 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { requestHandler } from "./requestHandler";
 
-type TAccountInfo = {};
+export type TAccountInfo = {
+  name: string;
+  email: string;
+  date_of_birth: string;
+  global_search: boolean;
+  max_distance: number;
+  min_age: number | null;
+  max_age: number | null;
+};
 
 const userID = localStorage.getItem("hola_user_id");
 
