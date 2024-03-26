@@ -21,12 +21,16 @@ import CountryModal from "@components/modal/CountryModal";
 import AccountRagers from "./AccountRagers";
 import { listOfCountries } from "@utils/listOfCountries";
 import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
+import { useUpdateAccountMutation } from "@store/accountApi";
+import { toast } from "react-toastify";
 import "./AccountForm.scss";
 
 const AccountForm = () => {
   const { t } = translate("translate", { keyPrefix: "accountSettings" });
   const accountInfo = useAppSelector(holaSelectors.accountSelect);
   const locale = useAppSelector(holaSelectors.localeSelect);
+
+  const [updateAccount] = useUpdateAccountMutation();
 
   const [showPicker, setShowPicker] = useState(false);
   const [showModalCountries, setShowModalCountries] = useState(false);
@@ -46,10 +50,8 @@ const AccountForm = () => {
 
   useEffect(() => {
     if (accountInfo) {
-      const location = listOfCountries.find((el) =>
-        locale === "en"
-          ? el.englishLabel === accountInfo.location
-          : el.russianLabel === accountInfo.location
+      const location = listOfCountries.find(
+        (el) => accountInfo.location === el.id
       ) || {
         id: listOfCountries[0].id,
         englishLabel: listOfCountries[0].englishLabel,
@@ -110,7 +112,22 @@ const AccountForm = () => {
   });
 
   const onSubmitAccount = (data: IAccountInformation) => {
-    console.log(data);
+    const compiledData = {
+      name: data.name,
+      email: data.email,
+      date_of_birth: moment(data.date_of_birth, "DD.MM.YYYY").format(
+        "YYYY-MM-DD"
+      ),
+      location: data.location.id,
+      global_search: data.global_search,
+      max_distance: data.max_distance,
+      min_age: data.min_age,
+      max_age: data.max_age,
+    };
+    updateAccount(compiledData)
+      .unwrap()
+      .then(() => toast.success(t("successUpdate")))
+      .catch(() => toast.error(t("errEditing")));
   };
 
   const handleShowPicker = () => {

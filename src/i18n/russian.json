@@ -218,7 +218,9 @@
       "errorRequiredField": "Заполните это поле",
       "errorRequiredEmail": "Email обязателен",
       "errIncorrectEmail": "Неверный email",
-      "errDateOfBirth": "Вам не может быть меньше 18 лет"
+      "errDateOfBirth": "Вам не может быть меньше 18 лет",
+      "errEditing": "Возникла непредвиденная ошибка",
+      "successUpdate": "Информация была успешно обновлена"
     }
   }
 }

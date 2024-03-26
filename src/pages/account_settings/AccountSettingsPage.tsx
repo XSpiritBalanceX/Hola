@@ -6,6 +6,7 @@ import { useGetAccountQuery } from "@store/accountApi";
 import Loader from "@components/loader/Loader";
 import CustomError from "@components/error/CustomError";
 import AccountForm from "@components/accountForm/AccountForm";
+import { useUpdateAccountMutation } from "@store/accountApi";
 import "./AccountSettingsPage.scss";
 
 const AccountSettingsPage = () => {
@@ -13,13 +14,15 @@ const AccountSettingsPage = () => {
   const navigate = useNavigate();
 
   const { data, error, isLoading } = useGetAccountQuery();
+  const [, { isLoading: loadingUpdateInformation }] =
+    useUpdateAccountMutation();
 
   const handleNavigate = () => {
     navigate("/profile/settings");
   };
   return (
     <>
-      <Loader isLoading={isLoading} />
+      <Loader isLoading={isLoading || loadingUpdateInformation} />
       {error ? (
         <CustomError />
       ) : (

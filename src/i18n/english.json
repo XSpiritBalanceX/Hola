@@ -218,7 +218,9 @@
       "errorRequiredField": "This field is required",
       "errorRequiredEmail": "Email is required",
       "errIncorrectEmail": "Invalid email",
-      "errDateOfBirth": "You cannot be under 18 years old"
+      "errDateOfBirth": "You cannot be under 18 years old",
+      "errEditing": "An unexpected error occurred",
+      "successUpdate": "Information has been successfully updated"
     }
   }
 }
