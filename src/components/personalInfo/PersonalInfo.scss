@@ -99,10 +99,10 @@
         }
       }
       .errorCountryMessage {
-        margin: 10px 0;
-        text-align: center;
+        margin: 0 0 10px 0;
+        padding-left: 10px;
         color: map-get($theme-colors, "error");
-        @extend %body-1-bold;
+        @extend %body-2-bold;
       }
       .searchField {
         width: 100%;
@@ -129,6 +129,12 @@
           }
           .MuiSvgIcon-root {
             fill: map-get($theme-colors, "gray-2");
+          }
+        }
+        .MuiInputBase-root.MuiInputBase-formControl.Mui-error {
+          border: none;
+          fieldset {
+            border: solid 2px map-get($theme-colors, "error");
           }
         }
         .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {

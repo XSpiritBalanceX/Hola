@@ -91,14 +91,15 @@ const ListCountries = ({
           <KeyboardArrowUpIcon />
         </Button>
       </Box>
-      {errorCountry && <p className="errorCountryMessage">{errorCountry}</p>}
       <TextField
         value={country}
         onChange={handleSearchChange}
         placeholder={t("search")}
         InputProps={{ startAdornment: <SearchIcon /> }}
         className="searchField"
+        error={!!errorCountry}
       />
+      {errorCountry && <p className="errorCountryMessage">{errorCountry}</p>}
       <List className="listCountries">
         {Object.entries(groupedWords).map(([letter, words]) => (
           <Box key={letter}>

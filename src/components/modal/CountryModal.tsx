@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Modal, Box, Button, TextField, List, ListItem } from "@mui/material";
 import { translate } from "@i18n";
 import CloseIcon from "@mui/icons-material/Close";
@@ -26,6 +26,11 @@ const CountryModal = ({
   const { t } = translate("translate", { keyPrefix: "modals.location" });
 
   const [country, setCountry] = useState("");
+  const [errorCountry, setErrorCountry] = useState("");
+
+  useEffect(() => {
+    country && setErrorCountry("");
+  }, [country]);
 
   const filteredWords = listOfCountries.filter((el) =>
     locale === "en"
@@ -79,8 +84,12 @@ const CountryModal = ({
         ? el.englishLabel === country
         : el.russianLabel === country
     );
-    cbHandleLocation(location!);
-    cbCloseModal();
+    if (location) {
+      cbHandleLocation(location);
+      cbCloseModal();
+    } else {
+      setErrorCountry(t("errCountry"));
+    }
   };
 
   return (
@@ -93,13 +102,17 @@ const CountryModal = ({
           </Button>
         </Box>
         <Box className="boxWithSearch">
-          <TextField
-            value={country}
-            onChange={handleSearchChange}
-            placeholder={t("search")}
-            InputProps={{ startAdornment: <SearchIcon /> }}
-            className="searchField"
-          />
+          <Box className="fieldBox">
+            <TextField
+              value={country}
+              onChange={handleSearchChange}
+              placeholder={t("search")}
+              InputProps={{ startAdornment: <SearchIcon /> }}
+              className="searchField"
+              error={!!errorCountry}
+            />
+            {errorCountry && <p className="errorCountry">{errorCountry}</p>}
+          </Box>
           <Button
             type="button"
             className="saveCountryButton"

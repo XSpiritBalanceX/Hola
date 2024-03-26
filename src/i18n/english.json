@@ -120,7 +120,8 @@
       "location": {
         "chooseLocation": "Choose location",
         "search": "Search",
-        "save": "Save"
+        "save": "Save",
+        "errCountry": "Choose your country"
       }
     },
     "profile": {

@@ -44,7 +44,7 @@
         "errDateOfBirth": "Вам не может быть меньше 18 лет",
         "errSignUp": "Возникла непредвиденная ошибка",
         "search": "Поиск",
-        "errCountry": "Выберите вашу страну"
+        "errCountry": "Укажите вашу страну"
       },
       "interests": {
         "interests": "Интересы",
@@ -120,7 +120,8 @@
       "location": {
         "chooseLocation": "Выберите местоположение",
         "search": "Поиск",
-        "save": "Сохранить"
+        "save": "Сохранить",
+        "errCountry": "Укажите вашу страну"
       }
     },
     "profile": {
