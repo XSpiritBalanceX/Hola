@@ -8,6 +8,8 @@ import { axiosAPI } from "@axiosApi/axiosAPI";
 import { loginUser } from "@store/holaSlice";
 import { ToastContainer, Zoom } from "react-toastify";
 import ErrorBoundary from "@components/error/ErrorBoundary";
+import moment from "moment";
+import "moment/locale/ru";
 import "react-toastify/dist/ReactToastify.css";
 
 axiosAPI.setGetItem((key) => localStorage.getItem(key));
@@ -18,10 +20,13 @@ const App = () => {
   const { i18n } = translate();
   const dispatch = useAppDispatch();
 
+  moment.locale(locale);
+
   useEffect(() => {
     i18n.changeLanguage(locale);
+
     // eslint-disable-next-line
-  }, []);
+  }, [locale]);
 
   useEffect(() => {
     axiosAPI.setLogout(() =>

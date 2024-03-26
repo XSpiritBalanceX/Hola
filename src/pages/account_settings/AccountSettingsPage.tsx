@@ -5,6 +5,7 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { useGetAccountQuery } from "@store/accountApi";
 import Loader from "@components/loader/Loader";
 import CustomError from "@components/error/CustomError";
+import AccountForm from "@components/accountForm/AccountForm";
 import "./AccountSettingsPage.scss";
 
 const AccountSettingsPage = () => {
@@ -24,12 +25,15 @@ const AccountSettingsPage = () => {
       ) : (
         <Container className="accountSettingsContainer">
           {data && (
-            <Box className="accountSettingsNavigation">
-              <Button type="button" onClick={handleNavigate}>
-                <ArrowBackIosNewIcon />
-              </Button>
-              <p>{t("account")}</p>
-            </Box>
+            <>
+              <Box className="accountSettingsNavigation">
+                <Button type="button" onClick={handleNavigate}>
+                  <ArrowBackIosNewIcon />
+                </Button>
+                <p>{t("account")}</p>
+              </Box>
+              <AccountForm />
+            </>
           )}
         </Container>
       )}
