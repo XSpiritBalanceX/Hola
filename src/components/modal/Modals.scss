@@ -54,3 +54,111 @@
     }
   }
 }
+
+.modalContainerCountries {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  .contentCountriesModal {
+    width: 100%;
+    height: 85%;
+    background-color: map-get($theme-colors, "white");
+    border-radius: 25px 25px 0 0;
+    padding: 20px 20px 40px 20px;
+    .closeModalButton {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      .titleModal {
+        margin: 0;
+        width: 100%;
+        @extend %body-1-bold;
+        text-align: center;
+      }
+      button {
+        padding: 0;
+        @extend %button-white;
+        height: 24px;
+        svg {
+          fill: map-get($theme-colors, "black");
+        }
+      }
+    }
+    .boxWithSearch {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 20px;
+      .searchField {
+        width: 100%;
+        height: 42px;
+        background-color: map-deep-get($theme-colors, "background", "gray-6");
+        border-radius: 20px;
+        margin-right: 15px;
+        .MuiInputBase-root {
+          height: 42px;
+          border-radius: 20px;
+          @extend %body-1;
+          input {
+            height: 42px;
+            padding: 0 10px;
+            color: map-get($theme-colors, "black");
+            width: 100%;
+            @extend %body-1-medium;
+            &::placeholder {
+              @extend %body-2;
+              color: map-get($theme-colors, "gray-2");
+            }
+          }
+          fieldset {
+            border: none;
+          }
+          .MuiSvgIcon-root {
+            fill: map-get($theme-colors, "gray-2");
+          }
+        }
+        .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+          border: none;
+          fieldset {
+            border: solid 2px map-get($theme-colors, "blue");
+          }
+        }
+      }
+      .saveCountryButton {
+        text-transform: none;
+        @extend %body-2-bold;
+        color: map-get($theme-colors, "blue");
+        @extend %button-white;
+        height: 42px;
+      }
+    }
+
+    .listCountries {
+      overflow-y: auto;
+      height: 85%;
+      .letterItem {
+        height: 19px;
+        margin: 15px 0 0 0;
+        padding: 0;
+        p {
+          margin: 0;
+          @extend %body-1-bold;
+        }
+      }
+      .wordItem {
+        border-bottom: solid 1px map-get($theme-colors, "gray-2");
+        padding: 15px 0;
+        p {
+          margin: 0;
+          @extend %body-1;
+        }
+        &:hover {
+          cursor: pointer;
+          background-color: map-get($theme-colors, "light-blue-2");
+        }
+      }
+    }
+  }
+}

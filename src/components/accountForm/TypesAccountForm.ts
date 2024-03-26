@@ -22,3 +22,8 @@ export interface IDatePicker {
   locale: string;
   setValue: UseFormSetValue<IAccountInformation>;
 }
+
+export interface IUserLocationProps {
+  user_location: string;
+  cbHandleOpenModalCountries: () => void;
+}

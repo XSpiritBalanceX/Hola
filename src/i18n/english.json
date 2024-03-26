@@ -114,6 +114,11 @@
         "mainTitle": "Please check your inbox!",
         "title": "To confirm your e-mail address, tap the link in the email we sent to:",
         "button": "Open email app"
+      },
+      "location": {
+        "chooseLocation": "Choose location",
+        "search": "Search",
+        "save": "Save"
       }
     },
     "profile": {

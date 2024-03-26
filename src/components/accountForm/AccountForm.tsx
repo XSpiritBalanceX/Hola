@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { TextField, Box } from "@mui/material";
+import { TextField } from "@mui/material";
 import { useAppSelector } from "@store/hook";
 import * as holaSelectors from "@store/selectors";
 import { translate } from "@i18n";
@@ -10,6 +10,8 @@ import moment from "moment";
 import LanguageSelect from "./LanguageSelect";
 import DatePicker from "./DatePicker";
 import { IAccountInformation } from "./TypesAccountForm";
+import UserLocation from "./UserLocation";
+import CountryModal from "@components/modal/CountryModal";
 import "./AccountForm.scss";
 
 const AccountForm = () => {
@@ -18,6 +20,7 @@ const AccountForm = () => {
   const locale = useAppSelector(holaSelectors.localeSelect);
 
   const [showPicker, setShowPicker] = useState(false);
+  const [showModalCountries, setShowModalCountries] = useState(true);
   const [initialState, setInitialState] = useState({
     name: "",
     email: "",
@@ -92,44 +95,62 @@ const AccountForm = () => {
     setShowPicker(!showPicker);
   };
 
+  const handleOpenModalCountries = () => {
+    setShowModalCountries(true);
+  };
+
+  const handleCloseModalCountries = () => {
+    setShowModalCountries(false);
+  };
+
   return (
-    <form
-      className="formAccountSettings"
-      onSubmit={handleSubmit(onSubmitAccount)}
-    >
-      <TextField
-        InputProps={{
-          startAdornment: <p className="labelField">{t("name")}</p>,
-        }}
-        {...register("name")}
-        className="accountField"
+    <>
+      <CountryModal
+        isOpen={showModalCountries}
+        cbCloseModal={handleCloseModalCountries}
       />
-      <TextField
-        InputProps={{
-          startAdornment: <p className="labelField">{t("email")}</p>,
-        }}
-        {...register("email")}
-        className="accountField"
-      />
-      <TextField
-        InputProps={{
-          startAdornment: <p className="labelField">{t("dateOfBirth")}</p>,
-          style: { pointerEvents: "none" },
-        }}
-        {...register("date_of_birth")}
-        className={`accountField ${showPicker && "dateField"}`}
-        disabled
-        onClick={handleShowPicker}
-      />
-      {showPicker && (
-        <DatePicker
-          date_of_birth={watch("date_of_birth")}
-          locale={locale}
-          setValue={setValue}
+      <form
+        className="formAccountSettings"
+        onSubmit={handleSubmit(onSubmitAccount)}
+      >
+        <TextField
+          InputProps={{
+            startAdornment: <p className="labelField">{t("name")}</p>,
+          }}
+          {...register("name")}
+          className="accountField"
         />
-      )}
-      <LanguageSelect />
-    </form>
+        <TextField
+          InputProps={{
+            startAdornment: <p className="labelField">{t("email")}</p>,
+          }}
+          {...register("email")}
+          className="accountField"
+        />
+        <TextField
+          InputProps={{
+            startAdornment: <p className="labelField">{t("dateOfBirth")}</p>,
+            style: { pointerEvents: "none" },
+          }}
+          {...register("date_of_birth")}
+          className={`accountField ${showPicker && "dateField"}`}
+          disabled
+          onClick={handleShowPicker}
+        />
+        {showPicker && (
+          <DatePicker
+            date_of_birth={watch("date_of_birth")}
+            locale={locale}
+            setValue={setValue}
+          />
+        )}
+        <LanguageSelect />
+        <UserLocation
+          user_location={watch("location")}
+          cbHandleOpenModalCountries={handleOpenModalCountries}
+        />
+      </form>
+    </>
   );
 };
 
