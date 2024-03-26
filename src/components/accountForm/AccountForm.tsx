@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
-import { TextField } from "@mui/material";
+import {
+  Button,
+  TextField,
+  Box,
+  FormHelperText,
+  InputAdornment,
+} from "@mui/material";
 import { useAppSelector } from "@store/hook";
 import * as holaSelectors from "@store/selectors";
 import { translate } from "@i18n";
@@ -12,7 +18,9 @@ import DatePicker from "./DatePicker";
 import { IAccountInformation } from "./TypesAccountForm";
 import UserLocation from "./UserLocation";
 import CountryModal from "@components/modal/CountryModal";
+import AccountRagers from "./AccountRagers";
 import { listOfCountries } from "@utils/listOfCountries";
+import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
 import "./AccountForm.scss";
 
 const AccountForm = () => {
@@ -68,17 +76,12 @@ const AccountForm = () => {
   }, [accountInfo]);
 
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required(),
+    name: Yup.string().required(t("errorRequiredField")),
     email: Yup.string()
-      .required(t("errorRequiredField"))
+      .required(t("errorRequiredEmail"))
       .email(t("errIncorrectEmail")),
     date_of_birth: Yup.string()
       .required(t("errorRequiredField"))
-      .test("valid-date", t("invalidDate"), (value) => {
-        const dob = moment(value, "DD.MM.YYYY");
-
-        return !dob.isValid() ? false : true;
-      })
       .test("less-18", t("errDateOfBirth"), (value) => {
         const minAge = 18;
         const currentDate = moment();
@@ -133,6 +136,8 @@ const AccountForm = () => {
     });
   };
 
+  const isChanges = JSON.stringify(initialState) === JSON.stringify(watch());
+
   return (
     <>
       <CountryModal
@@ -145,42 +150,94 @@ const AccountForm = () => {
         className="formAccountSettings"
         onSubmit={handleSubmit(onSubmitAccount)}
       >
-        <TextField
-          InputProps={{
-            startAdornment: <p className="labelField">{t("name")}</p>,
-          }}
-          {...register("name")}
-          className="accountField"
-        />
-        <TextField
-          InputProps={{
-            startAdornment: <p className="labelField">{t("email")}</p>,
-          }}
-          {...register("email")}
-          className="accountField"
-        />
-        <TextField
-          InputProps={{
-            startAdornment: <p className="labelField">{t("dateOfBirth")}</p>,
-            style: { pointerEvents: "none" },
-          }}
-          {...register("date_of_birth")}
-          className={`accountField ${showPicker && "dateField"}`}
-          disabled
-          onClick={handleShowPicker}
-        />
-        {showPicker && (
-          <DatePicker
-            date_of_birth={watch("date_of_birth")}
-            locale={locale}
-            setValue={setValue}
+        <Box className="fieldsBox">
+          <TextField
+            InputProps={{
+              startAdornment: <p className="labelField">{t("name")}</p>,
+              endAdornment: !!errors.name && (
+                <InputAdornment position="end" className="errorIcon">
+                  <WarningAmberRoundedIcon />
+                </InputAdornment>
+              ),
+            }}
+            {...register("name")}
+            className="accountField"
+            error={!!errors.name}
           />
-        )}
+          <FormHelperText className="errorMessage">
+            {errors.name?.message}
+          </FormHelperText>
+        </Box>
+        <Box className="fieldsBox">
+          <TextField
+            InputProps={{
+              startAdornment: <p className="labelField">{t("email")}</p>,
+              endAdornment: !!errors.email && (
+                <InputAdornment position="end" className="errorIcon">
+                  <WarningAmberRoundedIcon />
+                </InputAdornment>
+              ),
+            }}
+            {...register("email")}
+            className="accountField"
+            error={!!errors.email}
+          />
+          <FormHelperText className="errorMessage">
+            {errors.email?.message}
+          </FormHelperText>
+        </Box>
+        <Box className="fieldsBox">
+          <TextField
+            InputProps={{
+              startAdornment: <p className="labelField">{t("dateOfBirth")}</p>,
+              style: { pointerEvents: "none" },
+              endAdornment: !!errors.date_of_birth && (
+                <InputAdornment position="end" className="errorIcon">
+                  <WarningAmberRoundedIcon />
+                </InputAdornment>
+              ),
+            }}
+            {...register("date_of_birth")}
+            className={`accountField ${showPicker && "dateField"}`}
+            disabled
+            onClick={handleShowPicker}
+            error={!!errors.date_of_birth}
+          />
+          {showPicker && (
+            <DatePicker
+              date_of_birth={watch("date_of_birth")}
+              locale={locale}
+              setValue={setValue}
+            />
+          )}
+          <FormHelperText className="errorMessage">
+            {errors.date_of_birth?.message}
+          </FormHelperText>
+        </Box>
         <LanguageSelect />
         <UserLocation
           user_location={watch("location.name")}
           cbHandleOpenModalCountries={handleOpenModalCountries}
         />
+        <AccountRagers
+          distance={watch("max_distance")}
+          global_search={watch("global_search")}
+          min_age={watch("min_age")}
+          max_age={watch("max_age")}
+          setValue={setValue}
+        />
+        <Box className="controlButtonsBox">
+          {!isChanges && (
+            <Button type="submit" className="saveButton">
+              {t("save")}
+            </Button>
+          )}
+          {isChanges && (
+            <Button type="button" className="deleteButton">
+              {t("deleteAcc")}
+            </Button>
+          )}
+        </Box>
       </form>
     </>
   );

@@ -9,12 +9,12 @@ const DatePicker = ({ date_of_birth, locale, setValue }: IDatePicker) => {
     ? date_of_birth
     : moment().format("DD/MM/YYYY");
 
-  const currentYear = moment().year();
+  const currentYear = moment().year() - 18;
 
   const [dates, setDates] = useState<IDates>({
     day: Array.from({ length: 31 }, (_, index) => (index + 1).toString()),
     month: moment.months(),
-    year: Array.from({ length: 80 }, (_, index) =>
+    year: Array.from({ length: 65 }, (_, index) =>
       (currentYear - index).toString()
     ),
   });

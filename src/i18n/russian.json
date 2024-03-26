@@ -214,7 +214,11 @@
       "ageRange": "Показать возрастной диапазон",
       "deleteAcc": "Удалить аккаунт",
       "save": "Сохранить изменения",
-      "km": "км"
+      "km": "км",
+      "errorRequiredField": "Заполните это поле",
+      "errorRequiredEmail": "Email обязателен",
+      "errIncorrectEmail": "Неверный email",
+      "errDateOfBirth": "Вам не может быть меньше 18 лет"
     }
   }
 }

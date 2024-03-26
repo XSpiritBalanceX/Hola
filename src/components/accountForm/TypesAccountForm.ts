@@ -27,3 +27,11 @@ export interface IUserLocationProps {
   user_location: string;
   cbHandleOpenModalCountries: () => void;
 }
+
+export interface IAccountRagersProps {
+  distance: number;
+  global_search: boolean;
+  min_age: number;
+  max_age: number;
+  setValue: UseFormSetValue<IAccountInformation>;
+}

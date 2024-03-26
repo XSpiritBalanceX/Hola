@@ -214,7 +214,11 @@
       "ageRange": "Show age range",
       "deleteAcc": "Delete account",
       "save": "Save changes",
-      "km": "km"
+      "km": "km",
+      "errorRequiredField": "This field is required",
+      "errorRequiredEmail": "Email is required",
+      "errIncorrectEmail": "Invalid email",
+      "errDateOfBirth": "You cannot be under 18 years old"
     }
   }
 }

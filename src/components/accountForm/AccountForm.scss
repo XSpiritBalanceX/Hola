@@ -3,13 +3,17 @@
 .formAccountSettings {
   display: flex;
   flex-direction: column;
+  padding-bottom: 40px;
+  .fieldsBox,
+  .languageField {
+    margin-bottom: 17px;
+  }
   .accountField,
   .languageField {
     width: 100%;
     height: 42px;
     background-color: map-get($theme-colors, "white");
     border-radius: 10px;
-    margin-bottom: 17px;
     .MuiInputBase-root.MuiInputBase-formControl,
     .MuiSelect-select {
       height: 42px;
@@ -34,6 +38,12 @@
         border: none;
       }
     }
+    .MuiInputBase-root.MuiInputBase-formControl.Mui-error {
+      border: none;
+      fieldset {
+        border: solid 2px map-get($theme-colors, "error");
+      }
+    }
     .MuiInputBase-root.Mui-disabled {
       .MuiOutlinedInput-input.Mui-disabled {
         -webkit-text-fill-color: map-get($theme-colors, "black");
@@ -55,6 +65,16 @@
       }
     }
   }
+
+  .errorMessage {
+    @extend %body-2;
+    margin-left: 5px;
+  }
+  .errorIcon,
+  .errorMessage {
+    color: map-get($theme-colors, "error");
+  }
+
   .dateField {
     background-color: map-get($theme-colors, "light-blue-2");
     border-radius: 10px 10px 0 0;
@@ -125,5 +145,162 @@
     margin: 5px 0 17px 0;
     @extend %body-2;
     color: map-get($theme-colors, "gray-2");
+  }
+
+  .distanceBox {
+    background-color: map-get($theme-colors, "white");
+    border-radius: 10px;
+    padding: 11px 20px;
+    margin-bottom: 17px;
+    .distanceTitleBox {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      p {
+        margin: 0 0 5px 0;
+      }
+      p:first-child {
+        @extend %body-1;
+        color: map-get($theme-colors, "gray-2");
+      }
+      p:last-child {
+        @extend %body-1-bold;
+        color: map-get($theme-colors, "blue");
+      }
+    }
+    .distanceSlider {
+      .MuiSlider-rail {
+        background-color: map-get($theme-colors, "gray-2");
+        height: 6px;
+      }
+      .MuiSlider-track {
+        background-color: map-get($theme-colors, "blue");
+        border: solid 1px map-get($theme-colors, "blue");
+      }
+      .MuiSlider-thumb {
+        background-color: map-get($theme-colors, "white");
+        width: 26px;
+        height: 26px;
+      }
+    }
+  }
+
+  .globalSearchBox {
+    background-color: map-get($theme-colors, "white");
+    border-radius: 10px;
+    padding: 11px 20px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    p {
+      margin: 0;
+      @extend %body-1;
+      color: map-get($theme-colors, "black");
+    }
+    .globalSearchSwitcher {
+      padding: 0;
+      height: 19px;
+      width: 35px;
+      border-radius: 100px;
+      .MuiButtonBase-root.MuiSwitch-switchBase {
+        color: map-get($theme-colors, "white");
+        .MuiSwitch-thumb {
+          width: 15px;
+          height: 15px;
+          position: absolute;
+          top: 2px;
+          left: 3px;
+        }
+      }
+      .MuiButtonBase-root.MuiSwitch-switchBase.Mui-checked {
+        color: map-get($theme-colors, "white");
+        left: 0px;
+        .MuiSwitch-thumb {
+          top: 2px;
+          left: -3px;
+        }
+      }
+      .MuiButtonBase-root.MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track {
+        background-color: map-get($theme-colors, "blue");
+        opacity: 1;
+      }
+      .MuiButtonBase-root.MuiSwitch-switchBase + .MuiSwitch-track {
+        background-color: map-get($theme-colors, "light-blue-4");
+      }
+    }
+  }
+
+  .titleGlobalSearch {
+    margin: 0 0 17px 0;
+    @extend %body-2;
+    color: map-get($theme-colors, "gray-2");
+  }
+
+  .ageRangeBox {
+    background-color: map-get($theme-colors, "white");
+    border-radius: 10px;
+    padding: 11px 20px;
+    display: flex;
+    flex-direction: column;
+    .titlesAgeRageBox {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      p {
+        margin: 0 0 8px 0;
+      }
+      p:first-child {
+        @extend %body-1;
+        color: map-get($theme-colors, "gray-2");
+      }
+      p:last-child {
+        @extend %body-1-bold;
+        color: map-get($theme-colors, "blue");
+      }
+    }
+    .ageRangeSlider {
+      .MuiSlider-rail {
+        background-color: map-get($theme-colors, "gray-2");
+        height: 6px;
+      }
+      .MuiSlider-track {
+        background-color: map-get($theme-colors, "blue");
+        border: solid 1px map-get($theme-colors, "blue");
+      }
+      .MuiSlider-thumb {
+        background-color: map-get($theme-colors, "white");
+        width: 26px;
+        height: 26px;
+      }
+    }
+  }
+
+  .controlButtonsBox {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button {
+      width: 40%;
+      text-transform: none;
+      @extend %button;
+      @media all and (max-width: 55em) {
+        width: 60%;
+      }
+      @media all and (max-width: 40em) {
+        width: 100%;
+      }
+    }
+    .saveButton {
+      @extend %button-blue;
+    }
+    .deleteButton {
+      @extend %button-white;
+      background-color: transparent;
+    }
   }
 }
