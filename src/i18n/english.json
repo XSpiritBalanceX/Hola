@@ -42,7 +42,9 @@
         "next": "Next",
         "invalidDate": "Invalid date",
         "errDateOfBirth": "You cannot be under 18 years old",
-        "errSignUp": "An unexpected error occurred"
+        "errSignUp": "An unexpected error occurred",
+        "search": "Search",
+        "errCountry": "Choose your country"
       },
       "interests": {
         "interests": "Interests",

@@ -1,6 +1,8 @@
 @import "../../variables";
 
 .interestsBox {
+  max-width: 1200px;
+  margin: 0 auto;
   .mainTitle {
     margin: 0;
     @extend %body-1-bold;
