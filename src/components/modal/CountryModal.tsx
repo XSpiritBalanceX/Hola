@@ -3,58 +3,62 @@ import { Modal, Box, Button, TextField, List, ListItem } from "@mui/material";
 import { translate } from "@i18n";
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
+import { listOfCountries } from "@utils/listOfCountries";
 import "./Modals.scss";
 
 interface ICountryModalProps {
   isOpen: boolean;
+  locale: string;
   cbCloseModal: () => void;
+  cbHandleLocation: (country: {
+    id: number;
+    englishLabel: string;
+    russianLabel: string;
+  }) => void;
 }
 
-const words = [
-  "Apple",
-  "Banana",
-  "Cherry",
-  "Grape",
-  "Lemon",
-  "Mango",
-  "Orange",
-  "Peach",
-  "Strawberry",
-  "Watermelon",
-  "Bon",
-];
-
-const CountryModal = ({ isOpen, cbCloseModal }: ICountryModalProps) => {
+const CountryModal = ({
+  isOpen,
+  locale,
+  cbCloseModal,
+  cbHandleLocation,
+}: ICountryModalProps) => {
   const { t } = translate("translate", { keyPrefix: "modals.location" });
 
   const [country, setCountry] = useState("");
 
-  const filteredWords = words.filter((word) =>
-    word.toLowerCase().includes(country.toLowerCase())
+  const filteredWords = listOfCountries.filter((el) =>
+    locale === "en"
+      ? el.englishLabel.toLowerCase().includes(country.toLowerCase())
+      : el.russianLabel.toLowerCase().includes(country.toLowerCase())
   );
 
-  // Функция для группировки элементов списка по первым буквам
   const groupWordsByFirstLetter = () => {
     const groupedWords: { [letter: string]: string[] } = {};
 
     filteredWords.forEach((word) => {
-      const firstLetter: string = word.charAt(0).toUpperCase();
+      const firstLetter: string =
+        locale === "en"
+          ? word.englishLabel.charAt(0).toUpperCase()
+          : word.russianLabel.charAt(0).toUpperCase();
 
       if (groupedWords[firstLetter]) {
-        groupedWords[firstLetter].push(word);
+        groupedWords[firstLetter].push(
+          locale === "en" ? word.englishLabel : word.russianLabel
+        );
       } else {
-        groupedWords[firstLetter] = [word];
+        groupedWords[firstLetter] = [
+          locale === "en" ? word.englishLabel : word.russianLabel,
+        ];
       }
     });
 
     return groupedWords;
   };
 
-  // Получение списка сгруппированных элементов
   const groupedWords: { [letter: string]: string[] } =
     groupWordsByFirstLetter();
 
-  // Обработчик изменения значения в поле поиска
   const handleSearchChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ): void => {
@@ -66,6 +70,16 @@ const CountryModal = ({ isOpen, cbCloseModal }: ICountryModalProps) => {
   };
 
   const handleCloseModal = () => {
+    cbCloseModal();
+  };
+
+  const handleSaveCountry = () => {
+    const location = listOfCountries.find((el) =>
+      locale === "en"
+        ? el.englishLabel === country
+        : el.russianLabel === country
+    );
+    cbHandleLocation(location!);
     cbCloseModal();
   };
 
@@ -86,7 +100,11 @@ const CountryModal = ({ isOpen, cbCloseModal }: ICountryModalProps) => {
             InputProps={{ startAdornment: <SearchIcon /> }}
             className="searchField"
           />
-          <Button type="button" className="saveCountryButton">
+          <Button
+            type="button"
+            className="saveCountryButton"
+            onClick={handleSaveCountry}
+          >
             {t("save")}
           </Button>
         </Box>

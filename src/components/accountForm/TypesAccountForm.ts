@@ -4,7 +4,7 @@ export interface IAccountInformation {
   name: string;
   email: string;
   date_of_birth: string;
-  location: string;
+  location: { id: number; name: string };
   global_search: boolean;
   max_distance: number;
   min_age: number;

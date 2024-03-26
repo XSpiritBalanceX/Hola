@@ -12,6 +12,7 @@ import DatePicker from "./DatePicker";
 import { IAccountInformation } from "./TypesAccountForm";
 import UserLocation from "./UserLocation";
 import CountryModal from "@components/modal/CountryModal";
+import { listOfCountries } from "@utils/listOfCountries";
 import "./AccountForm.scss";
 
 const AccountForm = () => {
@@ -20,12 +21,15 @@ const AccountForm = () => {
   const locale = useAppSelector(holaSelectors.localeSelect);
 
   const [showPicker, setShowPicker] = useState(false);
-  const [showModalCountries, setShowModalCountries] = useState(true);
+  const [showModalCountries, setShowModalCountries] = useState(false);
   const [initialState, setInitialState] = useState({
     name: "",
     email: "",
     date_of_birth: "",
-    location: "",
+    location: {
+      id: listOfCountries[0].id,
+      name: listOfCountries[0].englishLabel,
+    },
     global_search: false,
     max_distance: 100,
     min_age: 20,
@@ -34,13 +38,25 @@ const AccountForm = () => {
 
   useEffect(() => {
     if (accountInfo) {
+      const location = listOfCountries.find((el) =>
+        locale === "en"
+          ? el.englishLabel === accountInfo.location
+          : el.russianLabel === accountInfo.location
+      ) || {
+        id: listOfCountries[0].id,
+        englishLabel: listOfCountries[0].englishLabel,
+        russianLabel: listOfCountries[0].russianLabel,
+      };
       const compiledDate = {
         name: accountInfo.name,
         email: accountInfo.email,
         date_of_birth: moment(accountInfo.date_of_birth, "YYYY-MM-DD").format(
           "DD/MM/YYYY"
         ),
-        location: accountInfo.location || "",
+        location: {
+          id: location.id,
+          name: locale === "en" ? location.englishLabel : location.russianLabel,
+        },
         global_search: accountInfo.global_search,
         max_distance: accountInfo.max_distance,
         min_age: accountInfo.min_age || 20,
@@ -48,6 +64,7 @@ const AccountForm = () => {
       };
       setInitialState(compiledDate);
     }
+    // eslint-disable-next-line
   }, [accountInfo]);
 
   const validationSchema = Yup.object().shape({
@@ -69,7 +86,9 @@ const AccountForm = () => {
         const age = currentDate.diff(dob, "years");
         return age >= minAge;
       }),
-    location: Yup.string().required(),
+    location: Yup.object()
+      .shape({ id: Yup.number().required(), name: Yup.string().required() })
+      .required(),
     global_search: Yup.boolean().required(),
     max_distance: Yup.number().required(),
     min_age: Yup.number().required(),
@@ -103,11 +122,24 @@ const AccountForm = () => {
     setShowModalCountries(false);
   };
 
+  const handleLocation = (country: {
+    id: number;
+    englishLabel: string;
+    russianLabel: string;
+  }) => {
+    setValue("location", {
+      id: country.id,
+      name: locale === "en" ? country.englishLabel : country.russianLabel,
+    });
+  };
+
   return (
     <>
       <CountryModal
         isOpen={showModalCountries}
+        locale={locale}
         cbCloseModal={handleCloseModalCountries}
+        cbHandleLocation={handleLocation}
       />
       <form
         className="formAccountSettings"
@@ -146,7 +178,7 @@ const AccountForm = () => {
         )}
         <LanguageSelect />
         <UserLocation
-          user_location={watch("location")}
+          user_location={watch("location.name")}
           cbHandleOpenModalCountries={handleOpenModalCountries}
         />
       </form>
