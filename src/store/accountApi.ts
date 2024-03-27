@@ -32,7 +32,18 @@ export const accountApi = createApi({
       }),
       invalidatesTags: ["Account"],
     }),
+    deleteAccount: builder.mutation<void, void>({
+      //@ts-ignore
+      query: () => ({
+        url: `/persons/${userID}/`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
-export const { useGetAccountQuery, useUpdateAccountMutation } = accountApi;
+export const {
+  useGetAccountQuery,
+  useUpdateAccountMutation,
+  useDeleteAccountMutation,
+} = accountApi;

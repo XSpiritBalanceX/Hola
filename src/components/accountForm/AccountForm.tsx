@@ -23,6 +23,7 @@ import { listOfCountries } from "@utils/listOfCountries";
 import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
 import { useUpdateAccountMutation } from "@store/accountApi";
 import { toast } from "react-toastify";
+import DeleteAccountModal from "@components/modal/DeleteAccountModal";
 import "./AccountForm.scss";
 
 const AccountForm = () => {
@@ -34,6 +35,7 @@ const AccountForm = () => {
 
   const [showPicker, setShowPicker] = useState(false);
   const [showModalCountries, setShowModalCountries] = useState(false);
+  const [showModalDelete, setShowModalDelete] = useState(false);
   const [initialState, setInitialState] = useState({
     name: "",
     email: "",
@@ -142,6 +144,14 @@ const AccountForm = () => {
     setShowModalCountries(false);
   };
 
+  const handleOpenModalDelete = () => {
+    setShowModalDelete(true);
+  };
+
+  const handleCloseModalDelete = () => {
+    setShowModalDelete(false);
+  };
+
   const handleLocation = (country: {
     id: number;
     englishLabel: string;
@@ -162,6 +172,10 @@ const AccountForm = () => {
         locale={locale}
         cbCloseModal={handleCloseModalCountries}
         cbHandleLocation={handleLocation}
+      />
+      <DeleteAccountModal
+        isOpen={showModalDelete}
+        cbCloseModal={handleCloseModalDelete}
       />
       <form
         className="formAccountSettings"
@@ -250,7 +264,11 @@ const AccountForm = () => {
             </Button>
           )}
           {isChanges && (
-            <Button type="button" className="deleteButton">
+            <Button
+              type="button"
+              className="deleteButton"
+              onClick={handleOpenModalDelete}
+            >
               {t("deleteAcc")}
             </Button>
           )}

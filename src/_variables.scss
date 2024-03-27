@@ -75,6 +75,16 @@ $theme-colors: (
   &:disabled {
     color: #bfc3cf;
   }
+  &:hover {
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.25);
+    background-color: #ffffff;
+    color: #554cb6;
+  }
+  &:active {
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.25);
+    background-color: #ffffff;
+    color: #554cb6;
+  }
 }
 
 %button-blue {

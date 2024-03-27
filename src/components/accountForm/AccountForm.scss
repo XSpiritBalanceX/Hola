@@ -226,9 +226,11 @@
       .MuiButtonBase-root.MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track {
         background-color: map-get($theme-colors, "blue");
         opacity: 1;
+        transition: background-color 0.5s ease;
       }
       .MuiButtonBase-root.MuiSwitch-switchBase + .MuiSwitch-track {
         background-color: map-get($theme-colors, "light-blue-4");
+        transition: background-color 0.5s ease;
       }
     }
   }

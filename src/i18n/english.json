@@ -122,6 +122,12 @@
         "search": "Search",
         "save": "Save",
         "errCountry": "Choose your country"
+      },
+      "account": {
+        "label": "Are you sure you want to delete your account?",
+        "close": "Nope",
+        "delete": "Yes, delete it",
+        "errDeleteAcc": "An unexpected error occurred"
       }
     },
     "profile": {
