@@ -6,6 +6,7 @@ import ProfilePage from "@pages/profile/ProfilePage";
 import EditProfilePage from "@pages/edit_profile/EditProfilePage";
 import ProfileSettingsPage from "@pages/profile_settings/ProfileSettingsPage";
 import AccountSettingsPage from "@pages/account_settings/AccountSettingsPage";
+import ResetPasswordPage from "@pages/reset_password/ResetPasswordPage";
 
 const RouterComponent = () => {
   return (
@@ -79,6 +80,14 @@ const RouterComponent = () => {
         element={
           <ProtectedRouter>
             <AccountSettingsPage />
+          </ProtectedRouter>
+        }
+      />
+      <Route
+        path="/reset_password"
+        element={
+          <ProtectedRouter>
+            <ResetPasswordPage />
           </ProtectedRouter>
         }
       />

@@ -230,6 +230,23 @@
       "errDateOfBirth": "You cannot be under 18 years old",
       "errEditing": "An unexpected error occurred",
       "successUpdate": "Information has been successfully updated"
+    },
+    "resetPasswordPage": {
+      "resetPassword": "Reset Password",
+      "currPassword": "Current password",
+      "newPassword": "New password",
+      "confirmPassword": "Confirm new password",
+      "forgotPassword": "Forgot password?",
+      "criteriaPassword": "Your password must be at least 8 characters long, and contain at least one lowercase, one uppercase characters and  one number",
+      "errorRequiredEmail": "Email is required",
+      "errIncorrectEmail": "Invalid email",
+      "errorRequiredPassword": "Password is required",
+      "errorMeetPassword": "Password does not meet the criteria",
+      "save": "Save",
+      "send": "Send",
+      "titleForEmail": "Enter the e-mail address you used to register with and we’ll send you reset instructions",
+      "email": "E-mail",
+      "errReset": "An unexpected error occurred"
     }
   }
 }

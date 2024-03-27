@@ -230,6 +230,23 @@
       "errDateOfBirth": "Вам не может быть меньше 18 лет",
       "errEditing": "Возникла непредвиденная ошибка",
       "successUpdate": "Информация была успешно обновлена"
+    },
+    "resetPasswordPage": {
+      "resetPassword": "Reset Password",
+      "currPassword": "Текущий пароль",
+      "newPassword": "Новый пароль",
+      "confirmPassword": "Подтвердите новый пароль",
+      "forgotPassword": "Забыли пароль?",
+      "criteriaPassword": "Ваш пароль должен иметь длину не менее 8 символов и содержать хотя бы одну строчную, одну заглавную латинскую букву и одну цифру.",
+      "errorRequiredEmail": "Email обязателен",
+      "errIncorrectEmail": "Неверный email",
+      "errorRequiredPassword": "Пароль обязателен",
+      "errorMeetPassword": "Пароль не соответствует критериям",
+      "save": "Сохранить",
+      "send": "Отправить",
+      "titleForEmail": "Введите ваш E-mail, который вы использовали при регистрации, и мы вышлем вам инструкции по сбросу пароля.",
+      "email": "E-mail",
+      "errReset": "Возникла непредвиденная ошибка"
     }
   }
 }
