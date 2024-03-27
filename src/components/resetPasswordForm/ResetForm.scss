@@ -1,0 +1,142 @@
+@import "../../variables";
+
+.formResetPassword {
+  position: relative;
+  height: 85vh;
+  @media all and (max-width: 40em) {
+    height: 90vh;
+  }
+  .linkForgotPassword {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: -15px;
+    z-index: 1;
+    a {
+      text-decoration: none;
+      @extend %caption-bold;
+      color: map-get($theme-colors, "blue");
+      margin-right: 20px;
+    }
+  }
+
+  .titleResetPassword {
+    margin: 15px 0;
+    @extend %body-2;
+    color: map-get($theme-colors, "black");
+  }
+
+  .boxSubmitButton {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    button {
+      width: 40%;
+      @extend %button;
+      @extend %button-blue;
+      text-transform: none;
+      @media all and (max-width: 55em) {
+        width: 60%;
+      }
+      @media all and (max-width: 40em) {
+        width: 100%;
+      }
+    }
+  }
+
+  .resetPasswordField {
+    .MuiInputBase-root.MuiInputBase-formControl {
+      border: solid 1px map-get($theme-colors, "gray-2");
+      fieldset {
+        border: none;
+      }
+    }
+    .MuiFormLabel-root.Mui-focused,
+    .MuiFormLabel-root.MuiFormLabel-filled {
+      display: none;
+    }
+    .MuiInputBase-root.MuiInputBase-formControl.Mui-error {
+      border: solid 2px map-get($theme-colors, "red");
+      fieldset {
+        border: none;
+      }
+    }
+    .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+      border: solid 2px map-get($theme-colors, "blue");
+      fieldset {
+        border: none;
+      }
+    }
+  }
+  .resetPasswordField.errorField {
+    .MuiInputBase-root.MuiInputBase-formControl {
+      border: solid 2px map-get($theme-colors, "red");
+      fieldset {
+        border: none;
+      }
+    }
+    .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+      border: solid 2px map-get($theme-colors, "blue");
+      fieldset {
+        border: none;
+      }
+    }
+  }
+}
+
+.formEmail {
+  position: relative;
+  height: 90vh;
+  .title {
+    margin: 0 0 15px 0;
+    @extend %body-2;
+  }
+  .boxSubmitButton {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    button {
+      width: 40%;
+      @extend %button;
+      @extend %button-blue;
+      text-transform: none;
+      @media all and (max-width: 55em) {
+        width: 60%;
+      }
+      @media all and (max-width: 40em) {
+        width: 100%;
+      }
+    }
+  }
+
+  .emailField {
+    .MuiInputBase-root.MuiInputBase-formControl {
+      border: solid 1px map-get($theme-colors, "gray-2");
+      fieldset {
+        border: none;
+      }
+    }
+    .MuiFormLabel-root.Mui-focused,
+    .MuiFormLabel-root.MuiFormLabel-filled {
+      display: none;
+    }
+    .MuiInputBase-root.MuiInputBase-formControl.Mui-error {
+      border: solid 2px map-get($theme-colors, "red");
+      fieldset {
+        border: none;
+      }
+    }
+    .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+      border: solid 2px map-get($theme-colors, "blue");
+      fieldset {
+        border: none;
+      }
+    }
+  }
+}

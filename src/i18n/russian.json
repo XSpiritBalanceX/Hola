@@ -242,6 +242,7 @@
       "errIncorrectEmail": "Неверный email",
       "errorRequiredPassword": "Пароль обязателен",
       "errorMeetPassword": "Пароль не соответствует критериям",
+      "mismatchPassword": "Пароли не совпадают",
       "save": "Сохранить",
       "send": "Отправить",
       "titleForEmail": "Введите ваш E-mail, который вы использовали при регистрации, и мы вышлем вам инструкции по сбросу пароля.",

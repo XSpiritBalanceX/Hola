@@ -11,7 +11,7 @@ const ResetPasswordPage = () => {
   const { t } = translate("translate", { keyPrefix: "resetPasswordPage" });
   const navigate = useNavigate();
 
-  const [isSavedPassword, setIsSavedPassword] = useState(false);
+  const [isSavedPassword, setIsSavedPassword] = useState(true);
 
   const handleNavigate = () => {
     navigate("/profile/settings");

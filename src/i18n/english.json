@@ -242,6 +242,7 @@
       "errIncorrectEmail": "Invalid email",
       "errorRequiredPassword": "Password is required",
       "errorMeetPassword": "Password does not meet the criteria",
+      "mismatchPassword": "Password mismatch",
       "save": "Save",
       "send": "Send",
       "titleForEmail": "Enter the e-mail address you used to register with and we’ll send you reset instructions",
