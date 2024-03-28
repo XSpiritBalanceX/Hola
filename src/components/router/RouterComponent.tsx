@@ -84,7 +84,7 @@ const RouterComponent = () => {
         }
       />
       <Route
-        path="/reset_password"
+        path="/reset_password/:step"
         element={
           <ProtectedRouter>
             <ResetPasswordPage />

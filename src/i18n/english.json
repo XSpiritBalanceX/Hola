@@ -245,9 +245,12 @@
       "mismatchPassword": "Password mismatch",
       "save": "Save",
       "send": "Send",
-      "titleForEmail": "Enter the e-mail address you used to register with and we’ll send you reset instructions",
+      "titleForEmail": "Enter the e-mail address you used to register with and we’ll send you the confirmation code",
       "email": "E-mail",
-      "errReset": "An unexpected error occurred"
+      "errorRequiredField": "This field is required",
+      "confirmationCode": "Confirmation code",
+      "errReset": "An unexpected error occurred",
+      "titleModal": "Your password has been successfully changed"
     }
   }
 }

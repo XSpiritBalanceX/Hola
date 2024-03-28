@@ -19,7 +19,7 @@ const SettingsLinks = () => {
         <CardIcon fill="black" />
         {t("subscription")}
       </NavLink>
-      <NavLink to={"/reset_password"} className={"itemLink"}>
+      <NavLink to={"/reset_password/email"} className={"itemLink"}>
         <LockIcon fill="black" />
         {t("resetPassword")}
       </NavLink>

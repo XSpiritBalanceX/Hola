@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { Path, useForm } from "react-hook-form";
 import { translate } from "@i18n";
 import ControlledPassword from "@components/fields/ControlledPassword";
+import ControlledInput from "@components/fields/ControlledInput";
 import { Link } from "react-router-dom";
 import "./ResetForm.scss";
 
@@ -31,6 +32,7 @@ const PasswordsForm = ({ cbHandleSavePassword }: IPasswordsFormProps) => {
       .min(8, t("errorMeetPassword"))
       .max(25, t("errorMeetPassword"))
       .matches(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])/, t("errorMeetPassword")),
+    confirmation_code: Yup.string().required(t("errorRequiredField")),
   });
 
   const {
@@ -78,6 +80,13 @@ const PasswordsForm = ({ cbHandleSavePassword }: IPasswordsFormProps) => {
       onSubmit={handleSubmit(onSubmitResetPassword)}
       className="formResetPassword"
     >
+      <ControlledInput
+        name="confirmation_code"
+        label={t("confirmationCode")}
+        control={control}
+        error={errors && errors.confirmation_code?.message}
+        classNameField="resetPasswordField"
+      />
       <ControlledPassword
         name="current_password"
         label={t("currPassword")}
