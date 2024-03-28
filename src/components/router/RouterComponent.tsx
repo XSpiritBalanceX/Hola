@@ -93,6 +93,14 @@ const RouterComponent = () => {
         }
       />
       <Route
+        path="/forgot_password/:step"
+        element={
+          <ProtectedRouter>
+            <ResetPasswordPage />
+          </ProtectedRouter>
+        }
+      />
+      <Route
         path="/privacy"
         element={
           <ProtectedRouter>

@@ -250,7 +250,8 @@
       "errorRequiredField": "This field is required",
       "confirmationCode": "Confirmation code",
       "errReset": "An unexpected error occurred",
-      "titleModal": "Your password has been successfully changed"
+      "titleModal": "Your password has been successfully changed",
+      "setNewPassword": "Set new password"
     },
     "privacyPage": {
       "privacy": "Privacy Policy"
