@@ -1,18 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import holaSlice from "./holaSlice";
-import { profileEditApi } from "./profileEditApi";
+import { profileApi } from "./profileApi";
 import { accountApi } from "./accountApi";
 
 export const store = configureStore({
   reducer: {
     hola: holaSlice,
-    [profileEditApi.reducerPath]: profileEditApi.reducer,
+    [profileApi.reducerPath]: profileApi.reducer,
     [accountApi.reducerPath]: accountApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
-      .concat(profileEditApi.middleware)
+      .concat(profileApi.middleware)
       .concat(accountApi.middleware),
 });
 

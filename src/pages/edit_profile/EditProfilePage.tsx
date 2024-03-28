@@ -7,14 +7,14 @@ import UserInterests from "@components/userInterests/UserInterests";
 import MainEditProfile from "./MainEditProfile";
 import Loader from "@components/loader/Loader";
 import CustomError from "@components/error/CustomError";
-import { useGetProfileQuery } from "@store/profileEditApi";
+import { useGetProfileQuery } from "@store/profileApi";
 import { listOfInterests } from "@utils/listOfInterests";
 import {
   useAddPhotosMutation,
   useAddInterestsMutation,
   useDeletePhotoMutation,
   useUpdateDescriptionMutation,
-} from "@store/profileEditApi";
+} from "@store/profileApi";
 import UserDescription from "@components/userDescription/UserDescription";
 import "./EditProfile.scss";
 

@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "@store/hook";
 import * as holaSelectors from "@store/selectors";
-import { useAddInterestsMutation } from "@store/profileEditApi";
+import { useAddInterestsMutation } from "@store/profileApi";
 import "./UserInterests.scss";
 
 interface IInterestsProps {

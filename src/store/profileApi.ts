@@ -1,7 +1,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { requestHandler } from "./requestHandler";
 
-export type TProfileInfo = {
+export type TProfileEditInfo = {
   id: number;
   description: string | null;
   interests: Array<{ id: number; name: string }>;
@@ -13,14 +13,14 @@ type TInterest = { interests: string[] };
 
 const userID = localStorage.getItem("hola_user_id");
 
-export const profileEditApi = createApi({
-  reducerPath: "profileEditApi",
+export const profileApi = createApi({
+  reducerPath: "profileApi",
   baseQuery: requestHandler,
-  tagTypes: ["ProfileEdit"],
+  tagTypes: ["Profile"],
   endpoints: (builder) => ({
-    getProfile: builder.query<TProfileInfo, void>({
+    getProfile: builder.query<TProfileEditInfo, void>({
       query: () => `/persons/${userID}/profile_edit/`,
-      providesTags: ["ProfileEdit"],
+      providesTags: ["Profile"],
     }),
     addInterests: builder.mutation<void, TInterest>({
       //@ts-ignore
@@ -29,7 +29,7 @@ export const profileEditApi = createApi({
         method: "POST",
         body: interests,
       }),
-      invalidatesTags: ["ProfileEdit"],
+      invalidatesTags: ["Profile"],
     }),
     addPhotos: builder.mutation<void, FormData>({
       //@ts-ignore
@@ -38,7 +38,7 @@ export const profileEditApi = createApi({
         method: "POST",
         body: images,
       }),
-      invalidatesTags: ["ProfileEdit"],
+      invalidatesTags: ["Profile"],
     }),
     deletePhoto: builder.mutation<void, number>({
       //@ts-ignore
@@ -46,7 +46,7 @@ export const profileEditApi = createApi({
         url: `/images/${imageID}/`,
         method: "DELETE",
       }),
-      invalidatesTags: ["ProfileEdit"],
+      invalidatesTags: ["Profile"],
     }),
     updateDescription: builder.mutation<void, string>({
       //@ts-ignore
@@ -55,7 +55,7 @@ export const profileEditApi = createApi({
         method: "PATCH",
         body: { description },
       }),
-      invalidatesTags: ["ProfileEdit"],
+      invalidatesTags: ["Profile"],
     }),
   }),
 });
@@ -66,4 +66,4 @@ export const {
   useAddPhotosMutation,
   useDeletePhotoMutation,
   useUpdateDescriptionMutation,
-} = profileEditApi;
+} = profileApi;

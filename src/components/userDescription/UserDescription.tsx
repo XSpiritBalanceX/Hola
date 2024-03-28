@@ -3,7 +3,7 @@ import { Box, TextField, Button } from "@mui/material";
 import { translate } from "@i18n";
 import { useAppSelector } from "@store/hook";
 import * as holaSelectors from "@store/selectors";
-import { useUpdateDescriptionMutation } from "@store/profileEditApi";
+import { useUpdateDescriptionMutation } from "@store/profileApi";
 import { toast } from "react-toastify";
 import "./UserDescription.scss";
 

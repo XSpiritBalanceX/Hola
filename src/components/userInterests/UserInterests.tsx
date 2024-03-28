@@ -5,7 +5,7 @@ import { translate } from "@i18n";
 import { useLocation } from "react-router-dom";
 import Interests from "./Interests";
 import Loader from "@components/loader/Loader";
-import { useAddInterestsMutation } from "@store/profileEditApi";
+import { useAddInterestsMutation } from "@store/profileApi";
 import "./UserInterests.scss";
 
 const UserInterests = () => {
