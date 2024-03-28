@@ -15,6 +15,7 @@ const ProfilePage = () => {
   const { data, error, isLoading } = useGetProfileInformationQuery();
 
   const [isOpenPhotoModal, setIsOpenPhotoModal] = useState(false);
+  const [snapshot, setSnapshot] = useState<string | null>(null);
 
   const handleCloseModal = () => {
     setIsOpenPhotoModal(false);
@@ -22,6 +23,10 @@ const ProfilePage = () => {
 
   const handleOpenModal = () => {
     setIsOpenPhotoModal(true);
+  };
+
+  const handleSnapshot = (photo: string) => {
+    setSnapshot(photo);
   };
 
   return error ? (
@@ -32,13 +37,14 @@ const ProfilePage = () => {
       <ProfilePhotoModal
         isOpen={isOpenPhotoModal}
         cbCloseModal={handleCloseModal}
+        cbHandleSnapshot={handleSnapshot}
       />
       {data && !error && (
         <>
           <Box className="profilePictureAndLogo">
             <img src={logo} alt="logo" />
             <UserPicture
-              photo={data.avatar || ""}
+              photo={snapshot}
               complete={data.complete || 0}
               cbHandleOpenModal={handleOpenModal}
             />

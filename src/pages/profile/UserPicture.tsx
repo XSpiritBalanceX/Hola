@@ -4,7 +4,7 @@ import { translate } from "@i18n";
 import "./Profile.scss";
 
 interface IUserPictureProps {
-  photo: string;
+  photo: string | null;
   complete: number;
   cbHandleOpenModal: () => void;
 }

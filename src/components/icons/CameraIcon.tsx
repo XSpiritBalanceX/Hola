@@ -41,7 +41,7 @@ const CameraIcon = ({ fill }: ICameraIconProps) => {
         <path
           id="path"
           d="M18.75 10.41L19.79 10.41"
-          stroke="#000000"
+          stroke={fill}
           strokeOpacity="1.000000"
           strokeWidth="1.500000"
           strokeLinecap="round"

@@ -243,6 +243,7 @@
   align-items: flex-end;
   justify-content: center;
   border: none;
+  position: relative;
   .contentProfilePhotoModalBox {
     background-color: map-get($theme-colors, "white");
     border-radius: 20px 20px 0 0;
@@ -262,6 +263,30 @@
         svg {
           fill: map-get($theme-colors, "black");
         }
+      }
+    }
+    .videoFrameBox {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      width: 50%;
+      background-color: map-get($theme-colors, "light-blue-1");
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: map-deep-get($theme-colors, "box-shadow", "shadow");
+      .videoFrame {
+        width: 100%;
+      }
+      .takePhotoButton {
+        margin-top: 20px;
+        width: 40%;
+        @extend %button-white;
       }
     }
 
