@@ -1,6 +1,7 @@
 import { RootState } from ".";
 import { TProfileEditInfo } from "./profileApi";
 import { TAccountInfo } from "./accountApi";
+import { TProfileInformation } from "./profileInformationApi";
 
 export const localeSelect = (state: RootState) => state.hola.locale;
 
@@ -11,3 +12,7 @@ export const profileEditSelect = (state: RootState) =>
 
 export const accountSelect = (state: RootState) =>
   state.accountApi.queries["getAccount(undefined)"]?.data as TAccountInfo;
+
+export const profileInformationSelect = (state: RootState) =>
+  state.profileInformationApi.queries["getProfileInformation(undefined)"]
+    ?.data as TProfileInformation;

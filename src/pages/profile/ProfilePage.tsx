@@ -4,19 +4,19 @@ import ProfileLinks from "./ProfileLinks";
 import UserPicture from "./UserPicture";
 import ButtonLogOut from "./ButtonLogOut";
 import Loader from "@components/loader/Loader";
-import { useGetProfile } from "@hook/useGetProfile";
 import CustomError from "@components/error/CustomError";
 import TabMenu from "@components/tabMenu/TabMenu";
+import { useGetProfileInformationQuery } from "@store/profileInformationApi";
 import "./Profile.scss";
 
 const ProfilePage = () => {
-  const { data, loading, error } = useGetProfile();
+  const { data, error, isLoading } = useGetProfileInformationQuery();
 
   return error ? (
     <CustomError />
   ) : (
     <Container className="profileContainer">
-      <Loader isLoading={loading} />
+      <Loader isLoading={isLoading} />
       {data && !error && (
         <>
           <Box className="profilePictureAndLogo">
