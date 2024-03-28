@@ -251,6 +251,9 @@
       "confirmationCode": "Confirmation code",
       "errReset": "An unexpected error occurred",
       "titleModal": "Your password has been successfully changed"
+    },
+    "privacyPage": {
+      "privacy": "Privacy Policy"
     }
   }
 }
