@@ -1,6 +1,7 @@
 import { Box, CircularProgress } from "@mui/material";
 import user from "@assets/user.png";
 import { translate } from "@i18n";
+import { HOST } from "@axiosApi/axiosAPI";
 import "./Profile.scss";
 
 interface IUserPictureProps {
@@ -30,7 +31,7 @@ const UserPicture = ({
       <p className="completeRate">
         {complete}% {t("complete")}
       </p>
-      <img src={photo || user} alt="user" />
+      <img src={photo ? photo.replace("minio", HOST) : user} alt="user" />
     </Box>
   );
 };

@@ -2,17 +2,16 @@ import { useRef, useState } from "react";
 import { Button, Box } from "@mui/material";
 import { translate } from "@i18n";
 import CameraIcon from "@components/icons/CameraIcon";
+import { useUploadAvatarMutation } from "@store/profileInformationApi";
 
 interface ITakePhotoButtonProps {
   cbCloseModal: () => void;
-  cbHandleSnapshot: (photo: string) => void;
 }
 
-const TakePhotoButton = ({
-  cbCloseModal,
-  cbHandleSnapshot,
-}: ITakePhotoButtonProps) => {
+const TakePhotoButton = ({ cbCloseModal }: ITakePhotoButtonProps) => {
   const { t } = translate("translate", { keyPrefix: "modals.profilePhoto" });
+
+  const [uploadAvatar] = useUploadAvatarMutation();
 
   const [isClickOnButton, setIsClickOnButton] = useState(false);
 
@@ -42,10 +41,29 @@ const TakePhotoButton = ({
       if (context) {
         context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
         const snapshotUrl = canvas.toDataURL("image/png");
-        cbHandleSnapshot(snapshotUrl);
-        cbCloseModal();
+        convertToFile(snapshotUrl);
       }
     }
+  };
+
+  const convertToFile = (data: string) => {
+    fetch(data)
+      .then((res) => res.blob())
+      .then((blob) => {
+        const file = new File([blob], "File name", { type: "image/png" });
+        uploadPhoto(file);
+      });
+  };
+
+  const uploadPhoto = (file: File) => {
+    const formData = new FormData();
+    formData.append("avatar", file);
+    uploadAvatar(formData)
+      .unwrap()
+      .then(() => {
+        cbCloseModal();
+      })
+      .catch((err: any) => console.log(err));
   };
 
   return (

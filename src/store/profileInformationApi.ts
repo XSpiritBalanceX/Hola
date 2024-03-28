@@ -19,7 +19,17 @@ export const profileInformationApi = createApi({
       query: () => `/persons/${userID}/`,
       providesTags: ["ProfileInformation"],
     }),
+    uploadAvatar: builder.mutation<void, FormData>({
+      //@ts-ignore
+      query: (photo) => ({
+        url: `/persons/${userID}/`,
+        method: "PATCH",
+        body: photo,
+      }),
+      invalidatesTags: ["ProfileInformation"],
+    }),
   }),
 });
 
-export const { useGetProfileInformationQuery } = profileInformationApi;
+export const { useGetProfileInformationQuery, useUploadAvatarMutation } =
+  profileInformationApi;

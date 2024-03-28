@@ -9,13 +9,11 @@ import "./Modals.scss";
 interface IProfilePhotoModalProps {
   isOpen: boolean;
   cbCloseModal: () => void;
-  cbHandleSnapshot: (photo: string) => void;
 }
 
 const ProfilePhotoModal = ({
   isOpen,
   cbCloseModal,
-  cbHandleSnapshot,
 }: IProfilePhotoModalProps) => {
   const { t } = translate("translate", { keyPrefix: "modals.profilePhoto" });
 
@@ -41,10 +39,7 @@ const ProfilePhotoModal = ({
             <PictureIcon fill="black" />
             {t("upload")}
           </Button>
-          <TakePhotoButton
-            cbCloseModal={handleCloseModal}
-            cbHandleSnapshot={cbHandleSnapshot}
-          />
+          <TakePhotoButton cbCloseModal={handleCloseModal} />
           <Button type="button" className="deleteButton">
             <BucketIcon fill="#B50000" />
             {t("delete")}
