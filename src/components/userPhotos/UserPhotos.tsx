@@ -14,7 +14,7 @@ import { HOST } from "@axiosApi/axiosAPI";
 import {
   useAddPhotosMutation,
   useDeletePhotoMutation,
-} from "@store/profileApi";
+} from "@store/profileEditApi";
 import "./UserPhotos.scss";
 
 interface IUserPhotosProps {

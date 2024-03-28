@@ -13,14 +13,14 @@ type TInterest = { interests: string[] };
 
 const userID = localStorage.getItem("hola_user_id");
 
-export const profileApi = createApi({
-  reducerPath: "profileApi",
+export const profileEditApi = createApi({
+  reducerPath: "profileEditApi",
   baseQuery: requestHandler,
-  tagTypes: ["Profile"],
+  tagTypes: ["ProfileEdit"],
   endpoints: (builder) => ({
     getProfile: builder.query<TProfileInfo, void>({
       query: () => `/persons/${userID}/profile_edit/`,
-      providesTags: ["Profile"],
+      providesTags: ["ProfileEdit"],
     }),
     addInterests: builder.mutation<void, TInterest>({
       //@ts-ignore
@@ -29,7 +29,7 @@ export const profileApi = createApi({
         method: "POST",
         body: interests,
       }),
-      invalidatesTags: ["Profile"],
+      invalidatesTags: ["ProfileEdit"],
     }),
     addPhotos: builder.mutation<void, FormData>({
       //@ts-ignore
@@ -38,7 +38,7 @@ export const profileApi = createApi({
         method: "POST",
         body: images,
       }),
-      invalidatesTags: ["Profile"],
+      invalidatesTags: ["ProfileEdit"],
     }),
     deletePhoto: builder.mutation<void, number>({
       //@ts-ignore
@@ -46,7 +46,7 @@ export const profileApi = createApi({
         url: `/images/${imageID}/`,
         method: "DELETE",
       }),
-      invalidatesTags: ["Profile"],
+      invalidatesTags: ["ProfileEdit"],
     }),
     updateDescription: builder.mutation<void, string>({
       //@ts-ignore
@@ -55,7 +55,7 @@ export const profileApi = createApi({
         method: "PATCH",
         body: { description },
       }),
-      invalidatesTags: ["Profile"],
+      invalidatesTags: ["ProfileEdit"],
     }),
   }),
 });
@@ -66,4 +66,4 @@ export const {
   useAddPhotosMutation,
   useDeletePhotoMutation,
   useUpdateDescriptionMutation,
-} = profileApi;
+} = profileEditApi;
