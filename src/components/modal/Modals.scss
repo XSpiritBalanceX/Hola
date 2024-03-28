@@ -237,3 +237,65 @@
     }
   }
 }
+
+.modalContainerProfilePhoto {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border: none;
+  .contentProfilePhotoModalBox {
+    background-color: map-get($theme-colors, "white");
+    border-radius: 20px 20px 0 0;
+    height: 257px;
+    width: 100%;
+    padding: 20px 15px 60px 15px;
+    .closeModalButton {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      margin-bottom: 15px;
+      button {
+        padding: 0;
+        @extend %button-white;
+        height: 24px;
+        svg {
+          fill: map-get($theme-colors, "black");
+        }
+      }
+    }
+
+    .contentProfilePhotoModal {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      .titleModal {
+        margin: 0 0 20px 0;
+        text-align: center;
+        width: 100%;
+        @extend %h5;
+      }
+      button {
+        text-transform: none;
+        padding: 5px 10px;
+        margin-bottom: 30px;
+        @extend %body-1-medium;
+        @extend %button-white;
+        color: map-get($theme-colors, "black");
+        svg {
+          margin-right: 10px;
+        }
+        &:hover {
+          color: map-get($theme-colors, "black");
+        }
+      }
+      .deleteButton {
+        color: map-get($theme-colors, "red");
+        &:hover {
+          color: map-get($theme-colors, "red");
+        }
+      }
+    }
+  }
+}

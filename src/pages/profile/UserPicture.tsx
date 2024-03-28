@@ -6,13 +6,22 @@ import "./Profile.scss";
 interface IUserPictureProps {
   photo: string;
   complete: number;
+  cbHandleOpenModal: () => void;
 }
 
-const UserPicture = ({ photo, complete }: IUserPictureProps) => {
+const UserPicture = ({
+  photo,
+  complete,
+  cbHandleOpenModal,
+}: IUserPictureProps) => {
   const { t } = translate("translate", { keyPrefix: "profile" });
 
+  const handleClick = () => {
+    cbHandleOpenModal();
+  };
+
   return (
-    <Box className="profilePictureBox">
+    <Box className="profilePictureBox" onClick={handleClick}>
       <CircularProgress
         variant="determinate"
         value={complete}
