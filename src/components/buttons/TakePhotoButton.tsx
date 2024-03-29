@@ -14,6 +14,7 @@ const TakePhotoButton = ({ cbCloseModal }: ITakePhotoButtonProps) => {
   const [uploadAvatar] = useUploadAvatarMutation();
 
   const [isClickOnButton, setIsClickOnButton] = useState(false);
+  const [photo, setPhoto] = useState<string | null>(null);
 
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -41,18 +42,20 @@ const TakePhotoButton = ({ cbCloseModal }: ITakePhotoButtonProps) => {
       if (context) {
         context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
         const snapshotUrl = canvas.toDataURL("image/png");
-        convertToFile(snapshotUrl);
+        setPhoto(snapshotUrl);
       }
     }
   };
 
-  const convertToFile = (data: string) => {
-    fetch(data)
-      .then((res) => res.blob())
-      .then((blob) => {
-        const file = new File([blob], "File name", { type: "image/png" });
-        uploadPhoto(file);
-      });
+  const convertToFile = () => {
+    if (photo) {
+      fetch(photo)
+        .then((res) => res.blob())
+        .then((blob) => {
+          const file = new File([blob], "File name", { type: "image/png" });
+          uploadPhoto(file);
+        });
+    }
   };
 
   const uploadPhoto = (file: File) => {
@@ -66,18 +69,48 @@ const TakePhotoButton = ({ cbCloseModal }: ITakePhotoButtonProps) => {
       .catch((err: any) => console.log(err));
   };
 
+  const handleRetakePhoto = () => {
+    setPhoto(null);
+    handleTakePhoto();
+  };
+
+  const handleCloseFrame = () => {
+    setIsClickOnButton(false);
+    setPhoto(null);
+  };
+
   return (
     <>
       {isClickOnButton && (
         <Box className="videoFrameBox">
-          <video ref={videoRef} className="videoFrame" />
-          <Button
-            type="button"
-            onClick={handleTakeSnapshot}
-            className="takePhotoButton"
-          >
-            <CameraIcon fill="#554cb6" />
-          </Button>
+          {!photo && (
+            <>
+              <video ref={videoRef} className="videoFrame" />
+              <Button
+                type="button"
+                onClick={handleTakeSnapshot}
+                className="takePhotoButton"
+              >
+                <CameraIcon fill="#554cb6" />
+              </Button>
+            </>
+          )}
+          {photo && (
+            <>
+              <img src={photo} alt="user" />
+              <Box className="buttonsTakePhotoBox">
+                <Button type="button" onClick={convertToFile}>
+                  {t("save")}
+                </Button>
+                <Button type="button" onClick={handleRetakePhoto}>
+                  {t("retake")}
+                </Button>
+                <Button type="button" onClick={handleCloseFrame}>
+                  {t("close")}
+                </Button>
+              </Box>
+            </>
+          )}
         </Box>
       )}
       <Button type="button" onClick={handleTakePhoto}>

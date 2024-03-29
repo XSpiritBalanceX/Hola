@@ -280,13 +280,44 @@
       padding: 20px;
       border-radius: 20px;
       box-shadow: map-deep-get($theme-colors, "box-shadow", "shadow");
+      @media all and (max-width: 60em) {
+        width: 60%;
+        height: 70%;
+        height: auto;
+        padding: 20px 10px;
+      }
+      @media all and (max-width: 620px) {
+        width: 80%;
+      }
+      @media all and (max-width: 400px) {
+        width: 90%;
+        padding: 20px 10px;
+      }
       .videoFrame {
+        width: 100%;
+      }
+      img {
         width: 100%;
       }
       .takePhotoButton {
         margin-top: 20px;
         width: 40%;
         @extend %button-white;
+      }
+      .buttonsTakePhotoBox {
+        margin-top: 20px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: transparent;
+        button {
+          margin-bottom: 10px;
+          @extend %button;
+        }
+        button:first-child {
+          @extend %button-blue;
+        }
       }
     }
 

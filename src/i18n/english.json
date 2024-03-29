@@ -133,7 +133,10 @@
         "profilePhoto": "Profile photo",
         "upload": "Upload from device",
         "takePhoto": "Take a photo",
-        "delete": "Delete the current photo"
+        "delete": "Delete the current photo",
+        "save": "Save",
+        "retake": "Retake",
+        "close": "Close"
       }
     },
     "profile": {
