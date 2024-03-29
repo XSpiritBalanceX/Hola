@@ -4,6 +4,7 @@ import { translate } from "@i18n";
 import PictureIcon from "@components/icons/PictureIcon";
 import BucketIcon from "@components/icons/BucketIcon";
 import TakePhotoButton from "@components/buttons/TakePhotoButton";
+import UploadPhotoButton from "@components/buttons/UploadPhotoButton";
 import "./Modals.scss";
 
 interface IProfilePhotoModalProps {
@@ -35,16 +36,13 @@ const ProfilePhotoModal = ({
         </Box>
         <Box className="contentProfilePhotoModal">
           <p className="titleModal">{t("profilePhoto")}</p>
-          <Button type="button">
-            <PictureIcon fill="black" />
-            {t("upload")}
-          </Button>
+          <UploadPhotoButton cbCloseModal={handleCloseModal} />
           <TakePhotoButton cbCloseModal={handleCloseModal} />
           <Button type="button" className="deleteButton">
             <BucketIcon fill="#B50000" />
             {t("delete")}
           </Button>
-        </Box>{" "}
+        </Box>
       </Box>
     </Modal>
   );

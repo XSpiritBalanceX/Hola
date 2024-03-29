@@ -3,6 +3,8 @@ import { Button, Box } from "@mui/material";
 import { translate } from "@i18n";
 import CameraIcon from "@components/icons/CameraIcon";
 import { useUploadAvatarMutation } from "@store/profileInformationApi";
+import { toast } from "react-toastify";
+import "@components/modal/Modals.scss";
 
 interface ITakePhotoButtonProps {
   cbCloseModal: () => void;
@@ -66,7 +68,10 @@ const TakePhotoButton = ({ cbCloseModal }: ITakePhotoButtonProps) => {
       .then(() => {
         cbCloseModal();
       })
-      .catch((err: any) => console.log(err));
+      .catch(() => {
+        toast.error(t("errPhoto"));
+        cbCloseModal();
+      });
   };
 
   const handleRetakePhoto = () => {

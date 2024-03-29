@@ -136,7 +136,8 @@
         "delete": "Delete the current photo",
         "save": "Save",
         "retake": "Retake",
-        "close": "Close"
+        "close": "Close",
+        "errPhoto": "An unexpected error occurred"
       }
     },
     "profile": {
