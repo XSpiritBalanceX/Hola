@@ -73,7 +73,7 @@ const ListCountries = ({
         : el.russianLabel === country
     );
     if (location) {
-      setValue("country", {
+      setValue("location", {
         id: location!.id,
         name: locale === "en" ? location.englishLabel : location.russianLabel,
       });

@@ -4,7 +4,7 @@ interface IUserInformation {
   gender: string;
   name: string;
   date_of_birth: string;
-  country: number;
+  location: number;
   email: string;
   password: string;
 }

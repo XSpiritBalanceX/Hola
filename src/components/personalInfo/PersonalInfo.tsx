@@ -50,7 +50,7 @@ const PersonalInfo = () => {
         const age = currentDate.diff(dob, "years");
         return age >= minAge;
       }),
-    country: Yup.object()
+    location: Yup.object()
       .shape({ id: Yup.number().required(), name: Yup.string().required() })
       .required(t("errorRequiredField")),
     email: Yup.string()
@@ -101,7 +101,7 @@ const PersonalInfo = () => {
       date_of_birth: moment(data.date_of_birth, "DD.MM.YYYY").format(
         "YYYY-MM-DD"
       ),
-      country: data.country.id,
+      location: data.location.id,
       email: data.email,
       password: data.password,
     };
@@ -219,7 +219,7 @@ const PersonalInfo = () => {
         />
         {showCountryList ? (
           <ListCountries
-            user_country={watch("country.name")}
+            user_country={watch("location.name")}
             cbHandleHideCountryList={handleHideCountryList}
             setValue={setValue}
           />
@@ -227,11 +227,11 @@ const PersonalInfo = () => {
           <Box className="controlledFieldBox">
             <TextField
               label={t("country")}
-              value={watch("country.name")}
+              value={watch("location.name")}
               className="controlledField"
-              error={!!errors.country}
+              error={!!errors.location}
               InputProps={{
-                endAdornment: !!errors.country && (
+                endAdornment: !!errors.location && (
                   <InputAdornment position="end" className="errorIcon">
                     <WarningAmberRoundedIcon />
                   </InputAdornment>
@@ -241,7 +241,7 @@ const PersonalInfo = () => {
               onClick={handleShowCountryList}
             />
             <FormHelperText className="errorMessage">
-              {errors && errors.country?.message}
+              {errors && errors.location?.message}
             </FormHelperText>
           </Box>
         )}
