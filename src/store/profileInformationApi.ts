@@ -22,14 +22,25 @@ export const profileInformationApi = createApi({
     uploadAvatar: builder.mutation<void, FormData>({
       //@ts-ignore
       query: (photo) => ({
-        url: `/persons/${userID}/`,
+        url: `/persons/${userID}/avatar/`,
         method: "PATCH",
         body: photo,
+      }),
+      invalidatesTags: ["ProfileInformation"],
+    }),
+    deleteAvatar: builder.mutation<void, void>({
+      //@ts-ignore
+      query: () => ({
+        url: `/persons/${userID}/avatar/`,
+        method: "DELETE",
       }),
       invalidatesTags: ["ProfileInformation"],
     }),
   }),
 });
 
-export const { useGetProfileInformationQuery, useUploadAvatarMutation } =
-  profileInformationApi;
+export const {
+  useGetProfileInformationQuery,
+  useUploadAvatarMutation,
+  useDeleteAvatarMutation,
+} = profileInformationApi;

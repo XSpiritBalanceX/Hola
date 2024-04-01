@@ -7,12 +7,18 @@ import ButtonLogOut from "./ButtonLogOut";
 import Loader from "@components/loader/Loader";
 import CustomError from "@components/error/CustomError";
 import TabMenu from "@components/tabMenu/TabMenu";
-import { useGetProfileInformationQuery } from "@store/profileInformationApi";
+import {
+  useGetProfileInformationQuery,
+  useUploadAvatarMutation,
+  useDeleteAvatarMutation,
+} from "@store/profileInformationApi";
 import ProfilePhotoModal from "@components/modal/ProfilePhotoModal";
 import "./Profile.scss";
 
 const ProfilePage = () => {
   const { data, error, isLoading } = useGetProfileInformationQuery();
+  const [, { isLoading: loadingMutation }] = useUploadAvatarMutation();
+  const [, { isLoading: loadingDeleting }] = useDeleteAvatarMutation();
 
   const [isOpenPhotoModal, setIsOpenPhotoModal] = useState(false);
 
@@ -28,7 +34,7 @@ const ProfilePage = () => {
     <CustomError />
   ) : (
     <Container className="profileContainer">
-      <Loader isLoading={isLoading} />
+      <Loader isLoading={isLoading || loadingMutation || loadingDeleting} />
       <ProfilePhotoModal
         isOpen={isOpenPhotoModal}
         cbCloseModal={handleCloseModal}

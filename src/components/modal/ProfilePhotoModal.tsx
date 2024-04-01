@@ -1,10 +1,9 @@
 import { Modal, Box, Button } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { translate } from "@i18n";
-import PictureIcon from "@components/icons/PictureIcon";
-import BucketIcon from "@components/icons/BucketIcon";
 import TakePhotoButton from "@components/buttons/TakePhotoButton";
 import UploadPhotoButton from "@components/buttons/UploadPhotoButton";
+import DeletePhotoButton from "@components/buttons/DeletePhotoButton";
 import "./Modals.scss";
 
 interface IProfilePhotoModalProps {
@@ -38,10 +37,7 @@ const ProfilePhotoModal = ({
           <p className="titleModal">{t("profilePhoto")}</p>
           <UploadPhotoButton cbCloseModal={handleCloseModal} />
           <TakePhotoButton cbCloseModal={handleCloseModal} />
-          <Button type="button" className="deleteButton">
-            <BucketIcon fill="#B50000" />
-            {t("delete")}
-          </Button>
+          <DeletePhotoButton cbCloseModal={handleCloseModal} />
         </Box>
       </Box>
     </Modal>
