@@ -209,7 +209,8 @@
     "errorScreen": {
       "pageNotFound": "Страница не найдена",
       "textInErrorPage": "Страница, которую вы ищете, была удалена, изменила свое название или временно недоступна",
-      "goToToHome": "На главную"
+      "goToToHome": "На главную",
+      "logOut": "Выйти"
     },
     "profileSettings": {
       "settings": "Настройки",
