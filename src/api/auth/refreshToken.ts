@@ -7,14 +7,18 @@ interface IToken {
 }
 
 export const refreshAccessToken = async (): Promise<string> => {
-  const refreshToken = localStorage.getItem("hola_refresh_token");
-  const result = await axios.post(`${BASE_URL}/auth/refresh/`, {
-    refresh: refreshToken,
-  });
+  try {
+    const refreshToken = localStorage.getItem("hola_refresh_token");
+    const result = await axios.post(`${BASE_URL}/auth/refresh/`, {
+      refresh: refreshToken,
+    });
 
-  const decodeToken: IToken = jwtDecode(result.data.access);
-  const newAccessToken = result.data.access;
+    const decodeToken: IToken = jwtDecode(result.data.access);
+    const newAccessToken = result.data.access;
 
-  localStorage.setItem("hola_tokenExpires", decodeToken.exp.toString());
-  return newAccessToken;
+    localStorage.setItem("hola_tokenExpires", decodeToken.exp.toString());
+    return newAccessToken;
+  } catch (err: any) {
+    return "";
+  }
 };

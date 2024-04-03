@@ -4,6 +4,7 @@ import holaSlice from "./holaSlice";
 import { profileApi } from "./profileApi";
 import { accountApi } from "./accountApi";
 import { profileInformationApi } from "./profileInformationApi";
+import { subscriptionApi } from "./subscriptionApi";
 
 export const store = configureStore({
   reducer: {
@@ -11,12 +12,14 @@ export const store = configureStore({
     [profileApi.reducerPath]: profileApi.reducer,
     [accountApi.reducerPath]: accountApi.reducer,
     [profileInformationApi.reducerPath]: profileInformationApi.reducer,
+    [subscriptionApi.reducerPath]: subscriptionApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       profileApi.middleware,
       accountApi.middleware,
-      profileInformationApi.middleware
+      profileInformationApi.middleware,
+      subscriptionApi.middleware
     ),
 });
 

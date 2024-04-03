@@ -265,6 +265,12 @@
     },
     "privacyPage": {
       "privacy": "Политика конфиденциальности"
+    },
+    "subscriptionPage": {
+      "subscription": "Подписка",
+      "availablePlan": "Доступные планы",
+      "startNow": "Начать сейчас",
+      "yourPlan": "Ваш план"
     }
   }
 }

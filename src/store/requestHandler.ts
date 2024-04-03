@@ -22,16 +22,18 @@ export const requestHandler = async (
   if (response.error?.status === 401) {
     try {
       const newAccessToken = await refreshAccessToken();
-      localStorage.setItem("hola_access_token", newAccessToken);
+      if (newAccessToken) {
+        localStorage.setItem("hola_access_token", newAccessToken);
 
-      const updatedConfig = {
-        ...config,
-        headers: {
-          ...config.headers,
-          authorization: `Bearer ${newAccessToken}`,
-        },
-      };
-      return baseQuery(url, updatedConfig, extraOptions);
+        const updatedConfig = {
+          ...config,
+          headers: {
+            ...config.headers,
+            authorization: `Bearer ${newAccessToken}`,
+          },
+        };
+        return baseQuery(url, updatedConfig, extraOptions);
+      }
     } catch (error) {
       throw error;
     }

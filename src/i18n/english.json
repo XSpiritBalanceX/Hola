@@ -265,6 +265,12 @@
     },
     "privacyPage": {
       "privacy": "Privacy Policy"
+    },
+    "subscriptionPage": {
+      "subscription": "Subscription",
+      "availablePlan": "Available plans",
+      "startNow": "Start Now",
+      "yourPlan": "Your plan"
     }
   }
 }

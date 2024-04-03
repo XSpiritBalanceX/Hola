@@ -8,6 +8,7 @@ import ProfileSettingsPage from "@pages/profile_settings/ProfileSettingsPage";
 import AccountSettingsPage from "@pages/account_settings/AccountSettingsPage";
 import ResetPasswordPage from "@pages/reset_password/ResetPasswordPage";
 import PrivacyPage from "@pages/privacy/PrivacyPage";
+import SubscriptionPage from "@pages/subscription/SubscriptionPage";
 
 const RouterComponent = () => {
   return (
@@ -97,6 +98,14 @@ const RouterComponent = () => {
         element={
           <ProtectedRouter>
             <PrivacyPage />
+          </ProtectedRouter>
+        }
+      />
+      <Route
+        path="/subscription"
+        element={
+          <ProtectedRouter>
+            <SubscriptionPage />
           </ProtectedRouter>
         }
       />
