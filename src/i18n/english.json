@@ -270,7 +270,21 @@
       "subscription": "Subscription",
       "availablePlan": "Available plans",
       "startNow": "Start Now",
-      "yourPlan": "Your plan"
+      "yourPlan": "Your plan",
+      "premium1": "Set preferred location",
+      "premium2": "Search internationally",
+      "premium3": "View likes",
+      "premium4": "Reply to stories",
+      "premiumStudent1": "Set preferred location",
+      "premiumStudent2": "Search internationally",
+      "premiumStudent3": "View likes",
+      "premiumStudent4": "New app themes",
+      "free1": "Like",
+      "free2": "Send messages",
+      "free3": "Post stories",
+      "free4": "Set age range",
+      "availablePlanPrice": "5 days trial, then {{price}}$ / month",
+      "perMonth": "{{price}}$ / month"
     }
   }
 }

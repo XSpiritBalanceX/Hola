@@ -6,13 +6,14 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { translate } from "@i18n";
 import { useNavigate } from "react-router-dom";
+import AvailablePlan from "@components/subscriptionPlan/AvailablePlan";
 import "./SubscriptionPage.scss";
 
 const SubscriptionPage = () => {
   const { t } = translate("translate", { keyPrefix: "subscriptionPage" });
 
   const { data, error, isLoading } = useGetSubscriptionsQuery();
-  console.log(data);
+
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -43,6 +44,15 @@ const SubscriptionPage = () => {
           </Box>
           <Box className="boxWithUsersPlans">
             <p className="titlePlans">{t("availablePlan")}</p>
+            {data &&
+              data.map((el, ind) => (
+                <AvailablePlan
+                  key={el.id}
+                  id={el.id}
+                  type={el.type}
+                  price_per_month={el.price_per_month}
+                />
+              ))}
           </Box>
         </Container>
       )}
