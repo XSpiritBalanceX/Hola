@@ -9,6 +9,7 @@ import AccountSettingsPage from "@pages/account_settings/AccountSettingsPage";
 import ResetPasswordPage from "@pages/reset_password/ResetPasswordPage";
 import PrivacyPage from "@pages/privacy/PrivacyPage";
 import SubscriptionPage from "@pages/subscription/SubscriptionPage";
+import PlanPage from "@pages/plan/PlanPage";
 
 const RouterComponent = () => {
   return (
@@ -106,6 +107,14 @@ const RouterComponent = () => {
         element={
           <ProtectedRouter>
             <SubscriptionPage />
+          </ProtectedRouter>
+        }
+      />
+      <Route
+        path="/plan/:id"
+        element={
+          <ProtectedRouter>
+            <PlanPage />
           </ProtectedRouter>
         }
       />

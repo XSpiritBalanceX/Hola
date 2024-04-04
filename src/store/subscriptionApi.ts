@@ -18,7 +18,11 @@ export const subscriptionApi = createApi({
       query: () => "/plans/",
       providesTags: ["Subscription"],
     }),
+    getPlanByID: builder.query<TPlanInformation, string>({
+      query: (id) => `/plans/${id}`,
+    }),
   }),
 });
 
-export const { useGetSubscriptionsQuery } = subscriptionApi;
+export const { useGetSubscriptionsQuery, useGetPlanByIDQuery } =
+  subscriptionApi;

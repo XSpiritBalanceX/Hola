@@ -285,6 +285,19 @@
       "free4": "Set age range",
       "availablePlanPrice": "5 days trial, then {{price}}$ / month",
       "perMonth": "{{price}}$ / month"
+    },
+    "planPage": {
+      "paymentInformation": "Please, enter your payment information",
+      "cardNumber": "Card number",
+      "expireDate": "Expire date",
+      "cardDetail": "Your card details are protected",
+      "iAgree": "I agree to the ",
+      "terms": "Terms of Use",
+      "and": "and",
+      "policy": "Privacy Policy",
+      "subscribe": "Subscribe",
+      "firstPayment": "First payment will be charged on ",
+      "cancelSub": "you may cancel subscription anytime."
     }
   }
 }

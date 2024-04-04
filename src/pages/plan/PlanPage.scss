@@ -1,0 +1,25 @@
+@import "../../variables";
+
+.containerPlanPage {
+  padding: 11px 20px 30px 20px !important;
+  .navigationButtonBox {
+    p {
+      text-transform: capitalize;
+    }
+  }
+  .paymentText {
+    margin: 85px 0 12px 0;
+    @extend %body-1;
+    text-align: center;
+  }
+  .paymentInformationText {
+    margin: 15px 0 0 0;
+    text-align: center;
+    @extend %body-2;
+    span {
+      color: map-get($theme-colors, "blue");
+      @extend %body-2-bold;
+      text-transform: capitalize;
+    }
+  }
+}
