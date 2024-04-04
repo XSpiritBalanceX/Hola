@@ -1,4 +1,4 @@
-import { Container } from "@mui/material";
+import { Container, Box } from "@mui/material";
 import { useParams } from "react-router-dom";
 import CustomError from "@components/error/CustomError";
 import Loader from "@components/loader/Loader";
@@ -32,14 +32,19 @@ const PlanPage = () => {
         <CustomError />
       ) : (
         <Container className="containerPlanPage">
-          <NavigationButton label={`Hola ${data?.type}`} path="/subscription" />
-          <p className="paymentText">{t("paymentInformation")}</p>
-          <PlanForm />
-          <p className="paymentInformationText">
-            {t("firstPayment")}
-            <span>{dateFormat}, </span>
-            {t("cancelSub")}
-          </p>
+          <Box className="contentPlanPage">
+            <NavigationButton
+              label={`Hola ${data?.type}`}
+              path="/subscription"
+            />
+            <p className="paymentText">{t("paymentInformation")}</p>
+            <PlanForm />
+            <p className="paymentInformationText">
+              {t("firstPayment")}
+              <span>{dateFormat}, </span>
+              {t("cancelSub")}
+            </p>
+          </Box>
         </Container>
       )}
     </>

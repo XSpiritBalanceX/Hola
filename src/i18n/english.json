@@ -293,11 +293,16 @@
       "cardDetail": "Your card details are protected",
       "iAgree": "I agree to the ",
       "terms": "Terms of Use",
-      "and": "and",
+      "and": " and ",
       "policy": "Privacy Policy",
       "subscribe": "Subscribe",
       "firstPayment": "First payment will be charged on ",
-      "cancelSub": "you may cancel subscription anytime."
+      "cancelSub": "you may cancel subscription anytime.",
+      "errorRequiredField": "This field is required",
+      "errReqPolicy": "You must agree",
+      "errNumber": "Only numbers can be entered",
+      "errLengthCardNumber": "The card number must consist of 16 digits",
+      "errExpDate": "The card has expired or the data is not valid"
     }
   }
 }
