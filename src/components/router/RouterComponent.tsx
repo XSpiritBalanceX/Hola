@@ -10,6 +10,7 @@ import ResetPasswordPage from "@pages/reset_password/ResetPasswordPage";
 import PrivacyPage from "@pages/privacy/PrivacyPage";
 import SubscriptionPage from "@pages/subscription/SubscriptionPage";
 import PlanPage from "@pages/plan/PlanPage";
+import UserPlanPage from "@pages/plan/UserPlanPage";
 
 const RouterComponent = () => {
   return (
@@ -115,6 +116,14 @@ const RouterComponent = () => {
         element={
           <ProtectedRouter>
             <PlanPage />
+          </ProtectedRouter>
+        }
+      />
+      <Route
+        path="/plan/user_plan"
+        element={
+          <ProtectedRouter>
+            <UserPlanPage />
           </ProtectedRouter>
         }
       />

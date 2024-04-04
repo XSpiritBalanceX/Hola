@@ -3,19 +3,8 @@ import logo from "@assets/logoblue.svg";
 import { translate } from "@i18n";
 import CheckIcon from "@mui/icons-material/Check";
 import { useNavigate } from "react-router-dom";
+import { IAvailablePlanProps, TPlansInformation } from "./TypesPlan";
 import "./SubscriptionPlan.scss";
-
-interface IAvailablePlanProps {
-  id: number;
-  type: string;
-  price_per_month: string;
-}
-
-type TPlansInformation = {
-  free: Array<string>;
-  premium: Array<string>;
-  "premium student": Array<string>;
-};
 
 const AvailablePlan = ({ id, type, price_per_month }: IAvailablePlanProps) => {
   const { t } = translate("translate", { keyPrefix: "subscriptionPage" });

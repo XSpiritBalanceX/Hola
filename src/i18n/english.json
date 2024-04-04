@@ -284,7 +284,10 @@
       "free3": "Post stories",
       "free4": "Set age range",
       "availablePlanPrice": "5 days trial, then {{price}}$ / month",
-      "perMonth": "{{price}}$ / month"
+      "perMonth": "{{price}}$ / month",
+      "choose": "Choose",
+      "nextPayment": "The next payment ",
+      "datePaym": " is on "
     },
     "planPage": {
       "paymentInformation": "Please, enter your payment information",
@@ -302,7 +305,9 @@
       "errReqPolicy": "You must agree",
       "errNumber": "Only numbers can be entered",
       "errLengthCardNumber": "The card number must consist of 16 digits",
-      "errExpDate": "The card has expired or the data is not valid"
+      "errExpDate": "The card has expired or the data is not valid",
+      "yourPlan": "Your plan",
+      "changePlan": "Change plan"
     }
   }
 }

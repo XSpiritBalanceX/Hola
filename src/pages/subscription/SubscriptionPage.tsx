@@ -6,12 +6,18 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { translate } from "@i18n";
 import AvailablePlan from "@components/subscriptionPlan/AvailablePlan";
 import NavigationButton from "@components/buttons/NavigationButton";
+import { useNavigate } from "react-router-dom";
 import "./SubscriptionPage.scss";
 
 const SubscriptionPage = () => {
   const { t } = translate("translate", { keyPrefix: "subscriptionPage" });
+  const navigate = useNavigate();
 
   const { data, error, isLoading } = useGetSubscriptionsQuery();
+
+  const handleNavigate = () => {
+    navigate("/plan/user_plan");
+  };
 
   return (
     <>
@@ -28,7 +34,7 @@ const SubscriptionPage = () => {
             <p className="titleCurrentPlan">{t("yourPlan")}</p>
             <Box className="planNameButton">
               <p>user plan</p>
-              <Button type="button">
+              <Button type="button" onClick={handleNavigate}>
                 <ArrowForwardIosIcon />
               </Button>
             </Box>
