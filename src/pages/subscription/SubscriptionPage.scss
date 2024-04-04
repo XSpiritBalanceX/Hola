@@ -2,26 +2,6 @@
 
 .subscriptionContainer {
   padding: 11px 20px 30px 20px !important;
-  .navigationSubscription {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 0 0 23px 0;
-    button {
-      padding: 0;
-      min-width: auto;
-      height: 30px;
-      svg {
-        fill: map-get($theme-colors, "black");
-      }
-    }
-    p {
-      margin: 0;
-      width: 100%;
-      text-align: center;
-      @extend %h3;
-    }
-  }
   .userCurrentPlanBox {
     display: flex;
     flex-direction: column;

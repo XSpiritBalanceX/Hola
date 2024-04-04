@@ -1,25 +1,14 @@
-import { Container, Box, Button } from "@mui/material";
-import { useNavigate } from "react-router";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import { Container } from "@mui/material";
 import { translate } from "@i18n";
+import NavigationButton from "@components/buttons/NavigationButton";
 import "./PrivacyPage.scss";
 
 const PrivacyPage = () => {
   const { t } = translate("translate", { keyPrefix: "privacyPage" });
-  const navigate = useNavigate();
-
-  const handleNavigate = () => {
-    navigate("/profile");
-  };
 
   return (
     <Container className="containerPrivacyPage">
-      <Box className="navigationPrivacyPage">
-        <Button type="button" onClick={handleNavigate}>
-          <ArrowBackIosNewIcon />
-        </Button>
-        <p>{t("privacy")}</p>
-      </Box>
+      <NavigationButton label={t("privacy")} path={"/profile"} />
       <p>
         Korem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis
         molestie, dictum est a, mattis tellus. Sed dignissim, metus nec

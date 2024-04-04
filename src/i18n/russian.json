@@ -243,7 +243,7 @@
       "successUpdate": "Информация была успешно обновлена"
     },
     "resetPasswordPage": {
-      "resetPassword": "Reset Password",
+      "resetPassword": "Сброс пароля",
       "currPassword": "Текущий пароль",
       "newPassword": "Новый пароль",
       "confirmPassword": "Подтвердите новый пароль",
