@@ -68,7 +68,7 @@ const UserCards = ({ cards }: IUserCardsProps) => {
       ))}
       <Box className="itemCard newCard">
         <Button type="button" onClick={handleNavigate}>
-          {t("addCard")}
+          + {t("addCard")}
         </Button>
       </Box>
     </Slider>

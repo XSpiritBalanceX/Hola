@@ -11,6 +11,7 @@ import PrivacyPage from "@pages/privacy/PrivacyPage";
 import SubscriptionPage from "@pages/subscription/SubscriptionPage";
 import PlanPage from "@pages/plan/PlanPage";
 import UserPlanPage from "@pages/plan/UserPlanPage";
+import NewCard from "@components/userCard/NewCard";
 
 const RouterComponent = () => {
   return (
@@ -124,6 +125,14 @@ const RouterComponent = () => {
         element={
           <ProtectedRouter>
             <UserPlanPage />
+          </ProtectedRouter>
+        }
+      />
+      <Route
+        path="/plan/new_card"
+        element={
+          <ProtectedRouter>
+            <NewCard />
           </ProtectedRouter>
         }
       />

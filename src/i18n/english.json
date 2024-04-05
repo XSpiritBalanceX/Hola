@@ -308,7 +308,8 @@
       "errExpDate": "The card has expired or the data is not valid",
       "yourPlan": "Your plan",
       "changePlan": "Change plan",
-      "addCard": "+ Add new card"
+      "addCard": "Add new card",
+      "addNewCard": "Add card"
     }
   }
 }
