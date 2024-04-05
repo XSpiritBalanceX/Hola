@@ -15,8 +15,8 @@ export const profileInformationApi = createApi({
   baseQuery: requestHandler,
   tagTypes: ["ProfileInformation"],
   endpoints: (builder) => ({
-    getProfileInformation: builder.query<TProfileInformation, void>({
-      query: () => `/persons/${userID}/`,
+    getProfileInformation: builder.query<TProfileInformation, string>({
+      query: (personID) => `/persons/${personID}/`,
       providesTags: ["ProfileInformation"],
     }),
     uploadAvatar: builder.mutation<void, FormData>({

@@ -19,6 +19,14 @@ export const refreshAccessToken = async (): Promise<string> => {
     localStorage.setItem("hola_tokenExpires", decodeToken.exp.toString());
     return newAccessToken;
   } catch (err: any) {
+    if (err.response.status === 401) {
+      localStorage.removeItem("hola_tokenExpires");
+      localStorage.removeItem("hola_user_id");
+      localStorage.removeItem("hola_access_token");
+      localStorage.removeItem("hola_refresh_token");
+      localStorage.removeItem("hola_login");
+      window.location.href = "/login";
+    }
     return "";
   }
 };

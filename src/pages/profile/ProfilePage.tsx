@@ -16,7 +16,11 @@ import ProfilePhotoModal from "@components/modal/ProfilePhotoModal";
 import "./Profile.scss";
 
 const ProfilePage = () => {
-  const { data, error, isLoading } = useGetProfileInformationQuery();
+  const userID = localStorage.getItem("hola_user_id");
+
+  const { data, error, isLoading } = useGetProfileInformationQuery(
+    userID as string
+  );
   const [, { isLoading: loadingMutation }] = useUploadAvatarMutation();
   const [, { isLoading: loadingDeleting }] = useDeleteAvatarMutation();
 

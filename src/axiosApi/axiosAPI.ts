@@ -79,15 +79,21 @@ class AxiosAPI {
     const refreshToken = this.getItem(REFRESH_TOKEN_KEY);
     if (!refreshToken) throw Error("some err");
 
-    const result = await axios.post(`${BASE_URL}/auth/refresh/`, {
-      refresh: refreshToken,
-    });
+    try {
+      const result = await axios.post(`${BASE_URL}/auth/refresh/`, {
+        refresh: refreshToken,
+      });
 
-    const decodeToken: IToken = jwtDecode(result.data.access);
-    const tokenExpires = decodeToken.exp;
+      const decodeToken: IToken = jwtDecode(result.data.access);
+      const tokenExpires = decodeToken.exp;
 
-    this.setItem(TOKEN_KEY, result.data.access);
-    this.setItem(TOKEN_EXPIRES_KEY, tokenExpires.toString());
+      this.setItem(TOKEN_KEY, result.data.access);
+      this.setItem(TOKEN_EXPIRES_KEY, tokenExpires.toString());
+    } catch (err: any) {
+      if (err.response.status === 401) {
+        axiosAPI.logout();
+      }
+    }
   }
 
   getAxiosInstance() {
