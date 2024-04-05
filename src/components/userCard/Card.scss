@@ -1,0 +1,45 @@
+@import "../../variables";
+
+.userCardsSlider {
+  width: 50%;
+  margin: 0 auto;
+  .slick-list {
+    padding: 20px 10px;
+  }
+  .slick-arrow {
+    display: none !important;
+  }
+  @media all and (max-width: 55em) {
+    width: 100%;
+  }
+  @media all and (max-width: 40em) {
+    .slick-list {
+      padding: 20px 5px;
+    }
+  }
+  .itemCard {
+    width: 142px !important;
+    height: 77px;
+    box-shadow: map-deep-get($theme-colors, "box-shadow", "bid-shadow");
+    padding: 10px;
+    border-radius: 10px;
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    p {
+      margin: 14px 0 0 0;
+    }
+  }
+  .itemCard.newCard {
+    button {
+      @extend %body-2-bold;
+      text-transform: none;
+      color: map-get($theme-colors, "blue");
+      @extend %button-white;
+      padding: 0;
+      height: 100%;
+      border-radius: 0;
+    }
+  }
+}

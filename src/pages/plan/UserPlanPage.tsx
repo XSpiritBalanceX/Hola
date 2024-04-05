@@ -6,7 +6,10 @@ import SelectablePlan from "@components/subscriptionPlan/SelectablePlan";
 import { useGetSubscriptionsQuery } from "@store/subscriptionApi";
 import Loader from "@components/loader/Loader";
 import CustomError from "@components/error/CustomError";
+import UserCards from "@components/userCard/UserCards";
 import "./PlanPage.scss";
+
+const mockCards = ["**** 7576", "**** 2727"];
 
 const UserPlanPage = () => {
   const { t } = translate("translate", { keyPrefix: "planPage" });
@@ -37,7 +40,7 @@ const UserPlanPage = () => {
                   price_per_month="5.99"
                   isSelectable={false}
                 />
-                <Box>cards</Box>
+                <UserCards cards={mockCards} />
                 <Box className="changePlanButton">
                   <Button type="button" onClick={handleChangePlan}>
                     {t("changePlan")}

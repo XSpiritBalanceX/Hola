@@ -307,7 +307,8 @@
       "errLengthCardNumber": "The card number must consist of 16 digits",
       "errExpDate": "The card has expired or the data is not valid",
       "yourPlan": "Your plan",
-      "changePlan": "Change plan"
+      "changePlan": "Change plan",
+      "addCard": "+ Add new card"
     }
   }
 }
