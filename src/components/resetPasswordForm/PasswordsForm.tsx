@@ -14,6 +14,8 @@ import ControlledInput from "@components/fields/ControlledInput";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { resetPassword } from "@api/password_reset/resetPassword";
+import { toast } from "react-toastify";
+import Loader from "@components/loader/Loader";
 import "./ResetForm.scss";
 
 const PasswordsForm = ({ cbHandleSavePassword }: IPasswordsFormProps) => {
@@ -21,6 +23,7 @@ const PasswordsForm = ({ cbHandleSavePassword }: IPasswordsFormProps) => {
   const { pathname } = useLocation();
 
   const [isDisableButton, setIsDisableButton] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const validationSchemaReset = Yup.object().shape({
     current_password: Yup.string()
@@ -70,10 +73,24 @@ const PasswordsForm = ({ cbHandleSavePassword }: IPasswordsFormProps) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmitResetPassword = (
+  const onSubmitResetPassword = async (
     data: IResetPasswordInfo | ISetNewPasswordInfo
   ) => {
     if (pathname.includes("reset_password")) {
+      try {
+        setIsLoading(true);
+        const infoReset = data as IResetPasswordInfo;
+        const response = await resetPassword({
+          current_password: infoReset.current_password,
+          new_password: infoReset.new_password,
+          code: infoReset.confirmation_code,
+        });
+        console.log(response);
+      } catch (err) {
+        toast.error(t("errReset"));
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -105,63 +122,66 @@ const PasswordsForm = ({ cbHandleSavePassword }: IPasswordsFormProps) => {
   ];
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmitResetPassword)}
-      className="formResetPassword"
-    >
-      <ControlledInput
-        name="confirmation_code"
-        label={t("confirmationCode")}
-        control={control}
-        error={errors && errors.confirmation_code?.message}
-        classNameField="resetPasswordField"
-      />
-      {pathname.includes("reset_password") && (
-        <>
-          <ControlledPassword
-            name="current_password"
-            label={t("currPassword")}
-            control={control}
-            error={
-              errors &&
-              (errors as FieldErrors<IResetPasswordInfo>).current_password
-                ?.message
-            }
-            lengthValue={
-              watch("current_password") && watch("current_password").length
-            }
-            watch={watch}
-            className="resetPasswordField"
-          />
-          <Box className="linkForgotPassword">
-            <Link to={"/forgot_password/email"}>{t("forgotPassword")}</Link>
-          </Box>
-        </>
-      )}
-      <p className="titleResetPassword">{t("criteriaPassword")}</p>
-      {passwordsFields.map((el, ind) => {
-        return (
-          <ControlledPassword
-            key={ind}
-            name={el.name}
-            control={control}
-            error={el.error}
-            label={t(el.label)}
-            lengthValue={
-              watch(el.name as Path<IResetPasswordInfo>) &&
-              watch(el.name as Path<IResetPasswordInfo>).length
-            }
-            watch={watch}
-            className="resetPasswordField"
-          />
-        );
-      })}
-      <Box className="boxSubmitButton">
-        <Button type="submit" disabled={isDisableButton}>
-          {t("save")}
-        </Button>
-      </Box>
-    </form>
+    <>
+      <Loader isLoading={isLoading} />
+      <form
+        onSubmit={handleSubmit(onSubmitResetPassword)}
+        className="formResetPassword"
+      >
+        <ControlledInput
+          name="confirmation_code"
+          label={t("confirmationCode")}
+          control={control}
+          error={errors && errors.confirmation_code?.message}
+          classNameField="resetPasswordField"
+        />
+        {pathname.includes("reset_password") && (
+          <>
+            <ControlledPassword
+              name="current_password"
+              label={t("currPassword")}
+              control={control}
+              error={
+                errors &&
+                (errors as FieldErrors<IResetPasswordInfo>).current_password
+                  ?.message
+              }
+              lengthValue={
+                watch("current_password") && watch("current_password").length
+              }
+              watch={watch}
+              className="resetPasswordField"
+            />
+            <Box className="linkForgotPassword">
+              <Link to={"/forgot_password/email"}>{t("forgotPassword")}</Link>
+            </Box>
+          </>
+        )}
+        <p className="titleResetPassword">{t("criteriaPassword")}</p>
+        {passwordsFields.map((el, ind) => {
+          return (
+            <ControlledPassword
+              key={ind}
+              name={el.name}
+              control={control}
+              error={el.error}
+              label={t(el.label)}
+              lengthValue={
+                watch(el.name as Path<IResetPasswordInfo>) &&
+                watch(el.name as Path<IResetPasswordInfo>).length
+              }
+              watch={watch}
+              className="resetPasswordField"
+            />
+          );
+        })}
+        <Box className="boxSubmitButton">
+          <Button type="submit" disabled={isDisableButton}>
+            {t("save")}
+          </Button>
+        </Box>
+      </form>
+    </>
   );
 };
 

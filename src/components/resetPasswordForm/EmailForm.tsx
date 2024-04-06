@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Box, Button } from "@mui/material";
 import { IEmailInformation } from "./TypesResetForm";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -5,13 +6,18 @@ import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { translate } from "@i18n";
 import ControlledInput from "@components/fields/ControlledInput";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { sendLetterReset } from "@api/password_reset/sendLetterReset";
+import { toast } from "react-toastify";
+import Loader from "@components/loader/Loader";
 import "./ResetForm.scss";
 
 const EmailForm = () => {
   const { t } = translate("translate", { keyPrefix: "resetPasswordPage" });
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -31,10 +37,13 @@ const EmailForm = () => {
   const onSubmitEmail = async (data: IEmailInformation) => {
     if (pathname.includes("reset_password")) {
       try {
-        const response = await sendLetterReset(data.email);
-        console.log(response);
+        setIsLoading(true);
+        await sendLetterReset(data.email);
+        navigate("/reset_password/password");
       } catch (err) {
-        console.log(err);
+        toast.error(t("errReset"));
+      } finally {
+        setIsLoading(false);
       }
     }
   };
@@ -42,21 +51,24 @@ const EmailForm = () => {
   const isDisableButton = watch("email") && watch("email").length;
 
   return (
-    <form onSubmit={handleSubmit(onSubmitEmail)} className="formEmail">
-      <p className="title">{t("titleForEmail")}</p>
-      <ControlledInput
-        name="email"
-        control={control}
-        label={t("email")}
-        error={errors.email?.message}
-        classNameField="emailField"
-      />
-      <Box className="boxSubmitButton">
-        <Button type="submit" disabled={!isDisableButton}>
-          {t("send")}
-        </Button>
-      </Box>
-    </form>
+    <>
+      <Loader isLoading={isLoading} />
+      <form onSubmit={handleSubmit(onSubmitEmail)} className="formEmail">
+        <p className="title">{t("titleForEmail")}</p>
+        <ControlledInput
+          name="email"
+          control={control}
+          label={t("email")}
+          error={errors.email?.message}
+          classNameField="emailField"
+        />
+        <Box className="boxSubmitButton">
+          <Button type="submit" disabled={!isDisableButton}>
+            {t("send")}
+          </Button>
+        </Box>
+      </form>
+    </>
   );
 };
 
