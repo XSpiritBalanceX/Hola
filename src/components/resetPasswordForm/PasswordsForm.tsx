@@ -86,6 +86,7 @@ const PasswordsForm = ({ cbHandleSavePassword }: IPasswordsFormProps) => {
           code: infoReset.confirmation_code,
         });
         console.log(response);
+        cbHandleSavePassword();
       } catch (err) {
         toast.error(t("errReset"));
       } finally {
@@ -98,7 +99,9 @@ const PasswordsForm = ({ cbHandleSavePassword }: IPasswordsFormProps) => {
     if (watch()) {
       const valuesPersonalInfo = [];
       for (const key in watch()) {
-        valuesPersonalInfo.push(watch(key as Path<IResetPasswordInfo>));
+        valuesPersonalInfo.push(
+          watch(key as Path<IResetPasswordInfo | ISetNewPasswordInfo>)
+        );
       }
       const isEmptyFields = valuesPersonalInfo.some(
         (value) => value === "" || value === null
@@ -167,8 +170,11 @@ const PasswordsForm = ({ cbHandleSavePassword }: IPasswordsFormProps) => {
               error={el.error}
               label={t(el.label)}
               lengthValue={
-                watch(el.name as Path<IResetPasswordInfo>) &&
-                watch(el.name as Path<IResetPasswordInfo>).length
+                watch(
+                  el.name as Path<IResetPasswordInfo | ISetNewPasswordInfo>
+                ) &&
+                watch(el.name as Path<IResetPasswordInfo | ISetNewPasswordInfo>)
+                  .length
               }
               watch={watch}
               className="resetPasswordField"
