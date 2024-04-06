@@ -1,0 +1,164 @@
+@import "../../variables";
+
+.userCardsSlider {
+  width: 50%;
+  margin: 0 auto;
+  .slick-list {
+    padding: 20px 10px;
+  }
+  .slick-arrow {
+    display: none !important;
+  }
+  @media all and (max-width: 55em) {
+    width: 100%;
+  }
+  @media all and (max-width: 40em) {
+    .slick-list {
+      padding: 20px 5px;
+    }
+  }
+  .itemCard {
+    width: 142px !important;
+    height: 77px;
+    box-shadow: map-deep-get($theme-colors, "box-shadow", "bid-shadow");
+    padding: 10px;
+    border-radius: 10px;
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    p {
+      margin: 14px 0 0 0;
+    }
+  }
+  .itemCard.newCard {
+    button {
+      @extend %body-2-bold;
+      text-transform: none;
+      color: map-get($theme-colors, "blue");
+      @extend %button-white;
+      padding: 0;
+      height: 100%;
+      border-radius: 0;
+    }
+  }
+}
+
+.containerNewCard {
+  background-color: map-get($theme-colors, "white");
+  width: 100% !important;
+  max-width: 100vw !important;
+  min-height: 100vh;
+  padding: 0 !important;
+  position: relative;
+  .contentNewCard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 11px 20px 30px 20px !important;
+  }
+  .paymentInformation {
+    margin: 23px 0 12px 0;
+    text-align: center;
+    @extend %body-1;
+  }
+  .cardDetailText {
+    margin: 10px 0 5px 0;
+    @extend %body-2;
+    color: map-get($theme-colors, "gray-2");
+    text-align: center;
+  }
+  .imagesBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .newCardForm {
+    border-radius: 20px;
+    background-color: map-deep-get($theme-colors, "background", "gray-1");
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 15px;
+    width: 40%;
+    margin: 0 auto;
+    @media all and (max-width: 55em) {
+      width: 60%;
+    }
+    @media all and (max-width: 40em) {
+      width: auto;
+    }
+    .unitedFields {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      width: 100%;
+      .paymentFieldBox {
+        width: 47%;
+        margin-bottom: 0;
+        .controlledField {
+          width: 100%;
+        }
+      }
+    }
+    .paymentFieldBox {
+      width: 100%;
+      margin-bottom: 20px;
+      .labelField {
+        @extend %body-2;
+        color: map-get($theme-colors, "gray-2");
+      }
+      .labelField.errLabel {
+        @extend %body-2;
+        color: map-get($theme-colors, "error");
+      }
+      .errorMessage {
+        @extend %caption;
+        color: map-get($theme-colors, "error");
+      }
+      .controlledField {
+        width: 100%;
+        .MuiInputBase-root {
+          border: none;
+          height: 20px;
+          padding: 0;
+          border-bottom: solid 1px map-get($theme-colors, "gray-2");
+          border-radius: 0;
+          @extend %body-1-medium;
+          color: map-get($theme-colors, "black");
+          input {
+            height: 20px;
+            padding: 0;
+          }
+          fieldset {
+            display: none;
+          }
+          svg {
+            fill: map-get($theme-colors, "error");
+            margin-bottom: 10px;
+          }
+        }
+        .MuiInputBase-root.Mui-error {
+          border-bottom: solid 2px map-get($theme-colors, "error");
+        }
+      }
+    }
+    .submitButton {
+      text-transform: none;
+      @extend %button;
+      @extend %button-blue;
+      width: 50%;
+      position: absolute;
+      bottom: 20px;
+      @media all and (max-width: 55em) {
+        width: 60%;
+      }
+      @media all and (max-width: 40em) {
+        width: 93%;
+      }
+    }
+  }
+}

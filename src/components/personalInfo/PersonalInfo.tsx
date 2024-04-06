@@ -22,22 +22,15 @@ import Loader from "@components/loader/Loader";
 import { toast } from "react-toastify";
 import { signUp } from "@api/auth/signUp";
 import { useNavigate } from "react-router-dom";
+import { ISignUpInfo } from "./TypesPersonalInfo";
+import ListCountries from "./ListCountries";
 import "./PersonalInfo.scss";
-
-interface ISignUpInfo {
-  gender: "man" | "woman";
-  name: string;
-  date_of_birth: string;
-  country: string;
-  email: string;
-  password: string;
-  confirm_password: string;
-}
 
 const PersonalInfo = () => {
   const { t } = translate("translate", { keyPrefix: "signUp.personalInfo" });
   const [isDisableButton, setIsDisableButton] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [showCountryList, setShowCountryList] = useState(false);
   const navigate = useNavigate();
 
   const validationSchema = Yup.object().shape({
@@ -57,7 +50,9 @@ const PersonalInfo = () => {
         const age = currentDate.diff(dob, "years");
         return age >= minAge;
       }),
-    country: Yup.string().required(t("errorRequiredField")),
+    location: Yup.object()
+      .shape({ id: Yup.number().required(), name: Yup.string().required() })
+      .required(t("errorRequiredField")),
     email: Yup.string()
       .required(t("errorRequiredField"))
       .email(t("errIncorrectEmail")),
@@ -106,7 +101,7 @@ const PersonalInfo = () => {
       date_of_birth: moment(data.date_of_birth, "DD.MM.YYYY").format(
         "YYYY-MM-DD"
       ),
-      country: data.country,
+      location: data.location.id,
       email: data.email,
       password: data.password,
     };
@@ -132,15 +127,16 @@ const PersonalInfo = () => {
     setValue("date_of_birth", value);
   };
 
+  const handleShowCountryList = () => {
+    setShowCountryList(true);
+  };
+
+  const handleHideCountryList = () => {
+    setShowCountryList(false);
+  };
+
   const fieldsGender = ["man", "woman"];
-  const fieldsMainCountry = [
-    {
-      name: "country",
-      label: "country",
-      error: errors && errors.country?.message,
-    },
-    { name: "email", label: "email", error: errors && errors.email?.message },
-  ];
+
   const fieldsPassword = [
     {
       name: "password",
@@ -215,17 +211,40 @@ const PersonalInfo = () => {
             {errors && errors.date_of_birth?.message}
           </FormHelperText>
         </Box>
-        {fieldsMainCountry.map((el, ind) => {
-          return (
-            <ControlledInput
-              key={ind}
-              name={el.name}
-              label={t(el.label)}
-              control={control}
-              error={el.error}
+        <ControlledInput
+          name={"email"}
+          label={t("email")}
+          control={control}
+          error={errors && errors.email?.message}
+        />
+        {showCountryList ? (
+          <ListCountries
+            user_country={watch("location.name")}
+            cbHandleHideCountryList={handleHideCountryList}
+            setValue={setValue}
+          />
+        ) : (
+          <Box className="controlledFieldBox">
+            <TextField
+              label={t("country")}
+              value={watch("location.name")}
+              className="controlledField"
+              error={!!errors.location}
+              InputProps={{
+                endAdornment: !!errors.location && (
+                  <InputAdornment position="end" className="errorIcon">
+                    <WarningAmberRoundedIcon />
+                  </InputAdornment>
+                ),
+                style: { pointerEvents: "none" },
+              }}
+              onClick={handleShowCountryList}
             />
-          );
-        })}
+            <FormHelperText className="errorMessage">
+              {errors && errors.location?.message}
+            </FormHelperText>
+          </Box>
+        )}
         {fieldsPassword.map((el, ind) => {
           return (
             <ControlledPassword
@@ -237,7 +256,7 @@ const PersonalInfo = () => {
               watch={watch}
               lengthValue={
                 watch(el.name as Path<ISignUpInfo>) &&
-                watch(el.name as Path<ISignUpInfo>).length
+                (watch(el.name as Path<ISignUpInfo>) as string).length
               }
             />
           );

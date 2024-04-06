@@ -1,6 +1,8 @@
 @import "../../variables";
 
 .personalInfoBox {
+  max-width: 1200px;
+  margin: 0 auto;
   .mainTitle {
     margin: 0 0 21px 0;
     @extend %h1;
@@ -63,6 +65,111 @@
       text-transform: none;
       @extend %button-blue;
       @extend %button;
+    }
+
+    .countriesBox {
+      background-color: map-get($theme-colors, "white");
+      border: solid 2px map-get($theme-colors, "blue");
+      border-radius: 25px;
+      position: relative;
+      padding: 15px 20px;
+      margin-bottom: 17px;
+      .labelCountries {
+        position: absolute;
+        @extend %body-1-medium;
+        color: map-get($theme-colors, "blue");
+        z-index: 2;
+        background-color: map-get($theme-colors, "white");
+        top: -27px;
+        left: 15px;
+        padding: 0 2px;
+        border-radius: 10px;
+      }
+      .buttonSaveBox {
+        display: flex;
+        justify-content: flex-end;
+        button {
+          padding: 0;
+          @extend %button-white;
+          height: auto;
+          svg {
+            fill: map-get($theme-colors, "blue");
+            font-size: 40px;
+          }
+        }
+      }
+      .errorCountryMessage {
+        margin: 0 0 10px 0;
+        padding-left: 10px;
+        color: map-get($theme-colors, "error");
+        @extend %body-2-bold;
+      }
+      .searchField {
+        width: 100%;
+        height: 42px;
+        background-color: map-deep-get($theme-colors, "background", "gray-6");
+        border-radius: 20px;
+        .MuiInputBase-root {
+          height: 42px;
+          border-radius: 20px;
+          @extend %body-1;
+          input {
+            height: 42px;
+            padding: 0 10px;
+            color: map-get($theme-colors, "black");
+            width: 100%;
+            @extend %body-1-medium;
+            &::placeholder {
+              @extend %body-2;
+              color: map-get($theme-colors, "gray-2");
+            }
+          }
+          fieldset {
+            border: none;
+          }
+          .MuiSvgIcon-root {
+            fill: map-get($theme-colors, "gray-2");
+          }
+        }
+        .MuiInputBase-root.MuiInputBase-formControl.Mui-error {
+          border: none;
+          fieldset {
+            border: solid 2px map-get($theme-colors, "error");
+          }
+        }
+        .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+          border: none;
+          fieldset {
+            border: solid 2px map-get($theme-colors, "blue");
+          }
+        }
+      }
+      .listCountries {
+        overflow-y: auto;
+        height: 508px;
+        margin-top: 20px;
+        .letterItem {
+          height: 19px;
+          margin: 15px 0 0 0;
+          padding: 0 0 0 10px;
+          p {
+            margin: 0;
+            @extend %body-1-bold;
+          }
+        }
+        .wordItem {
+          padding: 15px 0 15px 10px;
+          border-radius: 20px;
+          p {
+            margin: 0;
+            @extend %body-1;
+          }
+          &:hover {
+            cursor: pointer;
+            background-color: map-get($theme-colors, "light-blue-2");
+          }
+        }
+      }
     }
   }
 }

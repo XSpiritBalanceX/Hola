@@ -1,0 +1,8 @@
+@import "../../variables";
+
+.containerPrivacyPage {
+  padding: 11px 20px 30px 20px !important;
+  p {
+    @extend %body-2;
+  }
+}

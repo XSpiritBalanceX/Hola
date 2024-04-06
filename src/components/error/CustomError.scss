@@ -24,18 +24,27 @@
     @extend %body-2;
     text-align: center;
   }
+  .buttonLohOutError,
   .buttonRedirectError {
     @extend %button;
-    @extend %button-blue;
+
     text-transform: none;
     width: 40%;
-    position: absolute;
-    bottom: 10px;
     @media all and (max-width: 55em) {
       width: 60%;
     }
     @media all and (max-width: 40em) {
       width: 90%;
     }
+  }
+  .buttonRedirectError {
+    margin-top: 20px;
+    @extend %button-blue;
+  }
+  .buttonLohOutError {
+    @extend %button-white;
+    background-color: transparent;
+    position: absolute;
+    bottom: 20px;
   }
 }

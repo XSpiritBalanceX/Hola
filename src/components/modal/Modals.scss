@@ -54,3 +54,380 @@
     }
   }
 }
+
+.modalContainerCountries {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  .contentCountriesModal {
+    width: 100%;
+    height: 85%;
+    background-color: map-get($theme-colors, "white");
+    border-radius: 25px 25px 0 0;
+    padding: 20px 20px 40px 20px;
+    .closeModalButton {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      .titleModal {
+        margin: 0;
+        width: 100%;
+        @extend %body-1-bold;
+        text-align: center;
+      }
+      button {
+        padding: 0;
+        @extend %button-white;
+        height: 24px;
+        svg {
+          fill: map-get($theme-colors, "black");
+        }
+      }
+    }
+    .boxWithSearch {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      .fieldBox {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-right: 15px;
+      }
+      .errorCountry {
+        @extend %body-2-bold;
+        color: map-get($theme-colors, "error");
+        padding-left: 10px;
+        margin: 5px 0 0 0;
+      }
+      .searchField {
+        width: 100%;
+        height: 42px;
+        background-color: map-deep-get($theme-colors, "background", "gray-6");
+        border-radius: 20px;
+        .MuiInputBase-root {
+          height: 42px;
+          border-radius: 20px;
+          @extend %body-1;
+          input {
+            height: 42px;
+            padding: 0 10px;
+            color: map-get($theme-colors, "black");
+            width: 100%;
+            @extend %body-1-medium;
+            &::placeholder {
+              @extend %body-2;
+              color: map-get($theme-colors, "gray-2");
+            }
+          }
+          fieldset {
+            border: none;
+          }
+          .MuiSvgIcon-root {
+            fill: map-get($theme-colors, "gray-2");
+          }
+        }
+        .MuiInputBase-root.MuiInputBase-formControl.Mui-error {
+          border: none;
+          fieldset {
+            border: solid 2px map-get($theme-colors, "error");
+          }
+        }
+        .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+          border: none;
+          fieldset {
+            border: solid 2px map-get($theme-colors, "blue");
+          }
+        }
+      }
+      .saveCountryButton {
+        text-transform: none;
+        @extend %body-2-bold;
+        color: map-get($theme-colors, "blue");
+        @extend %button-white;
+        height: 42px;
+      }
+    }
+
+    .listCountries {
+      overflow-y: auto;
+      height: 85%;
+      .letterItem {
+        height: 19px;
+        margin: 15px 0 0 0;
+        padding: 0;
+        p {
+          margin: 0;
+          @extend %body-1-bold;
+        }
+      }
+      .wordItem {
+        border-bottom: solid 1px map-get($theme-colors, "gray-2");
+        padding: 15px 0;
+        p {
+          margin: 0;
+          @extend %body-1;
+        }
+        &:hover {
+          cursor: pointer;
+          background-color: map-get($theme-colors, "light-blue-2");
+        }
+      }
+    }
+  }
+}
+
+.modalContainerDeleteAccount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  .contentDeleteAccount {
+    background-color: map-get($theme-colors, "white");
+    border-radius: 10px;
+    padding: 25px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 340px;
+    border: none;
+    .titleModal {
+      margin: 20px 0;
+      @extend %body-1-bold;
+      text-align: center;
+      max-width: 260px;
+    }
+    .boxWithButtons {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      button {
+        text-transform: none;
+        @extend %button;
+      }
+      .closeButton {
+        @extend %button-blue;
+        width: 48%;
+      }
+      .deleteButton {
+        @extend %button-white;
+        width: 48%;
+      }
+    }
+  }
+}
+
+.resetPasswordModal {
+  height: calc(100vh - 95px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  p {
+    @extend %h4;
+    margin: 20px 0 0 0;
+    text-align: center;
+    @media all and (max-width: 40em) {
+      max-width: 251px;
+    }
+  }
+}
+
+.modalContainerProfilePhoto {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border: none;
+  position: relative;
+  .contentProfilePhotoModalBox {
+    background-color: map-get($theme-colors, "white");
+    border-radius: 20px 20px 0 0;
+    height: 257px;
+    width: 100%;
+    padding: 20px 15px 60px 15px;
+    .closeModalButton {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      margin-bottom: 15px;
+      button {
+        padding: 0;
+        @extend %button-white;
+        height: 24px;
+        svg {
+          fill: map-get($theme-colors, "black");
+        }
+      }
+    }
+    .videoFrameBox {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      width: 50%;
+      background-color: map-get($theme-colors, "light-blue-1");
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: map-deep-get($theme-colors, "box-shadow", "shadow");
+      @media all and (max-width: 60em) {
+        width: 60%;
+        height: 70%;
+        height: auto;
+        padding: 20px 10px;
+      }
+      @media all and (max-width: 620px) {
+        width: 80%;
+      }
+      @media all and (max-width: 400px) {
+        width: 90%;
+        padding: 20px 10px;
+      }
+      .videoFrame {
+        width: 100%;
+      }
+      img {
+        width: 100%;
+      }
+      .takePhotoButton {
+        margin-top: 20px;
+        width: 40%;
+        @extend %button-white;
+      }
+      .buttonsTakePhotoBox {
+        margin-top: 20px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: transparent;
+        button {
+          margin-bottom: 10px;
+          @extend %button;
+        }
+        button:first-child {
+          @extend %button-blue;
+        }
+      }
+    }
+
+    .contentProfilePhotoModal {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      .titleModal {
+        margin: 0 0 20px 0;
+        text-align: center;
+        width: 100%;
+        @extend %h5;
+      }
+      button {
+        text-transform: none;
+        padding: 5px 10px;
+        margin-bottom: 20px;
+        @extend %body-1-medium;
+        @extend %button-white;
+        color: map-get($theme-colors, "black");
+        svg {
+          margin-right: 10px;
+        }
+        &:hover {
+          color: map-get($theme-colors, "black");
+        }
+      }
+      .deleteButton {
+        color: map-get($theme-colors, "red");
+        &:hover {
+          color: map-get($theme-colors, "red");
+        }
+      }
+      label {
+        padding: 2px 10px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @extend %body-1-medium;
+        @extend %button-white;
+        color: map-get($theme-colors, "black");
+        svg {
+          margin-right: 10px;
+        }
+        &:hover {
+          color: map-get($theme-colors, "black");
+          cursor: pointer;
+        }
+      }
+      input[type="file"] {
+        display: none;
+      }
+
+      .boxWithUserUploadPhoto {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 50%;
+        background-color: map-get($theme-colors, "light-blue-1");
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: map-deep-get($theme-colors, "box-shadow", "shadow");
+        @media all and (max-width: 60em) {
+          width: 60%;
+          height: 70%;
+          height: auto;
+          padding: 20px 10px;
+        }
+        @media all and (max-width: 620px) {
+          width: 80%;
+        }
+        @media all and (max-width: 400px) {
+          width: 90%;
+          padding: 20px 10px;
+        }
+        img {
+          width: 350px;
+          height: 350px;
+          @media all and (max-width: 40em) {
+            width: 100%;
+            height: 400px;
+          }
+        }
+        .buttonsUploadPhotoBox {
+          margin-top: 20px;
+          display: flex;
+          flex-direction: column;
+          width: 50%;
+          @media all and (max-width: 60em) {
+            width: 60%;
+          }
+          @media all and (max-width: 620px) {
+            width: 100%;
+          }
+          button {
+            @extend %button;
+          }
+          button:first-child {
+            @extend %button-blue;
+          }
+        }
+      }
+    }
+  }
+}

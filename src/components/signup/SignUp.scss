@@ -3,14 +3,17 @@
 .signUpContainer {
   padding: 15px 20px 34px 20px !important;
   min-height: 100vh;
-
+  width: 100% !important;
+  min-width: 100% !important;
+  background-color: map-get($theme-colors, "white");
   .stepperButtonBox {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     height: 20px;
     max-height: 20px;
-    margin-bottom: 30px;
+    margin: 0 auto 30px auto;
+    max-width: 1200px;
     .skipStepButton {
       width: auto;
       height: 20px;

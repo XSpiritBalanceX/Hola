@@ -42,7 +42,9 @@
         "next": "Next",
         "invalidDate": "Invalid date",
         "errDateOfBirth": "You cannot be under 18 years old",
-        "errSignUp": "An unexpected error occurred"
+        "errSignUp": "An unexpected error occurred",
+        "search": "Search",
+        "errCountry": "Choose your country"
       },
       "interests": {
         "interests": "Interests",
@@ -114,6 +116,28 @@
         "mainTitle": "Please check your inbox!",
         "title": "To confirm your e-mail address, tap the link in the email we sent to:",
         "button": "Open email app"
+      },
+      "location": {
+        "chooseLocation": "Choose location",
+        "search": "Search",
+        "save": "Save",
+        "errCountry": "Choose your country"
+      },
+      "account": {
+        "label": "Are you sure you want to delete your account?",
+        "close": "Nope",
+        "delete": "Yes, delete it",
+        "errDeleteAcc": "An unexpected error occurred"
+      },
+      "profilePhoto": {
+        "profilePhoto": "Profile photo",
+        "upload": "Upload from device",
+        "takePhoto": "Take a photo",
+        "delete": "Delete the current photo",
+        "save": "Save",
+        "retake": "Retake",
+        "close": "Close",
+        "errPhoto": "An unexpected error occurred"
       }
     },
     "profile": {
@@ -185,7 +209,108 @@
     "errorScreen": {
       "pageNotFound": "Page not found",
       "textInErrorPage": "The page you’re looking for has been removed, had its’ name changed or is temporarile unavailable",
-      "goToToHome": "Back to Home Page"
+      "goToToHome": "Back to Home Page",
+      "logOut": "Log out"
+    },
+    "profileSettings": {
+      "settings": "Settings",
+      "account": "Account",
+      "subscription": "Subscription",
+      "resetPassword": "Reset Password"
+    },
+    "accountSettings": {
+      "account": "Account",
+      "name": "Name",
+      "email": "E-mail",
+      "dateOfBirth": "Date of birth",
+      "language": "Language",
+      "location": "Location",
+      "currentLocation": "My current location",
+      "setNewLocation": "set new location",
+      "titleNewLocation": "Set new locations to see Hola members from other cities",
+      "maxDistance": "Maximum distance",
+      "globalSearch": "Global search",
+      "titleGlobalSearch": "Going global allows to see people from around the world",
+      "ageRange": "Show age range",
+      "deleteAcc": "Delete account",
+      "save": "Save changes",
+      "km": "km",
+      "errorRequiredField": "This field is required",
+      "errorRequiredEmail": "Email is required",
+      "errIncorrectEmail": "Invalid email",
+      "errDateOfBirth": "You cannot be under 18 years old",
+      "errEditing": "An unexpected error occurred",
+      "successUpdate": "Information has been successfully updated"
+    },
+    "resetPasswordPage": {
+      "resetPassword": "Reset Password",
+      "currPassword": "Current password",
+      "newPassword": "New password",
+      "confirmPassword": "Confirm new password",
+      "forgotPassword": "Forgot password?",
+      "criteriaPassword": "Your password must be at least 8 characters long, and contain at least one lowercase, one uppercase characters and  one number",
+      "errorRequiredEmail": "Email is required",
+      "errIncorrectEmail": "Invalid email",
+      "errorRequiredPassword": "Password is required",
+      "errorMeetPassword": "Password does not meet the criteria",
+      "mismatchPassword": "Password mismatch",
+      "save": "Save",
+      "send": "Send",
+      "titleForEmail": "Enter the e-mail address you used to register with and we’ll send you the confirmation code",
+      "email": "E-mail",
+      "errorRequiredField": "This field is required",
+      "confirmationCode": "Confirmation code",
+      "errReset": "An unexpected error occurred",
+      "titleModal": "Your password has been successfully changed",
+      "setNewPassword": "Set new password"
+    },
+    "privacyPage": {
+      "privacy": "Privacy Policy"
+    },
+    "subscriptionPage": {
+      "subscription": "Subscription",
+      "availablePlan": "Available plans",
+      "startNow": "Start Now",
+      "yourPlan": "Your plan",
+      "premium1": "Set preferred location",
+      "premium2": "Search internationally",
+      "premium3": "View likes",
+      "premium4": "Reply to stories",
+      "premiumStudent1": "Set preferred location",
+      "premiumStudent2": "Search internationally",
+      "premiumStudent3": "View likes",
+      "premiumStudent4": "New app themes",
+      "free1": "Like",
+      "free2": "Send messages",
+      "free3": "Post stories",
+      "free4": "Set age range",
+      "availablePlanPrice": "5 days trial, then {{price}}$ / month",
+      "perMonth": "{{price}}$ / month",
+      "choose": "Choose",
+      "nextPayment": "The next payment ",
+      "datePaym": " is on "
+    },
+    "planPage": {
+      "paymentInformation": "Please, enter your payment information",
+      "cardNumber": "Card number",
+      "expireDate": "Expire date",
+      "cardDetail": "Your card details are protected",
+      "iAgree": "I agree to the ",
+      "terms": "Terms of Use",
+      "and": " and ",
+      "policy": "Privacy Policy",
+      "subscribe": "Subscribe",
+      "firstPayment": "First payment will be charged on ",
+      "cancelSub": "you may cancel subscription anytime.",
+      "errorRequiredField": "This field is required",
+      "errReqPolicy": "You must agree",
+      "errNumber": "Only numbers can be entered",
+      "errLengthCardNumber": "The card number must consist of 16 digits",
+      "errExpDate": "The card has expired or the data is not valid",
+      "yourPlan": "Your plan",
+      "changePlan": "Change plan",
+      "addCard": "Add new card",
+      "addNewCard": "Add card"
     }
   }
 }

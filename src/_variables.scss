@@ -27,6 +27,7 @@ $theme-colors: (
     "gray-3": #e7e9ee,
     "gray-4": #00000040,
     "gray-5": #f3f3f3,
+    "gray-6": #f9f9f9,
     "tab-menu": #26252a,
   ),
   "box-shadow": (
@@ -73,6 +74,14 @@ $theme-colors: (
   border: none;
   &:disabled {
     color: #bfc3cf;
+  }
+  &:hover {
+    background-color: #ffffff;
+    color: #554cb6;
+  }
+  &:active {
+    background-color: #ffffff;
+    color: #554cb6;
   }
 }
 
