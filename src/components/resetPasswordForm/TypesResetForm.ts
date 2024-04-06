@@ -9,6 +9,12 @@ export interface IResetPasswordInfo {
   confirmation_code: string;
 }
 
+export interface ISetNewPasswordInfo {
+  new_password: string;
+  confirm_password: string;
+  confirmation_code: string;
+}
+
 export interface IEmailInformation {
   email: string;
 }

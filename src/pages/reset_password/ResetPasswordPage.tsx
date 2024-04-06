@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Container } from "@mui/material";
 import { translate } from "@i18n";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import PasswordsForm from "@components/resetPasswordForm/PasswordsForm";
 import EmailForm from "@components/resetPasswordForm/EmailForm";
 import ResetPasswordModal from "@components/modal/ResetPasswordModal";
@@ -11,6 +11,7 @@ import "./ResetPasswordPage.scss";
 const ResetPasswordPage = () => {
   const { t } = translate("translate", { keyPrefix: "resetPasswordPage" });
   const { step } = useParams();
+  const { pathname } = useLocation();
 
   const [isSavedPassword, setIsSavedPassword] = useState(false);
 
@@ -20,7 +21,14 @@ const ResetPasswordPage = () => {
 
   return (
     <Container className="containerResetPasswordPage">
-      <NavigationButton label={t("resetPassword")} path={"/profile/settings"} />
+      <NavigationButton
+        label={
+          pathname.includes("reset_password")
+            ? t("resetPassword")
+            : t("setNewPassword")
+        }
+        path={"/profile/settings"}
+      />
       {step === "email" && !isSavedPassword && <EmailForm />}
       {step === "password" && !isSavedPassword && (
         <PasswordsForm cbHandleSavePassword={handleSavePassword} />

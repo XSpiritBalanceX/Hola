@@ -1,21 +1,28 @@
 import { useState, useEffect } from "react";
 import { Box, Button } from "@mui/material";
-import { IPasswordsFormProps, IResetPasswordInfo } from "./TypesResetForm";
+import {
+  IPasswordsFormProps,
+  IResetPasswordInfo,
+  ISetNewPasswordInfo,
+} from "./TypesResetForm";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import { Path, useForm } from "react-hook-form";
+import { FieldErrors, Path, useForm } from "react-hook-form";
 import { translate } from "@i18n";
 import ControlledPassword from "@components/fields/ControlledPassword";
 import ControlledInput from "@components/fields/ControlledInput";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { resetPassword } from "@api/password_reset/resetPassword";
 import "./ResetForm.scss";
 
 const PasswordsForm = ({ cbHandleSavePassword }: IPasswordsFormProps) => {
   const { t } = translate("translate", { keyPrefix: "resetPasswordPage" });
+  const { pathname } = useLocation();
 
   const [isDisableButton, setIsDisableButton] = useState(true);
 
-  const validationSchema = Yup.object().shape({
+  const validationSchemaReset = Yup.object().shape({
     current_password: Yup.string()
       .required(t("errorRequiredPassword"))
       .min(8, t("errorMeetPassword"))
@@ -35,17 +42,39 @@ const PasswordsForm = ({ cbHandleSavePassword }: IPasswordsFormProps) => {
     confirmation_code: Yup.string().required(t("errorRequiredField")),
   });
 
+  const validationSchemaNewPassword = Yup.object().shape({
+    new_password: Yup.string()
+      .required(t("errorRequiredPassword"))
+      .min(8, t("errorMeetPassword"))
+      .max(25, t("errorMeetPassword"))
+      .matches(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])/, t("errorMeetPassword")),
+    confirm_password: Yup.string()
+      .required(t("errorRequiredPassword"))
+      .oneOf([Yup.ref("new_password")], t("mismatchPassword"))
+      .min(8, t("errorMeetPassword"))
+      .max(25, t("errorMeetPassword"))
+      .matches(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])/, t("errorMeetPassword")),
+    confirmation_code: Yup.string().required(t("errorRequiredField")),
+  });
+
+  const schema = pathname.includes("reset_password")
+    ? validationSchemaReset
+    : validationSchemaNewPassword;
+
   const {
     control,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<IResetPasswordInfo>({
-    resolver: yupResolver(validationSchema),
+  } = useForm<IResetPasswordInfo | ISetNewPasswordInfo>({
+    resolver: yupResolver(schema),
   });
 
-  const onSubmitResetPassword = (data: IResetPasswordInfo) => {
-    console.log(data);
+  const onSubmitResetPassword = (
+    data: IResetPasswordInfo | ISetNewPasswordInfo
+  ) => {
+    if (pathname.includes("reset_password")) {
+    }
   };
 
   useEffect(() => {
@@ -87,20 +116,28 @@ const PasswordsForm = ({ cbHandleSavePassword }: IPasswordsFormProps) => {
         error={errors && errors.confirmation_code?.message}
         classNameField="resetPasswordField"
       />
-      <ControlledPassword
-        name="current_password"
-        label={t("currPassword")}
-        control={control}
-        error={errors && errors.current_password?.message}
-        lengthValue={
-          watch("current_password") && watch("current_password").length
-        }
-        watch={watch}
-        className="resetPasswordField"
-      />
-      <Box className="linkForgotPassword">
-        <Link to={"/forgot_password"}>{t("forgotPassword")}</Link>
-      </Box>
+      {pathname.includes("reset_password") && (
+        <>
+          <ControlledPassword
+            name="current_password"
+            label={t("currPassword")}
+            control={control}
+            error={
+              errors &&
+              (errors as FieldErrors<IResetPasswordInfo>).current_password
+                ?.message
+            }
+            lengthValue={
+              watch("current_password") && watch("current_password").length
+            }
+            watch={watch}
+            className="resetPasswordField"
+          />
+          <Box className="linkForgotPassword">
+            <Link to={"/forgot_password/email"}>{t("forgotPassword")}</Link>
+          </Box>
+        </>
+      )}
       <p className="titleResetPassword">{t("criteriaPassword")}</p>
       {passwordsFields.map((el, ind) => {
         return (

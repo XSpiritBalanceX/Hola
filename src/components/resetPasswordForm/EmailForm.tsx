@@ -5,10 +5,13 @@ import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { translate } from "@i18n";
 import ControlledInput from "@components/fields/ControlledInput";
+import { useLocation } from "react-router-dom";
+import { sendLetterReset } from "@api/password_reset/sendLetterReset";
 import "./ResetForm.scss";
 
 const EmailForm = () => {
   const { t } = translate("translate", { keyPrefix: "resetPasswordPage" });
+  const { pathname } = useLocation();
 
   const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -25,8 +28,15 @@ const EmailForm = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmitEmail = (data: IEmailInformation) => {
-    console.log(data);
+  const onSubmitEmail = async (data: IEmailInformation) => {
+    if (pathname.includes("reset_password")) {
+      try {
+        const response = await sendLetterReset(data.email);
+        console.log(response);
+      } catch (err) {
+        console.log(err);
+      }
+    }
   };
 
   const isDisableButton = watch("email") && watch("email").length;
