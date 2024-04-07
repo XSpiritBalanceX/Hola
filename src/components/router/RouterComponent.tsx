@@ -12,6 +12,7 @@ import SubscriptionPage from "@pages/subscription/SubscriptionPage";
 import PlanPage from "@pages/plan/PlanPage";
 import UserPlanPage from "@pages/plan/UserPlanPage";
 import NewCard from "@components/userCard/NewCard";
+import SearchPage from "@pages/search/SearchPage";
 
 const RouterComponent = () => {
   return (
@@ -141,6 +142,14 @@ const RouterComponent = () => {
         element={
           <ProtectedRouter>
             <NewCard />
+          </ProtectedRouter>
+        }
+      />
+      <Route
+        path="/search"
+        element={
+          <ProtectedRouter>
+            <SearchPage />
           </ProtectedRouter>
         }
       />
