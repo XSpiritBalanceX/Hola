@@ -319,7 +319,11 @@
       "romanticDate": "Romantic date",
       "nightStand": "One night stand",
       "relationships": "Relationships",
-      "upcomingEvents": "Upcoming events"
+      "upcomingEvents": "Upcoming events",
+      "cinema": "Cinema",
+      "theatre": "Theatre",
+      "concert": "Concert",
+      "standUp": "Stand Up"
     }
   }
 }

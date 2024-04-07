@@ -319,7 +319,11 @@
       "romanticDate": "Романтические свидания",
       "nightStand": "На одну ночь",
       "relationships": "Отношения",
-      "upcomingEvents": "Предстоящие события"
+      "upcomingEvents": "Предстоящие события",
+      "cinema": "Кино",
+      "theatre": "Театр",
+      "concert": "Концерт",
+      "standUp": "Стендап"
     }
   }
 }
