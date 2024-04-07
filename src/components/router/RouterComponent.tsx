@@ -15,144 +15,46 @@ import NewCard from "@components/userCard/NewCard";
 import SearchPage from "@pages/search/SearchPage";
 
 const RouterComponent = () => {
+  const appRoutesUnauth = [
+    { path: "/login", element: <AuthPage /> },
+    { path: "/registration/info", element: <AuthPage /> },
+    { path: "/registration/interests", element: <AuthPage /> },
+    { path: "/registration/photos", element: <AuthPage /> },
+  ];
+
+  const appRoutesAuth = [
+    { path: "/profile", element: <ProfilePage /> },
+    { path: "/profile/edit", element: <EditProfilePage /> },
+    { path: "/profile/edit/:step", element: <EditProfilePage /> },
+    { path: "/profile/settings", element: <ProfileSettingsPage /> },
+    { path: "/settings/account", element: <AccountSettingsPage /> },
+    { path: "/reset_password/:step", element: <ResetPasswordPage /> },
+    { path: "/forgot_password/:step", element: <ResetPasswordPage /> },
+    { path: "/privacy", element: <PrivacyPage /> },
+    { path: "/subscription", element: <SubscriptionPage /> },
+    { path: "/plan/:id", element: <PlanPage /> },
+    { path: "/plan/user_plan", element: <UserPlanPage /> },
+    { path: "/plan/new_card", element: <NewCard /> },
+    { path: "/search", element: <SearchPage /> },
+  ];
   return (
     <Routes>
-      <Route
-        path="/login"
-        element={
-          <ProtectedRouterForLogged>
-            <AuthPage />
-          </ProtectedRouterForLogged>
-        }
-      />
-      <Route
-        path="/registration/info"
-        element={
-          <ProtectedRouterForLogged>
-            <AuthPage />
-          </ProtectedRouterForLogged>
-        }
-      />
-      <Route
-        path="/registration/interests"
-        element={
-          <ProtectedRouterForLogged>
-            <AuthPage />
-          </ProtectedRouterForLogged>
-        }
-      />
-      <Route
-        path="/registration/photos"
-        element={
-          <ProtectedRouterForLogged>
-            <AuthPage />
-          </ProtectedRouterForLogged>
-        }
-      />
-      <Route
-        path="/profile"
-        element={
-          <ProtectedRouter>
-            <ProfilePage />
-          </ProtectedRouter>
-        }
-      />
-      <Route
-        path="/profile/edit"
-        element={
-          <ProtectedRouter>
-            <EditProfilePage />
-          </ProtectedRouter>
-        }
-      />
-      <Route
-        path="/profile/edit/:step"
-        element={
-          <ProtectedRouter>
-            <EditProfilePage />
-          </ProtectedRouter>
-        }
-      />
-      <Route
-        path="/profile/settings"
-        element={
-          <ProtectedRouter>
-            <ProfileSettingsPage />
-          </ProtectedRouter>
-        }
-      />
-      <Route
-        path="/settings/account"
-        element={
-          <ProtectedRouter>
-            <AccountSettingsPage />
-          </ProtectedRouter>
-        }
-      />
-      <Route
-        path="/reset_password/:step"
-        element={
-          <ProtectedRouter>
-            <ResetPasswordPage />
-          </ProtectedRouter>
-        }
-      />
-      <Route
-        path="/forgot_password/:step"
-        element={
-          <ProtectedRouter>
-            <ResetPasswordPage />
-          </ProtectedRouter>
-        }
-      />
-      <Route
-        path="/privacy"
-        element={
-          <ProtectedRouter>
-            <PrivacyPage />
-          </ProtectedRouter>
-        }
-      />
-      <Route
-        path="/subscription"
-        element={
-          <ProtectedRouter>
-            <SubscriptionPage />
-          </ProtectedRouter>
-        }
-      />
-      <Route
-        path="/plan/:id"
-        element={
-          <ProtectedRouter>
-            <PlanPage />
-          </ProtectedRouter>
-        }
-      />
-      <Route
-        path="/plan/user_plan"
-        element={
-          <ProtectedRouter>
-            <UserPlanPage />
-          </ProtectedRouter>
-        }
-      />
-      <Route
-        path="/plan/new_card"
-        element={
-          <ProtectedRouter>
-            <NewCard />
-          </ProtectedRouter>
-        }
-      />
-      <Route
-        path="/search"
-        element={
-          <ProtectedRouter>
-            <SearchPage />
-          </ProtectedRouter>
-        }
-      />
+      {appRoutesUnauth.map((el, ind) => (
+        <Route
+          key={ind}
+          path={el.path}
+          element={
+            <ProtectedRouterForLogged>{el.element}</ProtectedRouterForLogged>
+          }
+        />
+      ))}
+      {appRoutesAuth.map((el, ind) => (
+        <Route
+          key={ind}
+          path={el.path}
+          element={<ProtectedRouter>{el.element}</ProtectedRouter>}
+        />
+      ))}
       <Route path="*" element={<Navigate to={"/login"} />} />
     </Routes>
   );
