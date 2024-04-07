@@ -36,7 +36,9 @@ const RouterComponent = () => {
     { path: "/plan/user_plan", element: <UserPlanPage /> },
     { path: "/plan/new_card", element: <NewCard /> },
     { path: "/search", element: <SearchPage /> },
+    { path: "/search/:category", element: <SearchPage /> },
   ];
+
   return (
     <Routes>
       {appRoutesUnauth.map((el, ind) => (

@@ -311,6 +311,15 @@
       "changePlan": "Change plan",
       "addCard": "Add new card",
       "addNewCard": "Add card"
+    },
+    "searchPage": {
+      "chooseCategory": "Сhoose preferred date category",
+      "title": "People from each channel have certain goals, pick your interest and find the right person.",
+      "communication": "Communication",
+      "romanticDate": "Romantic date",
+      "nightStand": "One night stand",
+      "relationships": "Relationships",
+      "upcomingEvents": "Upcoming events"
     }
   }
 }
