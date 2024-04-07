@@ -8,11 +8,11 @@ import "./Card.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-interface IUserCardsProps {
+interface IUserBankCardsProps {
   cards: string[];
 }
 
-const UserCards = ({ cards }: IUserCardsProps) => {
+const UserBankCards = ({ cards }: IUserBankCardsProps) => {
   const { t } = translate("translate", { keyPrefix: "planPage" });
   const navigate = useNavigate();
 
@@ -75,4 +75,4 @@ const UserCards = ({ cards }: IUserCardsProps) => {
   );
 };
 
-export default UserCards;
+export default UserBankCards;

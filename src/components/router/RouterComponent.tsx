@@ -11,7 +11,7 @@ import PrivacyPage from "@pages/privacy/PrivacyPage";
 import SubscriptionPage from "@pages/subscription/SubscriptionPage";
 import PlanPage from "@pages/plan/PlanPage";
 import UserPlanPage from "@pages/plan/UserPlanPage";
-import NewCard from "@components/userCard/NewCard";
+import NewCard from "@components/userBankCard/NewBankCard";
 import SearchPage from "@pages/search/SearchPage";
 
 const RouterComponent = () => {

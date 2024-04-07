@@ -16,13 +16,13 @@ import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
 import InputMask from "react-input-mask";
 import "./Card.scss";
 
-interface ICardInformation {
+interface IBankCardInformation {
   card_number: string;
   expire_date: string;
   cvc: string;
 }
 
-const NewCardForm = () => {
+const NewBankCardForm = () => {
   const { t } = translate("translate", { keyPrefix: "planPage" });
 
   const [isDisableButton, setIsDisableButton] = useState(true);
@@ -60,7 +60,7 @@ const NewCardForm = () => {
     register,
     setValue,
     formState: { errors },
-  } = useForm<ICardInformation>({
+  } = useForm<IBankCardInformation>({
     resolver: yupResolver(validationSchema),
   });
 
@@ -68,7 +68,7 @@ const NewCardForm = () => {
     if (watch()) {
       const paymentInfo = [];
       for (const key in watch()) {
-        paymentInfo.push(watch(key as Path<ICardInformation>));
+        paymentInfo.push(watch(key as Path<IBankCardInformation>));
       }
       const isEmptyFields = paymentInfo.some(
         (value) => value === "" || value === null
@@ -78,7 +78,7 @@ const NewCardForm = () => {
     // eslint-disable-next-line
   }, [watch()]);
 
-  const onSubmitNewCard = (data: ICardInformation) => {
+  const onSubmitNewCard = (data: IBankCardInformation) => {
     console.log(data);
   };
 
@@ -184,4 +184,4 @@ const NewCardForm = () => {
   );
 };
 
-export default NewCardForm;
+export default NewBankCardForm;

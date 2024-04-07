@@ -6,7 +6,7 @@ import SelectablePlan from "@components/subscriptionPlan/SelectablePlan";
 import { useGetSubscriptionsQuery } from "@store/subscriptionApi";
 import Loader from "@components/loader/Loader";
 import CustomError from "@components/error/CustomError";
-import UserCards from "@components/userCard/UserCards";
+import UserCards from "@components/userBankCard/UserBankCards";
 import "./PlanPage.scss";
 
 const mockCards = ["**** 7576", "**** 2727"];
