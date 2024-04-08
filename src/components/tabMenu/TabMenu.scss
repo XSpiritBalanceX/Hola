@@ -15,6 +15,7 @@
   bottom: 10px;
   left: 50%;
   transform: translate(-50%, -10px);
+  z-index: 10;
   @media all and (max-width: 55em) {
     width: 60%;
   }

@@ -14,6 +14,7 @@ $theme-colors: (
   "error": #f01321,
   "purple": #b84397,
   "green": #20dc55,
+  "success": #008f33,
   "text": (
     "gray-1": #c6c5c7,
     "gray-2": #c6c5c780,
@@ -55,6 +56,11 @@ $theme-colors: (
       153.93deg,
       #554cb6 27.05%,
       #efadff 65.48%,
+    ),
+    "black": (
+      to bottom,
+      transparent,
+      #000000ff,
     ),
   ),
 );

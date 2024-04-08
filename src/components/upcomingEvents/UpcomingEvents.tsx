@@ -33,7 +33,7 @@ const mockData = [
       "https://sun9-79.userapi.com/impg/37iiZdJJ4YHAb-ATjB-YVTpMGEjTpGga_VbEkw/7YM9hnUpGPo.jpg?size=538x807&quality=95&sign=5509daf8e4e2b9b586c45384e2374549&c_uniq_tag=0AOMaaycYo_qgX9Ozz9b7HxozgXoFc3izr9QQ8x-ID8&type=album",
   },
   {
-    label: "standUp",
+    label: "standUpCateg",
     name: "Sergey Orlov",
     place: "Concert Hall Minsk",
     date_start: "2024-03-29",
