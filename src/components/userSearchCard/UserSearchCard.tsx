@@ -3,6 +3,7 @@ import { Box, Button } from "@mui/material";
 import TinderCard from "react-tinder-card";
 import { listOfInterests } from "@utils/listOfInterests";
 import { translate } from "@i18n";
+import UserCardButtons from "@components/buttons/UserCardButtons";
 import "./UserSearchCard.scss";
 
 interface IUserSearchCardProps {
@@ -32,12 +33,12 @@ const UserSearchCard = ({
   useEffect(() => {
     const cardElement = tinderCardRef.current as any;
 
-    const handleTouchStart = (e: React.TouchEvent) => {
+    const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
       const touch = e.touches[0];
       startXRef.current = touch.clientX;
     };
 
-    const handleTouchMove = (e: React.TouchEvent) => {
+    const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
       const touch = e.touches[0];
       const deltaX = touch.clientX - startXRef.current;
 
@@ -87,48 +88,54 @@ const UserSearchCard = ({
     .map((interest) => ({ indInt: interest.indInt, label: interest.label }));
 
   return (
-    <>
-      <Button
-        className="controlPhotoButton prev"
-        onClick={handlePreviousPhoto}
-      />
-      <Button className="controlPhotoButton next" onClick={handleNextPhoto} />
-      <TinderCard
-        className="swipe"
-        preventSwipe={["up", "down"]}
-        onSwipe={(direction) => swiped(direction, id)}
-        onCardLeftScreen={() => leftScreen(id)}
+    <TinderCard
+      className="swipe"
+      preventSwipe={["up", "down"]}
+      onSwipe={(direction) => swiped(direction, id)}
+      onCardLeftScreen={() => leftScreen(id)}
+    >
+      <Box
+        className="card"
+        style={{
+          backgroundImage: `url(${image[activeIndex]})`,
+        }}
       >
-        <Box
-          className="card"
-          style={{
-            backgroundImage: `url(${image[activeIndex]})`,
-          }}
-        >
-          <Box className="swipedColor" ref={tinderCardRef} />
-          <Box className="photosButtonsBox">
-            {Array(image.length)
-              .fill(null)
-              .map((_, ind) => (
-                <Box
-                  key={ind}
-                  className={`${ind === activeIndex ? "activeButton" : ""}`}
-                />
-              ))}
+        <Box className="swipedColor" ref={tinderCardRef} />
+        <Button
+          className="controlPhotoButton prev"
+          onClick={handlePreviousPhoto}
+          onTouchStart={handlePreviousPhoto}
+        />
+        <Button
+          className="controlPhotoButton next"
+          onClick={handleNextPhoto}
+          onTouchStart={handleNextPhoto}
+        />
+        <Box className="photosButtonsBox">
+          {Array(image.length)
+            .fill(null)
+            .map((_, ind) => (
+              <Box
+                key={ind}
+                className={`${ind === activeIndex ? "activeButton" : ""}`}
+              />
+            ))}
+        </Box>
+        <Box className="userInformationBox">
+          <p className="userNameAge">
+            {name} <span>{age}</span>
+          </p>
+          <Box className="userInterestsBox">
+            {userInterests.map((el, ind) => (
+              <p key={ind}>{t(el.label)}</p>
+            ))}
           </Box>
-          <Box className="userInformationBox">
-            <p className="userNameAge">
-              {name} <span>{age}</span>
-            </p>
-            <Box className="userInterestsBox">
-              {userInterests.map((el, ind) => (
-                <p key={ind}>{t(el.label)}</p>
-              ))}
-            </Box>
+          <Box className="buttonsControlBox">
+            <UserCardButtons user_id={id} />
           </Box>
         </Box>
-      </TinderCard>
-    </>
+      </Box>
+    </TinderCard>
   );
 };
 
