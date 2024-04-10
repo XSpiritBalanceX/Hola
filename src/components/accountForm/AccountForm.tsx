@@ -13,7 +13,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import moment from "moment";
-import LanguageSelect from "./LanguageSelect";
 import DatePicker from "./DatePicker";
 import { IAccountInformation } from "./TypesAccountForm";
 import UserLocation from "./UserLocation";
@@ -24,6 +23,7 @@ import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
 import { useUpdateAccountMutation } from "@store/accountApi";
 import { toast } from "react-toastify";
 import DeleteAccountModal from "@components/modal/DeleteAccountModal";
+import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import "./AccountForm.scss";
 
 const AccountForm = () => {
@@ -36,6 +36,7 @@ const AccountForm = () => {
   const [showPicker, setShowPicker] = useState(false);
   const [showModalCountries, setShowModalCountries] = useState(false);
   const [showModalDelete, setShowModalDelete] = useState(false);
+  const [showModalLanguage, setShowModalLanguage] = useState(true);
   const [initialState, setInitialState] = useState({
     name: "",
     email: "",
@@ -136,21 +137,23 @@ const AccountForm = () => {
     setShowPicker(!showPicker);
   };
 
-  const handleOpenModalCountries = () => {
-    setShowModalCountries(true);
+  const handleModals = (name: string, isShow: boolean) => {
+    switch (name) {
+      case "country":
+        setShowModalCountries(isShow);
+        break;
+      case "delete":
+        setShowModalDelete(isShow);
+        break;
+      case "language":
+        setShowModalLanguage(isShow);
+        break;
+      default:
+        console.log("gfdg");
+    }
   };
 
-  const handleCloseModalCountries = () => {
-    setShowModalCountries(false);
-  };
-
-  const handleOpenModalDelete = () => {
-    setShowModalDelete(true);
-  };
-
-  const handleCloseModalDelete = () => {
-    setShowModalDelete(false);
-  };
+  const handleClick = () => {};
 
   const handleLocation = (country: {
     id: number;
@@ -170,12 +173,12 @@ const AccountForm = () => {
       <CountryModal
         isOpen={showModalCountries}
         locale={locale}
-        cbCloseModal={handleCloseModalCountries}
+        cbCloseModal={handleModals}
         cbHandleLocation={handleLocation}
       />
       <DeleteAccountModal
         isOpen={showModalDelete}
-        cbCloseModal={handleCloseModalDelete}
+        cbCloseModal={handleModals}
       />
       <form
         className="formAccountSettings"
@@ -245,10 +248,20 @@ const AccountForm = () => {
             {errors.date_of_birth?.message}
           </FormHelperText>
         </Box>
-        <LanguageSelect />
+        <TextField
+          disabled
+          InputProps={{
+            style: { pointerEvents: "none" },
+            startAdornment: <p className="labelField">{t("language")}</p>,
+            endAdornment: <ArrowForwardIosRoundedIcon />,
+          }}
+          onClick={handleClick}
+          value={locale === "ru" ? "Русский" : "English"}
+          className="languageField"
+        />
         <UserLocation
           user_location={watch("location.name")}
-          cbHandleOpenModalCountries={handleOpenModalCountries}
+          cbHandleOpenModalCountries={handleModals}
         />
         <AccountRagers
           distance={watch("max_distance")}
@@ -267,7 +280,7 @@ const AccountForm = () => {
             <Button
               type="button"
               className="deleteButton"
-              onClick={handleOpenModalDelete}
+              onClick={() => handleModals("delete", true)}
             >
               {t("deleteAcc")}
             </Button>

@@ -10,7 +10,7 @@ const UserLocation = ({
   const { t } = translate("translate", { keyPrefix: "accountSettings" });
 
   const handleClick = () => {
-    cbHandleOpenModalCountries();
+    cbHandleOpenModalCountries("country", true);
   };
   return (
     <>

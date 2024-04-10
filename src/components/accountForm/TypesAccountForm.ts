@@ -25,7 +25,7 @@ export interface IDatePicker {
 
 export interface IUserLocationProps {
   user_location: string;
-  cbHandleOpenModalCountries: () => void;
+  cbHandleOpenModalCountries: (name: string, isShow: boolean) => void;
 }
 
 export interface IAccountRagersProps {

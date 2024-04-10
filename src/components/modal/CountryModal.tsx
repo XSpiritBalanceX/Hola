@@ -9,7 +9,7 @@ import "./Modals.scss";
 interface ICountryModalProps {
   isOpen: boolean;
   locale: string;
-  cbCloseModal: () => void;
+  cbCloseModal: (name: string, isShow: boolean) => void;
   cbHandleLocation: (country: {
     id: number;
     englishLabel: string;
@@ -75,7 +75,7 @@ const CountryModal = ({
   };
 
   const handleCloseModal = () => {
-    cbCloseModal();
+    cbCloseModal("country", false);
   };
 
   const handleSaveCountry = () => {
@@ -86,7 +86,7 @@ const CountryModal = ({
     );
     if (location) {
       cbHandleLocation(location);
-      cbCloseModal();
+      cbCloseModal("country", false);
     } else {
       setErrorCountry(t("errCountry"));
     }

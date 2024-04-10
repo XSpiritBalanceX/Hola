@@ -7,6 +7,9 @@
   .fieldsBox,
   .languageField {
     margin-bottom: 17px;
+    svg {
+      fill: map-get($theme-colors, "black");
+    }
   }
   .accountField,
   .languageField {

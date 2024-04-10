@@ -10,7 +10,7 @@ import "./Modals.scss";
 
 interface IDeleteAccountModalProps {
   isOpen: boolean;
-  cbCloseModal: () => void;
+  cbCloseModal: (name: string, isShow: boolean) => void;
 }
 
 const DeleteAccountModal = ({
@@ -23,7 +23,7 @@ const DeleteAccountModal = ({
   const navigate = useNavigate();
 
   const handleCloseModalDelete = () => {
-    cbCloseModal();
+    cbCloseModal("delete", false);
   };
 
   const handleDeleteAccount = () => {
@@ -44,7 +44,7 @@ const DeleteAccountModal = ({
       })
       .catch(() => {
         toast.error(t("errDeleteAcc"));
-        cbCloseModal();
+        cbCloseModal("delete", false);
       });
   };
 
