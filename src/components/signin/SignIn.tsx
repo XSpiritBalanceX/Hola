@@ -72,7 +72,9 @@ const SignIn = () => {
             user_id: decodeToken.user_id.toString(),
           })
         );
-        navigate("/profile");
+        setTimeout(() => {
+          navigate("/profile");
+        }, 2000);
       }
     } catch (err) {
       toast.error(t("errSignIn"));
