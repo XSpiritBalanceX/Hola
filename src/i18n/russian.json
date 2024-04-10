@@ -252,7 +252,12 @@
       "errIncorrectEmail": "Неверный email",
       "errDateOfBirth": "Вам не может быть меньше 18 лет",
       "errEditing": "Возникла непредвиденная ошибка",
-      "successUpdate": "Информация была успешно обновлена"
+      "successUpdate": "Информация была успешно обновлена",
+      "communication": "Общение",
+      "romanticDate": "Романтические свидания",
+      "nightStand": "На одну ночь",
+      "relationships": "Отношения",
+      "goal": "Цель"
     },
     "resetPasswordPage": {
       "resetPassword": "Сброс пароля",

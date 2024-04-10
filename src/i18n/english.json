@@ -252,7 +252,12 @@
       "errIncorrectEmail": "Invalid email",
       "errDateOfBirth": "You cannot be under 18 years old",
       "errEditing": "An unexpected error occurred",
-      "successUpdate": "Information has been successfully updated"
+      "successUpdate": "Information has been successfully updated",
+      "communication": "Communication",
+      "romanticDate": "Romantic date",
+      "nightStand": "One night stand",
+      "relationships": "Relationships",
+      "goal": "Goal"
     },
     "resetPasswordPage": {
       "resetPassword": "Reset Password",

@@ -5,6 +5,7 @@ export type TAccountInfo = {
   name: string;
   email: string;
   date_of_birth: string;
+  goal: number;
   location: number | null;
   global_search: boolean;
   max_distance: number;

@@ -25,6 +25,8 @@ import { toast } from "react-toastify";
 import DeleteAccountModal from "@components/modal/DeleteAccountModal";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import LanguageModal from "@components/modal/LanguageModal";
+import { listOfCategoryDate } from "@utils/listOfCategoryDate";
+import GoalModal from "@components/modal/GoalModal";
 import "./AccountForm.scss";
 
 const AccountForm = () => {
@@ -38,10 +40,12 @@ const AccountForm = () => {
   const [showModalCountries, setShowModalCountries] = useState(false);
   const [showModalDelete, setShowModalDelete] = useState(false);
   const [showModalLanguage, setShowModalLanguage] = useState(false);
+  const [showModalGoal, setShowModalGoal] = useState(true);
   const [initialState, setInitialState] = useState({
     name: "",
     email: "",
     date_of_birth: "",
+    goal: listOfCategoryDate[0].id,
     location: {
       id: listOfCountries[0].id,
       name: listOfCountries[0].englishLabel,
@@ -67,6 +71,7 @@ const AccountForm = () => {
         date_of_birth: moment(accountInfo.date_of_birth, "YYYY-MM-DD").format(
           "DD/MM/YYYY"
         ),
+        goal: accountInfo.goal || listOfCategoryDate[0].id,
         location: {
           id: location.id,
           name: locale === "en" ? location.englishLabel : location.russianLabel,
@@ -95,6 +100,7 @@ const AccountForm = () => {
         const age = currentDate.diff(dob, "years");
         return age >= minAge;
       }),
+    goal: Yup.number().required(),
     location: Yup.object()
       .shape({ id: Yup.number().required(), name: Yup.string().required() })
       .required(),
@@ -122,6 +128,7 @@ const AccountForm = () => {
       date_of_birth: moment(data.date_of_birth, "DD.MM.YYYY").format(
         "YYYY-MM-DD"
       ),
+      goal: data.goal,
       location: data.location.id,
       global_search: data.global_search,
       max_distance: data.max_distance,
@@ -149,19 +156,27 @@ const AccountForm = () => {
       case "language":
         setShowModalLanguage(isShow);
         break;
+      case "goal":
+        setShowModalGoal(isShow);
+        break;
       default:
-        console.log("gfdg");
+        console.log("no active modal");
     }
   };
 
   useEffect(() => {
-    const country = listOfCountries.find(
+    const foundCountry = listOfCountries.find(
       (el) => el.id === watch("location.id")
     );
+    const foundGoal = listOfCategoryDate.find((el) => el.id === watch("goal"));
     setValue("location", {
-      id: country!.id,
-      name: locale === "en" ? country!.englishLabel : country!.russianLabel,
+      id: foundCountry!.id,
+      name:
+        locale === "en"
+          ? foundCountry!.englishLabel
+          : foundCountry!.russianLabel,
     });
+    setValue("goal", foundGoal!.id);
     // eslint-disable-next-line
   }, [locale]);
 
@@ -174,6 +189,10 @@ const AccountForm = () => {
       id: country.id,
       name: locale === "en" ? country.englishLabel : country.russianLabel,
     });
+  };
+
+  const handleSetGoal = (value: number) => {
+    setValue("goal", value);
   };
 
   const isChanges = JSON.stringify(initialState) === JSON.stringify(watch());
@@ -194,6 +213,12 @@ const AccountForm = () => {
         isOpen={showModalLanguage}
         cbCloseModal={handleModals}
         locale={locale}
+      />
+      <GoalModal
+        isOpen={showModalGoal}
+        cbCloseModal={handleModals}
+        currentGoal={watch("goal")}
+        cbHandleSetGoal={handleSetGoal}
       />
       <form
         className="formAccountSettings"
@@ -272,6 +297,24 @@ const AccountForm = () => {
           }}
           onClick={() => handleModals("language", true)}
           value={locale === "ru" ? "Русский" : "English"}
+          className="languageField"
+        />
+        <TextField
+          disabled
+          InputProps={{
+            style: { pointerEvents: "none" },
+            startAdornment: <p className="labelField">{t("goal")}</p>,
+            endAdornment: <ArrowForwardIosRoundedIcon />,
+          }}
+          onClick={() => handleModals("goal", true)}
+          value={
+            watch("goal")
+              ? t(
+                  listOfCategoryDate.find((el) => el.id === watch("goal"))!
+                    .label
+                )
+              : ""
+          }
           className="languageField"
         />
         <UserLocation
