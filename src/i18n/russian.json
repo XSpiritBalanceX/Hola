@@ -132,7 +132,14 @@
         "label": "Вы уверены, что хотите удалить свой аккаунт?",
         "close": "Нет",
         "delete": "Да, удалить",
-        "errDeleteAcc": "Возникла непредвиденная ошибка"
+        "errDeleteAcc": "Возникла непредвиденная ошибка",
+        "chooseLanguage": "Выберите язык",
+        "save": "Сохранить",
+        "chooseGoal": "Выберите цель",
+        "communication": "Общение",
+        "romanticDate": "Романтические свидания",
+        "nightStand": "На одну ночь",
+        "relationships": "Отношения"
       },
       "profilePhoto": {
         "profilePhoto": "Фото профиля",

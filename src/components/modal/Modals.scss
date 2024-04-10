@@ -431,3 +431,36 @@
     }
   }
 }
+
+.modalChooseLanguage {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  .contentChooseLanguage {
+    background-color: map-get($theme-colors, "white");
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    padding: 20px 20px 40px 20px;
+    .saveLanguageBox {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      p {
+        width: 100%;
+        margin: 0;
+        @extend %body-1-bold;
+        text-align: center;
+      }
+      button {
+        text-transform: none;
+        @extend %button;
+        @extend %button-white;
+      }
+    }
+    .radioLanguage {
+      .MuiTypography-root {
+        @extend %body-1;
+      }
+    }
+  }
+}

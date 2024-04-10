@@ -24,6 +24,7 @@ import { useUpdateAccountMutation } from "@store/accountApi";
 import { toast } from "react-toastify";
 import DeleteAccountModal from "@components/modal/DeleteAccountModal";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
+import LanguageModal from "@components/modal/LanguageModal";
 import "./AccountForm.scss";
 
 const AccountForm = () => {
@@ -36,7 +37,7 @@ const AccountForm = () => {
   const [showPicker, setShowPicker] = useState(false);
   const [showModalCountries, setShowModalCountries] = useState(false);
   const [showModalDelete, setShowModalDelete] = useState(false);
-  const [showModalLanguage, setShowModalLanguage] = useState(true);
+  const [showModalLanguage, setShowModalLanguage] = useState(false);
   const [initialState, setInitialState] = useState({
     name: "",
     email: "",
@@ -153,7 +154,16 @@ const AccountForm = () => {
     }
   };
 
-  const handleClick = () => {};
+  useEffect(() => {
+    const country = listOfCountries.find(
+      (el) => el.id === watch("location.id")
+    );
+    setValue("location", {
+      id: country!.id,
+      name: locale === "en" ? country!.englishLabel : country!.russianLabel,
+    });
+    // eslint-disable-next-line
+  }, [locale]);
 
   const handleLocation = (country: {
     id: number;
@@ -179,6 +189,11 @@ const AccountForm = () => {
       <DeleteAccountModal
         isOpen={showModalDelete}
         cbCloseModal={handleModals}
+      />
+      <LanguageModal
+        isOpen={showModalLanguage}
+        cbCloseModal={handleModals}
+        locale={locale}
       />
       <form
         className="formAccountSettings"
@@ -255,7 +270,7 @@ const AccountForm = () => {
             startAdornment: <p className="labelField">{t("language")}</p>,
             endAdornment: <ArrowForwardIosRoundedIcon />,
           }}
-          onClick={handleClick}
+          onClick={() => handleModals("language", true)}
           value={locale === "ru" ? "Русский" : "English"}
           className="languageField"
         />

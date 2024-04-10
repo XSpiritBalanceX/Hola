@@ -132,7 +132,14 @@
         "label": "Are you sure you want to delete your account?",
         "close": "Nope",
         "delete": "Yes, delete it",
-        "errDeleteAcc": "An unexpected error occurred"
+        "errDeleteAcc": "An unexpected error occurred",
+        "chooseLanguage": "Choose language",
+        "save": "Save",
+        "chooseGoal": "Choose goal",
+        "communication": "Communication",
+        "romanticDate": "Romantic date",
+        "nightStand": "One night stand",
+        "relationships": "Relationships"
       },
       "profilePhoto": {
         "profilePhoto": "Profile photo",
