@@ -44,7 +44,12 @@
         "errDateOfBirth": "You cannot be under 18 years old",
         "errSignUp": "An unexpected error occurred",
         "search": "Search",
-        "errCountry": "Choose your country"
+        "errCountry": "Choose your country",
+        "communication": "Communication",
+        "romanticDate": "Romantic date",
+        "nightStand": "One night stand",
+        "relationships": "Relationships",
+        "questionGoal": "What are you looking for?"
       },
       "interests": {
         "interests": "Interests",

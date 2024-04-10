@@ -59,6 +59,63 @@
         }
       }
     }
+    .goalBox {
+      margin: 20px 0 10px 0;
+      .titleGoal {
+        color: map-get($theme-colors, "blue");
+        @extend %body-1-bold;
+        margin: 0 0 15px 0;
+      }
+      .radioGoalGroup {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        /*  width: 40%;
+        @media all and (max-width: 55em) {
+          width: 60%;
+        }
+        @media all and (max-width: 40em) {
+          width: 100%;
+        } */
+        .radioGoal {
+          margin: 0;
+          position: relative;
+          .radioButton {
+            width: 100%;
+            margin-bottom: 10px;
+            border: solid 1px map-get($theme-colors, "gray-2");
+            min-width: 160px;
+            height: 41px;
+            border-radius: 20px;
+            svg {
+              display: none;
+            }
+          }
+          .MuiRadio-root.Mui-checked {
+            background-color: map-get($theme-colors, "blue");
+            border: solid 1px map-get($theme-colors, "blue");
+          }
+          .MuiRadio-root.Mui-checked + .MuiTypography-root {
+            color: map-get($theme-colors, "white");
+            @extend %body-1-bold;
+          }
+          .MuiTypography-root {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 10px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: map-get($theme-colors, "gray-2");
+            width: 90%;
+            @extend %body-1-medium;
+          }
+        }
+      }
+    }
     .submitPersonalInfo {
       margin-top: 96px;
       width: 100%;

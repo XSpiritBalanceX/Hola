@@ -44,7 +44,12 @@
         "errDateOfBirth": "Вам не может быть меньше 18 лет",
         "errSignUp": "Возникла непредвиденная ошибка",
         "search": "Поиск",
-        "errCountry": "Укажите вашу страну"
+        "errCountry": "Укажите вашу страну",
+        "communication": "Общение",
+        "romanticDate": "Романтические свидания",
+        "nightStand": "На одну ночь",
+        "relationships": "Отношения",
+        "questionGoal": "Что Вы ищете?"
       },
       "interests": {
         "interests": "Интересы",

@@ -28,7 +28,7 @@ const UserCardButtons = ({ user_id }: IUserCardButtonsProps) => {
   return (
     <>
       {isLike && (
-        <p className="likeText animate__animated animate__bounceInUp">Like</p>
+        <p className="likeText animate__animated animate__backInUp">Like</p>
       )}
       <Button
         className="removeButton"

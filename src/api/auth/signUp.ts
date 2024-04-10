@@ -2,6 +2,7 @@ import { axiosInstance } from "@axiosApi/axiosAPI";
 
 interface IUserInformation {
   gender: string;
+  goal: number;
   name: string;
   date_of_birth: string;
   location: number;
