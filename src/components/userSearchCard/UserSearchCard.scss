@@ -236,3 +236,48 @@
   margin: 0 auto;
   border-radius: 15px;
 }
+
+.noFoundPeopleBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 85vh;
+  padding: 0 10px;
+  img {
+    min-width: 97px;
+    height: 30px;
+  }
+  .contentNoFoundPeople {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .titleOops {
+      margin: 0;
+      @extend %h2;
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 37px;
+    }
+    .titleNoFound {
+      margin: 15px 0 30px 0;
+      text-align: center;
+      @extend %body-1;
+    }
+    .buttonTryAgain,
+    .buttonBack {
+      text-transform: none;
+      width: 100%;
+      @extend %button;
+    }
+    .buttonTryAgain {
+      @extend %button-blue;
+    }
+    .buttonBack {
+      @extend %button-white;
+      margin-top: 20px;
+      background-color: map-deep-get($theme-colors, "background", "gray-1");
+    }
+  }
+}

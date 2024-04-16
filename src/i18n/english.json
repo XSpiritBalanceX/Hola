@@ -392,7 +392,11 @@
       "karaoke": "Karaoke",
       "homeWorkout": "Home Workout",
       "seeMore": "See more",
-      "collapse": "Collapse"
+      "collapse": "Collapse",
+      "ops": "Oops!",
+      "noFoundPeople": "We can no longer find people near you, please try again later",
+      "tryAgain": "Try again",
+      "backToCateg": "Back to categories"
     }
   }
 }

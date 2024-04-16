@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import UserSearchCard from "./UserSearchCard";
+import NoFoundPeople from "./NoFoundPeople";
 import "./UserSearchCard.scss";
 
 interface IUsers {
@@ -120,7 +121,7 @@ const UserSearchCardContainer = () => {
     setUsers(filteredData);
   };
 
-  return (
+  return users.length ? (
     <Box className="cardsBox">
       {users
         .sort((a, b) => b.id - a.id)
@@ -137,6 +138,8 @@ const UserSearchCardContainer = () => {
           />
         ))}
     </Box>
+  ) : (
+    <NoFoundPeople />
   );
 };
 
