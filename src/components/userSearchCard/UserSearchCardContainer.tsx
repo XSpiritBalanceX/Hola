@@ -9,6 +9,7 @@ interface IUsers {
   age: number;
   image: string[];
   interests: { id: number; name: string }[];
+  description: string;
 }
 
 const mockData = [
@@ -27,6 +28,8 @@ const mockData = [
       { id: 10, name: "" },
       { id: 11, name: "" },
     ],
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec turpis egestas, pellentesque massa eu, commodo mi. Vestibulum facilisis imperdiet.",
   },
   {
     id: 2,
@@ -42,6 +45,8 @@ const mockData = [
       { id: 8, name: "" },
       { id: 9, name: "" },
     ],
+    description:
+      "Curabitur a libero nec tellus malesuada consectetur vestibulum eget erat. Phasellus interdum massa vel euismod vulputate. Ut facilisis magna non dignissim aliquet. Mauris volutpat lorem.",
   },
   {
     id: 3,
@@ -58,6 +63,8 @@ const mockData = [
       { id: 6, name: "" },
       { id: 15, name: "" },
     ],
+    description:
+      "Suspendisse porttitor semper urna et sodales. Maecenas id massa porttitor, molestie lectus consectetur, blandit tortor.",
   },
   {
     id: 4,
@@ -74,6 +81,8 @@ const mockData = [
       { id: 11, name: "" },
       { id: 15, name: "" },
     ],
+    description:
+      "Integer fringilla tellus erat. In maximus, quam non sagittis placerat, metus magna consectetur metus, ac convallis nisl lorem in lectus. Integer sit amet nulla et risus fermentum semper. Fusce ipsum.",
   },
   {
     id: 5,
@@ -93,6 +102,8 @@ const mockData = [
       { id: 12, name: "" },
       { id: 13, name: "" },
     ],
+    description:
+      "Sed sed dignissim purus. Maecenas non blandit nibh, id congue velit. Maecenas pretium susc",
   },
 ];
 
@@ -111,17 +122,20 @@ const UserSearchCardContainer = () => {
 
   return (
     <Box className="cardsBox">
-      {users.map((el, ind) => (
-        <UserSearchCard
-          key={ind}
-          id={el.id}
-          name={el.name}
-          age={el.age}
-          image={el.image}
-          interests={el.interests}
-          cbHandleRemoveUser={handleRemoveUser}
-        />
-      ))}
+      {users
+        .sort((a, b) => b.id - a.id)
+        .map((el, ind) => (
+          <UserSearchCard
+            key={ind}
+            id={el.id}
+            name={el.name}
+            age={el.age}
+            image={el.image}
+            interests={el.interests}
+            description={el.description}
+            cbHandleRemoveUser={handleRemoveUser}
+          />
+        ))}
     </Box>
   );
 };

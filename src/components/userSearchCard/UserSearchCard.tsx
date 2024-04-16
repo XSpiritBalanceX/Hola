@@ -4,6 +4,7 @@ import TinderCard from "react-tinder-card";
 import { listOfInterests } from "@utils/listOfInterests";
 import { translate } from "@i18n";
 import UserCardButtons from "@components/buttons/UserCardButtons";
+import classNames from "classnames";
 import "./UserSearchCard.scss";
 
 interface IUserSearchCardProps {
@@ -12,6 +13,7 @@ interface IUserSearchCardProps {
   age: number;
   image: string[];
   interests: { id: number; name: string }[];
+  description: string;
   cbHandleRemoveUser: (id: number) => void;
 }
 
@@ -21,11 +23,14 @@ const UserSearchCard = ({
   age,
   image,
   interests,
+  description,
   cbHandleRemoveUser,
 }: IUserSearchCardProps) => {
   const { t } = translate("translate", { keyPrefix: "searchPage" });
 
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isFullDescription, setIsFullDescription] = useState(false);
+  const shortDescription = description.slice(0, 90);
 
   const tinderCardRef = useRef<null | any>(null);
   const startXRef = useRef(0);
@@ -87,6 +92,14 @@ const UserSearchCard = ({
     .filter((el) => interests.some((item) => item.id === el.indInt))
     .map((interest) => ({ indInt: interest.indInt, label: interest.label }));
 
+  const handleFullShortDescription = () => {
+    setIsFullDescription(!isFullDescription);
+  };
+
+  const classBoxCard: string = classNames("card", {
+    expandedDescription: isFullDescription,
+  });
+
   return (
     <TinderCard
       className="swipe"
@@ -95,7 +108,7 @@ const UserSearchCard = ({
       onCardLeftScreen={() => leftScreen(id)}
     >
       <Box
-        className="card"
+        className={classBoxCard}
         style={{
           backgroundImage: `url(${image[activeIndex]})`,
         }}
@@ -129,6 +142,26 @@ const UserSearchCard = ({
             {userInterests.map((el, ind) => (
               <p key={ind}>{t(el.label)}</p>
             ))}
+          </Box>
+          <Box className="userDescriptionBox">
+            {isFullDescription ? (
+              <p>{description}</p>
+            ) : (
+              <p>
+                {description.length > 90
+                  ? `${shortDescription}...`
+                  : `${shortDescription}`}
+              </p>
+            )}
+            {description.length > 90 && (
+              <Button
+                type="button"
+                onClick={handleFullShortDescription}
+                onTouchStart={handleFullShortDescription}
+              >
+                {t(isFullDescription ? "collapse" : "seeMore")}
+              </Button>
+            )}
           </Box>
           <Box className="buttonsControlBox">
             <UserCardButtons user_id={id} />

@@ -40,7 +40,7 @@ const AccountForm = () => {
   const [showModalCountries, setShowModalCountries] = useState(false);
   const [showModalDelete, setShowModalDelete] = useState(false);
   const [showModalLanguage, setShowModalLanguage] = useState(false);
-  const [showModalGoal, setShowModalGoal] = useState(true);
+  const [showModalGoal, setShowModalGoal] = useState(false);
   const [initialState, setInitialState] = useState({
     name: "",
     email: "",

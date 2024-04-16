@@ -390,7 +390,9 @@
       "science": "Наука",
       "jiuJitsu": "Джиу-Джитсу",
       "karaoke": "Караоке",
-      "homeWorkout": "Тренировки"
+      "homeWorkout": "Тренировки",
+      "seeMore": "Ещё",
+      "collapse": "Свернуть"
     }
   }
 }

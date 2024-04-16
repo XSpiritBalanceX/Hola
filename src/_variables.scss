@@ -65,6 +65,11 @@ $theme-colors: (
       transparent,
       #000000ff,
     ),
+    "black-expanded": (
+      to bottom,
+      transparent 0%,
+      #000000 75%,
+    ),
   ),
 );
 
