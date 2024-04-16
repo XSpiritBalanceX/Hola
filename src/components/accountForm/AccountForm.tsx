@@ -20,7 +20,7 @@ import CountryModal from "@components/modal/CountryModal";
 import AccountRagers from "./AccountRagers";
 import { listOfCountries } from "@utils/listOfCountries";
 import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
-import { useUpdateAccountMutation } from "@store/accountApi";
+import { useUpdateAccountMutation } from "@store/requestApi/accountApi";
 import { toast } from "react-toastify";
 import DeleteAccountModal from "@components/modal/DeleteAccountModal";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";

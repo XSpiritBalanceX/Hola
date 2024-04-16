@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { translate } from "@i18n";
-import { useDeleteAvatarMutation } from "@store/profileInformationApi";
+import { useDeleteAvatarMutation } from "@store/requestApi/profileInformationApi";
 import { toast } from "react-toastify";
 import BucketIcon from "@components/icons/BucketIcon";
 import "@components/modal/Modals.scss";

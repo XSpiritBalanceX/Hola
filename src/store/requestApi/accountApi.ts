@@ -1,5 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { requestHandler } from "./requestHandler";
+import { requestHandler } from "../requestHandler";
 
 export type TAccountInfo = {
   name: string;
@@ -25,7 +25,6 @@ export const accountApi = createApi({
       providesTags: ["Account"],
     }),
     updateAccount: builder.mutation<void, TAccountInfo>({
-      //@ts-ignore
       query: (information) => ({
         url: `/persons/${userID}/account_settings/`,
         method: "PATCH",
@@ -34,7 +33,6 @@ export const accountApi = createApi({
       invalidatesTags: ["Account"],
     }),
     deleteAccount: builder.mutation<void, void>({
-      //@ts-ignore
       query: () => ({
         url: `/persons/${userID}/`,
         method: "DELETE",

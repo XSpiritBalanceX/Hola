@@ -1,5 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { requestHandler } from "./requestHandler";
+import { requestHandler } from "../requestHandler";
 
 export type TProfileEditInfo = {
   id: number;
@@ -23,7 +23,6 @@ export const profileApi = createApi({
       providesTags: ["Profile"],
     }),
     addInterests: builder.mutation<void, TInterest>({
-      //@ts-ignore
       query: (interests) => ({
         url: `/person/${userID}/interests/`,
         method: "POST",
@@ -32,7 +31,6 @@ export const profileApi = createApi({
       invalidatesTags: ["Profile"],
     }),
     addPhotos: builder.mutation<void, FormData>({
-      //@ts-ignore
       query: (images) => ({
         url: `/images/`,
         method: "POST",
@@ -41,7 +39,6 @@ export const profileApi = createApi({
       invalidatesTags: ["Profile"],
     }),
     deletePhoto: builder.mutation<void, number>({
-      //@ts-ignore
       query: (imageID) => ({
         url: `/images/${imageID}/`,
         method: "DELETE",
@@ -49,7 +46,6 @@ export const profileApi = createApi({
       invalidatesTags: ["Profile"],
     }),
     updateDescription: builder.mutation<void, string>({
-      //@ts-ignore
       query: (description) => ({
         url: `/persons/${userID}/`,
         method: "PATCH",

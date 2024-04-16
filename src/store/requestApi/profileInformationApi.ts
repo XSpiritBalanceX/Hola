@@ -1,5 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { requestHandler } from "./requestHandler";
+import { requestHandler } from "../requestHandler";
 
 export type TProfileInformation = {
   name: string;
@@ -20,7 +20,6 @@ export const profileInformationApi = createApi({
       providesTags: ["ProfileInformation"],
     }),
     uploadAvatar: builder.mutation<void, FormData>({
-      //@ts-ignore
       query: (photo) => ({
         url: `/persons/${userID}/avatar/`,
         method: "PATCH",
@@ -29,7 +28,6 @@ export const profileInformationApi = createApi({
       invalidatesTags: ["ProfileInformation"],
     }),
     deleteAvatar: builder.mutation<void, void>({
-      //@ts-ignore
       query: () => ({
         url: `/persons/${userID}/avatar/`,
         method: "DELETE",

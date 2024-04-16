@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Box, Button } from "@mui/material";
 import { translate } from "@i18n";
 import PictureIcon from "@components/icons/PictureIcon";
-import { useUploadAvatarMutation } from "@store/profileInformationApi";
+import { useUploadAvatarMutation } from "@store/requestApi/profileInformationApi";
 import { toast } from "react-toastify";
 import "@components/modal/Modals.scss";
 

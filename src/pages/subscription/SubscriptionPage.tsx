@@ -2,7 +2,7 @@ import { Container, Box, Button } from "@mui/material";
 import {
   useGetSubscriptionsQuery,
   useGetUserPlanQuery,
-} from "@store/subscriptionApi";
+} from "@store/requestApi/subscriptionApi";
 import Loader from "@components/loader/Loader";
 import CustomError from "@components/error/CustomError";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";

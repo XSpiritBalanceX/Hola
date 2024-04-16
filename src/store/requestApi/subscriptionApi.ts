@@ -1,5 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { requestHandler } from "./requestHandler";
+import { requestHandler } from "../requestHandler";
 
 export type TPlanInformation = {
   id: number;

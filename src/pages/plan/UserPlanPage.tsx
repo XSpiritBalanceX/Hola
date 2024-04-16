@@ -6,7 +6,7 @@ import SelectablePlan from "@components/subscriptionPlan/SelectablePlan";
 import {
   useGetSubscriptionsQuery,
   useGetUserPlanQuery,
-} from "@store/subscriptionApi";
+} from "@store/requestApi/subscriptionApi";
 import Loader from "@components/loader/Loader";
 import CustomError from "@components/error/CustomError";
 import UserCards from "@components/userBankCard/UserBankCards";

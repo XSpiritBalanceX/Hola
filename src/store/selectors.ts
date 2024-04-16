@@ -1,8 +1,8 @@
 import { RootState } from ".";
-import { TProfileEditInfo } from "./profileApi";
-import { TAccountInfo } from "./accountApi";
-import { TProfileInformation } from "./profileInformationApi";
-import { TPlanInformation } from "./subscriptionApi";
+import { TProfileEditInfo } from "./requestApi/profileApi";
+import { TAccountInfo } from "./requestApi/accountApi";
+import { TProfileInformation } from "./requestApi/profileInformationApi";
+import { TPlanInformation } from "./requestApi/subscriptionApi";
 
 export const localeSelect = (state: RootState) => state.hola.locale;
 

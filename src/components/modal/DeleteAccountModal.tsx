@@ -1,7 +1,7 @@
 import { Modal, Box, Button } from "@mui/material";
 import { translate } from "@i18n";
 import heart from "@assets/hearticon.svg";
-import { useDeleteAccountMutation } from "@store/accountApi";
+import { useDeleteAccountMutation } from "@store/requestApi/accountApi";
 import { toast } from "react-toastify";
 import { useAppDispatch } from "@store/hook";
 import { loginUser } from "@store/holaSlice";

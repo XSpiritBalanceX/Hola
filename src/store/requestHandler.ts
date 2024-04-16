@@ -1,8 +1,20 @@
 import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { BASE_URL } from "@axiosApi/axiosAPI";
 import { refreshAccessToken } from "@api/auth/refreshToken";
+import {
+  BaseQueryFn,
+  FetchBaseQueryMeta,
+  FetchBaseQueryError,
+  FetchArgs,
+} from "@reduxjs/toolkit/query";
 
-const baseQuery = fetchBaseQuery({
+const baseQuery: BaseQueryFn<
+  string | FetchArgs,
+  unknown,
+  FetchBaseQueryError,
+  object,
+  FetchBaseQueryMeta
+> = fetchBaseQuery({
   baseUrl: BASE_URL,
   prepareHeaders: (headers) => {
     const currentToken = localStorage.getItem("hola_access_token");
@@ -14,9 +26,9 @@ const baseQuery = fetchBaseQuery({
 
 // Перехватчик запросов для обработки ошибок
 export const requestHandler = async (
-  url: string,
+  url: string | FetchArgs,
   config: any,
-  extraOptions: any
+  extraOptions: object
 ) => {
   const response = await baseQuery(url, config, extraOptions);
   if (response.error?.status === 401) {
