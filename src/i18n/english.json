@@ -396,7 +396,10 @@
       "ops": "Oops!",
       "noFoundPeople": "We can no longer find people near you, please try again later",
       "tryAgain": "Try again",
-      "backToCateg": "Back to categories"
+      "backToCateg": "Back to categories",
+      "itsMatch": "It’s a Match!",
+      "sendMessage": "Send a Message",
+      "viewProfile": "View Profile"
     }
   }
 }

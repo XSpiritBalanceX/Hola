@@ -2,6 +2,10 @@ import { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import UserSearchCard from "./UserSearchCard";
 import NoFoundPeople from "./NoFoundPeople";
+import MatchModal from "@components/modal/MatchModal";
+import { useGetProfileInformationQuery } from "@store/requestApi/profileInformationApi";
+import Loader from "@components/loader/Loader";
+import CustomError from "@components/error/CustomError";
 import "./UserSearchCard.scss";
 
 interface IUsers {
@@ -110,6 +114,13 @@ const mockData = [
 
 const UserSearchCardContainer = () => {
   const [users, setUsers] = useState<IUsers[]>([]);
+  const [isOpenMatchModal, setIsOpenMatchModal] = useState(false);
+
+  const userID = localStorage.getItem("hola_user_id");
+
+  const { data, isError, isLoading } = useGetProfileInformationQuery(
+    userID as string
+  );
 
   useEffect(() => {
     setUsers(mockData);
@@ -121,25 +132,44 @@ const UserSearchCardContainer = () => {
     setUsers(filteredData);
   };
 
-  return users.length ? (
-    <Box className="cardsBox">
-      {users
-        .sort((a, b) => b.id - a.id)
-        .map((el, ind) => (
-          <UserSearchCard
-            key={ind}
-            id={el.id}
-            name={el.name}
-            age={el.age}
-            image={el.image}
-            interests={el.interests}
-            description={el.description}
-            cbHandleRemoveUser={handleRemoveUser}
-          />
-        ))}
-    </Box>
-  ) : (
-    <NoFoundPeople />
+  const handleCloseMathModal = () => {
+    setIsOpenMatchModal(false);
+  };
+
+  const handleOpenMatchModal = () => {
+    setIsOpenMatchModal(true);
+  };
+
+  return (
+    <>
+      <Loader isLoading={isLoading} />
+      <MatchModal
+        isOpen={isOpenMatchModal}
+        cbCloseModal={handleCloseMathModal}
+        user_photo={data?.avatar}
+        partner_photo="https://img.freepik.com/free-photo/handsome-bearded-guy-posing-against-white-wall_273609-20597.jpg?size=626&ext=jpg&ga=GA1.1.1700460183.1713225600&semt=sph"
+      />
+      {isError && <CustomError />}
+      {users.length && !isError && (
+        <Box className="cardsBox">
+          {users
+            .sort((a, b) => b.id - a.id)
+            .map((el, ind) => (
+              <UserSearchCard
+                key={ind}
+                id={el.id}
+                name={el.name}
+                age={el.age}
+                image={el.image}
+                interests={el.interests}
+                description={el.description}
+                cbHandleRemoveUser={handleRemoveUser}
+              />
+            ))}
+        </Box>
+      )}
+      {!users.length && !isError && <NoFoundPeople />}
+    </>
   );
 };
 

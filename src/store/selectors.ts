@@ -15,8 +15,9 @@ export const accountSelect = (state: RootState) =>
   state.accountApi.queries["getAccount(undefined)"]?.data as TAccountInfo;
 
 export const profileInformationSelect = (state: RootState) =>
-  state.profileInformationApi.queries["getProfileInformation(undefined)"]
-    ?.data as TProfileInformation;
+  state.profileInformationApi.queries[
+    `getProfileInformation("${localStorage.getItem("hola_user_id")}")`
+  ]?.data as TProfileInformation;
 
 export const subscriptionSelect = (state: RootState) =>
   state.subscriptionApi.queries["getSubscriptions(undefined)"]
