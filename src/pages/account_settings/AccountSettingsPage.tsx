@@ -14,7 +14,9 @@ import "./AccountSettingsPage.scss";
 const AccountSettingsPage = () => {
   const { t } = translate("translate", { keyPrefix: "accountSettings" });
 
-  const { data, error, isLoading } = useGetAccountQuery();
+  const userID = localStorage.getItem("hola_user_id");
+
+  const { data, error, isLoading } = useGetAccountQuery(userID || "");
   const [, { isLoading: loadingUpdateInformation }] =
     useUpdateAccountMutation();
   const [, { isLoading: loadingDeleteAccount }] = useDeleteAccountMutation();

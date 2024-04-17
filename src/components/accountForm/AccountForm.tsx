@@ -34,6 +34,8 @@ const AccountForm = () => {
   const accountInfo = useAppSelector(holaSelectors.accountSelect);
   const locale = useAppSelector(holaSelectors.localeSelect);
 
+  const userID = localStorage.getItem("hola_user_id");
+
   const [updateAccount] = useUpdateAccountMutation();
 
   const [showPicker, setShowPicker] = useState(false);
@@ -135,7 +137,7 @@ const AccountForm = () => {
       min_age: data.min_age,
       max_age: data.max_age,
     };
-    updateAccount(compiledData)
+    updateAccount({ info: compiledData, userID: userID || "" })
       .unwrap()
       .then(() => toast.success(t("successUpdate")))
       .catch(() => toast.error(t("errEditing")));

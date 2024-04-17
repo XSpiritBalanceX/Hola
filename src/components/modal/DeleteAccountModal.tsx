@@ -18,6 +18,8 @@ const DeleteAccountModal = ({
   cbCloseModal,
 }: IDeleteAccountModalProps) => {
   const { t } = translate("translate", { keyPrefix: "modals.account" });
+  const userID = localStorage.getItem("hola_user_id");
+
   const [deleteAccount] = useDeleteAccountMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -27,7 +29,7 @@ const DeleteAccountModal = ({
   };
 
   const handleDeleteAccount = () => {
-    deleteAccount()
+    deleteAccount(userID || "")
       .unwrap()
       .then(() => {
         dispatch(

@@ -12,7 +12,9 @@ export const profileEditSelect = (state: RootState) =>
   state.profileApi.queries["getProfile(undefined)"]?.data as TProfileEditInfo;
 
 export const accountSelect = (state: RootState) =>
-  state.accountApi.queries["getAccount(undefined)"]?.data as TAccountInfo;
+  state.accountApi.queries[
+    `getAccount("${localStorage.getItem("hola_user_id")}")`
+  ]?.data as TAccountInfo;
 
 export const profileInformationSelect = (state: RootState) =>
   state.profileInformationApi.queries[
