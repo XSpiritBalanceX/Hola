@@ -9,24 +9,23 @@ export type TProfileEditInfo = {
   email_confirmed: boolean;
 };
 
-type TInterest = { interests: string[] };
-
-const userID = localStorage.getItem("hola_user_id");
-
 export const profileApi = createApi({
   reducerPath: "profileApi",
   baseQuery: requestHandler,
   tagTypes: ["Profile"],
   endpoints: (builder) => ({
-    getProfile: builder.query<TProfileEditInfo, void>({
-      query: () => `/persons/${userID}/profile_edit/`,
+    getProfile: builder.query<TProfileEditInfo, string>({
+      query: (userID) => `/persons/${userID}/profile_edit/`,
       providesTags: ["Profile"],
     }),
-    addInterests: builder.mutation<void, TInterest>({
-      query: (interests) => ({
+    addInterests: builder.mutation<
+      void,
+      { interest: string[]; userID: string }
+    >({
+      query: ({ interest, userID }) => ({
         url: `/person/${userID}/interests/`,
         method: "POST",
-        body: interests,
+        body: { interests: interest },
       }),
       invalidatesTags: ["Profile"],
     }),
@@ -45,8 +44,11 @@ export const profileApi = createApi({
       }),
       invalidatesTags: ["Profile"],
     }),
-    updateDescription: builder.mutation<void, string>({
-      query: (description) => ({
+    updateDescription: builder.mutation<
+      void,
+      { description: string; userID: string }
+    >({
+      query: ({ description, userID }) => ({
         url: `/persons/${userID}/`,
         method: "PATCH",
         body: { description },

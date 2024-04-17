@@ -26,6 +26,8 @@ const Interests = ({ cbHandleLoading, pathname }: IInterestsProps) => {
   const { t } = translate("translate", { keyPrefix: "signUp.interests" });
   const navigate = useNavigate();
 
+  const userID = localStorage.getItem("hola_user_id");
+
   const userInterests = useAppSelector(holaSelectors.profileEditSelect);
 
   const [initialData, setInitialData] = useState<Array<string>>([]);
@@ -74,7 +76,7 @@ const Interests = ({ cbHandleLoading, pathname }: IInterestsProps) => {
         cbHandleLoading(false);
       }
     } else {
-      addInterests({ interests: newInterests })
+      addInterests({ interest: newInterests, userID: userID || "" })
         .unwrap()
         .catch(() => toast.error(t("errInterests")));
     }

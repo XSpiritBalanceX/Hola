@@ -10,6 +10,8 @@ import "./UserDescription.scss";
 const UserDescription = () => {
   const { t } = translate("translate", { keyPrefix: "profile.editing" });
 
+  const userID = localStorage.getItem("hola_user_id");
+
   const userDescription = useAppSelector(holaSelectors.profileEditSelect);
   const [updateDescription] = useUpdateDescriptionMutation();
 
@@ -22,7 +24,7 @@ const UserDescription = () => {
   };
 
   const handleSaveDescription = () => {
-    updateDescription(description)
+    updateDescription({ description: description, userID: userID || "" })
       .unwrap()
       .then(() => toast.success(t("successUpdate")))
       .catch(() => toast.error(t("errEditing")));

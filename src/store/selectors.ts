@@ -9,7 +9,9 @@ export const localeSelect = (state: RootState) => state.hola.locale;
 export const isLoginSelect = (state: RootState) => state.hola.isLogin;
 
 export const profileEditSelect = (state: RootState) =>
-  state.profileApi.queries["getProfile(undefined)"]?.data as TProfileEditInfo;
+  state.profileApi.queries[
+    `getProfile("${localStorage.getItem("hola_user_id")}")`
+  ]?.data as TProfileEditInfo;
 
 export const accountSelect = (state: RootState) =>
   state.accountApi.queries[
