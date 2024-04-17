@@ -14,6 +14,8 @@ const UploadPhotoButton = ({ cbCloseModal }: IUploadPhotoButtonProps) => {
   const { t } = translate("translate", { keyPrefix: "modals.profilePhoto" });
   const [photo, setPhoto] = useState<File | null>(null);
 
+  const userID = localStorage.getItem("hola_user_id");
+
   const [uploadAvatar] = useUploadAvatarMutation();
 
   const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +28,7 @@ const UploadPhotoButton = ({ cbCloseModal }: IUploadPhotoButtonProps) => {
     if (photo) {
       const formData = new FormData();
       formData.append("avatar", photo);
-      uploadAvatar(formData)
+      uploadAvatar({ photo: formData, userID: userID || "" })
         .unwrap()
         .then(() => {
           cbCloseModal();

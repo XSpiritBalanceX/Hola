@@ -13,6 +13,8 @@ interface ITakePhotoButtonProps {
 const TakePhotoButton = ({ cbCloseModal }: ITakePhotoButtonProps) => {
   const { t } = translate("translate", { keyPrefix: "modals.profilePhoto" });
 
+  const userID = localStorage.getItem("hola_user_id");
+
   const [uploadAvatar] = useUploadAvatarMutation();
 
   const [isClickOnButton, setIsClickOnButton] = useState(false);
@@ -63,7 +65,7 @@ const TakePhotoButton = ({ cbCloseModal }: ITakePhotoButtonProps) => {
   const uploadPhoto = (file: File) => {
     const formData = new FormData();
     formData.append("avatar", file);
-    uploadAvatar(formData)
+    uploadAvatar({ photo: formData, userID: userID || "" })
       .unwrap()
       .then(() => {
         cbCloseModal();

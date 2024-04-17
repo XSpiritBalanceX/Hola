@@ -8,8 +8,6 @@ export type TProfileInformation = {
   complete: number;
 };
 
-const userID = localStorage.getItem("hola_user_id");
-
 export const profileInformationApi = createApi({
   reducerPath: "profileInformationApi",
   baseQuery: requestHandler,
@@ -19,16 +17,16 @@ export const profileInformationApi = createApi({
       query: (personID) => `/persons/${personID}/`,
       providesTags: ["ProfileInformation"],
     }),
-    uploadAvatar: builder.mutation<void, FormData>({
-      query: (photo) => ({
+    uploadAvatar: builder.mutation<void, { photo: FormData; userID: string }>({
+      query: ({ photo, userID }) => ({
         url: `/persons/${userID}/avatar/`,
         method: "PATCH",
         body: photo,
       }),
       invalidatesTags: ["ProfileInformation"],
     }),
-    deleteAvatar: builder.mutation<void, void>({
-      query: () => ({
+    deleteAvatar: builder.mutation<void, string>({
+      query: (userID) => ({
         url: `/persons/${userID}/avatar/`,
         method: "DELETE",
       }),

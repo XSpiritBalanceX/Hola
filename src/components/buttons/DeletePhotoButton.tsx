@@ -12,10 +12,12 @@ interface IDeletePhotoButtonProps {
 const DeletePhotoButton = ({ cbCloseModal }: IDeletePhotoButtonProps) => {
   const { t } = translate("translate", { keyPrefix: "modals.profilePhoto" });
 
+  const userID = localStorage.getItem("hola_user_id");
+
   const [deleteAvatar] = useDeleteAvatarMutation();
 
   const handleDeleteAvatar = () => {
-    deleteAvatar()
+    deleteAvatar(userID || "")
       .unwrap()
       .then(() => {
         cbCloseModal();
