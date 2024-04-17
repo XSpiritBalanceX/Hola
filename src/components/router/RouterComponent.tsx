@@ -13,6 +13,7 @@ import PlanPage from "@pages/plan/PlanPage";
 import UserPlanPage from "@pages/plan/UserPlanPage";
 import NewCard from "@components/userBankCard/NewBankCard";
 import SearchPage from "@pages/search/SearchPage";
+import UserProfilePage from "@pages/user_profile/UserProfilePage";
 
 const RouterComponent = () => {
   const appRoutesUnauth = [
@@ -37,6 +38,7 @@ const RouterComponent = () => {
     { path: "/plan/new_card", element: <NewCard /> },
     { path: "/search", element: <SearchPage /> },
     { path: "/search/:category", element: <SearchPage /> },
+    { path: "/search/user/:id", element: <UserProfilePage /> },
   ];
 
   return (

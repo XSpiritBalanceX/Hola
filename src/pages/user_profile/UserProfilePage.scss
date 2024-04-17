@@ -1,0 +1,131 @@
+@import "../../variables";
+
+.userProfileContainer {
+  padding: 0 20px 30px 20px !important;
+  margin-bottom: 50px;
+  .navigationBox {
+    display: flex;
+    justify-content: flex-end;
+    button {
+      min-width: 36px;
+      min-height: 36px;
+      width: 36px !important;
+      height: 36px;
+      padding: 0;
+      background-color: transparent;
+      svg {
+        fill: map-get($theme-colors, "black");
+      }
+    }
+  }
+
+  .userProfileSlider {
+    width: 100%;
+    height: 365px;
+    margin: 0 auto;
+    position: relative;
+    @media all and (max-width: 55em) {
+      width: 60%;
+    }
+    @media all and (max-width: 40em) {
+      width: 100%;
+    }
+    .slick-arrow {
+      display: none !important;
+    }
+    .slick-dots {
+      left: 50%;
+      bottom: 345px;
+      transform: translate(-50%);
+      width: 330px;
+      display: flex !important;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      li {
+        width: 100%;
+        height: 5px;
+        border-radius: 3px;
+        background-color: map-get($theme-colors, "black");
+        opacity: 0.2;
+        button {
+          width: 100%;
+          height: 5px;
+          padding: 0;
+          &::before {
+            content: "";
+          }
+        }
+      }
+      .slick-active {
+        opacity: 1;
+        background-color: map-get($theme-colors, "white");
+      }
+    }
+    .slick-list {
+      border-radius: 10px;
+      .slick-track {
+        display: flex;
+        flex-direction: row;
+        border-radius: 10px;
+      }
+      .slick-slide {
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .userImage {
+          img {
+            width: 335px;
+            height: 365px;
+            border-radius: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  .userInformationBox {
+    .userNameAge {
+      margin: 10px 0 10px 0;
+      @extend %h2;
+      font-size: 39px;
+      line-height: 47px;
+      span {
+        @extend %body-1;
+        font-size: 25px;
+        line-height: 30px;
+      }
+    }
+    .userInterests {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100%;
+      p {
+        margin: 0 10px 10px 0;
+        @extend %body-2;
+        color: map-deep-get($theme-colors, "text", "black");
+        border: solid 1px map-deep-get($theme-colors, "text", "black");
+        border-radius: 100px;
+        padding: 6px 12px;
+      }
+    }
+    .userDescription {
+      margin: 0 0 10px;
+      @extend %body-2;
+      line-height: 20px;
+    }
+    .buttonSendMessage {
+      @extend %button;
+      @extend %button-blue;
+      text-transform: none;
+      width: 40%;
+      @media all and (max-width: 55em) {
+        width: 60%;
+      }
+      @media all and (max-width: 40em) {
+        width: 100%;
+      }
+    }
+  }
+}

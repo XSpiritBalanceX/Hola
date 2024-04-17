@@ -146,6 +146,7 @@ const UserSearchCardContainer = () => {
       <MatchModal
         isOpen={isOpenMatchModal}
         cbCloseModal={handleCloseMathModal}
+        id_partner={1}
         user_photo={data?.avatar}
         partner_photo="https://img.freepik.com/free-photo/handsome-bearded-guy-posing-against-white-wall_273609-20597.jpg?size=626&ext=jpg&ga=GA1.1.1700460183.1713225600&semt=sph"
       />

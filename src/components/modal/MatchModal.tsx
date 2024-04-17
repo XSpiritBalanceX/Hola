@@ -3,12 +3,14 @@ import user from "@assets/user.png";
 import { translate } from "@i18n";
 import LikeFilledIcon from "@components/icons/LikeFilledIcon";
 import CloseIcon from "@mui/icons-material/Close";
+import { useNavigate } from "react-router-dom";
 import "./Modals.scss";
 import "animate.css";
 
 interface IMatchModalProps {
   isOpen: boolean;
   cbCloseModal: () => void;
+  id_partner: number;
   partner_photo: string;
   user_photo: string | null | undefined;
 }
@@ -16,12 +18,19 @@ interface IMatchModalProps {
 const MatchModal = ({
   isOpen,
   cbCloseModal,
+  id_partner,
   partner_photo,
   user_photo,
 }: IMatchModalProps) => {
   const { t } = translate("translate", { keyPrefix: "searchPage" });
+  const navigate = useNavigate();
+
   const handleCloseModal = () => {
     cbCloseModal();
+  };
+
+  const handleViewProfile = () => {
+    navigate(`/search/user/${id_partner}`);
   };
 
   return (
@@ -57,7 +66,11 @@ const MatchModal = ({
           <Button type="button" className="controlButtonMatch firstButton">
             {t("sendMessage")}
           </Button>
-          <Button type="button" className="controlButtonMatch">
+          <Button
+            type="button"
+            className="controlButtonMatch"
+            onClick={handleViewProfile}
+          >
             {t("viewProfile")}
           </Button>
         </Box>
