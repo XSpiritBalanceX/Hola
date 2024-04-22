@@ -5,15 +5,16 @@ import { listOfInterests } from "@utils/listOfInterests";
 import { translate } from "@i18n";
 import UserCardButtons from "@components/buttons/UserCardButtons";
 import classNames from "classnames";
+import { HOST } from "@axiosApi/axiosAPI";
 import "./UserSearchCard.scss";
 
 interface IUserSearchCardProps {
   id: number;
   name: string;
   age: number;
-  image: string[];
+  images: Array<{ id: number; file: string }>;
   interests: { id: number; name: string }[];
-  description: string;
+  description: string | null;
   cbHandleRemoveUser: (id: number) => void;
 }
 
@@ -21,7 +22,7 @@ const UserSearchCard = ({
   id,
   name,
   age,
-  image,
+  images,
   interests,
   description,
   cbHandleRemoveUser,
@@ -30,7 +31,7 @@ const UserSearchCard = ({
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [isFullDescription, setIsFullDescription] = useState(false);
-  const shortDescription = description.slice(0, 90);
+  const shortDescription = description ? description.slice(0, 90) : "";
 
   const tinderCardRef = useRef<null | any>(null);
   const startXRef = useRef(0);
@@ -85,7 +86,7 @@ const UserSearchCard = ({
   };
 
   const handleNextPhoto = () => {
-    activeIndex !== image.length - 1 && setActiveIndex(activeIndex + 1);
+    activeIndex !== images.length - 1 && setActiveIndex(activeIndex + 1);
   };
 
   const userInterests = listOfInterests
@@ -110,7 +111,10 @@ const UserSearchCard = ({
       <Box
         className={classBoxCard}
         style={{
-          backgroundImage: `url(${image[activeIndex]})`,
+          backgroundImage: `url(${images[activeIndex].file.replace(
+            "minio",
+            HOST
+          )})`,
         }}
       >
         <Box className="swipedColor" ref={tinderCardRef} />
@@ -125,7 +129,7 @@ const UserSearchCard = ({
           onTouchStart={handleNextPhoto}
         />
         <Box className="photosButtonsBox">
-          {Array(image.length)
+          {Array(images.length)
             .fill(null)
             .map((_, ind) => (
               <Box
@@ -148,12 +152,12 @@ const UserSearchCard = ({
               <p>{description}</p>
             ) : (
               <p>
-                {description.length > 90
+                {description && description.length > 90
                   ? `${shortDescription}...`
                   : `${shortDescription}`}
               </p>
             )}
-            {description.length > 90 && (
+            {description && description.length > 90 && (
               <Button
                 type="button"
                 onClick={handleFullShortDescription}

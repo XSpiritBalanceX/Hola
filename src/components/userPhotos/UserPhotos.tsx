@@ -26,7 +26,7 @@ const UserPhotos = ({ cbHandleOpenModal }: IUserPhotosProps) => {
   const { pathname } = useLocation();
   const userPhotos = useAppSelector(holaSelectors.profileEditSelect);
 
-  const [photos, setPhotos] = useState(Array(9).fill(null));
+  const [photos, setPhotos] = useState(Array(6).fill(null));
   const [loading, setLoading] = useState(false);
 
   const [addPhotos] = useAddPhotosMutation();
@@ -34,7 +34,7 @@ const UserPhotos = ({ cbHandleOpenModal }: IUserPhotosProps) => {
 
   useEffect(() => {
     if (userPhotos) {
-      const compiledDataPhotos = Array.from({ length: 9 }, (_, ind) => {
+      const compiledDataPhotos = Array.from({ length: 6 }, (_, ind) => {
         if (ind < userPhotos.images.length && userPhotos.images[ind].file) {
           return {
             id: userPhotos.images[ind].id,
