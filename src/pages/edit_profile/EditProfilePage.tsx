@@ -21,9 +21,7 @@ import "./EditProfile.scss";
 const EditProfilePage = () => {
   const { t } = translate("translate", { keyPrefix: "profile.editing" });
 
-  const userID = localStorage.getItem("hola_user_id");
-
-  const { data, error, isLoading } = useGetProfileQuery(userID || "");
+  const { data, error, isLoading } = useGetProfileQuery();
 
   const [userInterests, setUserInterests] = useState<
     { indInt: number; label: string }[]

@@ -14,7 +14,7 @@ export interface IItemUserInList {
 export const searchingApi = createApi({
   reducerPath: "searchingApi",
   baseQuery: requestHandler,
-  tagTypes: ["Search"],
+  tagTypes: ["Search", "UserProfile"],
   endpoints: (builder) => ({
     getUsers: builder.query<IItemUserInList[], string>({
       query: (goal_id) => ({
@@ -26,7 +26,11 @@ export const searchingApi = createApi({
       }),
       providesTags: ["Search"],
     }),
+    getUserById: builder.query<IItemUserInList, string>({
+      query: (user_id) => `/persons/${user_id}/profile/`,
+      providesTags: ["UserProfile"],
+    }),
   }),
 });
 
-export const { useGetUsersQuery } = searchingApi;
+export const { useGetUsersQuery, useGetUserByIdQuery } = searchingApi;

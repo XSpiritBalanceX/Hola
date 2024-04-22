@@ -14,8 +14,8 @@ export const profileApi = createApi({
   baseQuery: requestHandler,
   tagTypes: ["Profile"],
   endpoints: (builder) => ({
-    getProfile: builder.query<TProfileEditInfo, string>({
-      query: (userID) => `/persons/${userID}/profile_edit/`,
+    getProfile: builder.query<TProfileEditInfo, void>({
+      query: () => `/persons/profile_edit/`,
       providesTags: ["Profile"],
     }),
     addInterests: builder.mutation<
