@@ -1,10 +1,10 @@
 import { Container } from "@mui/material";
 import { translate } from "@i18n";
-import { useGetAccountQuery } from "@store/requestApi/accountApi";
 import Loader from "@components/loader/Loader";
 import CustomError from "@components/error/CustomError";
 import AccountForm from "@components/accountForm/AccountForm";
 import {
+  useGetAccountQuery,
   useUpdateAccountMutation,
   useDeleteAccountMutation,
 } from "@store/requestApi/accountApi";

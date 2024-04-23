@@ -21,6 +21,7 @@ import AccountRagers from "./AccountRagers";
 import { listOfCountries } from "@utils/listOfCountries";
 import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
 import { useUpdateAccountMutation } from "@store/requestApi/accountApi";
+import { useGetProfileInformationQuery } from "@store/requestApi/profileInformationApi";
 import { toast } from "react-toastify";
 import DeleteAccountModal from "@components/modal/DeleteAccountModal";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
@@ -37,6 +38,10 @@ const AccountForm = () => {
   const userID = localStorage.getItem("hola_user_id");
 
   const [updateAccount] = useUpdateAccountMutation();
+
+  const getProfileInformationQuery = useGetProfileInformationQuery(
+    userID || ""
+  );
 
   const [showPicker, setShowPicker] = useState(false);
   const [showModalCountries, setShowModalCountries] = useState(false);
@@ -139,7 +144,10 @@ const AccountForm = () => {
     };
     updateAccount({ info: compiledData, userID: userID || "" })
       .unwrap()
-      .then(() => toast.success(t("successUpdate")))
+      .then(() => {
+        toast.success(t("successUpdate"));
+        getProfileInformationQuery.refetch();
+      })
       .catch(() => toast.error(t("errEditing")));
   };
 
