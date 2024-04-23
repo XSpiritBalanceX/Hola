@@ -86,7 +86,7 @@ const UserPhotos = ({ cbHandleOpenModal }: IUserPhotosProps) => {
   const handleSavePhoto = async () => {
     const formData = new FormData();
     photos.forEach((el) => {
-      if (el && typeof el !== "string") {
+      if (el && el instanceof File) {
         formData.append("file", el);
       }
     });
