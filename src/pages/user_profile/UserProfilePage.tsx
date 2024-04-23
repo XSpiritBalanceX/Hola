@@ -8,7 +8,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useGetUserByIdQuery } from "@store/requestApi/searchingApi";
 import Loader from "@components/loader/Loader";
 import CustomError from "@components/error/CustomError";
-import { HOST } from "@axiosApi/axiosAPI";
 import "./UserProfilePage.scss";
 
 const UserProfilePage = () => {
@@ -53,7 +52,7 @@ const UserProfilePage = () => {
           <Slider {...settings} className="userProfileSlider">
             {data.images.map((el, ind) => (
               <Box key={ind} className="userImage">
-                <img src={el.file.replace("minio", HOST)} alt="user" />
+                <img src={el.file} alt="user" />
               </Box>
             ))}
           </Slider>

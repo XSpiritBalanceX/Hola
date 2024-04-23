@@ -10,7 +10,6 @@ import { addImage } from "@api/image/addImage";
 import classNames from "classnames";
 import { useAppSelector } from "@store/hook";
 import * as holaSelectors from "@store/selectors";
-import { HOST } from "@axiosApi/axiosAPI";
 import {
   useAddPhotosMutation,
   useDeletePhotoMutation,
@@ -38,7 +37,7 @@ const UserPhotos = ({ cbHandleOpenModal }: IUserPhotosProps) => {
         if (ind < userPhotos.images.length && userPhotos.images[ind].file) {
           return {
             id: userPhotos.images[ind].id,
-            path: userPhotos.images[ind].file.replace("minio", HOST),
+            path: userPhotos.images[ind].file,
           };
         } else {
           return null;
@@ -96,12 +95,10 @@ const UserPhotos = ({ cbHandleOpenModal }: IUserPhotosProps) => {
     if (pathname.includes("registration")) {
       try {
         setLoading(true);
-        const response = await addImage(formData);
-        if (response.data.detail === "ok") {
-          pathname.includes("registration") &&
-            cbHandleOpenModal &&
-            cbHandleOpenModal();
-        }
+        await addImage(formData);
+        pathname.includes("registration") &&
+          cbHandleOpenModal &&
+          cbHandleOpenModal();
       } catch (err) {
         toast.error(t("errPhotos"));
       } finally {
