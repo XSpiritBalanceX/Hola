@@ -48,6 +48,16 @@ export const searchingApi = createApi({
         body: { from_person: Number(fromPerson), to_person: toPerson },
       }),
     }),
+    ignorePerson: builder.mutation<
+      any,
+      { person_id: string; ignored_id: number }
+    >({
+      query: ({ person_id, ignored_id }) => ({
+        url: "/ignored/",
+        method: "POST",
+        body: { person: Number(person_id), ignored_person: ignored_id },
+      }),
+    }),
   }),
 });
 
@@ -55,4 +65,5 @@ export const {
   useGetUsersQuery,
   useGetUserByIdQuery,
   useSwipeToRightMutation,
+  useIgnorePersonMutation,
 } = searchingApi;

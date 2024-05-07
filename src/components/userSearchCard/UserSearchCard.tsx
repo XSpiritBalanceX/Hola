@@ -182,7 +182,7 @@ const UserSearchCard = ({
             )}
           </Box>
           <Box className="buttonsControlBox">
-            <UserCardButtons user_id={id} />
+            <UserCardButtons user_id={id} cbRemoveUser={cbHandleRemoveUser} />
           </Box>
         </Box>
       </Box>
