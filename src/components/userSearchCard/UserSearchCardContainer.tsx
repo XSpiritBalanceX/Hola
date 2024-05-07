@@ -23,6 +23,8 @@ const categoryIDList = [
 const UserSearchCardContainer = () => {
   const [users, setUsers] = useState<IItemUserInList[]>([]);
   const [isOpenMatchModal, setIsOpenMatchModal] = useState(false);
+  const [idPartner, setIdPartner] = useState<null | number>(null);
+  const [photoPartner, setPhotoPartner] = useState("");
 
   const { category } = useParams();
 
@@ -56,8 +58,10 @@ const UserSearchCardContainer = () => {
     setIsOpenMatchModal(false);
   };
 
-  const handleOpenMatchModal = () => {
+  const handleOpenMatchModal = (id: number, photo: string) => {
     setIsOpenMatchModal(true);
+    setIdPartner(id);
+    setPhotoPartner(photo);
   };
 
   return (
@@ -66,12 +70,12 @@ const UserSearchCardContainer = () => {
       <MatchModal
         isOpen={isOpenMatchModal}
         cbCloseModal={handleCloseMathModal}
-        id_partner={1}
+        id_partner={idPartner}
         user_photo={data?.avatar}
-        partner_photo="https://img.freepik.com/free-photo/handsome-bearded-guy-posing-against-white-wall_273609-20597.jpg?size=626&ext=jpg&ga=GA1.1.1700460183.1713225600&semt=sph"
+        partner_photo={photoPartner}
       />
       {(isError || errorUsers) && <CustomError />}
-      {users.length && !isError && (
+      {users.length && !isError ? (
         <Box className="cardsBox">
           {users
             .sort((a, b) => b.id - a.id)
@@ -86,11 +90,12 @@ const UserSearchCardContainer = () => {
                   interests={el.interests}
                   description={el.description}
                   cbHandleRemoveUser={handleRemoveUser}
+                  cbHandleOpenMatchModal={handleOpenMatchModal}
                 />
               );
             })}
         </Box>
-      )}
+      ) : null}
       {!users.length && !isError && <NoFoundPeople />}
     </>
   );

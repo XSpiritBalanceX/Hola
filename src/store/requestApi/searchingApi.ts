@@ -11,6 +11,14 @@ export interface IItemUserInList {
   images: Array<{ id: number; file: string }>;
 }
 
+interface IResponseMatch {
+  id?: number;
+  from_person?: number;
+  to_person?: number;
+  match?: boolean;
+  person?: number;
+}
+
 export const searchingApi = createApi({
   reducerPath: "searchingApi",
   baseQuery: requestHandler,
@@ -30,7 +38,21 @@ export const searchingApi = createApi({
       query: (user_id) => `/persons/${user_id}/profile/`,
       providesTags: ["UserProfile"],
     }),
+    swipeToRight: builder.mutation<
+      IResponseMatch,
+      { fromPerson: string; toPerson: number }
+    >({
+      query: ({ fromPerson, toPerson }) => ({
+        url: "/matches/",
+        method: "POST",
+        body: { from_person: Number(fromPerson), to_person: toPerson },
+      }),
+    }),
   }),
 });
 
-export const { useGetUsersQuery, useGetUserByIdQuery } = searchingApi;
+export const {
+  useGetUsersQuery,
+  useGetUserByIdQuery,
+  useSwipeToRightMutation,
+} = searchingApi;

@@ -5,7 +5,8 @@ import { listOfInterests } from "@utils/listOfInterests";
 import { translate } from "@i18n";
 import UserCardButtons from "@components/buttons/UserCardButtons";
 import classNames from "classnames";
-import { HOST } from "@axiosApi/axiosAPI";
+import { useSwipeToRightMutation } from "@store/requestApi/searchingApi";
+import { toast } from "react-toastify";
 import "./UserSearchCard.scss";
 
 interface IUserSearchCardProps {
@@ -16,6 +17,7 @@ interface IUserSearchCardProps {
   interests: { id: number; name: string }[];
   description: string | null;
   cbHandleRemoveUser: (id: number) => void;
+  cbHandleOpenMatchModal: (id: number, photo: string) => void;
 }
 
 const UserSearchCard = ({
@@ -26,8 +28,13 @@ const UserSearchCard = ({
   interests,
   description,
   cbHandleRemoveUser,
+  cbHandleOpenMatchModal,
 }: IUserSearchCardProps) => {
   const { t } = translate("translate", { keyPrefix: "searchPage" });
+
+  const userID = localStorage.getItem("hola_user_id");
+
+  const [swipeToRight] = useSwipeToRightMutation();
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [isFullDescription, setIsFullDescription] = useState(false);
@@ -73,8 +80,18 @@ const UserSearchCard = ({
     };
   }, []);
 
-  const swiped = (direction: string, id: number) => {
-    console.log(direction, id);
+  const swiped = async (id: number) => {
+    try {
+      const responseSwipe = await swipeToRight({
+        fromPerson: userID || "",
+        toPerson: id,
+      }).unwrap();
+      if (responseSwipe && responseSwipe.match) {
+        cbHandleOpenMatchModal(id, images[0].file);
+      }
+    } catch (err: any) {
+      toast.error(t("unexpectedErr"));
+    }
   };
 
   const leftScreen = (id: number) => {
@@ -105,16 +122,13 @@ const UserSearchCard = ({
     <TinderCard
       className="swipe"
       preventSwipe={["up", "down"]}
-      onSwipe={(direction) => swiped(direction, id)}
+      onSwipe={() => swiped(id)}
       onCardLeftScreen={() => leftScreen(id)}
     >
       <Box
         className={classBoxCard}
         style={{
-          backgroundImage: `url(${images[activeIndex].file.replace(
-            "minio",
-            HOST
-          )})`,
+          backgroundImage: `url(${images[activeIndex].file})`,
         }}
       >
         <Box className="swipedColor" ref={tinderCardRef} />

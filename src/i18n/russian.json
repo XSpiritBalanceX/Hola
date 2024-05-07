@@ -399,7 +399,8 @@
       "backToCateg": "Вернуться к категориям",
       "itsMatch": "Совпадение!",
       "sendMessage": "Отправить сообщение",
-      "viewProfile": "Посмотреть профиль"
+      "viewProfile": "Посмотреть профиль",
+      "unexpectedErr": "An unexpected error occurred"
     }
   }
 }

@@ -10,7 +10,7 @@ import "animate.css";
 interface IMatchModalProps {
   isOpen: boolean;
   cbCloseModal: () => void;
-  id_partner: number;
+  id_partner: number | null;
   partner_photo: string;
   user_photo: string | null | undefined;
 }

@@ -399,7 +399,8 @@
       "backToCateg": "Back to categories",
       "itsMatch": "It’s a Match!",
       "sendMessage": "Send a Message",
-      "viewProfile": "View Profile"
+      "viewProfile": "View Profile",
+      "unexpectedErr": "An unexpected error occurred"
     }
   }
 }
