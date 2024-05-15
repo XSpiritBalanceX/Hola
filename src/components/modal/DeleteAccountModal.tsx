@@ -1,7 +1,7 @@
 import { Modal, Box, Button } from "@mui/material";
 import { translate } from "@i18n";
 import heart from "@assets/hearticon.svg";
-import { useDeleteAccountMutation } from "@store/accountApi";
+import { useDeleteAccountMutation } from "@store/requestApi/accountApi";
 import { toast } from "react-toastify";
 import { useAppDispatch } from "@store/hook";
 import { loginUser } from "@store/holaSlice";
@@ -10,7 +10,7 @@ import "./Modals.scss";
 
 interface IDeleteAccountModalProps {
   isOpen: boolean;
-  cbCloseModal: () => void;
+  cbCloseModal: (name: string, isShow: boolean) => void;
 }
 
 const DeleteAccountModal = ({
@@ -18,16 +18,18 @@ const DeleteAccountModal = ({
   cbCloseModal,
 }: IDeleteAccountModalProps) => {
   const { t } = translate("translate", { keyPrefix: "modals.account" });
+  const userID = localStorage.getItem("hola_user_id");
+
   const [deleteAccount] = useDeleteAccountMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handleCloseModalDelete = () => {
-    cbCloseModal();
+    cbCloseModal("delete", false);
   };
 
   const handleDeleteAccount = () => {
-    deleteAccount()
+    deleteAccount(userID || "")
       .unwrap()
       .then(() => {
         dispatch(
@@ -44,7 +46,7 @@ const DeleteAccountModal = ({
       })
       .catch(() => {
         toast.error(t("errDeleteAcc"));
-        cbCloseModal();
+        cbCloseModal("delete", false);
       });
   };
 

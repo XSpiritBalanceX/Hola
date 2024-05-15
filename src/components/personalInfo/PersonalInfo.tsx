@@ -24,6 +24,7 @@ import { signUp } from "@api/auth/signUp";
 import { useNavigate } from "react-router-dom";
 import { ISignUpInfo } from "./TypesPersonalInfo";
 import ListCountries from "./ListCountries";
+import { listOfCategoryDate } from "@utils/listOfCategoryDate";
 import "./PersonalInfo.scss";
 
 const PersonalInfo = () => {
@@ -35,6 +36,10 @@ const PersonalInfo = () => {
 
   const validationSchema = Yup.object().shape({
     gender: Yup.string().oneOf(["man", "woman"]).required(t("errReqGender")),
+    goal: Yup.number()
+      .min(1, "Goal must be between 1 and 4")
+      .max(4, "Goal must be between 1 and 4")
+      .required("Goal is required"),
     name: Yup.string().required(t("errorRequiredField")),
     date_of_birth: Yup.string()
       .required(t("errorRequiredField"))
@@ -97,6 +102,7 @@ const PersonalInfo = () => {
   const onSubmitSignIn = async (data: ISignUpInfo) => {
     const compiledData = {
       gender: data.gender,
+      goal: data.goal,
       name: data.name,
       date_of_birth: moment(data.date_of_birth, "DD.MM.YYYY").format(
         "YYYY-MM-DD"
@@ -105,7 +111,6 @@ const PersonalInfo = () => {
       email: data.email,
       password: data.password,
     };
-
     try {
       setLoading(true);
       const response = await signUp(compiledData);
@@ -176,6 +181,24 @@ const PersonalInfo = () => {
           </RadioGroup>
           <FormHelperText className="errorMessage">
             {errors && errors.gender?.message}
+          </FormHelperText>
+        </Box>
+        <Box className="goalBox">
+          <p className="titleGoal">{t("questionGoal")}</p>
+          <RadioGroup className="radioGoalGroup">
+            {listOfCategoryDate.map((el, ind) => (
+              <FormControlLabel
+                key={ind}
+                value={el.id}
+                control={<Radio className="radioButton" />}
+                label={t(el.label)}
+                {...register("goal")}
+                className="radioGoal"
+              />
+            ))}
+          </RadioGroup>
+          <FormHelperText className="errorMessage">
+            {errors && errors.goal?.message}
           </FormHelperText>
         </Box>
         <ControlledInput

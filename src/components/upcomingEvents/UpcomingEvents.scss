@@ -1,0 +1,50 @@
+@import "../../variables";
+
+.eventsBox {
+  margin-bottom: 60px;
+}
+
+.eventContentBox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  background-color: map-get($theme-colors, "white");
+  border-radius: 20px;
+  width: 50%;
+  margin: 0 auto 10px auto;
+  @media all and (max-width: 55em) {
+    width: 60%;
+  }
+  @media all and (max-width: 40em) {
+    width: 100%;
+  }
+  .textEventBox {
+    padding: 10px 15px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .genre {
+      @extend %body-2-bold;
+      margin: 0;
+    }
+    .eventName {
+      @extend %h5;
+      margin: 0 0 3px 0;
+    }
+    .eventPlace,
+    .eventDate {
+      @extend %caption;
+      margin: 0;
+    }
+  }
+  .eventImageBox {
+    width: 140px;
+    height: 211px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 0 20px 20px 0;
+  }
+}

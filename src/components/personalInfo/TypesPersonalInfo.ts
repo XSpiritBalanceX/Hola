@@ -8,6 +8,7 @@ type TCountry = {
 export interface ISignUpInfo {
   gender: "man" | "woman";
   name: string;
+  goal: number;
   date_of_birth: string;
   location: TCountry;
   email: string;

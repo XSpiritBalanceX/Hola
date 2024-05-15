@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import CustomError from "@components/error/CustomError";
 import Loader from "@components/loader/Loader";
 import NavigationButton from "@components/buttons/NavigationButton";
-import { useGetPlanByIDQuery } from "@store/subscriptionApi";
+import { useGetPlanByIDQuery } from "@store/requestApi/subscriptionApi";
 import { translate } from "@i18n";
 import PlanForm from "./PlanForm";
 import moment from "moment";

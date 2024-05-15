@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { translate } from "@i18n";
-import { useDeleteAvatarMutation } from "@store/profileInformationApi";
+import { useDeleteAvatarMutation } from "@store/requestApi/profileInformationApi";
 import { toast } from "react-toastify";
 import BucketIcon from "@components/icons/BucketIcon";
 import "@components/modal/Modals.scss";
@@ -12,10 +12,12 @@ interface IDeletePhotoButtonProps {
 const DeletePhotoButton = ({ cbCloseModal }: IDeletePhotoButtonProps) => {
   const { t } = translate("translate", { keyPrefix: "modals.profilePhoto" });
 
+  const userID = localStorage.getItem("hola_user_id");
+
   const [deleteAvatar] = useDeleteAvatarMutation();
 
   const handleDeleteAvatar = () => {
-    deleteAvatar()
+    deleteAvatar(userID || "")
       .unwrap()
       .then(() => {
         cbCloseModal();

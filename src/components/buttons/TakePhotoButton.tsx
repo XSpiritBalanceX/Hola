@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { Button, Box } from "@mui/material";
 import { translate } from "@i18n";
 import CameraIcon from "@components/icons/CameraIcon";
-import { useUploadAvatarMutation } from "@store/profileInformationApi";
+import { useUploadAvatarMutation } from "@store/requestApi/profileInformationApi";
 import { toast } from "react-toastify";
 import "@components/modal/Modals.scss";
 
@@ -12,6 +12,8 @@ interface ITakePhotoButtonProps {
 
 const TakePhotoButton = ({ cbCloseModal }: ITakePhotoButtonProps) => {
   const { t } = translate("translate", { keyPrefix: "modals.profilePhoto" });
+
+  const userID = localStorage.getItem("hola_user_id");
 
   const [uploadAvatar] = useUploadAvatarMutation();
 
@@ -63,7 +65,7 @@ const TakePhotoButton = ({ cbCloseModal }: ITakePhotoButtonProps) => {
   const uploadPhoto = (file: File) => {
     const formData = new FormData();
     formData.append("avatar", file);
-    uploadAvatar(formData)
+    uploadAvatar({ photo: formData, userID: userID || "" })
       .unwrap()
       .then(() => {
         cbCloseModal();

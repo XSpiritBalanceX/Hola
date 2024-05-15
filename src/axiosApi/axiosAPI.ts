@@ -5,7 +5,7 @@ interface IToken {
   exp: number;
 }
 
-export const BASE_URL = "http://212.193.62.231:8000/api/v1";
+export const BASE_URL = "http://212.193.62.231/api/v1";
 export const HOST = "212.193.62.231";
 export const TOKEN_KEY = "hola_access_token";
 export const REFRESH_TOKEN_KEY = "hola_refresh_token";

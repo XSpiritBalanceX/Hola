@@ -1,5 +1,8 @@
 import { Container, Box, Button } from "@mui/material";
-import { useGetSubscriptionsQuery } from "@store/subscriptionApi";
+import {
+  useGetSubscriptionsQuery,
+  useGetUserPlanQuery,
+} from "@store/requestApi/subscriptionApi";
 import Loader from "@components/loader/Loader";
 import CustomError from "@components/error/CustomError";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -15,43 +18,52 @@ const SubscriptionPage = () => {
 
   const { data, error, isLoading } = useGetSubscriptionsQuery();
 
+  const {
+    data: userCurrentPlan,
+    error: errorCurrentPlan,
+    isLoading: loadingCurrentPlan,
+  } = useGetUserPlanQuery();
+
   const handleNavigate = () => {
     navigate("/plan/user_plan");
   };
 
   return (
     <>
-      <Loader isLoading={isLoading} />
-      {error ? (
+      <Loader isLoading={isLoading || loadingCurrentPlan} />
+      {error || errorCurrentPlan ? (
         <CustomError />
       ) : (
-        <Container className="subscriptionContainer">
-          <NavigationButton
-            label={t("subscription")}
-            path={"/profile/settings"}
-          />
-          <Box className="userCurrentPlanBox">
-            <p className="titleCurrentPlan">{t("yourPlan")}</p>
-            <Box className="planNameButton">
-              <p>user plan</p>
-              <Button type="button" onClick={handleNavigate}>
-                <ArrowForwardIosIcon />
-              </Button>
+        data &&
+        userCurrentPlan && (
+          <Container className="subscriptionContainer">
+            <NavigationButton
+              label={t("subscription")}
+              path={"/profile/settings"}
+            />
+            <Box className="userCurrentPlanBox">
+              <p className="titleCurrentPlan">{t("yourPlan")}</p>
+              <Box className="planNameButton">
+                <p>{`Hola ${userCurrentPlan.type}`}</p>
+                <Button type="button" onClick={handleNavigate}>
+                  <ArrowForwardIosIcon />
+                </Button>
+              </Box>
             </Box>
-          </Box>
-          <Box className="boxWithUsersPlans">
-            <p className="titlePlans">{t("availablePlan")}</p>
-            {data &&
-              data.map((el, ind) => (
-                <AvailablePlan
-                  key={el.id}
-                  id={el.id}
-                  type={el.type}
-                  price_per_month={el.price_per_month}
-                />
-              ))}
-          </Box>
-        </Container>
+            <Box className="boxWithUsersPlans">
+              <p className="titlePlans">{t("availablePlan")}</p>
+              {data &&
+                data.map((el, ind) => (
+                  <AvailablePlan
+                    key={el.id}
+                    id={el.id}
+                    type={el.type}
+                    price_per_month={el.price_per_month}
+                  />
+                ))}
+            </Box>
+          </Container>
+        )
       )}
     </>
   );

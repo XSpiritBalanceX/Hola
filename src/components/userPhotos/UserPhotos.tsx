@@ -10,11 +10,10 @@ import { addImage } from "@api/image/addImage";
 import classNames from "classnames";
 import { useAppSelector } from "@store/hook";
 import * as holaSelectors from "@store/selectors";
-import { HOST } from "@axiosApi/axiosAPI";
 import {
   useAddPhotosMutation,
   useDeletePhotoMutation,
-} from "@store/profileApi";
+} from "@store/requestApi/profileApi";
 import "./UserPhotos.scss";
 
 interface IUserPhotosProps {
@@ -26,7 +25,7 @@ const UserPhotos = ({ cbHandleOpenModal }: IUserPhotosProps) => {
   const { pathname } = useLocation();
   const userPhotos = useAppSelector(holaSelectors.profileEditSelect);
 
-  const [photos, setPhotos] = useState(Array(9).fill(null));
+  const [photos, setPhotos] = useState(Array(6).fill(null));
   const [loading, setLoading] = useState(false);
 
   const [addPhotos] = useAddPhotosMutation();
@@ -34,11 +33,11 @@ const UserPhotos = ({ cbHandleOpenModal }: IUserPhotosProps) => {
 
   useEffect(() => {
     if (userPhotos) {
-      const compiledDataPhotos = Array.from({ length: 9 }, (_, ind) => {
+      const compiledDataPhotos = Array.from({ length: 6 }, (_, ind) => {
         if (ind < userPhotos.images.length && userPhotos.images[ind].file) {
           return {
             id: userPhotos.images[ind].id,
-            path: userPhotos.images[ind].file.replace("minio", HOST),
+            path: userPhotos.images[ind].file,
           };
         } else {
           return null;
@@ -87,7 +86,7 @@ const UserPhotos = ({ cbHandleOpenModal }: IUserPhotosProps) => {
   const handleSavePhoto = async () => {
     const formData = new FormData();
     photos.forEach((el) => {
-      if (el && typeof el !== "string") {
+      if (el && el instanceof File) {
         formData.append("file", el);
       }
     });
@@ -96,12 +95,10 @@ const UserPhotos = ({ cbHandleOpenModal }: IUserPhotosProps) => {
     if (pathname.includes("registration")) {
       try {
         setLoading(true);
-        const response = await addImage(formData);
-        if (response.data.detail === "ok") {
-          pathname.includes("registration") &&
-            cbHandleOpenModal &&
-            cbHandleOpenModal();
-        }
+        await addImage(formData);
+        pathname.includes("registration") &&
+          cbHandleOpenModal &&
+          cbHandleOpenModal();
       } catch (err) {
         toast.error(t("errPhotos"));
       } finally {

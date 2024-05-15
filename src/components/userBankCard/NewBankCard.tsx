@@ -1,12 +1,12 @@
 import { Container, Box } from "@mui/material";
 import NavigationButton from "@components/buttons/NavigationButton";
 import { translate } from "@i18n";
-import NewCardForm from "./NewCardForm";
+import NewCardForm from "./NewBankCardForm";
 import mastercard from "@assets/mastercard.svg";
 import visa from "@assets/visa.svg";
 import "./Card.scss";
 
-const NewCard = () => {
+const NewBankCard = () => {
   const { t } = translate("translate", { keyPrefix: "planPage" });
 
   return (
@@ -25,4 +25,4 @@ const NewCard = () => {
   );
 };
 
-export default NewCard;
+export default NewBankCard;

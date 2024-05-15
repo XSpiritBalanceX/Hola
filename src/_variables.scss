@@ -14,6 +14,7 @@ $theme-colors: (
   "error": #f01321,
   "purple": #b84397,
   "green": #20dc55,
+  "success": #008f33,
   "text": (
     "gray-1": #c6c5c7,
     "gray-2": #c6c5c780,
@@ -49,12 +50,25 @@ $theme-colors: (
     "button": (
       0px 3.02px 5.04px 0px rgba(0, 0, 0, 0.15),
     ),
+    "like-text": (
+      0 10px 10px 0 rgba(0, 0, 0, 0.5),
+    ),
   ),
   "gradient": (
     "blue": (
       153.93deg,
       #554cb6 27.05%,
       #efadff 65.48%,
+    ),
+    "black": (
+      to bottom,
+      transparent,
+      #000000ff,
+    ),
+    "black-expanded": (
+      to bottom,
+      transparent 0%,
+      #000000 75%,
     ),
   ),
 );

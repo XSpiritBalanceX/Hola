@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "@store/hook";
 import * as holaSelectors from "@store/selectors";
-import { useAddInterestsMutation } from "@store/profileApi";
+import { useAddInterestsMutation } from "@store/requestApi/profileApi";
 import "./UserInterests.scss";
 
 interface IInterestsProps {
@@ -25,6 +25,8 @@ interface IInterests {
 const Interests = ({ cbHandleLoading, pathname }: IInterestsProps) => {
   const { t } = translate("translate", { keyPrefix: "signUp.interests" });
   const navigate = useNavigate();
+
+  const userID = localStorage.getItem("hola_user_id");
 
   const userInterests = useAppSelector(holaSelectors.profileEditSelect);
 
@@ -74,7 +76,7 @@ const Interests = ({ cbHandleLoading, pathname }: IInterestsProps) => {
         cbHandleLoading(false);
       }
     } else {
-      addInterests({ interests: newInterests })
+      addInterests({ interest: newInterests, userID: userID || "" })
         .unwrap()
         .catch(() => toast.error(t("errInterests")));
     }

@@ -19,7 +19,7 @@ const TabMenu = () => {
         <MessageIcon fill={pathname === "/chat" ? "#554CB6" : "#FFFFFF"} />
       </NavLink>
       <NavLink to={"/search"} className="nav-link">
-        <LikeIcon fill={pathname === "/search" ? "#554CB6" : "#FFFFFF"} />
+        <LikeIcon fill={pathname.includes("search") ? "#554CB6" : "#FFFFFF"} />
       </NavLink>
       <NavLink to={"/profile"} className="nav-link">
         <UserIcon fill={pathname.includes("profile") ? "#554CB6" : "#FFFFFF"} />

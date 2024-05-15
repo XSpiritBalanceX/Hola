@@ -1,5 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { requestHandler } from "./requestHandler";
+import { requestHandler } from "../requestHandler";
 
 export type TProfileInformation = {
   name: string;
@@ -7,8 +7,6 @@ export type TProfileInformation = {
   age: number;
   complete: number;
 };
-
-const userID = localStorage.getItem("hola_user_id");
 
 export const profileInformationApi = createApi({
   reducerPath: "profileInformationApi",
@@ -19,18 +17,16 @@ export const profileInformationApi = createApi({
       query: (personID) => `/persons/${personID}/`,
       providesTags: ["ProfileInformation"],
     }),
-    uploadAvatar: builder.mutation<void, FormData>({
-      //@ts-ignore
-      query: (photo) => ({
+    uploadAvatar: builder.mutation<void, { photo: FormData; userID: string }>({
+      query: ({ photo, userID }) => ({
         url: `/persons/${userID}/avatar/`,
         method: "PATCH",
         body: photo,
       }),
       invalidatesTags: ["ProfileInformation"],
     }),
-    deleteAvatar: builder.mutation<void, void>({
-      //@ts-ignore
-      query: () => ({
+    deleteAvatar: builder.mutation<void, string>({
+      query: (userID) => ({
         url: `/persons/${userID}/avatar/`,
         method: "DELETE",
       }),

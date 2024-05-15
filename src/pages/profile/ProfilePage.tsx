@@ -11,7 +11,7 @@ import {
   useGetProfileInformationQuery,
   useUploadAvatarMutation,
   useDeleteAvatarMutation,
-} from "@store/profileInformationApi";
+} from "@store/requestApi/profileInformationApi";
 import ProfilePhotoModal from "@components/modal/ProfilePhotoModal";
 import "./Profile.scss";
 

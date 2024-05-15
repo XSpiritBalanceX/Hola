@@ -3,12 +3,14 @@ import { Box, TextField, Button } from "@mui/material";
 import { translate } from "@i18n";
 import { useAppSelector } from "@store/hook";
 import * as holaSelectors from "@store/selectors";
-import { useUpdateDescriptionMutation } from "@store/profileApi";
+import { useUpdateDescriptionMutation } from "@store/requestApi/profileApi";
 import { toast } from "react-toastify";
 import "./UserDescription.scss";
 
 const UserDescription = () => {
   const { t } = translate("translate", { keyPrefix: "profile.editing" });
+
+  const userID = localStorage.getItem("hola_user_id");
 
   const userDescription = useAppSelector(holaSelectors.profileEditSelect);
   const [updateDescription] = useUpdateDescriptionMutation();
@@ -22,7 +24,7 @@ const UserDescription = () => {
   };
 
   const handleSaveDescription = () => {
-    updateDescription(description)
+    updateDescription({ description: description, userID: userID || "" })
       .unwrap()
       .then(() => toast.success(t("successUpdate")))
       .catch(() => toast.error(t("errEditing")));

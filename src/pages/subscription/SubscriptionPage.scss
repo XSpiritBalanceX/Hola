@@ -19,6 +19,7 @@
       p {
         @extend %body-1-bold;
         margin: 0;
+        text-transform: capitalize;
       }
       button {
         padding: 0;
