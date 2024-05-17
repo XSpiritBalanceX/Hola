@@ -1,0 +1,93 @@
+@import "../../variables";
+
+.containerChatPage {
+  padding: 6px 20px 0 20px !important;
+  .titleChatPage {
+    margin: 0;
+    text-align: center;
+    @extend %h4;
+    font-weight: 500;
+    color: map-get($theme-colors, "blue");
+  }
+  .messagesContainer {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    .messageBox {
+      padding: 0 0 20px 0;
+      margin: 15px 0 0 0;
+      border-bottom: solid 1px map-get($theme-colors, "gray-2");
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+      justify-content: flex-start;
+      width: 100%;
+      &:hover {
+        cursor: pointer;
+      }
+      img {
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        margin-right: 15px;
+      }
+      .nameTimeMessageBox {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        .nameTimeBox {
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+          justify-content: space-between;
+          margin-bottom: 5px;
+          p {
+            margin: 0;
+          }
+          .nameUser {
+            @extend %body-1-medium;
+            font-weight: 400;
+          }
+          .messageTime {
+            @extend %body-2;
+            line-height: 17px;
+            color: map-deep-get($theme-colors, "text", "gray-4");
+          }
+        }
+        .lastMessageBox {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          p {
+            margin: 0;
+          }
+          .lastMessage,
+          .newMessage {
+            @extend %body-2;
+            line-height: 17px;
+          }
+          .lastMessage {
+            color: map-deep-get($theme-colors, "text", "gray-4");
+          }
+          .newMessage {
+            font-weight: 500;
+          }
+          .newMessageTooltip {
+            width: 10px;
+            height: 10px;
+            border-radius: 100%;
+            background-color: map-get($theme-colors, "blue");
+            margin-left: 15px;
+          }
+        }
+      }
+    }
+  }
+}

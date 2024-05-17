@@ -401,6 +401,9 @@
       "sendMessage": "Отправить сообщение",
       "viewProfile": "Посмотреть профиль",
       "unexpectedErr": "An unexpected error occurred"
+    },
+    "chatPage": {
+      "messages": "Сообщения"
     }
   }
 }
