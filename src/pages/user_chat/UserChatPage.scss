@@ -1,0 +1,28 @@
+@import "../../variables";
+
+.userChatContainer {
+  padding: 10px 20px 0 20px !important;
+  display: flex;
+  flex-direction: column;
+  .userInformationBox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    .buttonNavigate {
+      padding: 0;
+      min-width: auto;
+      height: 30px;
+      svg {
+        fill: map-get($theme-colors, "blue");
+      }
+    }
+    .userName {
+      margin: 2px;
+      color: map-get($theme-colors, "blue");
+      @extend %body-1-bold;
+      line-height: 18px;
+    }
+  }
+}

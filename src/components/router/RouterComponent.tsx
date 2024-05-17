@@ -15,6 +15,7 @@ import NewCard from "@components/userBankCard/NewBankCard";
 import SearchPage from "@pages/search/SearchPage";
 import UserProfilePage from "@pages/user_profile/UserProfilePage";
 import ChatsPage from "@pages/chats/ChatsPage";
+import UserChatPage from "@pages/user_chat/UserChatPage";
 
 const RouterComponent = () => {
   const appRoutesUnauth = [
@@ -41,6 +42,7 @@ const RouterComponent = () => {
     { path: "/search/:category", element: <SearchPage /> },
     { path: "/search/user/:id", element: <UserProfilePage /> },
     { path: "/chat", element: <ChatsPage /> },
+    { path: "/chat/:id", element: <UserChatPage /> },
   ];
 
   return (
