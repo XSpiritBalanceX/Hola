@@ -1,11 +1,42 @@
-import { Box, Container } from "@mui/material";
+import { Box, Container, Avatar, Badge } from "@mui/material";
 import { useGetChatsQuery } from "@store/requestApi/chatApi";
 import Loader from "@components/loader/Loader";
 import CustomError from "@components/error/CustomError";
 import { translate } from "@i18n";
 import TabMenu from "@components/tabMenu/TabMenu";
 import { useNavigate } from "react-router-dom";
+import { styled } from "@mui/material/styles";
 import "./ChatsPage.scss";
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    backgroundColor: "#20DC55",
+    color: "#20DC55",
+    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+
+    "&::after": {
+      position: "absolute",
+      top: "-1px",
+      left: "-0.5px",
+      width: "100%",
+      height: "100%",
+      borderRadius: "50%",
+      animation: "ripple 1.2s infinite ease-in-out",
+      border: "1px solid currentColor",
+      content: '""',
+    },
+  },
+  "@keyframes ripple": {
+    "0%": {
+      transform: "scale(.8)",
+      opacity: 1,
+    },
+    "100%": {
+      transform: "scale(2.4)",
+      opacity: 0,
+    },
+  },
+}));
 
 const mockData = [
   {
@@ -84,7 +115,14 @@ const ChatsPage = () => {
                 className="messageBox"
                 onClick={() => handleOpenChat(el.id)}
               >
-                <img src={el.image} alt="user" />
+                <StyledBadge
+                  overlap="circular"
+                  anchorOrigin={{ vertical: "top", horizontal: "right" }}
+                  variant="dot"
+                  className="userBadge"
+                >
+                  <Avatar alt="user" src={el.image} className="userAvatar" />
+                </StyledBadge>
                 <Box className="nameTimeMessageBox">
                   <Box className="nameTimeBox">
                     <p className="nameUser">{el.name}</p>
