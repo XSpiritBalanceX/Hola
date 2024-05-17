@@ -4,6 +4,7 @@ import Loader from "@components/loader/Loader";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
+import user from "@assets/user.png";
 import "./UserChatPage.scss";
 
 const mockData = [
@@ -18,6 +19,7 @@ const mockData = [
       { id: 2, message: "Good", time: "16:10" },
       { id: 1, message: "How is your weather", time: "16:20", read: true },
     ],
+    online: false,
   },
   {
     id: 3,
@@ -31,6 +33,7 @@ const mockData = [
       { id: 2, message: "Good", time: "15:35" },
       { id: 3, message: "Nice", time: "15:40", read: false },
     ],
+    online: true,
   },
   {
     id: 4,
@@ -44,6 +47,7 @@ const mockData = [
       { id: 2, message: "Good", time: "12:25" },
       { id: 4, message: "Me too", time: "13:20", read: true },
     ],
+    online: true,
   },
   {
     id: 5,
@@ -55,6 +59,18 @@ const mockData = [
       { id: 2, message: "Hello", time: "17:28" },
       { id: 5, message: "How are you", time: "17:59", read: true },
     ],
+    online: false,
+  },
+  {
+    id: 6,
+    name: "Brandon",
+    image: "",
+    messages: [
+      { id: 5, message: "Hi", time: "17:20" },
+      { id: 2, message: "Hello", time: "17:28" },
+      { id: 5, message: "How are you", time: "17:59", read: true },
+    ],
+    online: true,
   },
 ];
 
@@ -111,15 +127,19 @@ const UserChatPage = () => {
             >
               <ArrowBackIosNewIcon />
             </Button>
-            <StyledBadge
-              overlap="circular"
-              anchorOrigin={{ vertical: "top", horizontal: "right" }}
-              variant="dot"
-              className="userBadge"
-            >
+            {data.online ? (
+              <StyledBadge
+                overlap="circular"
+                anchorOrigin={{ vertical: "top", horizontal: "right" }}
+                variant="dot"
+                className="userBadge"
+              >
+                <p className="userName">{data.name}</p>
+              </StyledBadge>
+            ) : (
               <p className="userName">{data.name}</p>
-            </StyledBadge>
-            <Avatar src={data.image} alt="user" />
+            )}
+            <Avatar src={data.image || user} alt="user" />
           </Box>
         )}
       </Container>
