@@ -1,12 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-  Container,
-  Button,
-  Box,
-  Avatar,
-  Badge,
-  TextField,
-} from "@mui/material";
+import { Container, Button, Box, Avatar, Badge } from "@mui/material";
 import { useParams } from "react-router-dom";
 import Loader from "@components/loader/Loader";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
@@ -14,8 +7,7 @@ import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import user from "@assets/user.png";
 import CustomMessageBox from "@components/messageBox/CustomMessageBox";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import moment from "moment";
+import ControllersMessage from "./ControllersMessage";
 import "./UserChatPage.scss";
 
 const mockData = [
@@ -130,7 +122,6 @@ const UserChatPage = () => {
   const [messagesList, setMessagesList] = useState<IMessagesList[] | null>(
     null
   );
-  const [newMessage, setNewMessage] = useState("");
 
   const data = mockData.find((el) => el.id === Number(id));
 
@@ -150,21 +141,15 @@ const UserChatPage = () => {
     console.log(id);
   };
 
-  const handleTypeMessage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNewMessage(e.currentTarget.value);
-  };
-
-  const handleSendMessage = () => {
+  const handleAddMessage = (new_message: {
+    id: number;
+    message: string;
+    time: string;
+  }) => {
     if (messagesList) {
       const copyData = messagesList.slice();
-      const currentMessage = {
-        id: Number(userID),
-        message: newMessage,
-        time: moment().format("HH:mm"),
-      };
-      copyData.push(currentMessage);
+      copyData.push(new_message);
       setMessagesList(copyData);
-      setNewMessage("");
     }
   };
 
@@ -225,21 +210,7 @@ const UserChatPage = () => {
                     );
                   })}
               </Box>
-              <Box className="controllerBox">
-                <TextField
-                  type="search"
-                  value={newMessage}
-                  onChange={handleTypeMessage}
-                  className="messageField"
-                />
-                <Button
-                  type="button"
-                  onClick={handleSendMessage}
-                  className="sendButton"
-                >
-                  <ArrowUpwardIcon />
-                </Button>
-              </Box>
+              <ControllersMessage cbHandleAddMessage={handleAddMessage} />
             </Box>
           </>
         )}

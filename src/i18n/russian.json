@@ -403,7 +403,8 @@
       "unexpectedErr": "An unexpected error occurred"
     },
     "chatPage": {
-      "messages": "Сообщения"
+      "messages": "Сообщения",
+      "message": "Сообщение"
     }
   }
 }
