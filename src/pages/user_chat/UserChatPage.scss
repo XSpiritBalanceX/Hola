@@ -39,11 +39,17 @@
         flex-direction: row;
         flex-wrap: nowrap;
         align-items: center;
-        .identifier {
+        .identifier,
+        .selectedIdentifier {
           width: 20px;
           height: 20px;
           border-radius: 100%;
+        }
+        .identifier {
           border: solid 1px map-get($theme-colors, "blue");
+        }
+        .selectedIdentifier {
+          background-color: map-get($theme-colors, "blue");
         }
       }
       .opponentMessage,

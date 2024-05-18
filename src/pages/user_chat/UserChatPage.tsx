@@ -86,6 +86,7 @@ const UserChatPage = () => {
     null
   );
   const [isSelectedMessage, setIsSelectedMessage] = useState(false);
+  const [selectedMessages, setSelectedMessages] = useState<number[]>([]);
 
   const data = mockData.find((el) => el.id === Number(id));
 
@@ -99,6 +100,7 @@ const UserChatPage = () => {
 
   const handleIsSelectedMessage = (value: boolean) => {
     setIsSelectedMessage(value);
+    !value && setSelectedMessages([]);
   };
 
   const handleReply = (id: number) => {
@@ -114,8 +116,15 @@ const UserChatPage = () => {
   };
 
   const handleClickMessage = (id: number) => {
-    console.log(id);
     setIsSelectedMessage(true);
+    const copyData = selectedMessages.slice();
+    if (copyData.includes(id)) {
+      const index = copyData.indexOf(id);
+      index !== -1 && copyData.splice(index, 1);
+    } else {
+      copyData.push(id);
+    }
+    setSelectedMessages(copyData);
   };
 
   return (
@@ -134,7 +143,7 @@ const UserChatPage = () => {
             {isSelectedMessage && (
               <ControllersInHeader
                 cbHandleIsSelectedMessage={handleIsSelectedMessage}
-                countOfMessages={2}
+                countOfMessages={selectedMessages.length}
               />
             )}
             <Box className="messagesContainer">
@@ -147,7 +156,15 @@ const UserChatPage = () => {
                     currentDate.setMinutes(Number(splitTime[1]));
                     return (
                       <Box key={ind} className="customMessageBox">
-                        {isSelectedMessage && <Box className="identifier" />}
+                        {isSelectedMessage && (
+                          <Box
+                            className={
+                              selectedMessages.includes(ind)
+                                ? "selectedIdentifier"
+                                : "identifier"
+                            }
+                          />
+                        )}
                         <CustomMessageBox
                           id={ind}
                           position={Number(userID) === el.id ? "right" : "left"}
