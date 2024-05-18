@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
-import { Container, Button, Box, Avatar, Badge } from "@mui/material";
+import { Container, Box } from "@mui/material";
 import { useParams } from "react-router-dom";
 import Loader from "@components/loader/Loader";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { styled } from "@mui/material/styles";
-import { useNavigate } from "react-router-dom";
-import user from "@assets/user.png";
 import CustomMessageBox from "@components/messageBox/CustomMessageBox";
 import ControllersMessage from "./ControllersMessage";
+import NavigationChat from "./NavigationChat";
+import { IMessagesList, TNewMessage } from "./TypesUserChat";
 import "./UserChatPage.scss";
 
 const mockData = [
@@ -77,51 +75,15 @@ const mockData = [
   },
 ];
 
-const StyledBadge = styled(Badge)(({ theme }) => ({
-  "& .MuiBadge-badge": {
-    backgroundColor: "#20DC55",
-    color: "#20DC55",
-    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
-    marginRight: "-10px",
-    "&::after": {
-      position: "absolute",
-      top: "-1px",
-      left: "-0.5px",
-      width: "100%",
-      height: "100%",
-      borderRadius: "50%",
-      animation: "ripple 1.2s infinite ease-in-out",
-      border: "1px solid currentColor",
-      content: '""',
-    },
-  },
-  "@keyframes ripple": {
-    "0%": {
-      transform: "scale(.8)",
-      opacity: 1,
-    },
-    "100%": {
-      transform: "scale(2.4)",
-      opacity: 0,
-    },
-  },
-}));
-
-interface IMessagesList {
-  id: number;
-  message: string;
-  time: string;
-  read?: boolean;
-}
-
 const UserChatPage = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
+
   const userID = localStorage.getItem("hola_user_id");
 
   const [messagesList, setMessagesList] = useState<IMessagesList[] | null>(
     null
   );
+  const [isSelectedMessage, setIsSelectedMessage] = useState(false);
 
   const data = mockData.find((el) => el.id === Number(id));
 
@@ -133,24 +95,21 @@ const UserChatPage = () => {
     // eslint-disable-next-line
   }, []);
 
-  const handleNavigate = () => {
-    navigate("/chat");
-  };
-
   const handleReply = (id: number) => {
     console.log(id);
   };
 
-  const handleAddMessage = (new_message: {
-    id: number;
-    message: string;
-    time: string;
-  }) => {
+  const handleAddMessage = (new_message: TNewMessage) => {
     if (messagesList) {
       const copyData = messagesList.slice();
       copyData.push(new_message);
       setMessagesList(copyData);
     }
+  };
+
+  const handleClickMessage = (id: number) => {
+    console.log(id);
+    setIsSelectedMessage(true);
   };
 
   return (
@@ -159,28 +118,13 @@ const UserChatPage = () => {
       <Container className="userChatContainer">
         {data && (
           <>
-            <Box className="userInformationBox">
-              <Button
-                onClick={handleNavigate}
-                type="button"
-                className="buttonNavigate"
-              >
-                <ArrowBackIosNewIcon />
-              </Button>
-              {data.online ? (
-                <StyledBadge
-                  overlap="circular"
-                  anchorOrigin={{ vertical: "top", horizontal: "right" }}
-                  variant="dot"
-                  className="userBadge"
-                >
-                  <p className="userName">{data.name}</p>
-                </StyledBadge>
-              ) : (
-                <p className="userName">{data.name}</p>
-              )}
-              <Avatar src={data.image || user} alt="user" />
-            </Box>
+            {!isSelectedMessage && (
+              <NavigationChat
+                online={data.online}
+                image={data.image}
+                name={data.name}
+              />
+            )}
             <Box className="messagesContainer">
               <Box className="messagesBox">
                 {messagesList &&
@@ -190,23 +134,26 @@ const UserChatPage = () => {
                     currentDate.setHours(Number(splitTime[0]));
                     currentDate.setMinutes(Number(splitTime[1]));
                     return (
-                      <CustomMessageBox
-                        key={ind}
-                        id={ind}
-                        position={Number(userID) === el.id ? "right" : "left"}
-                        type="text"
-                        text={el.message}
-                        date={currentDate}
-                        replyButton={true}
-                        removeButton={true}
-                        dateString={el.time}
-                        onReplyClick={handleReply}
-                        classNameMessage={
-                          Number(userID) === el.id
-                            ? "userMessage"
-                            : "opponentMessage"
-                        }
-                      />
+                      <Box key={ind} className="customMessageBox">
+                        {isSelectedMessage && <Box className="identifier" />}
+                        <CustomMessageBox
+                          id={ind}
+                          position={Number(userID) === el.id ? "right" : "left"}
+                          type="text"
+                          text={el.message}
+                          date={currentDate}
+                          replyButton={true}
+                          removeButton={true}
+                          dateString={el.time}
+                          onReplyClick={handleReply}
+                          classNameMessage={
+                            Number(userID) === el.id
+                              ? "userMessage"
+                              : "opponentMessage"
+                          }
+                          cbHandleClickMessage={handleClickMessage}
+                        />
+                      </Box>
                     );
                   })}
               </Box>

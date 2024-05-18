@@ -34,8 +34,21 @@
     .messagesBox {
       overflow-y: auto;
       margin-bottom: 20px;
+      .customMessageBox {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        .identifier {
+          width: 20px;
+          height: 20px;
+          border-radius: 100%;
+          border: solid 1px map-get($theme-colors, "blue");
+        }
+      }
       .opponentMessage,
       .userMessage {
+        width: 100%;
         .rce-mbox {
           border-radius: 20px !important;
           .rce-mbox-body {
