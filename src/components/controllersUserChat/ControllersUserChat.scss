@@ -53,3 +53,16 @@
     line-height: 18px;
   }
 }
+
+.controllersChosenMessageBox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  height: 40px;
+  button {
+    min-width: 30px;
+    width: 40px;
+    height: 40px;
+  }
+}

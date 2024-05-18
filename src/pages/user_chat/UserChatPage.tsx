@@ -6,6 +6,7 @@ import CustomMessageBox from "@components/messageBox/CustomMessageBox";
 import ControllersMessage from "@components/controllersUserChat/ControllersMessage";
 import NavigationChat from "./NavigationChat";
 import ControllersInHeader from "@components/controllersUserChat/ControllersInHeader";
+import ControllersChosenMessages from "@components/controllersUserChat/ControllersChosenMessages";
 import { IMessagesList, TNewMessage } from "./TypesUserChat";
 import "./UserChatPage.scss";
 
@@ -171,6 +172,7 @@ const UserChatPage = () => {
               {!isSelectedMessage && (
                 <ControllersMessage cbHandleAddMessage={handleAddMessage} />
               )}
+              {isSelectedMessage && <ControllersChosenMessages />}
             </Box>
           </>
         )}
