@@ -404,7 +404,10 @@
     },
     "chatPage": {
       "messages": "Сообщения",
-      "message": "Сообщение"
+      "message": "Сообщение",
+      "deleteChat": "Удалить чат",
+      "cancel": "Закрыть",
+      "chosenMessages": "Выбрано {{count}}"
     }
   }
 }

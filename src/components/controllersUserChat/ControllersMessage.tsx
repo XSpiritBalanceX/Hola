@@ -3,8 +3,8 @@ import { Box, TextField, Button } from "@mui/material";
 import { translate } from "@i18n";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import moment from "moment";
-import { IControllersMessageProps } from "./TypesUserChat";
-import "./UserChatPage.scss";
+import { IControllersMessageProps } from "./TypesControllersUserChat";
+import "./ControllersUserChat.scss";
 
 const ControllersMessage = ({
   cbHandleAddMessage,

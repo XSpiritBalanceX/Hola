@@ -73,38 +73,5 @@
         }
       }
     }
-    .controllerBox {
-      display: flex;
-      flex-direction: row;
-      .messageField {
-        width: 100%;
-        .MuiInputBase-root {
-          height: 40px;
-          background-color: map-get($theme-colors, "white");
-          border-radius: 20px;
-          width: 100%;
-          fieldset {
-            border-color: map-get($theme-colors, "white");
-          }
-        }
-        .MuiInputBase-root.Mui-focused {
-          fieldset {
-            border: solid 2px map-get($theme-colors, "blue");
-          }
-        }
-      }
-      .sendButton {
-        height: 40px;
-        min-width: 40px;
-        width: 40px;
-        margin-left: 10px;
-        border-radius: 100%;
-        background-color: map-get($theme-colors, "blue");
-        border: solid 1px map-get($theme-colors, "blue");
-        svg {
-          fill: map-get($theme-colors, "white");
-        }
-      }
-    }
   }
 }

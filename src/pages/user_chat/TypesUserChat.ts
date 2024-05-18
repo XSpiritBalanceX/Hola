@@ -16,7 +16,3 @@ export type TNewMessage = {
   message: string;
   time: string;
 };
-
-export interface IControllersMessageProps {
-  cbHandleAddMessage: (new_message: TNewMessage) => void;
-}

@@ -3,8 +3,9 @@ import { Container, Box } from "@mui/material";
 import { useParams } from "react-router-dom";
 import Loader from "@components/loader/Loader";
 import CustomMessageBox from "@components/messageBox/CustomMessageBox";
-import ControllersMessage from "./ControllersMessage";
+import ControllersMessage from "@components/controllersUserChat/ControllersMessage";
 import NavigationChat from "./NavigationChat";
+import ControllersInHeader from "@components/controllersUserChat/ControllersInHeader";
 import { IMessagesList, TNewMessage } from "./TypesUserChat";
 import "./UserChatPage.scss";
 
@@ -95,6 +96,10 @@ const UserChatPage = () => {
     // eslint-disable-next-line
   }, []);
 
+  const handleIsSelectedMessage = (value: boolean) => {
+    setIsSelectedMessage(value);
+  };
+
   const handleReply = (id: number) => {
     console.log(id);
   };
@@ -123,6 +128,12 @@ const UserChatPage = () => {
                 online={data.online}
                 image={data.image}
                 name={data.name}
+              />
+            )}
+            {isSelectedMessage && (
+              <ControllersInHeader
+                cbHandleIsSelectedMessage={handleIsSelectedMessage}
+                countOfMessages={2}
               />
             )}
             <Box className="messagesContainer">
@@ -157,7 +168,9 @@ const UserChatPage = () => {
                     );
                   })}
               </Box>
-              <ControllersMessage cbHandleAddMessage={handleAddMessage} />
+              {!isSelectedMessage && (
+                <ControllersMessage cbHandleAddMessage={handleAddMessage} />
+              )}
             </Box>
           </>
         )}

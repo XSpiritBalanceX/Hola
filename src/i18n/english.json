@@ -404,7 +404,10 @@
     },
     "chatPage": {
       "messages": "Messages",
-      "message": "Message"
+      "message": "Message",
+      "deleteChat": "Delete chat",
+      "cancel": "Cancel",
+      "chosenMessages": "Chosen {{count}}"
     }
   }
 }
