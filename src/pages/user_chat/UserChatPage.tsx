@@ -1,10 +1,21 @@
-import { Container, Button, Box, Avatar, Badge } from "@mui/material";
+import { useState, useEffect } from "react";
+import {
+  Container,
+  Button,
+  Box,
+  Avatar,
+  Badge,
+  TextField,
+} from "@mui/material";
 import { useParams } from "react-router-dom";
 import Loader from "@components/loader/Loader";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import user from "@assets/user.png";
+import CustomMessageBox from "@components/messageBox/CustomMessageBox";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import moment from "moment";
 import "./UserChatPage.scss";
 
 const mockData = [
@@ -104,14 +115,57 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
+interface IMessagesList {
+  id: number;
+  message: string;
+  time: string;
+  read?: boolean;
+}
+
 const UserChatPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const userID = localStorage.getItem("hola_user_id");
+
+  const [messagesList, setMessagesList] = useState<IMessagesList[] | null>(
+    null
+  );
+  const [newMessage, setNewMessage] = useState("");
 
   const data = mockData.find((el) => el.id === Number(id));
 
+  useEffect(() => {
+    if (data) {
+      setMessagesList(data.messages);
+    }
+
+    // eslint-disable-next-line
+  }, []);
+
   const handleNavigate = () => {
     navigate("/chat");
+  };
+
+  const handleReply = (id: number) => {
+    console.log(id);
+  };
+
+  const handleTypeMessage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNewMessage(e.currentTarget.value);
+  };
+
+  const handleSendMessage = () => {
+    if (messagesList) {
+      const copyData = messagesList.slice();
+      const currentMessage = {
+        id: Number(userID),
+        message: newMessage,
+        time: moment().format("HH:mm"),
+      };
+      copyData.push(currentMessage);
+      setMessagesList(copyData);
+      setNewMessage("");
+    }
   };
 
   return (
@@ -119,28 +173,75 @@ const UserChatPage = () => {
       <Loader isLoading={data ? false : true} />
       <Container className="userChatContainer">
         {data && (
-          <Box className="userInformationBox">
-            <Button
-              onClick={handleNavigate}
-              type="button"
-              className="buttonNavigate"
-            >
-              <ArrowBackIosNewIcon />
-            </Button>
-            {data.online ? (
-              <StyledBadge
-                overlap="circular"
-                anchorOrigin={{ vertical: "top", horizontal: "right" }}
-                variant="dot"
-                className="userBadge"
+          <>
+            <Box className="userInformationBox">
+              <Button
+                onClick={handleNavigate}
+                type="button"
+                className="buttonNavigate"
               >
+                <ArrowBackIosNewIcon />
+              </Button>
+              {data.online ? (
+                <StyledBadge
+                  overlap="circular"
+                  anchorOrigin={{ vertical: "top", horizontal: "right" }}
+                  variant="dot"
+                  className="userBadge"
+                >
+                  <p className="userName">{data.name}</p>
+                </StyledBadge>
+              ) : (
                 <p className="userName">{data.name}</p>
-              </StyledBadge>
-            ) : (
-              <p className="userName">{data.name}</p>
-            )}
-            <Avatar src={data.image || user} alt="user" />
-          </Box>
+              )}
+              <Avatar src={data.image || user} alt="user" />
+            </Box>
+            <Box className="messagesContainer">
+              <Box className="messagesBox">
+                {messagesList &&
+                  messagesList.map((el, ind) => {
+                    const splitTime = el.time.split(":");
+                    const currentDate = new Date();
+                    currentDate.setHours(Number(splitTime[0]));
+                    currentDate.setMinutes(Number(splitTime[1]));
+                    return (
+                      <CustomMessageBox
+                        key={ind}
+                        id={ind}
+                        position={Number(userID) === el.id ? "right" : "left"}
+                        type="text"
+                        text={el.message}
+                        date={currentDate}
+                        replyButton={true}
+                        removeButton={true}
+                        dateString={el.time}
+                        onReplyClick={handleReply}
+                        classNameMessage={
+                          Number(userID) === el.id
+                            ? "userMessage"
+                            : "opponentMessage"
+                        }
+                      />
+                    );
+                  })}
+              </Box>
+              <Box className="controllerBox">
+                <TextField
+                  type="search"
+                  value={newMessage}
+                  onChange={handleTypeMessage}
+                  className="messageField"
+                />
+                <Button
+                  type="button"
+                  onClick={handleSendMessage}
+                  className="sendButton"
+                >
+                  <ArrowUpwardIcon />
+                </Button>
+              </Box>
+            </Box>
+          </>
         )}
       </Container>
     </>
