@@ -8,6 +8,7 @@ import CustomError from "@components/error/CustomError";
 import { translate } from "@i18n";
 import TabMenu from "@components/tabMenu/TabMenu";
 import ItemChat from "./ItemChat";
+import UserMatches from "@components/userMatches/UserMatches";
 import "./ChatsPage.scss";
 
 const mockData = [
@@ -96,6 +97,7 @@ const ChatsPage = () => {
         <Container className="containerChatPage">
           <Box className="matchesContainer">
             <p className="titleMatch">{t("matches")}</p>
+            <UserMatches />
           </Box>
           <Box>
             <p className="titleMessages">{t("messages")}</p>
