@@ -2,12 +2,15 @@
 
 .containerChatPage {
   padding: 6px 20px 0 20px !important;
-  .titleChatPage {
+  .titleMatch,
+  .titleMessages {
     margin: 0;
-    text-align: center;
     @extend %h4;
     font-weight: 500;
     color: map-get($theme-colors, "blue");
+  }
+  .matchesContainer {
+    margin-bottom: 40px;
   }
   .messagesContainer {
     margin-top: 15px;

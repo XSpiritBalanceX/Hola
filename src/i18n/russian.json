@@ -407,7 +407,8 @@
       "message": "Сообщение",
       "deleteChat": "Удалить чат",
       "cancel": "Закрыть",
-      "chosenMessages": "Выбрано {{count}}"
+      "chosenMessages": "Выбрано {{count}}",
+      "matches": "Совпадения"
     }
   }
 }

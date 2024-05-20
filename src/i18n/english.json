@@ -407,7 +407,8 @@
       "message": "Message",
       "deleteChat": "Delete chat",
       "cancel": "Cancel",
-      "chosenMessages": "Chosen {{count}}"
+      "chosenMessages": "Chosen {{count}}",
+      "matches": "Matches"
     }
   }
 }

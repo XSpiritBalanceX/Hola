@@ -10,7 +10,10 @@ export const chatApi = createApi({
       query: () => "/chats/",
       providesTags: ["Chat"],
     }),
+    getMatches: builder.query<any, void>({
+      query: () => "/matches/",
+    }),
   }),
 });
 
-export const { useGetChatsQuery } = chatApi;
+export const { useGetChatsQuery, useGetMatchesQuery } = chatApi;

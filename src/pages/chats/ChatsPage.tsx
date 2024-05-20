@@ -1,5 +1,8 @@
 import { Box, Container } from "@mui/material";
-import { useGetChatsQuery } from "@store/requestApi/chatApi";
+import {
+  useGetChatsQuery,
+  useGetMatchesQuery,
+} from "@store/requestApi/chatApi";
 import Loader from "@components/loader/Loader";
 import CustomError from "@components/error/CustomError";
 import { translate } from "@i18n";
@@ -79,28 +82,39 @@ const ChatsPage = () => {
 
   //const { data, error, isLoading } = useGetChatsQuery();
 
+  const {
+    data: dataMatches,
+    error: errorMatches,
+    isLoading: loadingMatches,
+  } = useGetMatchesQuery();
+
   return (
     <>
-      {/*  <Loader isLoading={isLoading} />
-      {error && !data && <CustomError />} */}
-      {
-        /* !error && data && */ <Container className="containerChatPage">
-          <p className="titleChatPage">{t("messages")}</p>
-          <Box className="messagesContainer">
-            {mockData.map((el) => (
-              <ItemChat
-                key={el.id}
-                id={el.id}
-                name={el.name}
-                image={el.image}
-                messages={el.messages}
-                online={el.online}
-              />
-            ))}
+      <Loader isLoading={loadingMatches} />
+      {errorMatches && !dataMatches && <CustomError />}
+      {!errorMatches && dataMatches && (
+        <Container className="containerChatPage">
+          <Box className="matchesContainer">
+            <p className="titleMatch">{t("matches")}</p>
+          </Box>
+          <Box>
+            <p className="titleMessages">{t("messages")}</p>
+            <Box className="messagesContainer">
+              {mockData.map((el) => (
+                <ItemChat
+                  key={el.id}
+                  id={el.id}
+                  name={el.name}
+                  image={el.image}
+                  messages={el.messages}
+                  online={el.online}
+                />
+              ))}
+            </Box>
           </Box>
           <TabMenu />
         </Container>
-      }
+      )}
     </>
   );
 };
