@@ -8,6 +8,7 @@ import NavigationChat from "./NavigationChat";
 import ControllersInHeader from "@components/controllersUserChat/ControllersInHeader";
 import ControllersChosenMessages from "@components/controllersUserChat/ControllersChosenMessages";
 import { IMessagesList, TNewMessage } from "./TypesUserChat";
+import { translate } from "@i18n";
 import "./UserChatPage.scss";
 
 const mockData = [
@@ -79,6 +80,7 @@ const mockData = [
 
 const UserChatPage = () => {
   const { id } = useParams();
+  const { t } = translate("translate", { keyPrefix: "chatPage" });
 
   const userID = localStorage.getItem("hola_user_id");
 
@@ -148,7 +150,7 @@ const UserChatPage = () => {
             )}
             <Box className="messagesContainer">
               <Box className="messagesBox">
-                {messagesList &&
+                {messagesList && messagesList.length ? (
                   messagesList.map((el, ind) => {
                     const splitTime = el.time.split(":");
                     const currentDate = new Date();
@@ -184,7 +186,12 @@ const UserChatPage = () => {
                         />
                       </Box>
                     );
-                  })}
+                  })
+                ) : (
+                  <Box className="greetingUserBox">
+                    <p>{t("greetingUser", { userName: data.name })}</p>
+                  </Box>
+                )}
               </Box>
               {!isSelectedMessage && (
                 <ControllersMessage cbHandleAddMessage={handleAddMessage} />

@@ -417,7 +417,8 @@
       "activitiesEmoji": "Активность",
       "objectEmoji": "Предметы",
       "symbolsEmoji": "Символы",
-      "flagsEmoji": "Флаги"
+      "flagsEmoji": "Флаги",
+      "greetingUser": "Поздоровайтесь с {{userName}}!"
     }
   }
 }

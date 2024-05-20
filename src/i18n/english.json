@@ -417,7 +417,8 @@
       "activitiesEmoji": "Activities",
       "objectEmoji": "Objects",
       "symbolsEmoji": "Symbols",
-      "flagsEmoji": "Flags"
+      "flagsEmoji": "Flags",
+      "greetingUser": "Say Hi to {{userName}}!"
     }
   }
 }

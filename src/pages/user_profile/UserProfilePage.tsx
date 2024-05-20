@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Box, Button, Container } from "@mui/material";
 import { useParams, useNavigate } from "react-router-dom";
 import Slider from "react-slick";
@@ -18,6 +19,13 @@ const UserProfilePage = () => {
 
   const { data, error, isLoading } = useGetUserByIdQuery(id as string);
 
+  useEffect(() => {
+    if (data && !data.id) {
+      navigate(-1);
+    }
+    // eslint-disable-next-line
+  }, [data, isLoading]);
+
   const settings = {
     dots: true,
     infinite: false,
@@ -31,7 +39,10 @@ const UserProfilePage = () => {
   const userInterests =
     data &&
     listOfInterests
-      .filter((el) => data.interests.some((item) => item.id === el.indInt))
+      .filter(
+        (el) =>
+          data.interests && data.interests.some((item) => item.id === el.indInt)
+      )
       .map((interest) => ({ indInt: interest.indInt, label: interest.label }));
 
   const handleNavigateBack = () => {
@@ -50,11 +61,12 @@ const UserProfilePage = () => {
             </Button>
           </Box>
           <Slider {...settings} className="userProfileSlider">
-            {data.images.map((el, ind) => (
-              <Box key={ind} className="userImage">
-                <img src={el.file} alt="user" />
-              </Box>
-            ))}
+            {data.images &&
+              data.images.map((el, ind) => (
+                <Box key={ind} className="userImage">
+                  <img src={el.file} alt="user" />
+                </Box>
+              ))}
           </Slider>
           <Box className="userInformationBox">
             <p className="userNameAge">
