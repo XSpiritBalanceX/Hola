@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Container, Box } from "@mui/material";
 import { useParams } from "react-router-dom";
 import Loader from "@components/loader/Loader";
@@ -82,6 +82,8 @@ const UserChatPage = () => {
   const { id } = useParams();
   const { t } = translate("translate", { keyPrefix: "chatPage" });
 
+  const messageRef = useRef<null | HTMLDivElement>(null);
+
   const userID = localStorage.getItem("hola_user_id");
 
   const [messagesList, setMessagesList] = useState<IMessagesList[] | null>(
@@ -96,9 +98,14 @@ const UserChatPage = () => {
     if (data) {
       setMessagesList(data.messages);
     }
-
     // eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    messageRef.current &&
+      messageRef.current.scrollIntoView({ behavior: "smooth" });
+    // eslint-disable-next-line
+  }, [messagesList]);
 
   const handleIsSelectedMessage = (value: boolean) => {
     setIsSelectedMessage(value);
@@ -114,6 +121,7 @@ const UserChatPage = () => {
       const copyData = messagesList.slice();
       copyData.push(new_message);
       setMessagesList(copyData);
+      messageRef.current && messageRef.current.focus();
     }
   };
 
@@ -157,7 +165,11 @@ const UserChatPage = () => {
                     currentDate.setHours(Number(splitTime[0]));
                     currentDate.setMinutes(Number(splitTime[1]));
                     return (
-                      <Box key={ind} className="customMessageBox">
+                      <Box
+                        key={ind}
+                        className="customMessageBox"
+                        ref={messageRef}
+                      >
                         {isSelectedMessage && (
                           <Box
                             className={
