@@ -408,7 +408,16 @@
       "deleteChat": "Delete chat",
       "cancel": "Cancel",
       "chosenMessages": "Chosen {{count}}",
-      "matches": "Matches"
+      "matches": "Matches",
+      "lastUsedEmoji": "Last used",
+      "smileysAndFacesEmoji": "Smileys & People",
+      "animalAndNatureEmoji": "Animals & Nature",
+      "foodAndDrinkEmoji": "Food & Drink",
+      "travelAndPlacesEmoji": "Travel & Places",
+      "activitiesEmoji": "Activities",
+      "objectEmoji": "Objects",
+      "symbolsEmoji": "Symbols",
+      "flagsEmoji": "Flags"
     }
   }
 }

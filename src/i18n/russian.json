@@ -408,7 +408,16 @@
       "deleteChat": "Удалить чат",
       "cancel": "Закрыть",
       "chosenMessages": "Выбрано {{count}}",
-      "matches": "Совпадения"
+      "matches": "Совпадения",
+      "lastUsedEmoji": "Последние использованные",
+      "smileysAndFacesEmoji": "Смайлики и люди",
+      "animalAndNatureEmoji": "Животные и природа",
+      "foodAndDrinkEmoji": "Еда и напитки",
+      "travelAndPlacesEmoji": "Путешествия и места",
+      "activitiesEmoji": "Активность",
+      "objectEmoji": "Предметы",
+      "symbolsEmoji": "Символы",
+      "flagsEmoji": "Флаги"
     }
   }
 }

@@ -26,10 +26,30 @@
     width: 40px;
     margin-left: 10px;
     border-radius: 100%;
-    background-color: map-get($theme-colors, "blue");
-    border: solid 1px map-get($theme-colors, "blue");
+    @extend %button-blue;
     svg {
       fill: map-get($theme-colors, "white");
+    }
+  }
+  .fieldWithEmojiContainer {
+    position: relative;
+    width: 100%;
+    .emojiButton {
+      position: absolute;
+      right: 15px;
+      top: 0;
+      height: 40px;
+      min-width: 15px;
+      padding: 0;
+    }
+    .chatEmojiContainer {
+      position: absolute;
+      bottom: 45px;
+      right: 20px;
+      border-radius: 0;
+      @media all and (max-width: 40em) {
+        left: 0;
+      }
     }
   }
 }
