@@ -9,6 +9,7 @@ import ControllersInHeader from "@components/controllersUserChat/ControllersInHe
 import ControllersChosenMessages from "@components/controllersUserChat/ControllersChosenMessages";
 import { IMessagesList, TNewMessage } from "./TypesUserChat";
 import { translate } from "@i18n";
+import UsersModal from "@components/modal/UsersModal";
 import "./UserChatPage.scss";
 
 const mockData = [
@@ -91,6 +92,7 @@ const UserChatPage = () => {
   );
   const [isSelectedMessage, setIsSelectedMessage] = useState(false);
   const [selectedMessages, setSelectedMessages] = useState<number[]>([]);
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   const data = mockData.find((el) => el.id === Number(id));
 
@@ -137,9 +139,23 @@ const UserChatPage = () => {
     setSelectedMessages(copyData);
   };
 
+  const handleCloseModal = () => {
+    setIsOpenModal(false);
+  };
+
+  const handleOpenModal = () => {
+    setIsOpenModal(true);
+  };
+
   return (
     <>
       <Loader isLoading={data ? false : true} />
+      <UsersModal
+        isOpen={isOpenModal}
+        cbCloseModal={handleCloseModal}
+        messagesList={messagesList}
+        selectedMessages={selectedMessages}
+      />
       <Container className="userChatContainer">
         {data && (
           <>
@@ -208,7 +224,11 @@ const UserChatPage = () => {
               {!isSelectedMessage && (
                 <ControllersMessage cbHandleAddMessage={handleAddMessage} />
               )}
-              {isSelectedMessage && <ControllersChosenMessages />}
+              {isSelectedMessage && (
+                <ControllersChosenMessages
+                  cbHandleOpenModal={handleOpenModal}
+                />
+              )}
             </Box>
           </>
         )}

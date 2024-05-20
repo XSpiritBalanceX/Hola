@@ -8,3 +8,7 @@ export interface IControllersInHeaderProps {
   cbHandleIsSelectedMessage: (value: boolean) => void;
   countOfMessages: number;
 }
+
+export interface IControllersChosenMessagesProps {
+  cbHandleOpenModal: () => void;
+}
