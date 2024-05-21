@@ -420,6 +420,13 @@
       "flagsEmoji": "Флаги",
       "greetingUser": "Поздоровайтесь с {{userName}}!",
       "send": "Переслать"
+    },
+    "dashboardPage": {
+      "stories": "Истории",
+      "you": "Ты",
+      "read": "Читать",
+      "events": "Предстоящие события",
+      "viewAll": "смотреть все"
     }
   }
 }

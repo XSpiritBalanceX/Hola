@@ -1,0 +1,54 @@
+@import "../../variables";
+
+.storiesSlider {
+  .slick-list {
+    padding: 10px 0;
+    margin: 0;
+  }
+  .slick-track {
+    margin: 0;
+  }
+  .slick-arrow {
+    display: none !important;
+  }
+  .itemStory {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      cursor: pointer;
+    }
+    .avatarUser {
+      width: 60px;
+      height: 60px;
+    }
+    .userName {
+      @extend %body-1;
+      margin: 5px 0 0 0;
+    }
+  }
+}
+
+.storiesBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 15;
+  background-color: map-get($theme-colors, "black");
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  .closeStoryButton {
+    z-index: 10;
+    min-width: 10px;
+    width: 30px;
+    height: 30px;
+    margin: 10px 10px 10px 0;
+    svg {
+      fill: map-get($theme-colors, "white");
+    }
+  }
+}

@@ -2,4 +2,12 @@
 
 .dashboardPageContainer {
   padding: 10px 20px 80px 20px !important;
+  .storiesContainer {
+    margin-bottom: 25px;
+    .titleStories {
+      @extend %body-1-bold;
+      line-height: 22px;
+      margin: 0 0 10px 0;
+    }
+  }
 }

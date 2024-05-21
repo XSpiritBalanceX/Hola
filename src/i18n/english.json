@@ -420,6 +420,13 @@
       "flagsEmoji": "Flags",
       "greetingUser": "Say Hi to {{userName}}!",
       "send": "Send"
+    },
+    "dashboardPage": {
+      "stories": "Stories",
+      "you": "You",
+      "read": "Read",
+      "events": "Upcoming events",
+      "viewAll": "view all"
     }
   }
 }
