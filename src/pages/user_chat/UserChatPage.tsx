@@ -114,10 +114,6 @@ const UserChatPage = () => {
     !value && setSelectedMessages([]);
   };
 
-  const handleReply = (id: number) => {
-    console.log(id);
-  };
-
   const handleAddMessage = (new_message: TNewMessage) => {
     if (messagesList) {
       const copyData = messagesList.slice();
@@ -206,7 +202,6 @@ const UserChatPage = () => {
                           replyButton={true}
                           removeButton={true}
                           dateString={el.time}
-                          onReplyClick={handleReply}
                           classNameMessage={
                             Number(userID) === el.id
                               ? "userMessage"

@@ -11,16 +11,11 @@ interface ICustomMessageBoxProps {
   replyButton: boolean;
   removeButton: boolean;
   dateString: string;
-  onReplyClick: (id: number) => void;
   classNameMessage: string;
   cbHandleClickMessage: (id: number) => void;
 }
 
 const CustomMessageBox = (props: ICustomMessageBoxProps) => {
-  const handleReplyMessage = () => {
-    props.onReplyClick(props.id);
-  };
-
   const handleClickMessage = () => {
     props.cbHandleClickMessage(props.id);
   };
@@ -28,7 +23,7 @@ const CustomMessageBox = (props: ICustomMessageBoxProps) => {
   return (
     <MessageBox
       {...(props as any)}
-      onReplyClick={handleReplyMessage}
+      replyButton={false}
       className={props.classNameMessage}
       notch={false}
       removeButton={false}
