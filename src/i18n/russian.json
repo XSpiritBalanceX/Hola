@@ -418,7 +418,8 @@
       "objectEmoji": "Предметы",
       "symbolsEmoji": "Символы",
       "flagsEmoji": "Флаги",
-      "greetingUser": "Поздоровайтесь с {{userName}}!"
+      "greetingUser": "Поздоровайтесь с {{userName}}!",
+      "send": "Переслать"
     }
   }
 }

@@ -141,6 +141,8 @@ const UserChatPage = () => {
 
   const handleCloseModal = () => {
     setIsOpenModal(false);
+    setIsSelectedMessage(false);
+    setSelectedMessages([]);
   };
 
   const handleOpenModal = () => {

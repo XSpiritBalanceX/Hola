@@ -418,7 +418,8 @@
       "objectEmoji": "Objects",
       "symbolsEmoji": "Symbols",
       "flagsEmoji": "Flags",
-      "greetingUser": "Say Hi to {{userName}}!"
+      "greetingUser": "Say Hi to {{userName}}!",
+      "send": "Send"
     }
   }
 }
