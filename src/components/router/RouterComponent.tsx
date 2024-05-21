@@ -16,6 +16,7 @@ import SearchPage from "@pages/search/SearchPage";
 import UserProfilePage from "@pages/user_profile/UserProfilePage";
 import ChatsPage from "@pages/chats/ChatsPage";
 import UserChatPage from "@pages/user_chat/UserChatPage";
+import DashboardPage from "@pages/dashboard/DashboardPage";
 
 const RouterComponent = () => {
   const appRoutesUnauth = [
@@ -43,6 +44,7 @@ const RouterComponent = () => {
     { path: "/search/user/:id", element: <UserProfilePage /> },
     { path: "/chat", element: <ChatsPage /> },
     { path: "/chat/:id", element: <UserChatPage /> },
+    { path: "/dashboard", element: <DashboardPage /> },
   ];
 
   return (
