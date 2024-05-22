@@ -766,3 +766,34 @@
     }
   }
 }
+
+.articleModal {
+  .articleTitle {
+    @extend %h3;
+    text-align: center;
+    color: map-get($theme-colors, "blue");
+  }
+  .articleContent {
+    overflow-x: hidden;
+    .articleImage {
+      width: 100%;
+      margin-bottom: 10px;
+      img {
+        width: 100%;
+        max-height: 400px;
+      }
+    }
+    .articleText {
+      @extend %body-1;
+      color: map-get($theme-colors, "black");
+    }
+  }
+  .closeArticleButton {
+    text-transform: none;
+    @extend %button-blue;
+    @extend %button;
+    padding: 10px 20px;
+    border-radius: 0;
+    height: auto;
+  }
+}

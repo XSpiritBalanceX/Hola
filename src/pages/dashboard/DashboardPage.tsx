@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { Container, Box } from "@mui/material";
 import TabMenu from "@components/tabMenu/TabMenu";
 import { translate } from "@i18n";
 import UserStories from "@components/userStories/UserStories";
+import ArticleDashboard from "./ArticleDashboard";
+import ArticleDashboardModal from "@components/modal/ArticleDashboardModal";
 import "./DashboardPage.scss";
 
 const mockStories = [
@@ -50,14 +53,40 @@ const mockStories = [
   },
 ];
 
+const mockArticle = {
+  title: "25 date Ideas",
+  image:
+    "https://www.shutterstock.com/image-photo/happy-young-couple-sitting-on-600nw-1297272505.jpg",
+  text: "",
+};
+
 const DashboardPage = () => {
   const { t } = translate("translate", { keyPrefix: "dashboardPage" });
+
+  const [isOpenArticle, setIsOpenArticle] = useState(false);
+
+  const handleArticle = (value: boolean) => {
+    setIsOpenArticle(value);
+  };
+
   return (
     <Container className="dashboardPageContainer">
+      <ArticleDashboardModal
+        isOpen={isOpenArticle}
+        title={mockArticle.title}
+        image={mockArticle.image}
+        text={mockArticle.text}
+        cbHandleClose={handleArticle}
+      />
       <Box className="storiesContainer">
         <p className="titleStories">{t("stories")}</p>
         <UserStories stories={mockStories} />
       </Box>
+      <ArticleDashboard
+        title={mockArticle.title}
+        image={mockArticle.image}
+        cbHandleOpenArticle={handleArticle}
+      />
       <TabMenu />
     </Container>
   );

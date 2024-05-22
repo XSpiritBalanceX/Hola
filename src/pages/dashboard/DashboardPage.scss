@@ -10,4 +10,65 @@
       margin: 0 0 10px 0;
     }
   }
+  .articleBox {
+    max-width: 500px;
+    margin: 10px auto 0 auto;
+    position: relative;
+    @media all and (max-width: 40em) {
+      max-width: 100%;
+    }
+    .titleArticle {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      @extend %body-1-bold;
+      margin: 0;
+      color: map-get($theme-colors, "white");
+      z-index: 1;
+    }
+    .articleImage {
+      height: 250px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 97%;
+      border-radius: 15px;
+      @media all and (max-width: 40em) {
+        height: 170px;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 97%;
+        height: 100%;
+        background-color: map-get($theme-colors, "black");
+        opacity: 0.4;
+        border-radius: 15px;
+      }
+    }
+    .insertBox {
+      background-color: map-deep-get($theme-colors, "background", "gray-1");
+      padding: 10px 0 5px 10px;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      border-radius: 20px 0 0 0;
+      .articleButton {
+        z-index: 1;
+        text-transform: none;
+        @extend %button-blue;
+        border-radius: 30px;
+        height: 29px;
+        @extend %h5;
+        font-size: 14px;
+        line-height: 17px;
+        padding: 5px 20px;
+        svg {
+          margin-left: 15px;
+        }
+      }
+    }
+  }
 }

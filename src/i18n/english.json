@@ -426,7 +426,8 @@
       "you": "You",
       "read": "Read",
       "events": "Upcoming events",
-      "viewAll": "view all"
+      "viewAll": "view all",
+      "cancel": "Cancel"
     }
   }
 }
