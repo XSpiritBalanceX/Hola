@@ -7,16 +7,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import { translate } from "@i18n";
 import { styled } from "@mui/material/styles";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import { IUserStoriesProps, TStory } from "./TypesUsersStories";
 import "./UserStories.scss";
-
-type TStory = {
-  url: string;
-  header: { heading: string; subheading: string; profileImage: string };
-};
-
-interface IUserStoriesProps {
-  stories: TStory[];
-}
 
 const StyledBadge = styled(Badge)(() => ({
   "& .MuiBadge-badge": {
@@ -41,7 +33,11 @@ const StyledBadge = styled(Badge)(() => ({
   },
 }));
 
-const UserStories = ({ stories }: IUserStoriesProps) => {
+const UserStories = ({
+  stories,
+  cbHandleOpenUserStory,
+  cbHandleAddUserPhoto,
+}: IUserStoriesProps) => {
   const { t } = translate("translate", { keyPrefix: "dashboardPage" });
 
   const [selectedUser, setSelectedUser] = useState<string | null>(null);
@@ -101,6 +97,19 @@ const UserStories = ({ stories }: IUserStoriesProps) => {
     setMessage("");
   };
 
+  const handleUserStory = () => {
+    document.getElementById("fileInput")?.click();
+  };
+
+  const handleAddUserPhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files) {
+      const newPhoto = files[0];
+      cbHandleAddUserPhoto(newPhoto);
+      cbHandleOpenUserStory();
+    }
+  };
+
   const moveSelectedUserToStart = (arr: TStory[], user: string) => {
     const index = arr.findIndex((story) => story.header.heading === user);
     const selectedUserStories = arr.slice(index).concat(arr.slice(0, index));
@@ -113,14 +122,14 @@ const UserStories = ({ stories }: IUserStoriesProps) => {
 
   useEffect(() => {
     const container = document.querySelector(
-      ".dashboardPageContainer"
+      ".MuiContainer-root"
     ) as HTMLDivElement;
     if (selectedUser) {
-      container.style.height = "100vh";
-      document.body.style.overflowY = "hidden";
+      container && container.classList.add("overflowDashboardContainer");
+      container && container.classList.remove("dashboardPageContainer");
     } else {
-      container.style.height = "100%";
-      document.body.style.overflowY = "auto";
+      container.classList.add("dashboardPageContainer");
+      container.classList.remove("overflowDashboardContainer");
     }
     // eslint-disable-next-line
   }, [selectedUser]);
@@ -129,16 +138,19 @@ const UserStories = ({ stories }: IUserStoriesProps) => {
     <>
       {!selectedUser && (
         <Slider {...settings} className="storiesSlider">
-          <Box
-            /* onClick={() => handleAvatarClick('User')} */
-            className="itemStory"
-          >
+          <Box onClick={handleUserStory} className="itemStory">
             <StyledBadge
               overlap="circular"
               anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
               variant="dot"
               className="userBadge"
             >
+              <input
+                type="file"
+                id="fileInput"
+                style={{ display: "none" }}
+                onChange={handleAddUserPhoto}
+              ></input>
               <Avatar alt="user" src={user} className="avatarUser" />
             </StyledBadge>
             <p className="userName">{t("you")}</p>

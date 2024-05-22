@@ -7,6 +7,8 @@ import ArticleDashboard from "./ArticleDashboard";
 import ArticleDashboardModal from "@components/modal/ArticleDashboardModal";
 import { useNavigate } from "react-router-dom";
 import EventDashboard from "./EventDashboard";
+import UserStory from "@components/userStories/UserStory";
+import classNames from "classnames";
 import "./DashboardPage.scss";
 
 const mockStories = [
@@ -83,22 +85,44 @@ const mockEvents = [
   },
 ];
 
+const mockUserStory = null;
+
 const DashboardPage = () => {
   const { t } = translate("translate", { keyPrefix: "dashboardPage" });
   const navigate = useNavigate();
 
   const [isOpenArticle, setIsOpenArticle] = useState(false);
+  const [isOpenUserStory, setIsOpenUserStory] = useState(false);
+  const [userSelectedPhoto, setUserSelectedPhoto] = useState<string | File>("");
 
   const handleArticle = (value: boolean) => {
     setIsOpenArticle(value);
+  };
+
+  const handleCloseUserStory = () => {
+    setIsOpenUserStory(false);
+    setUserSelectedPhoto("");
+  };
+
+  const handleOpenUserStory = () => {
+    setIsOpenUserStory(true);
+  };
+
+  const handleAddUserPhoto = (file: File | null) => {
+    file && setUserSelectedPhoto(file);
   };
 
   const handleNavigate = () => {
     navigate("/search/events");
   };
 
+  const classContainer: string = classNames("", {
+    overflowDashboardContainer: isOpenUserStory,
+    dashboardPageContainer: !isOpenUserStory,
+  });
+
   return (
-    <Container className="dashboardPageContainer">
+    <Container className={classContainer}>
       <ArticleDashboardModal
         isOpen={isOpenArticle}
         title={mockArticle.title}
@@ -106,9 +130,20 @@ const DashboardPage = () => {
         text={mockArticle.text}
         cbHandleClose={handleArticle}
       />
+      {isOpenUserStory && (
+        <UserStory
+          cbHandleCloseUserStory={handleCloseUserStory}
+          userStory={mockUserStory}
+          userSelectedPhoto={userSelectedPhoto}
+        />
+      )}
       <Box className="storiesContainer">
         <p className="titleStories">{t("stories")}</p>
-        <UserStories stories={mockStories} />
+        <UserStories
+          stories={mockStories}
+          cbHandleOpenUserStory={handleOpenUserStory}
+          cbHandleAddUserPhoto={handleAddUserPhoto}
+        />
       </Box>
       <ArticleDashboard
         title={mockArticle.title}

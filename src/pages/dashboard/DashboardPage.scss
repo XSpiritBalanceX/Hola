@@ -150,3 +150,9 @@
     }
   }
 }
+
+.overflowDashboardContainer {
+  height: 100vh !important;
+  padding: 0 !important;
+  overflow-y: hidden;
+}
