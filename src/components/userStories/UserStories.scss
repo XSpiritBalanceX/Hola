@@ -41,6 +41,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  height: 100%;
   .closeStoryButton {
     z-index: 10;
     min-width: 10px;
@@ -49,6 +50,46 @@
     margin: 10px 10px 10px 0;
     svg {
       fill: map-get($theme-colors, "white");
+    }
+  }
+  .messageBox {
+    z-index: 10;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: calc(100% - 40px);
+    .fieldMessage {
+      width: 100%;
+      .MuiInputBase-root {
+        height: 40px;
+        border-radius: 20px;
+        fieldset {
+          border: solid 1px map-get($theme-colors, "white");
+        }
+        input {
+          color: map-get($theme-colors, "white");
+          @extend %body-2;
+          &::placeholder {
+            color: map-get($theme-colors, "white");
+            @extend %body-2;
+          }
+        }
+      }
+    }
+    .sendMessageButton {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      margin-left: 10px;
+      border-radius: 100%;
+      background-color: map-get($theme-colors, "white");
+      svg {
+        fill: map-get($theme-colors, "blue");
+      }
     }
   }
 }

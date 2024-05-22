@@ -431,7 +431,8 @@
       "cinema": "Cinema",
       "theatre": "Theatre",
       "concert": "Concert",
-      "standUpCateg": "Stand Up"
+      "standUpCateg": "Stand Up",
+      "sendMessage": "Send Message"
     }
   }
 }

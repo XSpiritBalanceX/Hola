@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { Box, Avatar, Button, Badge } from "@mui/material";
+import { Box, Avatar, Button, Badge, TextField } from "@mui/material";
 import user from "@assets/user.png";
 import Stories from "react-insta-stories";
 import Slider from "react-slick";
 import CloseIcon from "@mui/icons-material/Close";
 import { translate } from "@i18n";
 import { styled } from "@mui/material/styles";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import "./UserStories.scss";
 
 type TStory = {
@@ -45,6 +46,7 @@ const UserStories = ({ stories }: IUserStoriesProps) => {
 
   const [selectedUser, setSelectedUser] = useState<string | null>(null);
   const [slidesToShow, setSlidesToShow] = useState(10);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const handleResize = () => {
@@ -90,6 +92,15 @@ const UserStories = ({ stories }: IUserStoriesProps) => {
     setSelectedUser(null);
   };
 
+  const handleTypeMessage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMessage(e.currentTarget.value);
+  };
+
+  const handleSendMessage = () => {
+    console.log(message);
+    setMessage("");
+  };
+
   const moveSelectedUserToStart = (arr: TStory[], user: string) => {
     const index = arr.findIndex((story) => story.header.heading === user);
     const selectedUserStories = arr.slice(index).concat(arr.slice(0, index));
@@ -99,6 +110,20 @@ const UserStories = ({ stories }: IUserStoriesProps) => {
   const filteredStories = selectedUser
     ? moveSelectedUserToStart(stories, selectedUser)
     : stories;
+
+  useEffect(() => {
+    const container = document.querySelector(
+      ".dashboardPageContainer"
+    ) as HTMLDivElement;
+    if (selectedUser) {
+      container.style.height = "100vh";
+      document.body.style.overflowY = "hidden";
+    } else {
+      container.style.height = "100%";
+      document.body.style.overflowY = "auto";
+    }
+    // eslint-disable-next-line
+  }, [selectedUser]);
 
   return (
     <>
@@ -146,11 +171,11 @@ const UserStories = ({ stories }: IUserStoriesProps) => {
             stories={filteredStories}
             defaultInterval={3000}
             width={"98%"}
-            height={"calc(100% - 50px)"}
+            height={"calc(100% - 60px)"}
             storyContainerStyles={{
               margin: "0 auto",
               position: "absolute",
-              top: "50px",
+              top: "35px",
               left: 0,
               right: 0,
               bottom: 0,
@@ -159,10 +184,26 @@ const UserStories = ({ stories }: IUserStoriesProps) => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              margin: "0 auto",
+              margin: "20px auto 0 auto",
             }}
             onAllStoriesEnd={handleEndStories}
           />
+          <Box className="messageBox">
+            <TextField
+              type="search"
+              value={message}
+              onChange={handleTypeMessage}
+              placeholder={t("sendMessage")}
+              className="fieldMessage"
+            />
+            <Button
+              type="button"
+              onClick={handleSendMessage}
+              className="sendMessageButton"
+            >
+              <ArrowUpwardIcon />
+            </Button>
+          </Box>
         </Box>
       )}
     </>

@@ -431,7 +431,8 @@
       "cinema": "Кино",
       "theatre": "Театр",
       "concert": "Концерт",
-      "standUpCateg": "Стендап"
+      "standUpCateg": "Стендап",
+      "sendMessage": "Отправить сообщение"
     }
   }
 }
