@@ -427,7 +427,11 @@
       "read": "Read",
       "events": "Upcoming events",
       "viewAll": "view all",
-      "cancel": "Cancel"
+      "cancel": "Cancel",
+      "cinema": "Cinema",
+      "theatre": "Theatre",
+      "concert": "Concert",
+      "standUpCateg": "Stand Up"
     }
   }
 }

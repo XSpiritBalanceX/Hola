@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { Container, Box } from "@mui/material";
+import { Container, Box, Button } from "@mui/material";
 import TabMenu from "@components/tabMenu/TabMenu";
 import { translate } from "@i18n";
 import UserStories from "@components/userStories/UserStories";
 import ArticleDashboard from "./ArticleDashboard";
 import ArticleDashboardModal from "@components/modal/ArticleDashboardModal";
+import { useNavigate } from "react-router-dom";
+import EventDashboard from "./EventDashboard";
 import "./DashboardPage.scss";
 
 const mockStories = [
@@ -60,13 +62,39 @@ const mockArticle = {
   text: "",
 };
 
+const mockEvents = [
+  {
+    label: "cinema",
+    name: "Master and Margarita",
+    place: "Falcon Club Cinema Boutique",
+    date_start: "2024-01-25",
+    date_end: "2024-02-14",
+    image:
+      "https://avatars.mds.yandex.net/get-kinopoisk-image/10592371/56d4e2fb-f71c-419e-845e-d667e57f92ad/600x900",
+  },
+  {
+    label: "concert",
+    name: "SBPC",
+    place: "Minsk-Arena",
+    date_start: "2024-01-24",
+    date_end: "",
+    image:
+      "https://sun9-79.userapi.com/impg/37iiZdJJ4YHAb-ATjB-YVTpMGEjTpGga_VbEkw/7YM9hnUpGPo.jpg?size=538x807&quality=95&sign=5509daf8e4e2b9b586c45384e2374549&c_uniq_tag=0AOMaaycYo_qgX9Ozz9b7HxozgXoFc3izr9QQ8x-ID8&type=album",
+  },
+];
+
 const DashboardPage = () => {
   const { t } = translate("translate", { keyPrefix: "dashboardPage" });
+  const navigate = useNavigate();
 
   const [isOpenArticle, setIsOpenArticle] = useState(false);
 
   const handleArticle = (value: boolean) => {
     setIsOpenArticle(value);
+  };
+
+  const handleNavigate = () => {
+    navigate("/search/events");
   };
 
   return (
@@ -87,6 +115,25 @@ const DashboardPage = () => {
         image={mockArticle.image}
         cbHandleOpenArticle={handleArticle}
       />
+      <Box className="eventsBox">
+        <Box className="eventsTitle">
+          <p>{t("events")}</p>
+          <Button type="button" onClick={handleNavigate}>
+            {t("viewAll")}
+          </Button>
+        </Box>
+        {mockEvents.map((el, ind) => (
+          <EventDashboard
+            key={ind}
+            label={t(el.label)}
+            name={el.name}
+            place={el.place}
+            date_start={el.date_start}
+            date_end={el.date_end}
+            image={el.image}
+          />
+        ))}
+      </Box>
       <TabMenu />
     </Container>
   );
