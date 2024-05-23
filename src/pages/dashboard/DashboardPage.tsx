@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Box, Button } from "@mui/material";
 import TabMenu from "@components/tabMenu/TabMenu";
 import { translate } from "@i18n";
@@ -115,6 +115,15 @@ const DashboardPage = () => {
   const handleNavigate = () => {
     navigate("/search/events");
   };
+
+  useEffect(() => {
+    if (isOpenUserStory) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "auto";
+    }
+    // eslint-disable-next-line
+  }, [isOpenUserStory]);
 
   const classContainer: string = classNames("", {
     overflowDashboardContainer: isOpenUserStory,

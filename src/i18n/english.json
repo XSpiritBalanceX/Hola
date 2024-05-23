@@ -432,7 +432,9 @@
       "theatre": "Theatre",
       "concert": "Concert",
       "standUpCateg": "Stand Up",
-      "sendMessage": "Send Message"
+      "sendMessage": "Send Message",
+      "addToStories": "Add to stories",
+      "post": "Post"
     }
   }
 }

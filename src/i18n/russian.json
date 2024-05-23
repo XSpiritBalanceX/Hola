@@ -432,7 +432,9 @@
       "theatre": "Театр",
       "concert": "Концерт",
       "standUpCateg": "Стендап",
-      "sendMessage": "Отправить сообщение"
+      "sendMessage": "Отправить сообщение",
+      "addToStories": "Добавить в историю",
+      "post": "Опубликовать"
     }
   }
 }

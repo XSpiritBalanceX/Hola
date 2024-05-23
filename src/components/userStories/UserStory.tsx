@@ -1,6 +1,7 @@
-import { Box, Button } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
+import { Box } from "@mui/material";
 import { IUserStoryProps } from "./TypesUsersStories";
+import UserNewStory from "./UserNewStory";
+import classNames from "classnames";
 import "./UserStories.scss";
 
 const UserStory = ({
@@ -8,15 +9,19 @@ const UserStory = ({
   userStory,
   userSelectedPhoto,
 }: IUserStoryProps) => {
-  const handleCloseStory = () => {
-    cbHandleCloseUserStory();
-  };
+  const classUserStoryContainer: string = classNames("userStoryContainer", {
+    newStoryContainer: userSelectedPhoto,
+    storyContainer: userStory,
+  });
 
   return (
-    <Box className="userStoryContainer">
-      <Button type="button" onClick={handleCloseStory}>
-        <CloseIcon />
-      </Button>
+    <Box className={classUserStoryContainer}>
+      {userSelectedPhoto && (
+        <UserNewStory
+          userSelectedPhoto={userSelectedPhoto}
+          cbHandleCloseUserStory={cbHandleCloseUserStory}
+        />
+      )}
     </Box>
   );
 };

@@ -14,3 +14,8 @@ export interface IUserStoryProps {
   userStory: TStory | null;
   userSelectedPhoto: string | File;
 }
+
+export interface IUserNewStoryProps {
+  userSelectedPhoto: string | File;
+  cbHandleCloseUserStory: () => void;
+}

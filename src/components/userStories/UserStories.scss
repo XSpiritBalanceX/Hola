@@ -101,5 +101,87 @@
   right: 0;
   bottom: 0;
   z-index: 15;
-  background-color: red;
+}
+
+.userStoryContainer.newStoryContainer {
+  background-color: map-get($theme-colors, "white");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  .contentNewStory {
+    height: calc(100% - 80px);
+    width: 50%;
+    position: relative;
+    @media all and (max-width: 55em) {
+      width: 60%;
+    }
+    @media all and (max-width: 40em) {
+      width: 99%;
+    }
+    .userNewPhoto {
+      width: 100%;
+      height: 100%;
+    }
+    .actionsBox {
+      position: absolute;
+      top: 10px;
+      left: 0;
+      right: 0;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      .titleNewStory {
+        color: map-get($theme-colors, "white");
+        @extend %body-2-bold;
+        margin: 0;
+      }
+      .actionsButtons {
+        button {
+          width: 40px;
+          height: 40px;
+          min-width: 40px;
+          padding: 0;
+          text-transform: none;
+          border-radius: 100%;
+          background-color: map-deep-get(
+            $theme-colors,
+            "background",
+            "translucent-black"
+          );
+          color: map-get($theme-colors, "white");
+          margin-right: 10px;
+          svg {
+            fill: map-get($theme-colors, "white");
+          }
+        }
+        button:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+  .controlNewStory {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    button {
+      text-transform: none;
+      @extend %button-blue;
+      @extend %button;
+      margin: 0 20px;
+      width: 100%;
+    }
+    @media all and (max-width: 55em) {
+      width: 60%;
+    }
+    @media all and (max-width: 40em) {
+      width: 99%;
+    }
+  }
 }
