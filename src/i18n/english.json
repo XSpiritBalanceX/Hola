@@ -437,6 +437,17 @@
       "post": "Post",
       "yourText": "Your text",
       "apply": "Apply"
+    },
+    "emojiPicker": {
+      "lastUsedEmoji": "Last used",
+      "smileysAndFacesEmoji": "Smileys & People",
+      "animalAndNatureEmoji": "Animals & Nature",
+      "foodAndDrinkEmoji": "Food & Drink",
+      "travelAndPlacesEmoji": "Travel & Places",
+      "activitiesEmoji": "Activities",
+      "objectEmoji": "Objects",
+      "symbolsEmoji": "Symbols",
+      "flagsEmoji": "Flags"
     }
   }
 }

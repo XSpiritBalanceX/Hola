@@ -4,8 +4,8 @@ import { translate } from "@i18n";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import moment from "moment";
 import { IControllersMessageProps } from "./TypesControllersUserChat";
-import EmojiPicker, { EmojiClickData, Categories } from "emoji-picker-react";
 import EmojiIcon from "@components/icons/EmojiIcon";
+import CustomEmojiPicker from "@components/emoji/CustomEmojiPicker";
 import "./ControllersUserChat.scss";
 
 const ControllersMessage = ({
@@ -36,50 +36,11 @@ const ControllersMessage = ({
     setIsShowEmoji(!isShowEmoji);
   };
 
-  const handleAddEmoji = (emoji: EmojiClickData, event: MouseEvent) => {
+  const handleAddEmoji = (emoji: string) => {
     setNewMessage((prevState) => {
-      return prevState + emoji.emoji;
+      return prevState + emoji;
     });
   };
-
-  const customCategoriesEmoji = [
-    {
-      category: Categories.SUGGESTED,
-      name: t("lastUsedEmoji"),
-    },
-    {
-      category: Categories.SMILEYS_PEOPLE,
-      name: t("smileysAndFacesEmoji"),
-    },
-    {
-      category: Categories.ANIMALS_NATURE,
-      name: t("animalAndNatureEmoji"),
-    },
-    {
-      category: Categories.FOOD_DRINK,
-      name: t("foodAndDrinkEmoji"),
-    },
-    {
-      category: Categories.TRAVEL_PLACES,
-      name: t("travelAndPlacesEmoji"),
-    },
-    {
-      category: Categories.ACTIVITIES,
-      name: t("activitiesEmoji"),
-    },
-    {
-      category: Categories.OBJECTS,
-      name: t("objectEmoji"),
-    },
-    {
-      category: Categories.SYMBOLS,
-      name: t("symbolsEmoji"),
-    },
-    {
-      category: Categories.FLAGS,
-      name: t("flagsEmoji"),
-    },
-  ];
 
   return (
     <Box className="controllerBox">
@@ -95,13 +56,9 @@ const ControllersMessage = ({
           <EmojiIcon fill="#797979" />
         </Button>
         {isShowEmoji && (
-          <EmojiPicker
-            className="chatEmojiContainer"
-            onEmojiClick={handleAddEmoji}
-            searchDisabled
-            skinTonesDisabled
-            previewConfig={{ showPreview: false }}
-            categories={customCategoriesEmoji}
+          <CustomEmojiPicker
+            cbHandleAddEmoji={handleAddEmoji}
+            classNamePicker="chatEmojiContainer"
           />
         )}
       </Box>

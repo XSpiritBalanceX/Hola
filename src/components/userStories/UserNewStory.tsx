@@ -3,7 +3,6 @@ import { Box, Button } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { IUserNewStoryProps } from "./TypesUsersStories";
 import { translate } from "@i18n";
-import EmojiIcon from "@components/icons/EmojiIcon";
 import DraggableText from "./DraggableText";
 import ColorsTextButtons from "@components/buttons/ColorsTextButtons";
 import "./UserStories.scss";
@@ -75,9 +74,6 @@ const UserNewStory = ({
           <Box className="actionsButtons">
             <Button type="button" onClick={handleAddText}>
               Aa
-            </Button>
-            <Button type="button">
-              <EmojiIcon fill="#FFFFFF" />
             </Button>
             <Button type="button" onClick={handleCloseStory}>
               <CloseIcon />

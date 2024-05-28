@@ -83,18 +83,18 @@ const ChatsPage = () => {
 
   //const { data, error, isLoading } = useGetChatsQuery();
 
-  const {
+  /*  const {
     data: dataMatches,
     error: errorMatches,
     isLoading: loadingMatches,
-  } = useGetMatchesQuery();
+  } = useGetMatchesQuery(); */
 
   return (
     <>
-      <Loader isLoading={loadingMatches} />
-      {errorMatches && !dataMatches && <CustomError />}
-      {!errorMatches && dataMatches && (
-        <Container className="containerChatPage">
+      {/* <Loader isLoading={loadingMatches} /> */}
+      {/* {errorMatches && !dataMatches && <CustomError />} */}
+      {
+        /* !errorMatches && dataMatches && */ <Container className="containerChatPage">
           <Box className="matchesContainer">
             <p className="titleMatch">{t("matches")}</p>
             <UserMatches />
@@ -116,7 +116,7 @@ const ChatsPage = () => {
           </Box>
           <TabMenu />
         </Container>
-      )}
+      }
     </>
   );
 };

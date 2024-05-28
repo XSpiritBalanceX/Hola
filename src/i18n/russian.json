@@ -437,6 +437,17 @@
       "post": "Опубликовать",
       "yourText": "Ваш текст",
       "apply": "Применить"
+    },
+    "emojiPicker": {
+      "lastUsedEmoji": "Последние использованные",
+      "smileysAndFacesEmoji": "Смайлики и люди",
+      "animalAndNatureEmoji": "Животные и природа",
+      "foodAndDrinkEmoji": "Еда и напитки",
+      "travelAndPlacesEmoji": "Путешествия и места",
+      "activitiesEmoji": "Активность",
+      "objectEmoji": "Предметы",
+      "symbolsEmoji": "Символы",
+      "flagsEmoji": "Флаги"
     }
   }
 }
