@@ -434,7 +434,9 @@
       "standUpCateg": "Stand Up",
       "sendMessage": "Send Message",
       "addToStories": "Add to stories",
-      "post": "Post"
+      "post": "Post",
+      "yourText": "Your text",
+      "apply": "Apply"
     }
   }
 }

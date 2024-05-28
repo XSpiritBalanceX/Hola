@@ -19,3 +19,7 @@ export interface IUserNewStoryProps {
   userSelectedPhoto: string | File;
   cbHandleCloseUserStory: () => void;
 }
+
+export interface IDraggableTextProps {
+  textColor: string;
+}

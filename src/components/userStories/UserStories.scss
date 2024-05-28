@@ -113,6 +113,7 @@
     height: calc(100% - 80px);
     width: 50%;
     position: relative;
+    overflow: hidden;
     @media all and (max-width: 55em) {
       width: 60%;
     }
@@ -170,7 +171,7 @@
     align-items: center;
     justify-content: center;
     width: 50%;
-    button {
+    .buttonControl {
       text-transform: none;
       @extend %button-blue;
       @extend %button;
@@ -182,6 +183,37 @@
     }
     @media all and (max-width: 40em) {
       width: 99%;
+    }
+  }
+
+  .containerForDraggable {
+    position: absolute;
+    top: 100px;
+    left: 15px;
+    width: 120px;
+    resize: horizontal;
+    .containerForDraggableField {
+      overflow: auto;
+      resize: both;
+      padding: 2px;
+      background-color: transparent;
+      min-width: 150px;
+      min-height: 40px;
+      .fieldDraggable {
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        min-width: 120px;
+        &::placeholder {
+          color: map-get($theme-colors, "black");
+          opacity: 1;
+          @extend %h5;
+          background-color: map-get($theme-colors, "white");
+        }
+        @extend %h5;
+        padding: 0 5px;
+        border: none;
+      }
     }
   }
 }

@@ -20,3 +20,50 @@
     @extend %h3;
   }
 }
+
+/* .textColorsContainer {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 30px);
+  button {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    min-width: 30px;
+    margin-right: 10px;
+  }
+  button:last-child {
+    margin-right: 0;
+  }
+} */
+
+.textColorsContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  height: 40px;
+  .colorButton {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    min-width: 30px;
+    margin-right: 10px;
+    border: solid 2px map-get($theme-colors, "black");
+  }
+  .controlColorButton {
+    text-transform: none;
+    min-width: 30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 0;
+    @extend %button;
+    @extend %button-blue;
+  }
+}
