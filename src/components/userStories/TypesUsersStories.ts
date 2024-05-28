@@ -22,4 +22,5 @@ export interface IUserNewStoryProps {
 
 export interface IDraggableTextProps {
   textColor: string;
+  cbHandleAddText: (value: boolean) => void;
 }

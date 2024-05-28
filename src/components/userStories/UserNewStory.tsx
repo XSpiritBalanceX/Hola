@@ -57,7 +57,12 @@ const UserNewStory = ({
   return (
     <>
       <Box className="contentNewStory">
-        {isAddText && <DraggableText textColor={selectedTextColor} />}
+        {isAddText && (
+          <DraggableText
+            textColor={selectedTextColor}
+            cbHandleAddText={setIsAddText}
+          />
+        )}
         {userSelectedPhoto instanceof File && (
           <img
             src={URL.createObjectURL(userSelectedPhoto)}
