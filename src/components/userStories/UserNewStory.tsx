@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Box, Button } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { IUserNewStoryProps } from "./TypesUsersStories";
 import { translate } from "@i18n";
 import DraggableText from "./DraggableText";
 import ColorsTextButtons from "@components/buttons/ColorsTextButtons";
+import html2canvas from "html2canvas";
 import "./UserStories.scss";
 
 const UserNewStory = ({
@@ -12,6 +13,8 @@ const UserNewStory = ({
   cbHandleCloseUserStory,
 }: IUserNewStoryProps) => {
   const { t } = translate("translate", { keyPrefix: "dashboardPage" });
+
+  const storyRef = useRef<HTMLDivElement>(null);
 
   const buttonsColors = [
     "#ffffff",
@@ -31,9 +34,14 @@ const UserNewStory = ({
     // eslint-disable-next-line
   }, [isAddText]);
 
-  const handlePostStory = () => {
-    /* const formData = new FormData();
-    formData.append('file', userSelectedPhoto) */
+  const handlePostStory = async () => {
+    /*  
+    if (storyRef && storyRef.current) {
+      const canvas = await html2canvas(storyRef.current);
+      const imageData = canvas.toDataURL("image/png");
+      const formData = new FormData();
+    formData.append('file', imageData)
+    }*/
   };
 
   const handleCloseStory = () => {
@@ -56,19 +64,21 @@ const UserNewStory = ({
   return (
     <>
       <Box className="contentNewStory">
-        {isAddText && (
-          <DraggableText
-            textColor={selectedTextColor}
-            cbHandleAddText={setIsAddText}
-          />
-        )}
-        {userSelectedPhoto instanceof File && (
-          <img
-            src={URL.createObjectURL(userSelectedPhoto)}
-            alt="new user"
-            className="userNewPhoto"
-          />
-        )}
+        <Box ref={storyRef} className="containerSendImage">
+          {isAddText && (
+            <DraggableText
+              textColor={selectedTextColor}
+              cbHandleAddText={setIsAddText}
+            />
+          )}
+          {userSelectedPhoto instanceof File && (
+            <img
+              src={URL.createObjectURL(userSelectedPhoto)}
+              alt="new user"
+              className="userNewPhoto"
+            />
+          )}
+        </Box>
         <Box className="actionsBox">
           <p className="titleNewStory">{t("addToStories")}</p>
           <Box className="actionsButtons">
