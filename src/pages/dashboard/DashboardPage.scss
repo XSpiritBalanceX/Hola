@@ -1,0 +1,158 @@
+@import "../../variables";
+
+.dashboardPageContainer {
+  padding: 10px 20px 80px 20px !important;
+  .storiesContainer {
+    margin-bottom: 25px;
+    .titleStories {
+      @extend %body-1-bold;
+      line-height: 22px;
+      margin: 0 0 10px 0;
+    }
+  }
+  .articleBox {
+    max-width: 500px;
+    margin: 10px auto 0 auto;
+    position: relative;
+    @media all and (max-width: 40em) {
+      max-width: 100%;
+    }
+    .titleArticle {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      @extend %body-1-bold;
+      margin: 0;
+      color: map-get($theme-colors, "white");
+      z-index: 1;
+    }
+    .articleImage {
+      height: 250px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 97%;
+      border-radius: 15px;
+      @media all and (max-width: 40em) {
+        height: 170px;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 97%;
+        height: 100%;
+        background-color: map-get($theme-colors, "black");
+        opacity: 0.4;
+        border-radius: 15px;
+      }
+    }
+    .insertBox {
+      background-color: map-deep-get($theme-colors, "background", "gray-1");
+      padding: 10px 0 5px 10px;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      border-radius: 20px 0 0 0;
+      .articleButton {
+        z-index: 1;
+        text-transform: none;
+        @extend %button-blue;
+        border-radius: 30px;
+        height: 29px;
+        @extend %h5;
+        font-size: 14px;
+        line-height: 17px;
+        padding: 5px 20px;
+        svg {
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+  .eventsBox {
+    margin-top: 25px;
+    .eventsTitle {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      width: 50%;
+      margin: 0 auto 10px auto;
+      @media all and (max-width: 55em) {
+        width: 60%;
+      }
+      @media all and (max-width: 40em) {
+        width: 100%;
+      }
+      p {
+        margin: 0;
+        @extend %body-2-bold;
+        color: map-get($theme-colors, "blue");
+      }
+      button {
+        padding: 0;
+        text-transform: none;
+        @extend %body-2;
+        color: map-get($theme-colors, "gray-2");
+      }
+    }
+    .eventContainer {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: space-between;
+      background-color: map-get($theme-colors, "white");
+      border-radius: 20px;
+      width: 50%;
+      margin: 0 auto 10px auto;
+      @media all and (max-width: 55em) {
+        width: 60%;
+      }
+      @media all and (max-width: 40em) {
+        width: 100%;
+      }
+      .eventGeneralInformation {
+        padding: 5px 15px 10px 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 130px;
+        .eventLabel {
+          @extend %body-2-bold;
+          margin: 0;
+          align-self: flex-start;
+        }
+        .eventInformation {
+          align-self: flex-end;
+        }
+        .eventName {
+          @extend %body-1-bold;
+          margin: 0 0 3px 0;
+        }
+        .eventPlace,
+        .eventDate {
+          @extend %caption;
+          margin: 0;
+        }
+      }
+      .eventImageBox {
+        width: 140px;
+        height: 145px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 0 20px 20px 0;
+      }
+    }
+  }
+}
+
+.overflowDashboardContainer {
+  height: 100vh !important;
+  padding: 0 !important;
+  overflow-y: hidden;
+}

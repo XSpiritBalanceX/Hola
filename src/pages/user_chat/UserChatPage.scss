@@ -1,0 +1,93 @@
+@import "../../variables";
+
+.userChatContainer {
+  padding: 10px 20px 0 20px !important;
+  display: flex;
+  flex-direction: column;
+  .userInformationBox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    .buttonNavigate {
+      padding: 0;
+      min-width: auto;
+      height: 30px;
+      svg {
+        fill: map-get($theme-colors, "blue");
+      }
+    }
+    .userName {
+      margin: 2px;
+      color: map-get($theme-colors, "blue");
+      @extend %body-1-bold;
+      line-height: 18px;
+    }
+  }
+  .messagesContainer {
+    height: calc(100vh - 80px);
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    .messagesBox {
+      overflow-y: auto;
+      margin-bottom: 20px;
+      .greetingUserBox {
+        height: 50vh;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        p {
+          @extend %body-1-medium;
+          margin: 0;
+        }
+      }
+      .customMessageBox {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        .identifier,
+        .selectedIdentifier {
+          width: 20px;
+          height: 20px;
+          border-radius: 100%;
+        }
+        .identifier {
+          border: solid 1px map-get($theme-colors, "blue");
+        }
+        .selectedIdentifier {
+          background-color: map-get($theme-colors, "blue");
+        }
+      }
+      .opponentMessage,
+      .userMessage {
+        width: 100%;
+        .rce-mbox {
+          border-radius: 20px !important;
+          .rce-mbox-body {
+            .rce-mbox-text {
+              @extend %body-2-medium;
+              line-height: 17px;
+            }
+            .rce-mbox-time {
+              @extend %caption;
+            }
+          }
+        }
+      }
+      .opponentMessage {
+        .rce-mbox {
+          background-color: map-get($theme-colors, "light-blue-2");
+        }
+      }
+      .userMessage {
+        .rce-mbox {
+          background-color: map-deep-get($theme-colors, "background", "gray-3");
+        }
+      }
+    }
+  }
+}

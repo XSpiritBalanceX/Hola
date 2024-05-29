@@ -1,0 +1,88 @@
+@import "../../variables";
+
+.controllerBox {
+  display: flex;
+  flex-direction: row;
+  .messageField {
+    width: 100%;
+    .MuiInputBase-root {
+      height: 40px;
+      background-color: map-get($theme-colors, "white");
+      border-radius: 20px;
+      width: 100%;
+      fieldset {
+        border-color: map-get($theme-colors, "white");
+      }
+    }
+    .MuiInputBase-root.Mui-focused {
+      fieldset {
+        border: solid 2px map-get($theme-colors, "blue");
+      }
+    }
+  }
+  .sendButton {
+    height: 40px;
+    min-width: 40px;
+    width: 40px;
+    margin-left: 10px;
+    border-radius: 100%;
+    @extend %button-blue;
+    svg {
+      fill: map-get($theme-colors, "white");
+    }
+  }
+  .fieldWithEmojiContainer {
+    position: relative;
+    width: 100%;
+    .emojiButton {
+      position: absolute;
+      right: 35px;
+      top: 0;
+      height: 40px;
+      min-width: 15px;
+      padding: 0;
+    }
+    .chatEmojiContainer {
+      position: absolute;
+      bottom: 45px;
+      right: 20px;
+      border-radius: 0;
+      @media all and (max-width: 40em) {
+        left: 0;
+      }
+    }
+  }
+}
+
+.controllersInHeaderBox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  button {
+    text-transform: none;
+    color: map-get($theme-colors, "blue");
+    @extend %body-2-bold;
+    line-height: 18px;
+  }
+  .chosenMessages {
+    margin: 0;
+    @extend %body-2-medium;
+    line-height: 18px;
+  }
+}
+
+.controllersChosenMessageBox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  height: 40px;
+  button {
+    min-width: 30px;
+    width: 40px;
+    height: 40px;
+  }
+}

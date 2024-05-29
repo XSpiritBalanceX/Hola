@@ -401,6 +401,53 @@
       "sendMessage": "Send a Message",
       "viewProfile": "View Profile",
       "unexpectedErr": "An unexpected error occurred"
+    },
+    "chatPage": {
+      "messages": "Messages",
+      "message": "Message",
+      "deleteChat": "Delete chat",
+      "cancel": "Cancel",
+      "chosenMessages": "Chosen {{count}}",
+      "matches": "Matches",
+      "lastUsedEmoji": "Last used",
+      "smileysAndFacesEmoji": "Smileys & People",
+      "animalAndNatureEmoji": "Animals & Nature",
+      "foodAndDrinkEmoji": "Food & Drink",
+      "travelAndPlacesEmoji": "Travel & Places",
+      "activitiesEmoji": "Activities",
+      "objectEmoji": "Objects",
+      "symbolsEmoji": "Symbols",
+      "flagsEmoji": "Flags",
+      "greetingUser": "Say Hi to {{userName}}!",
+      "send": "Send"
+    },
+    "dashboardPage": {
+      "stories": "Stories",
+      "you": "You",
+      "read": "Read",
+      "events": "Upcoming events",
+      "viewAll": "view all",
+      "cancel": "Cancel",
+      "cinema": "Cinema",
+      "theatre": "Theatre",
+      "concert": "Concert",
+      "standUpCateg": "Stand Up",
+      "sendMessage": "Send Message",
+      "addToStories": "Add to stories",
+      "post": "Post",
+      "yourText": "Your text",
+      "apply": "Apply"
+    },
+    "emojiPicker": {
+      "lastUsedEmoji": "Last used",
+      "smileysAndFacesEmoji": "Smileys & People",
+      "animalAndNatureEmoji": "Animals & Nature",
+      "foodAndDrinkEmoji": "Food & Drink",
+      "travelAndPlacesEmoji": "Travel & Places",
+      "activitiesEmoji": "Activities",
+      "objectEmoji": "Objects",
+      "symbolsEmoji": "Symbols",
+      "flagsEmoji": "Flags"
     }
   }
 }

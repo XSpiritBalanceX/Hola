@@ -1,0 +1,29 @@
+@import "../../variables";
+
+.userMatchesSlider {
+  margin-top: 10px;
+  .slick-list {
+    padding: 10px 0;
+    margin: 0;
+  }
+  .slick-track {
+    margin: 0;
+  }
+  .slick-arrow {
+    display: none !important;
+  }
+  .userMatchItem {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .avatarUser {
+      width: 100px;
+      height: 100px;
+    }
+    .userName {
+      @extend %body-1;
+      margin: 5px 0 0 0;
+    }
+  }
+}

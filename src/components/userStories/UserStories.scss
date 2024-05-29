@@ -1,0 +1,294 @@
+@import "../../variables";
+
+.storiesSlider {
+  .slick-list {
+    padding: 10px 0;
+    margin: 0;
+  }
+  .slick-track {
+    margin: 0;
+  }
+  .slick-arrow {
+    display: none !important;
+  }
+  .itemStory {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      cursor: pointer;
+    }
+    .avatarUser {
+      width: 60px;
+      height: 60px;
+    }
+    .userName {
+      @extend %body-1;
+      margin: 5px 0 0 0;
+    }
+  }
+}
+
+.storiesBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 15;
+  background-color: map-get($theme-colors, "black");
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  height: 100%;
+  .closeStoryButton {
+    z-index: 10;
+    min-width: 10px;
+    width: 30px;
+    height: 30px;
+    margin: 10px 10px 10px 0;
+    svg {
+      fill: map-get($theme-colors, "white");
+    }
+  }
+  .messageBox {
+    z-index: 10;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: calc(100% - 40px);
+    .fieldMessage {
+      width: 100%;
+      .MuiInputBase-root {
+        height: 40px;
+        border-radius: 20px;
+        fieldset {
+          border: solid 1px map-get($theme-colors, "white");
+        }
+        input {
+          color: map-get($theme-colors, "white");
+          @extend %body-2;
+          &::placeholder {
+            color: map-get($theme-colors, "white");
+            @extend %body-2;
+          }
+        }
+      }
+    }
+    .sendMessageButton {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      margin-left: 10px;
+      border-radius: 100%;
+      background-color: map-get($theme-colors, "white");
+      svg {
+        fill: map-get($theme-colors, "blue");
+      }
+    }
+  }
+}
+
+.userStoryContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 15;
+}
+
+.userStoryContainer.newStoryContainer {
+  background-color: map-get($theme-colors, "white");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  .containerSendImage {
+    height: 100%;
+  }
+  .contentNewStory {
+    height: calc(100% - 80px);
+    width: 50%;
+    position: relative;
+    overflow: hidden;
+    @media all and (max-width: 55em) {
+      width: 60%;
+    }
+    @media all and (max-width: 40em) {
+      width: 99%;
+    }
+    .userNewPhoto {
+      width: 100%;
+      height: 100%;
+    }
+    .actionsBox {
+      position: absolute;
+      top: 10px;
+      left: 0;
+      right: 0;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      .titleNewStory {
+        color: map-get($theme-colors, "white");
+        @extend %body-2-bold;
+        margin: 0;
+      }
+      .actionsButtons {
+        button {
+          width: 40px;
+          height: 40px;
+          min-width: 40px;
+          padding: 0;
+          text-transform: none;
+          border-radius: 100%;
+          background-color: map-deep-get(
+            $theme-colors,
+            "background",
+            "translucent-black"
+          );
+          color: map-get($theme-colors, "white");
+          margin-right: 10px;
+          svg {
+            fill: map-get($theme-colors, "white");
+          }
+        }
+        button:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+  .controlNewStory {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    .buttonControl {
+      text-transform: none;
+      @extend %button-blue;
+      @extend %button;
+      margin: 0 20px;
+      width: 100%;
+    }
+    @media all and (max-width: 55em) {
+      width: 60%;
+    }
+    @media all and (max-width: 40em) {
+      width: 99%;
+    }
+  }
+
+  #dropZone {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    border-radius: 100%;
+    background-color: map-deep-get(
+      $theme-colors,
+      "background",
+      "translucent-black"
+    );
+  }
+
+  .containerForDraggable {
+    position: absolute;
+    top: 100px;
+    left: 15px;
+    width: 120px;
+    resize: horizontal;
+    z-index: 2;
+    .containerForDraggableField {
+      overflow: auto;
+      resize: both;
+      padding: 2px;
+      background-color: transparent;
+      min-width: 150px;
+      min-height: 40px;
+      .fieldDraggable {
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        min-width: 120px;
+        &::placeholder {
+          color: map-get($theme-colors, "black");
+          opacity: 1;
+          @extend %h5;
+          background-color: map-get($theme-colors, "white");
+        }
+        @extend %h5;
+        padding: 0 5px;
+        border: none;
+      }
+    }
+  }
+}
+
+.userStoryContainer.storyContainer {
+  overflow: hidden;
+  background-color: map-get($theme-colors, "black");
+  .messageBoxStory {
+    z-index: 20;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: calc(100% - 40px);
+    .fieldMessage {
+      width: 100%;
+      .MuiInputBase-root {
+        height: 40px;
+        border-radius: 20px;
+        fieldset {
+          border: solid 1px map-get($theme-colors, "white");
+        }
+        input {
+          color: map-get($theme-colors, "white");
+          @extend %body-2;
+          &::placeholder {
+            color: map-get($theme-colors, "white");
+            @extend %body-2;
+          }
+        }
+      }
+    }
+    .sendMessageButton {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      margin-left: 10px;
+      border-radius: 100%;
+      background-color: map-get($theme-colors, "white");
+      svg {
+        fill: map-get($theme-colors, "blue");
+      }
+    }
+  }
+  .closeExistingStoryButton {
+    z-index: 10;
+    min-width: 10px;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    svg {
+      fill: map-get($theme-colors, "white");
+    }
+  }
+}

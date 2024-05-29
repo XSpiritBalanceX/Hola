@@ -401,6 +401,53 @@
       "sendMessage": "Отправить сообщение",
       "viewProfile": "Посмотреть профиль",
       "unexpectedErr": "An unexpected error occurred"
+    },
+    "chatPage": {
+      "messages": "Сообщения",
+      "message": "Сообщение",
+      "deleteChat": "Удалить чат",
+      "cancel": "Закрыть",
+      "chosenMessages": "Выбрано {{count}}",
+      "matches": "Совпадения",
+      "lastUsedEmoji": "Последние использованные",
+      "smileysAndFacesEmoji": "Смайлики и люди",
+      "animalAndNatureEmoji": "Животные и природа",
+      "foodAndDrinkEmoji": "Еда и напитки",
+      "travelAndPlacesEmoji": "Путешествия и места",
+      "activitiesEmoji": "Активность",
+      "objectEmoji": "Предметы",
+      "symbolsEmoji": "Символы",
+      "flagsEmoji": "Флаги",
+      "greetingUser": "Поздоровайтесь с {{userName}}!",
+      "send": "Переслать"
+    },
+    "dashboardPage": {
+      "stories": "Истории",
+      "you": "Ты",
+      "read": "Читать",
+      "events": "Предстоящие события",
+      "viewAll": "смотреть все",
+      "cancel": "Закрыть",
+      "cinema": "Кино",
+      "theatre": "Театр",
+      "concert": "Концерт",
+      "standUpCateg": "Стендап",
+      "sendMessage": "Отправить сообщение",
+      "addToStories": "Добавить в историю",
+      "post": "Опубликовать",
+      "yourText": "Ваш текст",
+      "apply": "Применить"
+    },
+    "emojiPicker": {
+      "lastUsedEmoji": "Последние использованные",
+      "smileysAndFacesEmoji": "Смайлики и люди",
+      "animalAndNatureEmoji": "Животные и природа",
+      "foodAndDrinkEmoji": "Еда и напитки",
+      "travelAndPlacesEmoji": "Путешествия и места",
+      "activitiesEmoji": "Активность",
+      "objectEmoji": "Предметы",
+      "symbolsEmoji": "Символы",
+      "flagsEmoji": "Флаги"
     }
   }
 }

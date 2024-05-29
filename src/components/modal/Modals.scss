@@ -692,3 +692,108 @@
     }
   }
 }
+
+.chatModal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .chatModalContent {
+    background-color: map-get($theme-colors, "white");
+    height: auto;
+    width: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    max-height: 80vh;
+    width: 50%;
+    .usersContentBox {
+      max-height: 70vh;
+      overflow-y: auto;
+    }
+    .userBox {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 20px;
+      &:hover {
+        cursor: pointer;
+      }
+      .userAvatar {
+        width: 60px;
+        height: 60px;
+        border: solid 2px transparent;
+      }
+      p {
+        margin: 0;
+        @extend %body-1;
+        margin-left: 10px;
+      }
+    }
+    .userBox.selectedUserBox {
+      p {
+        color: map-get($theme-colors, "blue");
+        @extend %body-1-bold;
+      }
+      .userAvatar {
+        border: solid 2px map-get($theme-colors, "blue");
+      }
+      .MuiBadge-root {
+        .MuiBadge-badge {
+          padding: 0 !important;
+          svg {
+            fill: map-get($theme-colors, "green");
+            font-size: 20px;
+          }
+        }
+      }
+    }
+    .buttonsBox {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      button {
+        text-transform: none;
+        @extend %button;
+        padding: 0 12px;
+      }
+      .sendButton {
+        @extend %button-white;
+      }
+      .cancelButton {
+        @extend %button-blue;
+      }
+    }
+  }
+}
+
+.articleModal {
+  .articleTitle {
+    @extend %h3;
+    text-align: center;
+    color: map-get($theme-colors, "blue");
+  }
+  .articleContent {
+    overflow-x: hidden;
+    .articleImage {
+      width: 100%;
+      margin-bottom: 10px;
+      img {
+        width: 100%;
+        max-height: 400px;
+      }
+    }
+    .articleText {
+      @extend %body-1;
+      color: map-get($theme-colors, "black");
+    }
+  }
+  .closeArticleButton {
+    text-transform: none;
+    @extend %button-blue;
+    @extend %button;
+    padding: 10px 20px;
+    border-radius: 0;
+    height: auto;
+  }
+}

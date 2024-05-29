@@ -6,6 +6,7 @@ import { accountApi } from "./requestApi/accountApi";
 import { profileInformationApi } from "./requestApi/profileInformationApi";
 import { subscriptionApi } from "./requestApi/subscriptionApi";
 import { searchingApi } from "./requestApi/searchingApi";
+import { chatApi } from "./requestApi/chatApi";
 
 export const store = configureStore({
   reducer: {
@@ -15,6 +16,7 @@ export const store = configureStore({
     [profileInformationApi.reducerPath]: profileInformationApi.reducer,
     [subscriptionApi.reducerPath]: subscriptionApi.reducer,
     [searchingApi.reducerPath]: searchingApi.reducer,
+    [chatApi.reducerPath]: chatApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
@@ -22,7 +24,8 @@ export const store = configureStore({
       accountApi.middleware,
       profileInformationApi.middleware,
       subscriptionApi.middleware,
-      searchingApi.middleware
+      searchingApi.middleware,
+      chatApi.middleware
     ),
 });
 
