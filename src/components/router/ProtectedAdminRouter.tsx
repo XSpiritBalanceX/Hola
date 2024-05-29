@@ -2,21 +2,21 @@ import { Navigate } from "react-router-dom";
 import { useAppSelector } from "@store/hook";
 import * as holaSelectors from "@store/selectors";
 
-interface IProtectedRouterProps {
+interface IProtectedAdminRouterProps {
   children: JSX.Element;
 }
 
-const ProtectedRouter = ({ children }: IProtectedRouterProps) => {
+const ProtectedAdminRouter = ({ children }: IProtectedAdminRouterProps) => {
   const token = localStorage.getItem("hola_access_token");
   const isLogin = useAppSelector(holaSelectors.isLoginSelect);
-  //TODO: replace by real logic for user from token
-  const isUser = true;
+  //TODO: replace by real logic for admin from token
+  const isAdmin = true;
   if (!token || !isLogin) {
     return <Navigate to={"/login"} replace />;
-  } else if (!isUser) {
-    return <Navigate to={"/admin/users"} replace />;
+  } else if (!isAdmin) {
+    return <Navigate to={"/profile"} replace />;
   }
   return children;
 };
 
-export default ProtectedRouter;
+export default ProtectedAdminRouter;

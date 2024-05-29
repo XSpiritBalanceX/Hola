@@ -1,6 +1,7 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import ProtectedRouter from "./ProtectedRouter";
 import ProtectedRouterForLogged from "./ProtectedRouterForLogged";
+import ProtectedAdminRouter from "./ProtectedAdminRouter";
 import AuthPage from "@pages/auth/AuthPage";
 import ProfilePage from "@pages/profile/ProfilePage";
 import EditProfilePage from "@pages/edit_profile/EditProfilePage";
@@ -17,6 +18,7 @@ import UserProfilePage from "@pages/user_profile/UserProfilePage";
 import ChatsPage from "@pages/chats/ChatsPage";
 import UserChatPage from "@pages/user_chat/UserChatPage";
 import DashboardPage from "@pages/dashboard/DashboardPage";
+import AdminUsersPage from "@pages/admin_users/AdminUsersPage";
 
 const RouterComponent = () => {
   const appRoutesUnauth = [
@@ -47,6 +49,10 @@ const RouterComponent = () => {
     { path: "/dashboard", element: <DashboardPage /> },
   ];
 
+  const appRoutesAdmin = [
+    { path: "/admin/users", element: <AdminUsersPage /> },
+  ];
+
   return (
     <Routes>
       {appRoutesUnauth.map((el, ind) => (
@@ -63,6 +69,13 @@ const RouterComponent = () => {
           key={ind}
           path={el.path}
           element={<ProtectedRouter>{el.element}</ProtectedRouter>}
+        />
+      ))}
+      {appRoutesAdmin.map((el, ind) => (
+        <Route
+          key={ind}
+          path={el.path}
+          element={<ProtectedAdminRouter>{el.element}</ProtectedAdminRouter>}
         />
       ))}
       <Route path="*" element={<Navigate to={"/login"} />} />
