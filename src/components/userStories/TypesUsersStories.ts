@@ -7,6 +7,7 @@ export interface IUserStoriesProps {
   stories: TStory[];
   cbHandleOpenUserStory: () => void;
   cbHandleAddUserPhoto: (file: File | null) => void;
+  isUserStory: boolean;
 }
 
 export interface IUserStoryProps {

@@ -85,7 +85,15 @@ const mockEvents = [
   },
 ];
 
-const mockUserStory = null;
+const mockUserStory = {
+  url: "https://img.freepik.com/premium-photo/young-woman-portrait-adorable-brunette-shirt-looking-camera-with-her-arms-crossed_168410-1953.jpg",
+  header: {
+    heading: "Helen",
+    subheading: "May 29, 2024",
+    profileImage:
+      "https://img.freepik.com/premium-photo/young-woman-portrait-adorable-brunette-sweater-looking-camera-with-her-arms-crossed_168410-1451.jpg",
+  },
+};
 
 const DashboardPage = () => {
   const { t } = translate("translate", { keyPrefix: "dashboardPage" });
@@ -152,6 +160,7 @@ const DashboardPage = () => {
           stories={mockStories}
           cbHandleOpenUserStory={handleOpenUserStory}
           cbHandleAddUserPhoto={handleAddUserPhoto}
+          isUserStory={!!mockUserStory}
         />
       </Box>
       <ArticleDashboard

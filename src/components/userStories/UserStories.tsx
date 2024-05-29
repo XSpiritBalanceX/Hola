@@ -37,6 +37,7 @@ const UserStories = ({
   stories,
   cbHandleOpenUserStory,
   cbHandleAddUserPhoto,
+  isUserStory,
 }: IUserStoriesProps) => {
   const { t } = translate("translate", { keyPrefix: "dashboardPage" });
 
@@ -98,7 +99,8 @@ const UserStories = ({
   };
 
   const handleUserStory = () => {
-    document.getElementById("fileInput")?.click();
+    !isUserStory && document.getElementById("fileInput")?.click();
+    isUserStory && cbHandleOpenUserStory();
   };
 
   const handleAddUserPhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
