@@ -1,0 +1,25 @@
+@import "../../variables";
+
+.adminMenuBox {
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+  margin: 36px 36px 0 0;
+  .nav-link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    @extend %body-2-medium;
+    margin-bottom: 32px;
+    color: map-get($theme-colors, "gray-2");
+    height: 24px;
+    width: auto;
+    svg {
+      margin-right: 10px;
+    }
+  }
+  .nav-link.active {
+    color: map-get($theme-colors, "blue");
+  }
+}

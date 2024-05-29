@@ -448,6 +448,13 @@
       "objectEmoji": "Objects",
       "symbolsEmoji": "Symbols",
       "flagsEmoji": "Flags"
+    },
+    "adminMenu": {
+      "users": "Users",
+      "payments": "Payments",
+      "analytics": "Analytics",
+      "supportRequests": "Support requests",
+      "settings": "Settings"
     }
   }
 }
