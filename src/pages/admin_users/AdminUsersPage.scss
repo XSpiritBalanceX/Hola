@@ -1,0 +1,64 @@
+@import "../../variables";
+
+.userPageContainer {
+  padding: 35px 10px 60px 10px !important;
+  display: flex !important;
+  flex-direction: row;
+  .usersContentContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .searchUsersBox {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      p {
+        margin: 0;
+        @extend %h4;
+        line-height: 20px;
+      }
+      .searchField {
+        .MuiInputBase-root {
+          height: 40px;
+          border-radius: 40px;
+          background-color: map-get($theme-colors, "white");
+          min-width: 400px;
+          fieldset {
+            border-color: map-get($theme-colors, "white");
+          }
+          .MuiInputAdornment-root {
+            svg {
+              fill: map-get($theme-colors, "blue");
+            }
+          }
+        }
+        .MuiInputBase-root.Mui-focused {
+          fieldset {
+            border-color: map-get($theme-colors, "blue");
+          }
+        }
+      }
+    }
+    .filterButtonsBox {
+      margin: 15px 0 25px 0;
+      .filterButton {
+        padding: 7px 20px;
+        text-transform: none;
+        @extend %button;
+        margin-right: 20px;
+        border-radius: 15px;
+        height: 35px;
+        width: auto;
+        background-color: map-get($theme-colors, "gray-2");
+        color: map-get($theme-colors, "white");
+      }
+      .filterButton.selectedButton {
+        background-color: map-get($theme-colors, "blue");
+      }
+      .filterButton:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

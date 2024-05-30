@@ -455,6 +455,26 @@
       "analytics": "Аналитика",
       "supportRequests": "Служба поддержки",
       "settings": "Настройки"
+    },
+    "adminUsersPage": {
+      "users": "Пользователи",
+      "all": "Все",
+      "new": "Новые",
+      "suspended": "Приостановленные",
+      "search": "Поиск",
+      "user": "Пользователь",
+      "accType": "Тип аккаунта",
+      "profile": "Профиль",
+      "profilePhotos": "Фото профиля",
+      "description": "Описание",
+      "subscription": "Подписка",
+      "startDate": "Дата старта",
+      "lastPayment": "Последний платеж",
+      "renewedUntil": "Продлен до",
+      "card": "Карта",
+      "matches": "Совпадения",
+      "showChat": "Показать переписку",
+      "userChat": "Личная переписка пользователей"
     }
   }
 }

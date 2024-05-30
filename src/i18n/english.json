@@ -455,6 +455,26 @@
       "analytics": "Analytics",
       "supportRequests": "Support requests",
       "settings": "Settings"
+    },
+    "adminUsersPage": {
+      "users": "Users",
+      "all": "All",
+      "new": "New",
+      "suspended": "Suspended",
+      "search": "Search",
+      "user": "User",
+      "accType": "Account type",
+      "profile": "Profile",
+      "profilePhotos": "Profile photos",
+      "description": "Description",
+      "subscription": "Subscription",
+      "startDate": "Start date",
+      "lastPayment": "Last payment",
+      "renewedUntil": "Renewed until",
+      "card": "Card",
+      "matches": "Matches",
+      "showChat": "Show correspondence",
+      "userChat": "Users private correspondence"
     }
   }
 }
