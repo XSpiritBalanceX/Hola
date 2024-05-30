@@ -15,6 +15,7 @@ import { translate } from "@i18n";
 import SearchIcon from "@mui/icons-material/Search";
 import ControlsListOfUsers from "./ControlsListOfUsers";
 import UserItem from "@components/adminUsers/UserItem";
+import SelectedUser from "@components/adminUsers/SelectedUser";
 import "./AdminUsersPage.scss";
 
 const mockUserData = [
@@ -183,6 +184,8 @@ const AdminUsersPage = () => {
 
   const tableHead = [t("user"), "E-mail", t("accType")];
 
+  const foundUser = users.find((el) => el.id === selectedUser);
+
   return (
     <Container className="userPageContainer">
       <AdminMenu />
@@ -234,6 +237,7 @@ const AdminUsersPage = () => {
             </TableBody>
           </Table>
         )}
+        {selectedUser && foundUser && <SelectedUser information={foundUser} />}
       </Box>
     </Container>
   );
