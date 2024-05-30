@@ -48,3 +48,7 @@ export interface IUserMatchProps {
   email: string;
   isChat: boolean;
 }
+
+export interface IControlsSelectedUserProps {
+  user_id: number;
+}

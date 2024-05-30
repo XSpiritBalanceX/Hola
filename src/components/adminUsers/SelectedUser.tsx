@@ -4,6 +4,7 @@ import { translate } from "@i18n";
 import user from "@assets/user.png";
 import moment from "moment";
 import UserMatch from "./UserMatch";
+import ControlsSelectedUser from "./ControlsSelectedUser";
 import "./AdminUsers.scss";
 
 const SelectedUser = ({
@@ -96,6 +97,7 @@ const SelectedUser = ({
             />
           ))}
       </Box>
+      <ControlsSelectedUser user_id={information.id} />
     </Box>
   );
 };
