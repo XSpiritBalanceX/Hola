@@ -1,0 +1,39 @@
+@import "../../variables";
+
+.userItemRow {
+  padding: 0;
+  vertical-align: top;
+  &:hover {
+    cursor: pointer;
+  }
+  td {
+    border: none;
+    padding: 0;
+  }
+  .boxWithAvatar {
+    margin-bottom: 15px;
+    border-radius: 20px 0 0 20px;
+    background-color: map-get($theme-colors, "white");
+    padding: 15px 0 15px 25px;
+    height: 90px;
+    p {
+      margin: 0 0 10px 0;
+      @extend %body-2-bold;
+    }
+    .MuiAvatar-root {
+      width: 60px;
+      height: 60px;
+    }
+  }
+  .boxWithEmail,
+  .boxWithAccType {
+    padding: 15px 20px;
+    background-color: map-get($theme-colors, "white");
+    height: 90px;
+    @extend %body-2;
+    margin-bottom: 15px;
+  }
+  .boxWithAccType {
+    border-radius: 0 20px 20px 0;
+  }
+}

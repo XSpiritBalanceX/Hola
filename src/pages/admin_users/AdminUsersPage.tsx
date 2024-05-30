@@ -1,9 +1,20 @@
 import { useEffect, useState } from "react";
-import { Box, Container, InputAdornment, TextField } from "@mui/material";
+import {
+  Box,
+  Container,
+  InputAdornment,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  TextField,
+} from "@mui/material";
 import AdminMenu from "@components/adminMenu/AdminMenu";
 import { translate } from "@i18n";
 import SearchIcon from "@mui/icons-material/Search";
 import ControlsListOfUsers from "./ControlsListOfUsers";
+import UserItem from "@components/adminUsers/UserItem";
 import "./AdminUsersPage.scss";
 
 const mockUserData = [
@@ -147,7 +158,7 @@ const AdminUsersPage = () => {
 
   const [users, setUsers] = useState(mockUserData);
   const [filteredWord, setFilteredWord] = useState("");
-  const [isSelectedUser, setIsSelectedUser] = useState(false);
+  const [selectedUser, setSelectedUser] = useState<null | number>(null);
   const [selectedFilter, setSelectedFilter] = useState("all");
 
   useEffect(() => {
@@ -165,6 +176,12 @@ const AdminUsersPage = () => {
   const handleChangeFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilteredWord(e.currentTarget.value);
   };
+
+  const handleSelectedUser = (id: number | null) => {
+    setSelectedUser(id);
+  };
+
+  const tableHead = [t("user"), "E-mail", t("accType")];
 
   return (
     <Container className="userPageContainer">
@@ -186,11 +203,36 @@ const AdminUsersPage = () => {
             className="searchField"
           />
         </Box>
-        {!isSelectedUser && (
+        {!selectedUser && (
           <ControlsListOfUsers
             selectedFilter={selectedFilter}
             cbHandleFilter={setSelectedFilter}
           />
+        )}
+        {!selectedUser && (
+          <Table className="tableAdminUsers">
+            <TableHead className="tableUsersHead">
+              <TableRow>
+                {tableHead.map((el, ind) => (
+                  <TableCell key={ind}>{el}</TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {users.map((el) => (
+                <UserItem
+                  key={el.id}
+                  id={el.id}
+                  name={el.name}
+                  age={el.age}
+                  email={el.email}
+                  photo={el.avatar}
+                  acc_type={el.acc_type}
+                  cbHandleSelectedUser={handleSelectedUser}
+                />
+              ))}
+            </TableBody>
+          </Table>
         )}
       </Box>
     </Container>

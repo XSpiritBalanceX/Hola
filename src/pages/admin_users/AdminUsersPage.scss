@@ -60,5 +60,18 @@
         margin-right: 0;
       }
     }
+    .tableAdminUsers {
+      .tableUsersHead {
+        tr {
+          th {
+            border: none;
+            color: map-get($theme-colors, "gray-2");
+            padding-bottom: 15px;
+            padding-top: 0;
+            @extend %body-2;
+          }
+        }
+      }
+    }
   }
 }
