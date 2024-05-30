@@ -474,7 +474,8 @@
       "card": "Card",
       "matches": "Matches",
       "showChat": "Show correspondence",
-      "userChat": "Users private correspondence"
+      "userChat": "Users private correspondence",
+      "close": "Close"
     }
   }
 }

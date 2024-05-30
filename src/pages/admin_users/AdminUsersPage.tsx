@@ -237,7 +237,12 @@ const AdminUsersPage = () => {
             </TableBody>
           </Table>
         )}
-        {selectedUser && foundUser && <SelectedUser information={foundUser} />}
+        {selectedUser && foundUser && (
+          <SelectedUser
+            information={foundUser}
+            cbHandleCloseUser={handleSelectedUser}
+          />
+        )}
       </Box>
     </Container>
   );

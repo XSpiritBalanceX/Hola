@@ -42,9 +42,15 @@
   margin-top: 20px;
   display: flex;
   flex-direction: column;
-  .userIdInformation {
+  .userIdInformationBox {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .userIdInformation {
+      display: flex;
+      flex-direction: row;
+    }
     p {
       margin: 0;
     }
@@ -57,6 +63,14 @@
     .userStatusText {
       color: map-get($theme-colors, "blue");
       @extend %body-2-bold;
+    }
+    .buttonCloseUser {
+      text-transform: none;
+      @extend %button;
+      @extend %button-blue;
+      height: auto;
+      padding: 3px 10px;
+      border-radius: 0;
     }
   }
   .sectionName {

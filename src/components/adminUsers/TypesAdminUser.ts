@@ -29,4 +29,5 @@ interface IUserInformation {
 
 export interface ISelectedUserProps {
   information: IUserInformation;
+  cbHandleCloseUser: (id: number | null) => void;
 }

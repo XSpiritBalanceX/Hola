@@ -1,11 +1,14 @@
-import { Avatar, Box } from "@mui/material";
+import { Avatar, Box, Button } from "@mui/material";
 import { ISelectedUserProps } from "./TypesAdminUser";
 import { translate } from "@i18n";
 import user from "@assets/user.png";
 import moment from "moment";
 import "./AdminUsers.scss";
 
-const SelectedUser = ({ information }: ISelectedUserProps) => {
+const SelectedUser = ({
+  information,
+  cbHandleCloseUser,
+}: ISelectedUserProps) => {
   const { t } = translate("translate", { keyPrefix: "adminUsersPage" });
 
   const subscriptionInformation = [
@@ -15,11 +18,24 @@ const SelectedUser = ({ information }: ISelectedUserProps) => {
     { label: "card", content: information.subscription.card },
   ];
 
+  const handleCloseUser = () => {
+    cbHandleCloseUser(null);
+  };
+
   return (
     <Box className="selectedUserContainer">
-      <Box className="userIdInformation">
-        <p className="userIdText">{`${t("user")} #${information.id}`}</p>
-        <p className="userStatusText">{information.user_status}</p>
+      <Box className="userIdInformationBox">
+        <Box className="userIdInformation">
+          <p className="userIdText">{`${t("user")} #${information.id}`}</p>
+          <p className="userStatusText">{information.user_status}</p>
+        </Box>
+        <Button
+          type="button"
+          className="buttonCloseUser"
+          onClick={handleCloseUser}
+        >
+          {t("close")}
+        </Button>
       </Box>
       <p className="sectionName">{t("profile")}</p>
       <Box className="userProfileInformationContainer">
@@ -63,6 +79,7 @@ const SelectedUser = ({ information }: ISelectedUserProps) => {
           </Box>
         ))}
       </Box>
+      <p className="sectionName">{t("matches")}</p>
     </Box>
   );
 };
