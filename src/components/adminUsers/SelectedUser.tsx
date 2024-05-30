@@ -3,6 +3,7 @@ import { ISelectedUserProps } from "./TypesAdminUser";
 import { translate } from "@i18n";
 import user from "@assets/user.png";
 import moment from "moment";
+import UserMatch from "./UserMatch";
 import "./AdminUsers.scss";
 
 const SelectedUser = ({
@@ -80,6 +81,21 @@ const SelectedUser = ({
         ))}
       </Box>
       <p className="sectionName">{t("matches")}</p>
+      <Box className="userMatchesBox">
+        {information.matches.length &&
+          information.matches.map((el) => (
+            <UserMatch
+              key={el.id}
+              user_id={information.id}
+              companion_id={el.id}
+              name={el.name}
+              age={el.age}
+              email={el.email}
+              photo={el.photo}
+              isChat={!!el.messages.length}
+            />
+          ))}
+      </Box>
     </Box>
   );
 };

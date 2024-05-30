@@ -24,10 +24,27 @@ interface IUserInformation {
     last_payment: string;
     card: string;
   };
-  matches: { name: string; age: number; email: string; photo: string }[];
+  matches: {
+    id: number;
+    name: string;
+    age: number;
+    email: string;
+    photo: string;
+    messages: { id: number; message: string; time: string }[];
+  }[];
 }
 
 export interface ISelectedUserProps {
   information: IUserInformation;
   cbHandleCloseUser: (id: number | null) => void;
+}
+
+export interface IUserMatchProps {
+  user_id: number;
+  companion_id: number;
+  name: string;
+  age: number;
+  photo: string;
+  email: string;
+  isChat: boolean;
 }

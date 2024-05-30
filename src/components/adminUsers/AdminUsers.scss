@@ -172,4 +172,52 @@
       margin-right: 0;
     }
   }
+  .userMatchesBox {
+    display: flex;
+    flex-direction: column;
+    background-color: map-get($theme-colors, "white");
+    border-radius: 20px;
+    padding: 20px 25px;
+    .userMatchItem {
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      .avatarNameBox {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 150px;
+        margin-right: 40px;
+        p {
+          margin: 0;
+          @extend %body-2-bold;
+          word-wrap: break-word;
+          max-width: 80px;
+        }
+        .userMatchAvatar {
+          width: 60px;
+          height: 60px;
+          margin-right: 10px;
+        }
+      }
+    }
+    .userMatchItem:last-child {
+      margin-bottom: 0;
+    }
+    .userMatchEmail {
+      @extend %body-2;
+      margin: 0;
+      width: 220px;
+    }
+    .privateChatButton {
+      text-transform: none;
+      color: map-get($theme-colors, "blue");
+      @extend %body-2-bold;
+      text-decoration: underline;
+      height: auto;
+      padding: 0;
+    }
+  }
 }

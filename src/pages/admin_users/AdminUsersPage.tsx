@@ -46,25 +46,37 @@ const mockUserData = [
     },
     matches: [
       {
+        id: 12,
         name: "Margo",
         age: 31,
         email: "margo_r@gmail.com",
         photo:
           "https://gallery.alexandersakulin.com/storage/app/media/gallery/_Portrait/2021-TinaL/23-nov_21-TinaL_0369-r-1800_60p.jpg",
+        messages: [],
       },
       {
+        id: 11,
         name: "Karen",
         age: 25,
         email: "kar@gmail.com",
         photo:
           "https://gallery.alexandersakulin.com/storage/app/uploads/public/92b/af0/985/thumb__0_800_0_0_auto.jpg",
+        messages: [
+          { id: 11, message: "Hi", time: "18:20" },
+          { id: 1, message: "Hello", time: "19:40" },
+        ],
       },
       {
+        id: 35,
         name: "Laura",
         age: 26,
         email: "Laura@gmail.com",
         photo:
           "https://gallery.alexandersakulin.com/storage/app/uploads/public/903/935/bee/thumb__0_800_0_0_auto.jpg",
+        messages: [
+          { id: 35, message: "Hi", time: "18:20" },
+          { id: 1, message: "Hello", time: "19:40" },
+        ],
       },
     ],
   },
@@ -92,24 +104,39 @@ const mockUserData = [
     },
     matches: [
       {
+        id: 8,
         name: "Paul",
         age: 27,
         email: "PauloNovak@gmail.com",
         photo:
           "https://rus.team/images/article/58829/avatar_16x9.webp?actual=1604332666",
+        messages: [
+          { id: 8, message: "Hi", time: "18:20" },
+          { id: 2, message: "Hello", time: "19:40" },
+        ],
       },
       {
+        id: 5,
         name: "Daniel",
         age: 25,
         email: "Dan_dan@gmail.com",
         photo:
           "https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/ebf9dcd7-66b4-41c2-816d-bf6f00500a0d/x178",
+        messages: [
+          { id: 5, message: "Hi", time: "18:20" },
+          { id: 2, message: "Hello", time: "19:40" },
+        ],
       },
       {
+        id: 13,
         name: "Mike",
         age: 23,
         email: "xMikex@gmail.com",
         photo: "https://www.kino-teatr.ru/acter/album/52909/929591.jpg",
+        messages: [
+          { id: 13, message: "Hi", time: "18:20" },
+          { id: 2, message: "Hello", time: "19:40" },
+        ],
       },
     ],
   },
@@ -137,18 +164,28 @@ const mockUserData = [
     },
     matches: [
       {
+        id: 22,
         name: "Nina",
         age: 20,
         email: "nin_nin@gmail.com",
         photo:
           "https://gallery.alexandersakulin.com/storage/app/uploads/public/213/e22/f6a/thumb__0_800_0_0_auto.jpg",
+        messages: [
+          { id: 22, message: "Hi", time: "18:20" },
+          { id: 3, message: "Hello", time: "19:40" },
+        ],
       },
       {
+        id: 16,
         name: "Ursula",
         age: 28,
         email: "ursula@gmail.com",
         photo:
           "https://gallery.alexandersakulin.com/storage/app/media/gallery/_Portrait/2021-IrinaM/21-dec_21-IrinaM-138003-r-1800_60p.jpg",
+        messages: [
+          { id: 16, message: "Hi", time: "18:20" },
+          { id: 3, message: "Hello", time: "19:40" },
+        ],
       },
     ],
   },
