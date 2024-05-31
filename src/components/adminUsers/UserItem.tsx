@@ -1,6 +1,7 @@
 import { TableRow, TableCell, Avatar, Box } from "@mui/material";
 import user from "@assets/user.png";
 import { IUserItemProps } from "./TypesAdminUser";
+import { translate } from "@i18n";
 import "./AdminUsers.scss";
 
 const UserItem = ({
@@ -12,6 +13,8 @@ const UserItem = ({
   acc_type,
   cbHandleSelectedUser,
 }: IUserItemProps) => {
+  const { t } = translate("translate", { keyPrefix: "adminUsersPage" });
+
   const handleClickRow = () => {
     cbHandleSelectedUser(id);
   };
@@ -25,10 +28,16 @@ const UserItem = ({
         </Box>
       </TableCell>
       <TableCell>
-        <Box className="boxWithEmail">{email} </Box>
+        <Box className="boxWithEmail">
+          <span className="mobileContent">E-mail: </span>
+          {email}{" "}
+        </Box>
       </TableCell>
       <TableCell>
-        <Box className="boxWithAccType">{acc_type} </Box>
+        <Box className="boxWithAccType">
+          <span className="mobileContent">{t("accType")}: </span>
+          {acc_type}
+        </Box>
       </TableCell>
     </TableRow>
   );

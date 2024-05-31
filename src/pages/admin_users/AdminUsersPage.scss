@@ -4,6 +4,12 @@
   padding: 35px 10px 60px 10px !important;
   display: flex !important;
   flex-direction: row;
+  @media all and (max-width: 55em) {
+    flex-direction: column;
+  }
+  @media all and (max-width: 40em) {
+    padding: 15px 20px 60px 20px !important;
+  }
   .usersContentContainer {
     display: flex;
     flex-direction: column;
@@ -13,17 +19,34 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
+      @media all and (max-width: 55em) {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+      }
       p {
         margin: 0;
         @extend %h4;
         line-height: 20px;
+        @media all and (max-width: 55em) {
+          margin-bottom: 20px;
+        }
       }
       .searchField {
+        @media all and (max-width: 55em) {
+          min-width: 100%;
+          width: 100%;
+        }
         .MuiInputBase-root {
           height: 40px;
           border-radius: 40px;
           background-color: map-get($theme-colors, "white");
           min-width: 400px;
+          @media all and (max-width: 55em) {
+            min-width: 100%;
+            width: 100%;
+          }
           fieldset {
             border-color: map-get($theme-colors, "white");
           }
@@ -42,6 +65,10 @@
     }
     .filterButtonsBox {
       margin: 15px 0 25px 0;
+      @media all and (max-width: 40em) {
+        display: flex;
+        flex-direction: column;
+      }
       .filterButton {
         padding: 7px 20px;
         text-transform: none;
@@ -52,6 +79,10 @@
         width: auto;
         background-color: map-get($theme-colors, "gray-2");
         color: map-get($theme-colors, "white");
+        @media all and (max-width: 40em) {
+          width: 100%;
+          margin-bottom: 10px;
+        }
       }
       .filterButton.selectedButton {
         background-color: map-get($theme-colors, "blue");
@@ -69,6 +100,9 @@
             padding-bottom: 15px;
             padding-top: 0;
             @extend %body-2;
+          }
+          @media all and (max-width: 40em) {
+            display: none;
           }
         }
       }

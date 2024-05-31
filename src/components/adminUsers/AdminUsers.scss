@@ -3,6 +3,10 @@
 .userItemRow {
   padding: 0;
   vertical-align: top;
+  @media all and (max-width: 40em) {
+    display: flex !important;
+    flex-direction: column;
+  }
   &:hover {
     cursor: pointer;
   }
@@ -10,15 +14,38 @@
     border: none;
     padding: 0;
   }
+  .mobileContent {
+    display: none;
+    @media all and (max-width: 40em) {
+      display: inline;
+      font-family: "Montserrat", sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+    }
+  }
   .boxWithAvatar {
     margin-bottom: 15px;
     border-radius: 20px 0 0 20px;
     background-color: map-get($theme-colors, "white");
     padding: 15px 0 15px 25px;
     height: 90px;
+    @media all and (max-width: 40em) {
+      margin-bottom: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 10px 15px 10px 15px;
+      border-radius: 20px 20px 0 0;
+      height: auto;
+    }
     p {
       margin: 0 0 10px 0;
       @extend %body-2-bold;
+      @media all and (max-width: 40em) {
+        order: 1;
+        margin: 0 0 0 15px;
+      }
     }
     .MuiAvatar-root {
       width: 60px;
@@ -32,9 +59,22 @@
     height: 90px;
     @extend %body-2;
     margin-bottom: 15px;
+    @media all and (max-width: 40em) {
+      height: auto;
+    }
+  }
+  .boxWithEmail {
+    @media all and (max-width: 40em) {
+      margin-bottom: 0;
+      padding: 0 15px;
+    }
   }
   .boxWithAccType {
     border-radius: 0 20px 20px 0;
+    @media all and (max-width: 40em) {
+      border-radius: 0 0 20px 20px;
+      padding: 0 15px 15px 15px;
+    }
   }
 }
 
@@ -77,15 +117,28 @@
     flex-wrap: nowrap;
     align-items: flex-start;
     justify-content: space-between;
+    @media all and (max-width: 60em) {
+      flex-direction: column;
+    }
     .sectionNameProfile {
       @extend %body-2-bold;
       margin: 0 0 10px 0;
+      @media all and (max-width: 60em) {
+        margin: 0;
+      }
     }
     .userAvatarBox {
       max-width: 180px;
       display: flex;
       flex-direction: column;
       height: auto;
+      @media all and (max-width: 70em) {
+        margin-right: 15px;
+      }
+      @media all and (max-width: 60em) {
+        margin: 0 0 10px 0;
+        max-width: 100%;
+      }
       .userName {
         margin: 0 0 5px 0;
         @extend %body-2-medium;
@@ -98,14 +151,33 @@
     .userEmailBox {
       max-width: 150px;
       height: auto;
+      @media all and (max-width: 70em) {
+        margin-right: 15px;
+        max-width: 120px;
+      }
+      @media all and (max-width: 60em) {
+        margin: 0 0 10px 0;
+        max-width: 100%;
+      }
       .userEmail {
         margin: 0;
         @extend %body-2-medium;
+        @media all and (max-width: 70em) {
+          word-wrap: break-word;
+        }
       }
     }
     .userAccTypeBox {
       max-width: 120px;
       height: auto;
+      @media all and (max-width: 70em) {
+        margin-right: 15px;
+        max-width: 140px;
+      }
+      @media all and (max-width: 60em) {
+        margin: 0 0 10px 0;
+        max-width: 100%;
+      }
       .userAccType {
         margin: 0;
         @extend %body-2-medium;
@@ -114,6 +186,14 @@
     .userProfilePhotosBox {
       max-width: 180px;
       height: auto;
+      @media all and (max-width: 70em) {
+        margin-right: 15px;
+        max-width: 140px;
+      }
+      @media all and (max-width: 60em) {
+        margin: 0 0 10px 0;
+        max-width: 100%;
+      }
       .userPhotos {
         display: flex;
         flex-direction: row;
@@ -132,6 +212,12 @@
     .userDescriptionBox {
       max-width: 300px;
       height: auto;
+      @media all and (max-width: 70em) {
+        max-width: 200px;
+      }
+      @media all and (max-width: 60em) {
+        max-width: 100%;
+      }
       .userDescription {
         margin: 0;
         @extend %body-2-medium;
@@ -144,13 +230,22 @@
     background-color: map-get($theme-colors, "white");
     border-radius: 20px;
     padding: 25px;
+    @media all and (max-width: 60em) {
+      flex-direction: column;
+    }
     .itemSubscriptionBox {
       display: flex;
       flex-direction: column;
       margin-right: 60px;
+      @media all and (max-width: 60em) {
+        margin: 0 0 15px 0;
+      }
       .sectionNameSubscription {
         margin: 0 0 10px 0;
         @extend %body-2-bold;
+        @media all and (max-width: 60em) {
+          margin: 0;
+        }
       }
       .informationSection {
         margin: 0;
@@ -177,12 +272,20 @@
       flex-direction: row;
       align-items: center;
       justify-content: flex-start;
+      @media all and (max-width: 60em) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
       .avatarNameBox {
         display: flex;
         flex-direction: row;
         align-items: center;
         width: 150px;
         margin-right: 40px;
+        @media all and (max-width: 60em) {
+          width: 100%;
+          margin: 0;
+        }
         p {
           margin: 0;
           @extend %body-2-bold;

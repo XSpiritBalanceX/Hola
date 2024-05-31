@@ -4,6 +4,10 @@
   padding: 35px 10px 60px 10px !important;
   display: flex !important;
   flex-direction: row;
+  @media all and (max-width: 55em) {
+    flex-direction: column;
+    padding: 15px 20px 60px 20px !important;
+  }
   .adminUsersChatContent {
     width: 100%;
   }
@@ -14,12 +18,23 @@
     justify-content: space-between;
     width: 100%;
     margin-bottom: 30px;
+    @media all and (max-width: 45em) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
     .searchField {
+      @media all and (max-width: 45em) {
+        margin-top: 20px;
+        width: 100%;
+      }
       .MuiInputBase-root {
         height: 40px;
         border-radius: 40px;
         background-color: map-get($theme-colors, "white");
         min-width: 400px;
+        @media all and (max-width: 70em) {
+          min-width: 100%;
+        }
         fieldset {
           border-color: map-get($theme-colors, "white");
         }
@@ -41,6 +56,10 @@
       height: 26px;
       color: map-get($theme-colors, "black");
       @extend %h5;
+      @media all and (max-width: 40em) {
+        height: 30px;
+        text-align: start;
+      }
       svg {
         margin-right: 15px;
       }

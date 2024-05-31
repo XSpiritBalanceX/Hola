@@ -454,7 +454,8 @@
       "payments": "Payments",
       "analytics": "Analytics",
       "supportRequests": "Support requests",
-      "settings": "Settings"
+      "settings": "Settings",
+      "menu": "Menu"
     },
     "adminUsersPage": {
       "users": "Users",

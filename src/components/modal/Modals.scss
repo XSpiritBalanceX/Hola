@@ -810,7 +810,6 @@
     display: flex;
     flex-direction: column;
     max-height: 100vh;
-    border: solid 1px red;
     .controlBox {
       display: flex;
       justify-content: flex-end;
@@ -830,18 +829,33 @@
       display: flex;
       flex-direction: row;
       justify-content: center;
+      @media all and (max-width: 40em) {
+        width: 98vw;
+        align-items: center;
+        height: 70%;
+        margin-top: 20px;
+      }
       img {
         width: 50vw;
         height: calc(100% - 20px);
         border-radius: 20px;
         @media all and (max-width: 40em) {
-          width: 100vw;
+          width: 80vw;
+          height: fit-content;
         }
       }
       .controlButtonPhoto {
+        @media all and (max-width: 40em) {
+          padding: 0;
+          margin: 0;
+          align-items: center;
+        }
         svg {
-          fill: map-get($theme-colors, "black");
+          fill: map-get($theme-colors, "blue");
           font-size: 40px;
+          @media all and (max-width: 40em) {
+            font-size: 25px;
+          }
         }
       }
       .countOfPhotosBox {
@@ -856,6 +870,11 @@
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+        @media all and (max-width: 40em) {
+          width: 100%;
+          left: 0;
+          transform: translateX(0);
+        }
         .countOfPhotos {
           width: 63px;
           height: 5px;
@@ -863,6 +882,9 @@
           margin-right: 5px;
           opacity: 0.2;
           border-radius: 3px;
+          @media all and (max-width: 40em) {
+            width: 40px;
+          }
         }
         .countOfPhotos:last-child {
           margin-right: 0;
@@ -870,6 +892,9 @@
         .countOfPhotos.activePhoto {
           opacity: 1;
           background-color: map-get($theme-colors, "white");
+          @media all and (max-width: 40em) {
+            background-color: map-get($theme-colors, "blue");
+          }
         }
       }
     }
