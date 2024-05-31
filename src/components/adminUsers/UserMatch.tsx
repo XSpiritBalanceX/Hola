@@ -2,6 +2,7 @@ import { Box, Avatar, Button } from "@mui/material";
 import { IUserMatchProps } from "./TypesAdminUser";
 import user from "@assets/user.png";
 import { translate } from "@i18n";
+import { useNavigate } from "react-router-dom";
 import "./AdminUsers.scss";
 
 const UserMatch = ({
@@ -15,8 +16,10 @@ const UserMatch = ({
 }: IUserMatchProps) => {
   const { t } = translate("translate", { keyPrefix: "adminUsersPage" });
 
+  const navigate = useNavigate();
+
   const handleChat = () => {
-    console.log(user_id, companion_id);
+    navigate(`/admin/chat/${user_id}/${companion_id}`);
   };
 
   return (

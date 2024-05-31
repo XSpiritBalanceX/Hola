@@ -19,6 +19,7 @@ import ChatsPage from "@pages/chats/ChatsPage";
 import UserChatPage from "@pages/user_chat/UserChatPage";
 import DashboardPage from "@pages/dashboard/DashboardPage";
 import AdminUsersPage from "@pages/admin_users/AdminUsersPage";
+import AdminUsersChat from "@pages/admin_users_chat/AdminUsersChat";
 
 const RouterComponent = () => {
   const appRoutesUnauth = [
@@ -51,6 +52,10 @@ const RouterComponent = () => {
 
   const appRoutesAdmin = [
     { path: "/admin/users", element: <AdminUsersPage /> },
+    {
+      path: "/admin/chat/:userID/:companionID",
+      element: <AdminUsersChat />,
+    },
   ];
 
   return (
