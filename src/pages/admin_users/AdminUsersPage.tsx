@@ -203,8 +203,10 @@ const AdminUsersPage = () => {
     if (filteredWord === "") {
       setUsers(mockUserData);
     } else {
-      const filteredData = mockUserData.filter((el) =>
-        el.name.toLowerCase().includes(filteredWord.toLowerCase())
+      const filteredData = mockUserData.filter(
+        (el) =>
+          el.name.toLowerCase().includes(filteredWord.toLowerCase()) ||
+          el.email.toLowerCase().includes(filteredWord.toLowerCase())
       );
       setUsers(filteredData);
     }
@@ -229,19 +231,21 @@ const AdminUsersPage = () => {
       <Box className="usersContentContainer">
         <Box className="searchUsersBox">
           <p>{t("users")}</p>
-          <TextField
-            placeholder={t("search")}
-            value={filteredWord}
-            onChange={handleChangeFilter}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
-            }}
-            className="searchField"
-          />
+          {!selectedUser && (
+            <TextField
+              placeholder={t("search")}
+              value={filteredWord}
+              onChange={handleChangeFilter}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }}
+              className="searchField"
+            />
+          )}
         </Box>
         {!selectedUser && (
           <ControlsListOfUsers
@@ -259,18 +263,26 @@ const AdminUsersPage = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {users.map((el) => (
-                <UserItem
-                  key={el.id}
-                  id={el.id}
-                  name={el.name}
-                  age={el.age}
-                  email={el.email}
-                  photo={el.avatar}
-                  acc_type={el.acc_type}
-                  cbHandleSelectedUser={handleSelectedUser}
-                />
-              ))}
+              {users.length !== 0 ? (
+                users.map((el) => (
+                  <UserItem
+                    key={el.id}
+                    id={el.id}
+                    name={el.name}
+                    age={el.age}
+                    email={el.email}
+                    photo={el.avatar}
+                    acc_type={el.acc_type}
+                    cbHandleSelectedUser={handleSelectedUser}
+                  />
+                ))
+              ) : (
+                <TableRow className="emptyRowUsers">
+                  <TableCell colSpan={tableHead.length}>
+                    <p>{t("emptyUsers")}</p>
+                  </TableCell>
+                </TableRow>
+              )}
             </TableBody>
           </Table>
         )}

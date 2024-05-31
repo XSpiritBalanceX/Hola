@@ -5,6 +5,7 @@ import user from "@assets/user.png";
 import moment from "moment";
 import UserMatch from "./UserMatch";
 import ControlsSelectedUser from "./ControlsSelectedUser";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import "./AdminUsers.scss";
 
 const SelectedUser = ({
@@ -27,17 +28,14 @@ const SelectedUser = ({
   return (
     <Box className="selectedUserContainer">
       <Box className="userIdInformationBox">
-        <Box className="userIdInformation">
-          <p className="userIdText">{`${t("user")} #${information.id}`}</p>
-          <p className="userStatusText">{information.user_status}</p>
-        </Box>
         <Button
           type="button"
-          className="buttonCloseUser"
           onClick={handleCloseUser}
+          className="buttonCloseUser"
         >
-          {t("close")}
+          <ArrowBackIosNewIcon /> {`${t("user")} #${information.id}`}
         </Button>
+        <p className="userStatusText">{information.user_status}</p>
       </Box>
       <p className="sectionName">{t("profile")}</p>
       <Box className="userProfileInformationContainer">

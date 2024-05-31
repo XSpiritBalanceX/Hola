@@ -475,7 +475,7 @@
       "matches": "Matches",
       "showChat": "Show correspondence",
       "userChat": "Users private correspondence",
-      "close": "Close"
+      "emptyUsers": "No users found"
     }
   }
 }

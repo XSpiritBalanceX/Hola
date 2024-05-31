@@ -45,32 +45,22 @@
   .userIdInformationBox {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    .userIdInformation {
-      display: flex;
-      flex-direction: row;
-    }
-    p {
-      margin: 0;
-    }
-    .userIdText {
-      @extend %h5;
-      font-weight: 400;
-      line-height: 20px;
-      margin-right: 20px;
-    }
     .userStatusText {
       color: map-get($theme-colors, "blue");
       @extend %body-2-bold;
     }
     .buttonCloseUser {
       text-transform: none;
-      @extend %button;
-      @extend %button-blue;
-      height: auto;
-      padding: 3px 10px;
-      border-radius: 0;
+      @extend %h5;
+      line-height: 20px;
+      margin-right: 20px;
+      padding: 0;
+      color: map-get($theme-colors, "black");
+      svg {
+        margin-right: 15px;
+      }
     }
   }
   .sectionName {

@@ -72,6 +72,20 @@
           }
         }
       }
+      .emptyRowUsers {
+        td {
+          border: none;
+          border-radius: 20px;
+          background-color: map-get($theme-colors, "white");
+          padding: 25px;
+          height: 90px;
+          p {
+            margin: 0;
+            @extend %h5;
+            text-align: center;
+          }
+        }
+      }
     }
   }
 }
