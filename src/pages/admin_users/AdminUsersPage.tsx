@@ -16,6 +16,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import ControlsListOfUsers from "./ControlsListOfUsers";
 import UserItem from "@components/adminUsers/UserItem";
 import SelectedUser from "@components/adminUsers/SelectedUser";
+import { useParams, useNavigate } from "react-router-dom";
 import "./AdminUsersPage.scss";
 
 const mockUserData = [
@@ -193,6 +194,8 @@ const mockUserData = [
 
 const AdminUsersPage = () => {
   const { t } = translate("translate", { keyPrefix: "adminUsersPage" });
+  const { userID } = useParams();
+  const navigate = useNavigate();
 
   const [users, setUsers] = useState(mockUserData);
   const [filteredWord, setFilteredWord] = useState("");
@@ -213,12 +216,19 @@ const AdminUsersPage = () => {
     // eslint-disable-next-line
   }, [filteredWord]);
 
+  useEffect(() => {
+    userID && setSelectedUser(Number(userID));
+    !userID && setSelectedUser(null);
+    // eslint-disable-next-line
+  }, [userID]);
+
   const handleChangeFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilteredWord(e.currentTarget.value);
   };
 
   const handleSelectedUser = (id: number | null) => {
-    setSelectedUser(id);
+    id && navigate(`/admin/user/${id}`);
+    !id && navigate(`/admin/users`);
   };
 
   const tableHead = [t("user"), "E-mail", t("accType")];

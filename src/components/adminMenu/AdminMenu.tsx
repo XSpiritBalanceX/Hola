@@ -19,7 +19,9 @@ const AdminMenu = () => {
       <NavLink to={"/admin/users"} className="nav-link">
         <GroupIcon
           fill={
-            pathname.includes("users") || pathname.includes("chat")
+            pathname.includes("users") ||
+            pathname.includes("chat") ||
+            pathname.includes("user")
               ? "#554cb6"
               : "#bfc3cf"
           }
