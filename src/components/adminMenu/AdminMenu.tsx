@@ -17,7 +17,13 @@ const AdminMenu = () => {
   return (
     <Box className="adminMenuBox">
       <NavLink to={"/admin/users"} className="nav-link">
-        <GroupIcon fill={pathname.includes("users") ? "#554cb6" : "#bfc3cf"} />
+        <GroupIcon
+          fill={
+            pathname.includes("users") || pathname.includes("chat")
+              ? "#554cb6"
+              : "#bfc3cf"
+          }
+        />
         {t("users")}
       </NavLink>
       <NavLink to={"/admin/payments"} className="nav-link">

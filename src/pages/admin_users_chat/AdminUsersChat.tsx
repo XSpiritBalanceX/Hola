@@ -1,9 +1,10 @@
-import { Container, Box, Avatar, Button } from "@mui/material";
-import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Container, Box, Avatar } from "@mui/material";
+import { useParams } from "react-router-dom";
 import moment from "moment";
 import CustomMessageBox from "@components/messageBox/CustomMessageBox";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { translate } from "@i18n";
+import ControlsUsersChat from "./ControlsUsersChat";
+import AdminMenu from "@components/adminMenu/AdminMenu";
 import "./AdminUsersChat.scss";
 
 const mockChatData = [
@@ -66,45 +67,76 @@ const mockChatData = [
 ];
 
 const AdminUsersChat = () => {
-  const { t } = translate("translate", { keyPrefix: "adminUsersPage" });
-
   const { userID, companionID } = useParams();
-  const navigate = useNavigate();
+
+  const [filterWord, setFilterWordWord] = useState("");
+  const [correspondence, setCorrespondence] = useState(mockChatData);
+
+  useEffect(() => {
+    if (filterWord === "") {
+      setCorrespondence(mockChatData);
+    } else {
+      const filteredData = mockChatData.filter((el) =>
+        el.message.toLowerCase().includes(filterWord.toLowerCase())
+      );
+      setCorrespondence(filteredData);
+    }
+    // eslint-disable-next-line
+  }, [filterWord]);
 
   const handleClickMessage = () => {};
 
+  const handleFilter = (word: string) => {
+    setFilterWordWord(word);
+  };
+
   return (
     <Container className="adminUsersChatContainer">
-      {mockChatData.map((el, ind) => {
-        const timeMessage = moment(el.date, "YYYY-MM-DD HH:mm").format("HH:mm");
-        const splitTime = timeMessage.split(":");
-        const currentDate = new Date();
-        currentDate.setHours(Number(splitTime[0]));
-        currentDate.setMinutes(Number(splitTime[1]));
-        return (
-          <Box key={ind}>
-            <Box>
-              <Avatar src={el.photo} alt="user" />
-              <p>{el.name}</p>
-            </Box>
-            <CustomMessageBox
-              key={ind}
-              id={ind}
-              position={el.id === Number(userID) ? "right" : "left"}
-              type="text"
-              text={el.message}
-              date={currentDate}
-              replyButton={true}
-              removeButton={true}
-              dateString={timeMessage}
-              classNameMessage={
-                el.id === Number(userID) ? "userMessage" : "opponentMessage"
-              }
-              cbHandleClickMessage={handleClickMessage}
-            />
-          </Box>
-        );
-      })}
+      <AdminMenu />
+      <Box className="adminUsersChatContent">
+        <ControlsUsersChat
+          filterWord={filterWord}
+          cbHandleFilter={handleFilter}
+        />
+        <Box className="correspondenceContainer">
+          {correspondence.map((el, ind) => {
+            const timeMessage = moment(el.date, "YYYY-MM-DD HH:mm").format(
+              "HH:mm"
+            );
+            const splitTime = timeMessage.split(":");
+            const currentDate = new Date();
+            currentDate.setHours(Number(splitTime[0]));
+            currentDate.setMinutes(Number(splitTime[1]));
+            return (
+              <Box key={ind} className="correspondenceItem">
+                <Box
+                  className={`userInformation ${
+                    el.id === Number(userID) ? "rightItem" : "leftItem"
+                  }`}
+                >
+                  <Avatar src={el.photo} alt="user" className="userPhoto" />
+                  <p>{el.name}</p>
+                </Box>
+                <CustomMessageBox
+                  key={ind}
+                  id={ind}
+                  position={el.id === Number(userID) ? "right" : "left"}
+                  type="text"
+                  text={el.message}
+                  date={currentDate}
+                  replyButton={true}
+                  removeButton={true}
+                  dateString={timeMessage}
+                  classNameMessage={
+                    el.id === Number(userID) ? "userMessage" : "opponentMessage"
+                  }
+                  cbHandleClickMessage={handleClickMessage}
+                />
+              </Box>
+            );
+          })}
+        </Box>
+      </Box>
     </Container>
   );
 };
