@@ -451,7 +451,7 @@
     },
     "adminMenu": {
       "users": "Пользователи",
-      "payments": "Оплаты",
+      "payments": "Платежи",
       "analytics": "Аналитика",
       "supportRequests": "Служба поддержки",
       "settings": "Настройки",
@@ -469,7 +469,7 @@
       "profilePhotos": "Фото профиля",
       "description": "Описание",
       "subscription": "Подписка",
-      "startDate": "Дата старта",
+      "startDate": "Дата начала",
       "lastPayment": "Последний платеж",
       "renewedUntil": "Продлен до",
       "card": "Карта",
@@ -477,6 +477,19 @@
       "showChat": "Показать переписку",
       "userChat": "Личная переписка пользователей",
       "emptyUsers": "Пользователи не найдены"
+    },
+    "adminPaymentsPage": {
+      "payments": "Платежи",
+      "search": "Поиск",
+      "all": "Все",
+      "paid": "Оплаченные",
+      "expected": "Ожидаемые",
+      "suspended": "Приостановленные",
+      "user": "Пользователь",
+      "subscriptionStartDate": "Дата начала подписки",
+      "lastPayment": "Последний платеж",
+      "renewedUntil": "Продлен до",
+      "card": "Карта"
     }
   }
 }

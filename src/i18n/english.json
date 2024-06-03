@@ -477,6 +477,19 @@
       "showChat": "Show correspondence",
       "userChat": "Users private correspondence",
       "emptyUsers": "No users found"
+    },
+    "adminPaymentsPage": {
+      "payments": "Payments",
+      "search": "Search",
+      "all": "All",
+      "paid": "Paid",
+      "expected": "Expected",
+      "suspended": "Suspended",
+      "user": "User",
+      "subscriptionStartDate": "Subscription start date",
+      "lastPayment": "Last payment",
+      "renewedUntil": "Renewed until",
+      "card": "Card"
     }
   }
 }

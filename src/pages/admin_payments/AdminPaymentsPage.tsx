@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { Container } from "@mui/material";
+import { useEffect, useState } from "react";
+import { Box, Container } from "@mui/material";
 import { useParams } from "react-router-dom";
 import AdminMenu from "@components/adminMenu/AdminMenu";
-import { translate } from "@i18n";
+import ControlsPayments from "./ControlsPayments";
 import "./AdminPaymentsPage.scss";
 
 const mockData = [
@@ -119,13 +119,52 @@ const mockData = [
 ];
 
 const AdminPaymentsPage = () => {
-  const { t } = translate("translate", { keyPrefix: "adminPaymentsPage" });
+  const [filterWord, setFilterWord] = useState("");
+  const [payments, setPayments] = useState(mockData);
 
   const { paymentType } = useParams();
-  console.log(paymentType);
+
+  const handleFilter = (word: string) => {
+    setFilterWord(word);
+  };
+
+  useEffect(() => {
+    const filterByType = mockData.filter((el) => {
+      if (paymentType === "all") {
+        return true;
+      } else if (paymentType !== el.type) {
+        return false;
+      }
+      return true;
+    });
+
+    const filterByWord = filterByType.filter((el) => {
+      if (
+        filterWord &&
+        !el.email.toLocaleLowerCase().includes(filterWord.toLocaleLowerCase())
+      )
+        return false;
+      return true;
+    });
+    setPayments(filterByWord);
+    // eslint-disable-next-line
+  }, [paymentType, filterWord]);
+
+  useEffect(() => {
+    setFilterWord("");
+    // eslint-disable-next-line
+  }, [paymentType]);
+
   return (
     <Container className="adminPaymentsContainer">
       <AdminMenu />
+      <Box className="adminPaymentsContent">
+        <ControlsPayments
+          filterWord={filterWord}
+          cbHandleFilterWord={handleFilter}
+          paymentType={paymentType as string}
+        />
+      </Box>
     </Container>
   );
 };
