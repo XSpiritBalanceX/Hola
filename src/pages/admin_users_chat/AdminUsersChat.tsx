@@ -11,7 +11,7 @@ const mockChatData = [
   {
     id: 1,
     message: "Hi",
-    date: "2024-05-25 15:20",
+    date: "2023-05-25 15:20",
     photo:
       "https://rus.team/images/article/58829/avatar_16x9.webp?actual=1604332666",
     name: "Matt",
@@ -19,7 +19,7 @@ const mockChatData = [
   {
     id: 11,
     message: "Hello",
-    date: "2024-05-25 15:22",
+    date: "2023-05-25 15:22",
     photo:
       "https://gallery.alexandersakulin.com/storage/app/uploads/public/92b/af0/985/thumb__0_800_0_0_auto.jpg",
     name: "Karen",
@@ -27,7 +27,7 @@ const mockChatData = [
   {
     id: 1,
     message: "Hi",
-    date: "2024-05-31 15:20",
+    date: "2024-05-27 15:20",
     photo:
       "https://rus.team/images/article/58829/avatar_16x9.webp?actual=1604332666",
     name: "Matt",
@@ -35,7 +35,7 @@ const mockChatData = [
   {
     id: 11,
     message: "Hello",
-    date: "2024-05-31 15:22",
+    date: "2024-05-28 15:22",
     photo:
       "https://gallery.alexandersakulin.com/storage/app/uploads/public/92b/af0/985/thumb__0_800_0_0_auto.jpg",
     name: "Karen",
@@ -43,7 +43,7 @@ const mockChatData = [
   {
     id: 1,
     message: "How are you",
-    date: "2024-05-31 15:25",
+    date: "2024-05-28 15:25",
     photo:
       "https://rus.team/images/article/58829/avatar_16x9.webp?actual=1604332666",
     name: "Matt",
@@ -51,7 +51,7 @@ const mockChatData = [
   {
     id: 11,
     message: "Good",
-    date: "2024-05-31 16:10",
+    date: "2024-05-29 16:10",
     photo:
       "https://gallery.alexandersakulin.com/storage/app/uploads/public/92b/af0/985/thumb__0_800_0_0_auto.jpg",
     name: "Karen",
@@ -90,6 +90,18 @@ const AdminUsersChat = () => {
     setFilterWordWord(word);
   };
 
+  const dateOfMessage = (currentDate: string, previousDate: string | null) => {
+    if (!previousDate) return true;
+    const convertCurrentDate = currentDate.split(" ")[0];
+    const convertPreviousDate = previousDate.split(" ")[0];
+    const momentCurrentDate = moment(convertCurrentDate);
+    const momentPreviousDate = moment(convertPreviousDate);
+    return (
+      momentCurrentDate.date() !== momentPreviousDate.date() ||
+      momentCurrentDate.month() !== momentPreviousDate.month()
+    );
+  };
+
   return (
     <Container className="adminUsersChatContainer">
       <AdminMenu />
@@ -100,15 +112,23 @@ const AdminUsersChat = () => {
         />
         <Box className="correspondenceContainer">
           {correspondence.map((el, ind) => {
-            const timeMessage = moment(el.date, "YYYY-MM-DD HH:mm").format(
-              "HH:mm"
-            );
+            const timeMessage = moment(el.date).format("HH:mm");
             const splitTime = timeMessage.split(":");
             const currentDate = new Date();
             currentDate.setHours(Number(splitTime[0]));
             currentDate.setMinutes(Number(splitTime[1]));
             return (
               <Box key={ind} className="correspondenceItem">
+                {dateOfMessage(
+                  el.date,
+                  ind > 0 ? mockChatData[ind - 1].date : null
+                ) && (
+                  <Box className="dateOfMessageBox">
+                    {moment(el.date).year() !== moment().year()
+                      ? moment(el.date).format("LL")
+                      : moment(el.date).format("MMMM DD")}
+                  </Box>
+                )}
                 <Box
                   className={`userInformation ${
                     el.id === Number(userID) ? "rightItem" : "leftItem"

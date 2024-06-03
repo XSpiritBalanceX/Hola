@@ -71,6 +71,15 @@
     padding: 25px 0 15px 0;
     .correspondenceItem {
       margin-bottom: 10px;
+      .dateOfMessageBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @extend %body-1-medium;
+        line-height: 19px;
+        color: map-get($theme-colors, "gray-2");
+        margin-bottom: 10px;
+      }
       .userInformation {
         display: flex;
         flex-direction: row;
