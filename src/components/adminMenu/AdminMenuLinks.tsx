@@ -26,7 +26,7 @@ const AdminMenuLinks = () => {
         />
         {t("users")}
       </NavLink>
-      <NavLink to={"/admin/payments"} className="nav-link">
+      <NavLink to={"/admin/payments/all"} className="nav-link">
         <PaymentIcon
           fill={pathname.includes("payments") ? "#554cb6" : "#bfc3cf"}
         />
