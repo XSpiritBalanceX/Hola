@@ -21,6 +21,7 @@ import DashboardPage from "@pages/dashboard/DashboardPage";
 import AdminUsersPage from "@pages/admin_users/AdminUsersPage";
 import AdminUsersChat from "@pages/admin_users_chat/AdminUsersChat";
 import AdminPaymentsPage from "@pages/admin_payments/AdminPaymentsPage";
+import AdminAnalyticsPage from "@pages/admin_analytics/AdminAnalyticsPage";
 
 const RouterComponent = () => {
   const appRoutesUnauth = [
@@ -59,6 +60,7 @@ const RouterComponent = () => {
       element: <AdminUsersChat />,
     },
     { path: "/admin/payments/:paymentType", element: <AdminPaymentsPage /> },
+    { path: "/admin/analytics", element: <AdminAnalyticsPage /> },
   ];
 
   return (

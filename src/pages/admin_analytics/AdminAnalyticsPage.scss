@@ -1,0 +1,82 @@
+@import "../../variables";
+
+.adminAnalyticsContainer {
+  padding: 50px 20px 60px 20px !important;
+  display: flex !important;
+  flex-direction: row;
+  width: 100% !important;
+  max-width: 1450px !important;
+  .analyticsContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .controlViewBox {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      p {
+        margin: 0;
+        @extend %h4;
+        line-height: 20px;
+      }
+      .viewField {
+        width: 140px;
+        height: 24px;
+        padding: 3px 0 0 0;
+        .MuiInputBase-root {
+          @extend %body-2-bold;
+          svg {
+            fill: map-get($theme-colors, "black");
+          }
+          .MuiSelect-select {
+            padding: 0;
+          }
+          .MuiInputAdornment-root {
+            svg {
+              fill: map-get($theme-colors, "black");
+              width: 18px;
+              height: 18px;
+            }
+          }
+          fieldset {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .typesUsersContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 30px 0 0 0;
+    .itemTypesUsers {
+      border-radius: 15px;
+      color: map-get($theme-colors, "white");
+      margin: 0 20px 10px 0;
+      height: auto;
+      width: 247px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 55px 10px 10px 10px;
+      .numberOfUsers {
+        @extend %h3;
+        font-size: 55px;
+        line-height: 20px;
+        font-weight: 300;
+        margin: 0;
+      }
+      .itemLabel {
+        margin: 25px 0 0 0;
+        width: 100%;
+        text-align: end;
+      }
+    }
+    .itemTypesUsers:last-child {
+      margin-right: 0;
+    }
+  }
+}

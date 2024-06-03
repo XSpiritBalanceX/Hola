@@ -491,6 +491,16 @@
       "renewedUntil": "Renewed until",
       "card": "Card",
       "emptyUsers": "No users found"
+    },
+    "adminAnalyticsPage": {
+      "analytics": "Analytics",
+      "today": "Today",
+      "month": "Month",
+      "activeUsers": "Active users",
+      "premiumUsers": "Premium Users",
+      "onlineUsers": "Users online",
+      "matches": "Matches",
+      "usersByLocations": "Users by Location"
     }
   }
 }

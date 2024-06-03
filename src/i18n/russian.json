@@ -491,6 +491,16 @@
       "renewedUntil": "Продлен до",
       "card": "Карта",
       "emptyUsers": "Пользователи не найдены"
+    },
+    "adminAnalyticsPage": {
+      "analytics": "Аналитика",
+      "today": "Сегодня",
+      "month": "Месяц",
+      "activeUsers": "Активные пользователи",
+      "premiumUsers": "Премиум-пользователи",
+      "onlineUsers": "Пользователи онлайн",
+      "matches": "Совпадения",
+      "usersByLocations": "Пользователи по местоположению"
     }
   }
 }
