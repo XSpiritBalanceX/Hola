@@ -1,14 +1,16 @@
 @import "../../variables";
 
 .adminPaymentsContainer {
-  padding: 35px 10px 60px 10px !important;
+  padding: 35px 20px 60px 20px !important;
   display: flex !important;
   flex-direction: row;
+  width: 100% !important;
+  max-width: 100vw !important;
   .adminPaymentsContent {
     display: flex;
     flex-direction: column;
     width: 100%;
-    border: solid 1px red;
+    max-width: calc(100vw - 216px);
     .searchPaymentBox {
       display: flex;
       flex-direction: row;
@@ -74,6 +76,36 @@
       }
       .buttonType.activeButton {
         background-color: map-get($theme-colors, "blue");
+      }
+    }
+    .paymentsTable {
+      .paymentsTableHead {
+        tr {
+          th {
+            border: none;
+            color: map-get($theme-colors, "gray-2");
+            padding-bottom: 15px;
+            padding-top: 0;
+            @extend %body-2;
+          }
+          @media all and (max-width: 40em) {
+            display: none;
+          }
+        }
+      }
+      .emptyRowUsers {
+        td {
+          border: none;
+          border-radius: 20px;
+          background-color: map-get($theme-colors, "white");
+          padding: 25px;
+          height: 90px;
+          p {
+            margin: 0;
+            @extend %h5;
+            text-align: center;
+          }
+        }
       }
     }
   }

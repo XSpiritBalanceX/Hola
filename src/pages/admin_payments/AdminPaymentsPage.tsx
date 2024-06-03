@@ -1,12 +1,23 @@
 import { useEffect, useState } from "react";
-import { Box, Container } from "@mui/material";
+import {
+  Box,
+  Container,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 import { useParams } from "react-router-dom";
 import AdminMenu from "@components/adminMenu/AdminMenu";
 import ControlsPayments from "./ControlsPayments";
+import { translate } from "@i18n";
+import ItemPayment from "@components/adminPayment/ItemPayment";
 import "./AdminPaymentsPage.scss";
 
 const mockData = [
   {
+    id: 1,
     name: "Kira",
     age: 29,
     email: "Kira1997@gmail.com",
@@ -17,6 +28,7 @@ const mockData = [
     type: "paid",
   },
   {
+    id: 2,
     name: "Mary",
     age: 34,
     email: "maria_petrova88@gmail.com",
@@ -27,6 +39,7 @@ const mockData = [
     type: "paid",
   },
   {
+    id: 3,
     name: "Paul",
     age: 27,
     email: "paulmayer1997@gmail.com",
@@ -37,6 +50,7 @@ const mockData = [
     type: "expected",
   },
   {
+    id: 4,
     name: "Mike",
     age: 21,
     email: "mikemike2003@gmail.com",
@@ -47,6 +61,7 @@ const mockData = [
     type: "suspended",
   },
   {
+    id: 5,
     name: "Alice",
     age: 28,
     email: "aliceee@gmail.com",
@@ -57,6 +72,7 @@ const mockData = [
     type: "suspended",
   },
   {
+    id: 6,
     name: "Mary",
     age: 23,
     email: "marianna1999@gmail.com",
@@ -67,6 +83,7 @@ const mockData = [
     type: "paid",
   },
   {
+    id: 7,
     name: "Kevin",
     age: 30,
     email: "kevin0001@gmail.com",
@@ -77,6 +94,7 @@ const mockData = [
     type: "suspended",
   },
   {
+    id: 8,
     name: "Karen",
     age: 46,
     email: "karen__1978@gmail.com",
@@ -87,6 +105,7 @@ const mockData = [
     type: "expected",
   },
   {
+    id: 9,
     name: "Kate",
     age: 18,
     email: "Katekate@gmail.com",
@@ -97,6 +116,7 @@ const mockData = [
     type: "expected",
   },
   {
+    id: 10,
     name: "Tony",
     age: 42,
     email: "antony@gmail.com",
@@ -107,6 +127,7 @@ const mockData = [
     type: "suspended",
   },
   {
+    id: 11,
     name: "Kristofer",
     age: 31,
     email: "kristofer@gmail.com",
@@ -119,6 +140,8 @@ const mockData = [
 ];
 
 const AdminPaymentsPage = () => {
+  const { t } = translate("translate", { keyPrefix: "adminPaymentsPage" });
+
   const [filterWord, setFilterWord] = useState("");
   const [payments, setPayments] = useState(mockData);
 
@@ -155,6 +178,15 @@ const AdminPaymentsPage = () => {
     // eslint-disable-next-line
   }, [paymentType]);
 
+  const tableHead = [
+    t("user"),
+    "E-mail",
+    t("subscriptionStartDate"),
+    t("lastPayment"),
+    t("renewedUntil"),
+    t("card"),
+  ];
+
   return (
     <Container className="adminPaymentsContainer">
       <AdminMenu />
@@ -164,6 +196,38 @@ const AdminPaymentsPage = () => {
           cbHandleFilterWord={handleFilter}
           paymentType={paymentType as string}
         />
+        <Table className="paymentsTable">
+          <TableHead className="paymentsTableHead">
+            <TableRow>
+              {tableHead.map((el, ind) => (
+                <TableCell key={ind}>{el}</TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {payments.length !== 0 ? (
+              payments.map((el) => (
+                <ItemPayment
+                  key={el.id}
+                  name={el.name}
+                  age={el.age}
+                  email={el.email}
+                  start_date={el.start_date}
+                  last_payment={el.last_payment}
+                  end_date={el.end_date}
+                  card={el.card}
+                  type={el.type}
+                />
+              ))
+            ) : (
+              <TableRow className="emptyRowUsers">
+                <TableCell colSpan={tableHead.length}>
+                  <p>{t("emptyUsers")}</p>
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
       </Box>
     </Container>
   );

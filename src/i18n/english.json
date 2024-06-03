@@ -489,7 +489,8 @@
       "subscriptionStartDate": "Subscription start date",
       "lastPayment": "Last payment",
       "renewedUntil": "Renewed until",
-      "card": "Card"
+      "card": "Card",
+      "emptyUsers": "No users found"
     }
   }
 }

@@ -489,7 +489,8 @@
       "subscriptionStartDate": "Дата начала подписки",
       "lastPayment": "Последний платеж",
       "renewedUntil": "Продлен до",
-      "card": "Карта"
+      "card": "Карта",
+      "emptyUsers": "Пользователи не найдены"
     }
   }
 }

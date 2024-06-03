@@ -1,0 +1,61 @@
+@import "../../variables";
+
+.itemPaymentRow {
+  padding: 0;
+  vertical-align: top;
+  td {
+    border: none;
+    padding: 0;
+  }
+  .itemPaymentBox {
+    padding: 15px 20px;
+    height: 47px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    @extend %body-2-medium;
+    .mobileText {
+      display: none;
+      @media all and (max-width: 40em) {
+        display: inline;
+        font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 21px;
+      }
+    }
+  }
+  .itemPaymentBox.userEmailBox {
+    word-wrap: break-word;
+  }
+  .itemPaymentBox.nameAgeBox {
+    border-radius: 15px 0 0 15px;
+  }
+  .itemPaymentBox.cardBox {
+    border-radius: 0 15px 15px 0;
+  }
+  .itemPaymentBox.datePaymentBox {
+    min-width: 160px;
+  }
+  .itemPaymentBox.paidBox,
+  .paidDateBox {
+    background-color: map-get($theme-colors, "light-green");
+  }
+  .itemPaymentBox.expectedBox,
+  .expectedDatedBox {
+    background-color: map-get($theme-colors, "red-light-1");
+  }
+  .itemPaymentBox.suspendedBox,
+  .suspendedDateBox {
+    background-color: map-get($theme-colors, "gray-3");
+    color: map-deep-get($theme-colors, "text", "gray-5");
+  }
+  .paidDateBox {
+    color: map-get($theme-colors, "success");
+    @extend %body-2-bold;
+  }
+  .expectedDatedBox {
+    color: map-get($theme-colors, "error");
+    @extend %body-2-bold;
+  }
+}
