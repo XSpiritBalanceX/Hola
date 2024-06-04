@@ -500,7 +500,13 @@
       "premiumUsers": "Премиум-пользователи",
       "onlineUsers": "Пользователи онлайн",
       "matches": "Совпадения",
-      "usersByLocations": "Пользователи по местоположению"
+      "usersByLocations": "Пользователи по местоположению",
+      "northAmerica": "Северная Америка",
+      "southAmerica": "Южная Америка",
+      "europe": "Европа",
+      "asia": "Азия",
+      "africa": "Африка",
+      "australia": "Австралия"
     }
   }
 }

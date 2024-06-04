@@ -1,7 +1,70 @@
 @import "../../variables";
 
-.map-img {
+.analyticsByUsersContainer {
   border: solid 1px red;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 49px;
+}
+
+.usersByLocationsBox {
+  max-width: 450px;
+  .titleBox {
+    @extend %body-1-bold;
+    margin: 0;
+  }
+}
+
+.worldMapContainer {
+  position: relative;
+  width: 648px;
+  height: 486px;
+  .nameOfPart {
+    margin: 0;
+    position: absolute;
+    @extend %button;
+    font-size: 10px;
+    font-weight: 800;
+  }
+  .part_northAmerica {
+    color: map-deep-get($theme-colors, "map", "light-blue");
+    top: 90px;
+    left: 25px;
+  }
+  .part_southAmerica {
+    color: map-deep-get($theme-colors, "map", "orange");
+    left: 170px;
+    bottom: 120px;
+  }
+  .part_europe {
+    color: map-deep-get($theme-colors, "map", "red");
+    top: 90px;
+    left: 320px;
+  }
+  .part_asia {
+    color: map-deep-get($theme-colors, "map", "yellow");
+    top: 90px;
+    right: 150px;
+  }
+  .part_africa {
+    color: map-deep-get($theme-colors, "map", "light-green");
+    bottom: 130px;
+    right: 260px;
+  }
+  .part_australia {
+    color: map-deep-get($theme-colors, "map", "purple");
+    bottom: 170px;
+    right: 125px;
+  }
+  .selectedPart {
+    color: map-deep-get($theme-colors, "map", "blue");
+  }
+}
+
+.map-img {
+  width: 648px;
+  height: 486px;
   .map-unselected {
     fill: #699eaa;
   }

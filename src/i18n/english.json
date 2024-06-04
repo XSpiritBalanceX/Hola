@@ -500,7 +500,13 @@
       "premiumUsers": "Premium Users",
       "onlineUsers": "Users online",
       "matches": "Matches",
-      "usersByLocations": "Users by Location"
+      "usersByLocations": "Users by Location",
+      "northAmerica": "North America",
+      "southAmerica": "South America",
+      "europe": "Europe",
+      "asia": "Asia",
+      "africa": "Africa",
+      "australia": "Australia"
     }
   }
 }
