@@ -1,0 +1,33 @@
+@import "../../variables";
+
+.map-img {
+  border: solid 1px red;
+  .map-unselected {
+    fill: #699eaa;
+  }
+  #AF.map-unselected {
+    fill: map-deep-get($theme-colors, "map", "light-green");
+  }
+  #SA.map-unselected {
+    fill: map-deep-get($theme-colors, "map", "orange");
+  }
+  #EU.map-unselected {
+    fill: map-deep-get($theme-colors, "map", "red");
+  }
+  #AS.map-unselected {
+    fill: map-deep-get($theme-colors, "map", "yellow");
+  }
+  #NA.map-unselected {
+    fill: map-deep-get($theme-colors, "map", "light-blue");
+  }
+  #OC.map-unselected {
+    fill: map-deep-get($theme-colors, "map", "purple");
+  }
+  .map-selected {
+    fill: map-deep-get($theme-colors, "map", "blue");
+  }
+  .map-selected:hover,
+  .map-unselected:hover {
+    cursor: pointer;
+  }
+}

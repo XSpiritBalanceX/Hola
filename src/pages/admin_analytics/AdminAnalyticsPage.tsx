@@ -9,6 +9,7 @@ import {
 import AdminMenu from "@components/adminMenu/AdminMenu";
 import { translate } from "@i18n";
 import InsertInvitationRoundedIcon from "@mui/icons-material/InsertInvitationRounded";
+import AdminWorldMap from "@components/adminWorldMap/AdminWorldMap";
 import "./AdminAnalyticsPage.scss";
 
 const mockData = {
@@ -96,6 +97,7 @@ const AdminAnalyticsPage = () => {
             </Box>
           ))}
         </Box>
+        <AdminWorldMap />
       </Box>
     </Container>
   );
