@@ -1,7 +1,6 @@
 @import "../../variables";
 
 .analyticsByUsersContainer {
-  border: solid 1px red;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -12,7 +11,45 @@
   max-width: 450px;
   .titleBox {
     @extend %body-1-bold;
+    margin: 0 0 23px 0;
+  }
+}
+.boxWithUsersLocations {
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  .emptyUsers {
+    @extend %body-2-bold;
+    color: map-get($theme-colors, "blue");
     margin: 0;
+  }
+  .itemUserLocation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    .nameOfCountry {
+      @extend %body-2;
+      margin: 0;
+      width: 128px;
+    }
+    .containerForBar {
+      width: calc(100% - 128px);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      p {
+        margin: 0;
+        @extend %body-2-bold;
+      }
+    }
+    .barUsersBox {
+      height: 10px;
+      border-radius: 0 10px 10px 0;
+      margin-right: 10px;
+      background-color: map-get($theme-colors, "blue");
+    }
   }
 }
 

@@ -506,7 +506,8 @@
       "europe": "Europe",
       "asia": "Asia",
       "africa": "Africa",
-      "australia": "Australia"
+      "australia": "Australia",
+      "emptyData": "Data not found"
     }
   }
 }
