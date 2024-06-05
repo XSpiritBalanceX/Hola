@@ -508,6 +508,19 @@
       "africa": "Africa",
       "australia": "Australia",
       "emptyData": "Data not found"
+    },
+    "adminSupportPage": {
+      "search": "Search",
+      "supportRequests": "Support requests",
+      "all": "All ({{count}})",
+      "new": "New ({{count}})",
+      "inProcess": "In process ({{count}})",
+      "closed": "Closed ({{count}})",
+      "status": "Status",
+      "user": "User",
+      "issue": "Issue",
+      "date": "Date",
+      "time": "Time"
     }
   }
 }

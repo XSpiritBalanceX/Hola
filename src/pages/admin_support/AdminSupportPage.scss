@@ -10,5 +10,73 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    .filterByWordsBox {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 25px;
+      p {
+        margin: 0;
+        @extend %h4;
+        line-height: 20px;
+      }
+      .searchField {
+        @media all and (max-width: 55em) {
+          min-width: 100%;
+          width: 100%;
+        }
+        .MuiInputBase-root {
+          height: 40px;
+          border-radius: 40px;
+          background-color: map-get($theme-colors, "white");
+          min-width: 400px;
+          @media all and (max-width: 55em) {
+            min-width: 100%;
+            width: 100%;
+          }
+          fieldset {
+            border-color: map-get($theme-colors, "white");
+          }
+          .MuiInputAdornment-root {
+            svg {
+              fill: map-get($theme-colors, "blue");
+            }
+          }
+        }
+        .MuiInputBase-root.Mui-focused {
+          fieldset {
+            border-color: map-get($theme-colors, "blue");
+          }
+        }
+      }
+    }
+    .supportTypeButtonsBox {
+      margin-bottom: 25px;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+      .buttonType {
+        text-transform: none;
+        @extend %body-1-medium;
+        color: map-get($theme-colors, "white");
+        background-color: map-get($theme-colors, "gray-2");
+        border-radius: 15px;
+        padding: 5px 20px;
+        height: 34px;
+        margin-right: 20px;
+      }
+      .buttonType.activeButton {
+        background-color: map-get($theme-colors, "blue");
+      }
+      .buttonType:last-child {
+        margin-right: 0;
+        @media all and (max-width: 45em) {
+          margin: 0;
+        }
+      }
+    }
   }
 }

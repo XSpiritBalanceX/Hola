@@ -508,6 +508,19 @@
       "africa": "Африка",
       "australia": "Австралия",
       "emptyData": "Данные не найдены"
+    },
+    "adminSupportPage": {
+      "search": "Поиск",
+      "supportRequests": "Служба поддержки",
+      "all": "Все ({{count}})",
+      "new": "Новые ({{count}})",
+      "inProcess": "В процессе ({{count}})",
+      "closed": "Закрытые ({{count}})",
+      "status": "Статус",
+      "user": "Пользователь",
+      "issue": "Проблема",
+      "date": "Дата",
+      "time": "Время"
     }
   }
 }
