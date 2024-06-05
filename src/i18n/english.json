@@ -520,7 +520,8 @@
       "user": "User",
       "issue": "Issue",
       "date": "Date",
-      "time": "Time"
+      "time": "Time",
+      "emptyRequests": "No support requests found"
     }
   }
 }

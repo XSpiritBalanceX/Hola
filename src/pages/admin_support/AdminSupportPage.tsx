@@ -1,7 +1,17 @@
-import { useState } from "react";
-import { Container, Box } from "@mui/material";
+import { useEffect, useState } from "react";
+import {
+  Container,
+  Box,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+} from "@mui/material";
 import AdminMenu from "@components/adminMenu/AdminMenu";
 import ControlsSupport from "./ControlsSupport";
+import { translate } from "@i18n";
+import ItemRequest from "@components/adminSupportRequest/ItemRequest";
 import "./AdminSupportPage.scss";
 
 const mockData = [
@@ -143,8 +153,40 @@ const mockData = [
 ];
 
 const AdminSupportPage = () => {
+  const { t } = translate("translate", { keyPrefix: "adminSupportPage" });
+
+  const [supportRequests, setSupportRequests] = useState(mockData);
   const [filterWord, setFilterWord] = useState("");
   const [filterType, setFilterType] = useState("all");
+
+  useEffect(() => {
+    const filterByType = mockData.filter((el) => {
+      if (filterType === "all") {
+        return true;
+      } else if (
+        filterType.toLocaleLowerCase() !== el.status.toLocaleLowerCase()
+      ) {
+        return false;
+      }
+      return true;
+    });
+
+    const filterByWord = filterByType.filter((el) => {
+      if (
+        filterWord &&
+        !el.email.toLocaleLowerCase().includes(filterWord.toLocaleLowerCase())
+      )
+        return false;
+      return true;
+    });
+    setSupportRequests(filterByWord);
+    // eslint-disable-next-line
+  }, [filterWord, filterType]);
+
+  useEffect(() => {
+    setFilterWord("");
+    // eslint-disable-next-line
+  }, [filterType]);
 
   const handleChangeFilterByWord = (word: string) => {
     setFilterWord(word);
@@ -153,6 +195,16 @@ const AdminSupportPage = () => {
   const handleChangeFilterByType = (type: string) => {
     setFilterType(type);
   };
+
+  const tableHead = [
+    "№",
+    t("status"),
+    t("user"),
+    "E-mail",
+    t("issue"),
+    t("date"),
+    t("time"),
+  ];
 
   return (
     <Container className="adminSupportContainer">
@@ -165,6 +217,37 @@ const AdminSupportPage = () => {
           cbHandleFilterType={handleChangeFilterByType}
           allRequest={mockData}
         />
+        <Table className="tableSupportRequests">
+          <TableHead className="tableHeadSupportRequests">
+            <TableRow>
+              {tableHead.map((el, ind) => (
+                <TableCell key={ind}>{el}</TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {supportRequests.length ? (
+              supportRequests.map((el) => (
+                <ItemRequest
+                  key={el.id}
+                  id={el.id}
+                  user_name={el.user_name}
+                  age={el.user_age}
+                  status={el.status}
+                  email={el.email}
+                  date={el.date}
+                  issue={el.issue}
+                />
+              ))
+            ) : (
+              <TableRow className="emptyRequests">
+                <TableCell colSpan={tableHead.length}>
+                  <p>{t("emptyRequests")}</p>
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
       </Box>
     </Container>
   );

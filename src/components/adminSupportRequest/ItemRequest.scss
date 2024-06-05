@@ -1,0 +1,45 @@
+@import "../../variables";
+
+.itemRequestRow {
+  padding: 0;
+  vertical-align: top;
+  td {
+    border: none;
+    padding: 0;
+  }
+  .itemRequestBox {
+    height: 51px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    @extend %body-2-medium;
+    background-color: map-get($theme-colors, "white");
+    .statusColor {
+      width: 10px;
+      height: 10px;
+      border-radius: 100%;
+      margin-right: 5px;
+    }
+  }
+  .itemRequestBox.idRequest {
+    padding: 0 16px 0 20px;
+    border-radius: 15px 0 0 15px;
+  }
+  .statusBox,
+  .userNameAgeBox,
+  .emailBox,
+  .issueBox,
+  .dateBox {
+    padding: 0 16px;
+  }
+  .statusBox.closedRequest {
+    color: map-get($theme-colors, "gray-2");
+  }
+  .itemRequestBox.issueBox {
+    @extend %body-2-bold;
+  }
+  .itemRequestBox.timeBox {
+    border-radius: 0 15px 15px 0;
+    padding: 0 16px 0 25px;
+  }
+}
