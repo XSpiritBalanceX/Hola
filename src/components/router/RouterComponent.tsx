@@ -22,6 +22,7 @@ import AdminUsersPage from "@pages/admin_users/AdminUsersPage";
 import AdminUsersChat from "@pages/admin_users_chat/AdminUsersChat";
 import AdminPaymentsPage from "@pages/admin_payments/AdminPaymentsPage";
 import AdminAnalyticsPage from "@pages/admin_analytics/AdminAnalyticsPage";
+import AdminSupportPage from "@pages/admin_support/AdminSupportPage";
 
 const RouterComponent = () => {
   const appRoutesUnauth = [
@@ -61,6 +62,7 @@ const RouterComponent = () => {
     },
     { path: "/admin/payments/:paymentType", element: <AdminPaymentsPage /> },
     { path: "/admin/analytics", element: <AdminAnalyticsPage /> },
+    { path: "/admin/support", element: <AdminSupportPage /> },
   ];
 
   return (
