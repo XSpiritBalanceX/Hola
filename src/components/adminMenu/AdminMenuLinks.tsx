@@ -44,7 +44,7 @@ const AdminMenuLinks = () => {
         />
         {t("supportRequests")}
       </NavLink>
-      <NavLink to={"/admin/settings"} className="nav-link">
+      <NavLink to={"/admin/settings/general"} className="nav-link">
         <SettingFillIcon
           fill={pathname.includes("settings") ? "#554cb6" : "#bfc3cf"}
         />
