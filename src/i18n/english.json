@@ -522,6 +522,14 @@
       "date": "Date",
       "time": "Time",
       "emptyRequests": "No support requests found"
+    },
+    "adminSettingsPage": {
+      "general": "General",
+      "privacy": "Privacy and Policy",
+      "aboutUs": "About Hola",
+      "personalInformation": "Personal Information",
+      "language": "Language",
+      "save": "Save"
     }
   }
 }

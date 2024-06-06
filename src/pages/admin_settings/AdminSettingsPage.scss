@@ -6,4 +6,34 @@
   flex-direction: row;
   width: 100% !important;
   max-width: 100vw !important;
+  .adminSettingsContent {
+    display: flex;
+    flex-direction: row;
+    .settingsLinksBox {
+      display: flex;
+      flex-direction: column;
+      max-width: 320px;
+      .nav-link {
+        height: 40px;
+        margin-bottom: 20px;
+        text-decoration: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-radius: 10px;
+        background-color: map-get($theme-colors, "white");
+        padding: 10px 22px;
+        @extend %body-2;
+        color: map-get($theme-colors, "gray-2");
+        svg {
+          margin-right: 10px;
+        }
+      }
+      .nav-link.active {
+        background-color: map-get($theme-colors, "blue");
+        color: map-get($theme-colors, "white");
+        @extend %body-2-bold;
+      }
+    }
+  }
 }

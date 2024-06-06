@@ -522,6 +522,14 @@
       "date": "Дата",
       "time": "Время",
       "emptyRequests": "Запросов в службу поддержку не найдено"
+    },
+    "adminSettingsPage": {
+      "general": "Общие",
+      "privacy": "Политика конфиденциальности",
+      "aboutUs": "О Hola",
+      "personalInformation": "Персональная информация",
+      "language": "Язык",
+      "save": "Сохранить"
     }
   }
 }

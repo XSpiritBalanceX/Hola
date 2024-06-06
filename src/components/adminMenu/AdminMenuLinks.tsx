@@ -14,7 +14,16 @@ const AdminMenuLinks = () => {
   const { pathname } = useLocation();
   return (
     <>
-      <NavLink to={"/admin/users"} className="nav-link">
+      <NavLink
+        to={"/admin/users"}
+        className={() =>
+          pathname.includes("users") ||
+          pathname.includes("chat") ||
+          pathname.includes("user")
+            ? "nav-link active"
+            : "nav-link"
+        }
+      >
         <GroupIcon
           fill={
             pathname.includes("users") ||
@@ -44,7 +53,12 @@ const AdminMenuLinks = () => {
         />
         {t("supportRequests")}
       </NavLink>
-      <NavLink to={"/admin/settings/general"} className="nav-link">
+      <NavLink
+        to={"/admin/settings/general"}
+        className={() =>
+          pathname.includes("settings") ? "nav-link active" : "nav-link"
+        }
+      >
         <SettingFillIcon
           fill={pathname.includes("settings") ? "#554cb6" : "#bfc3cf"}
         />
