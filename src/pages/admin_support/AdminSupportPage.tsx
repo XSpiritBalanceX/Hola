@@ -227,18 +227,20 @@ const AdminSupportPage = () => {
           </TableHead>
           <TableBody>
             {supportRequests.length ? (
-              supportRequests.map((el) => (
-                <ItemRequest
-                  key={el.id}
-                  id={el.id}
-                  user_name={el.user_name}
-                  age={el.user_age}
-                  status={el.status}
-                  email={el.email}
-                  date={el.date}
-                  issue={el.issue}
-                />
-              ))
+              supportRequests
+                .sort((a, b) => b.id - a.id)
+                .map((el) => (
+                  <ItemRequest
+                    key={el.id}
+                    id={el.id}
+                    user_name={el.user_name}
+                    age={el.user_age}
+                    status={el.status}
+                    email={el.email}
+                    date={el.date}
+                    issue={el.issue}
+                  />
+                ))
             ) : (
               <TableRow className="emptyRequests">
                 <TableCell colSpan={tableHead.length}>

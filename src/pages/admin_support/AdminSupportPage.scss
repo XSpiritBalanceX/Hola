@@ -6,6 +6,19 @@
   flex-direction: row;
   width: 100% !important;
   max-width: 100vw !important;
+  @media all and (max-width: 70em) {
+    flex-direction: column;
+  }
+  .accordionAdminMenu {
+    @media all and (max-width: 70em) {
+      display: block;
+    }
+  }
+  .adminMenuBox {
+    @media all and (max-width: 70em) {
+      display: none;
+    }
+  }
   .adminSupportContent {
     display: flex;
     flex-direction: column;
@@ -16,10 +29,19 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 25px;
+      @media all and (max-width: 55em) {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+      }
       p {
         margin: 0;
         @extend %h4;
         line-height: 20px;
+        @media all and (max-width: 55em) {
+          margin-bottom: 20px;
+        }
       }
       .searchField {
         @media all and (max-width: 55em) {
@@ -58,6 +80,9 @@
       justify-content: flex-start;
       align-items: center;
       width: 100%;
+      @media all and (max-width: 45em) {
+        flex-direction: column;
+      }
       .buttonType {
         text-transform: none;
         @extend %body-1-medium;
@@ -67,6 +92,10 @@
         padding: 5px 20px;
         height: 34px;
         margin-right: 20px;
+        @media all and (max-width: 45em) {
+          width: 100%;
+          margin: 0 0 10px 0;
+        }
       }
       .buttonType.activeButton {
         background-color: map-get($theme-colors, "blue");
@@ -87,6 +116,9 @@
             padding-bottom: 15px;
             padding-top: 0;
             @extend %body-2;
+          }
+          @media all and (max-width: 53em) {
+            display: none;
           }
         }
       }

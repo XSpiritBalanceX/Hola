@@ -1,5 +1,6 @@
 import { Box, TableCell, TableRow } from "@mui/material";
 import moment from "moment";
+import { translate } from "@i18n";
 import "./ItemRequest.scss";
 
 interface IItemRequestProps {
@@ -27,6 +28,8 @@ const ItemRequest = ({
   issue,
   date,
 }: IItemRequestProps) => {
+  const { t } = translate("translate", { keyPrefix: "adminSupportPage" });
+
   const statusColors: TStatusColors = {
     new: "#554CB6",
     "in process": "#55C1E3",
@@ -37,7 +40,10 @@ const ItemRequest = ({
   return (
     <TableRow className="itemRequestRow">
       <TableCell>
-        <Box className="itemRequestBox idRequest">{id}</Box>
+        <Box className="itemRequestBox idRequest">
+          <span className="mobileText">№</span>
+          {id}
+        </Box>
       </TableCell>
       <TableCell>
         <Box
@@ -45,6 +51,7 @@ const ItemRequest = ({
             status.toLowerCase() === "closed" ? "closedRequest" : ""
           }`}
         >
+          <span className="mobileText">{t("status")}:</span>
           <Box
             className="statusColor"
             bgcolor={statusColors[status.toLowerCase() as keyof TStatusColors]}
@@ -53,21 +60,32 @@ const ItemRequest = ({
         </Box>
       </TableCell>
       <TableCell>
-        <Box className="itemRequestBox userNameAgeBox">{`${user_name}, ${age}`}</Box>
+        <Box className="itemRequestBox userNameAgeBox">
+          <span className="mobileText">{t("user")}:</span>{" "}
+          {`${user_name}, ${age}`}
+        </Box>
       </TableCell>
       <TableCell>
-        <Box className="itemRequestBox emailBox">{email}</Box>
+        <Box className="itemRequestBox emailBox">
+          <span className="mobileText">E-mail:</span>
+          {email}
+        </Box>
       </TableCell>
       <TableCell>
-        <Box className="itemRequestBox issueBox">{issue}</Box>
+        <Box className="itemRequestBox issueBox">
+          <span className="mobileText">{t("issue")}:</span>
+          {issue}
+        </Box>
       </TableCell>
       <TableCell>
         <Box className="itemRequestBox dateBox">
+          <span className="mobileText">{t("date")}:</span>
           {momentDate.format("DD.MM.YYYY")}
         </Box>
       </TableCell>
       <TableCell>
         <Box className="itemRequestBox timeBox">
+          <span className="mobileText">{t("time")}:</span>
           {momentDate.format("HH:mm")}
         </Box>
       </TableCell>
