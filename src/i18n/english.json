@@ -535,7 +535,7 @@
       "name": "Name",
       "dateOfBirth": "Date of Birth",
       "changePassword": "Change password",
-      "labelPassword": "Enter the email address you used when registering and we will send you a verification code",
+      "labelPassword": "Please enter the email address you used to register.",
       "oldPassword": "Old password",
       "forgotPassword": "Forgot your password?",
       "newPassword": "New password",
@@ -547,7 +547,8 @@
       "errorRequiredField": "Fill in this field",
       "mismatchPassword": "Password mismatch",
       "errDateOfBirth": "You cannot be under 18 years old",
-      "invalidDate": "Invalid date"
+      "invalidDate": "Invalid date",
+      "send": "Send"
     }
   }
 }

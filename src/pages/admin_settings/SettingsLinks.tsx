@@ -13,8 +13,19 @@ const SettingsLinks = () => {
 
   return (
     <Box className="settingsLinksBox">
-      <NavLink to={"/admin/settings/general"} className={"nav-link"}>
-        <SettingIcon fill={part === "general" ? "#FFFFFF" : "#BFC3CF"} />
+      <NavLink
+        to={"/admin/settings/general"}
+        className={`nav-link ${
+          part?.includes("change_password") ? "active" : ""
+        }`}
+      >
+        <SettingIcon
+          fill={
+            part === "general" || part?.includes("change_password")
+              ? "#FFFFFF"
+              : "#BFC3CF"
+          }
+        />
         {t("general")}
       </NavLink>
       <NavLink to={"/admin/settings/privacy"} className={"nav-link"}>

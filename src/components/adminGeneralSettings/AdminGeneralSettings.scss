@@ -1,8 +1,7 @@
 @import "../../variables";
 
 .adminInformationContainer {
-  width: 100%;
-  width: 585px;
+  width: calc(100% - 380px);
   border-radius: 20px;
   background-color: map-get($theme-colors, "white");
   padding: 23px 20px 43px 20px;

@@ -3,10 +3,12 @@ import AdminMenu from "@components/adminMenu/AdminMenu";
 import SettingsLinks from "./SettingsLinks";
 import { useParams } from "react-router-dom";
 import AdminGeneralSettings from "@components/adminGeneralSettings/AdminGeneralSettings";
+import AdminRecoveryPassword from "@components/adminRecoveryPassword/AdminRecoveryPassword";
 import "./AdminSettingsPage.scss";
 
 type TPartsOfSettings = {
   general: JSX.Element;
+  change_password_email: JSX.Element;
 };
 
 const AdminSettingsPage = () => {
@@ -14,6 +16,7 @@ const AdminSettingsPage = () => {
 
   const partsOsSettings: TPartsOfSettings = {
     general: <AdminGeneralSettings />,
+    change_password_email: <AdminRecoveryPassword />,
   };
 
   return (

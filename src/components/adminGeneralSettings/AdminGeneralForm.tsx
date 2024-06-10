@@ -149,7 +149,7 @@ const AdminGeneralForm = ({
         </TextField>
       </Box>
       <NavLink
-        to={"/admin/settings/change_password"}
+        to={"/admin/settings/change_password_email"}
         className={"linkChangePassword"}
       >
         {t("changePassword")}
