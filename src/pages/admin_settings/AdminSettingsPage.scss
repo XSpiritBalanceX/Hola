@@ -9,13 +9,15 @@
   .adminSettingsContent {
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
     width: 100%;
     .settingsLinksBox {
       display: flex;
       flex-direction: column;
-      width: 320px;
+      width: 330px;
       margin-right: 20px;
       .nav-link {
+        width: auto;
         height: 40px;
         margin-bottom: 20px;
         text-decoration: none;

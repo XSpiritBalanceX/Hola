@@ -62,7 +62,11 @@ const AdminGeneralForm = ({
     formState: { errors },
   } = useForm<TAdminInformation>({
     resolver: yupResolver(validationSchema),
-    values: { name: name, email: email, date_of_birth: date_of_birth },
+    values: {
+      name: name,
+      email: email,
+      date_of_birth: moment(date_of_birth, "YYYY-DD-MM").format("DD.MM.YYYY"),
+    },
   });
 
   const submitChanges = (data: TAdminInformation) => {

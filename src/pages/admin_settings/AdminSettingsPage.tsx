@@ -4,6 +4,7 @@ import SettingsLinks from "./SettingsLinks";
 import { useParams } from "react-router-dom";
 import AdminGeneralSettings from "@components/adminGeneralSettings/AdminGeneralSettings";
 import AdminRecoveryPassword from "@components/adminRecoveryPassword/AdminRecoveryPassword";
+import AdminPrivacy from "@components/adminPrivacy/AdminPrivacy";
 import "./AdminSettingsPage.scss";
 
 type TPartsOfSettings = {
@@ -12,6 +13,7 @@ type TPartsOfSettings = {
   recovery_password_email: JSX.Element;
   change_password: JSX.Element;
   recovery_password: JSX.Element;
+  privacy: JSX.Element;
 };
 
 const AdminSettingsPage = () => {
@@ -23,6 +25,7 @@ const AdminSettingsPage = () => {
     recovery_password_email: <AdminRecoveryPassword />,
     change_password: <AdminRecoveryPassword />,
     recovery_password: <AdminRecoveryPassword />,
+    privacy: <AdminPrivacy />,
   };
 
   return (
