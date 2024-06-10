@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { Box, Button } from "@mui/material";
 import { translate } from "@i18n";
+import { IAdminPhotoProps } from "./TypesAdminGeneral";
 import "./AdminGeneralSettings.scss";
-
-interface IAdminPhotoProps {
-  admin_photo: string;
-}
 
 const AdminPhoto = ({ admin_photo }: IAdminPhotoProps) => {
   const { t } = translate("translate", { keyPrefix: "adminSettingsPage" });

@@ -545,7 +545,9 @@
       "errIncorrectEmail": "Invalid email",
       "errorMeetPassword": "Password does not meet the criteria",
       "errorRequiredField": "Fill in this field",
-      "mismatchPassword": "Password mismatch"
+      "mismatchPassword": "Password mismatch",
+      "errDateOfBirth": "You cannot be under 18 years old",
+      "invalidDate": "Invalid date"
     }
   }
 }

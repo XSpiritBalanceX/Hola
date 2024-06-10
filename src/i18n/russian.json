@@ -545,7 +545,9 @@
       "errIncorrectEmail": "Неверный email",
       "errorMeetPassword": "Пароль не соответствует критериям",
       "errorRequiredField": "Заполните это поле",
-      "mismatchPassword": "Пароли не совпадают"
+      "mismatchPassword": "Пароли не совпадают",
+      "errDateOfBirth": "Вам не может быть меньше 18 лет",
+      "invalidDate": "Неверная дата"
     }
   }
 }
