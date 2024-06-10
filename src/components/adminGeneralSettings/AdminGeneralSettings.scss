@@ -1,1 +1,46 @@
 @import "../../variables";
+
+.adminInformationContainer {
+  width: 100%;
+  width: 585px;
+  border-radius: 20px;
+  background-color: map-get($theme-colors, "white");
+  padding: 23px 20px 43px 20px;
+  .titleAdminSettings {
+    margin: 0;
+    @extend %body-1-bold;
+  }
+  .adminPhotoBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 25px 0 15px 0;
+    img {
+      width: 70px;
+      height: 70px;
+      border-radius: 100%;
+      margin-right: 10px;
+    }
+    .controlsPhotoBox {
+      display: flex;
+      flex-direction: column;
+      .uploadAdminPhoto {
+        width: 200px;
+        height: 34px;
+        @extend %button;
+        @extend %button-blue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 5px;
+      }
+      .deletePhoto {
+        text-transform: none;
+        color: map-get($theme-colors, "blue");
+        width: 200px;
+        height: 34px;
+        @extend %button;
+      }
+    }
+  }
+}

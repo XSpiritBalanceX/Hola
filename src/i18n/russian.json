@@ -527,9 +527,25 @@
       "general": "Общие",
       "privacy": "Политика конфиденциальности",
       "aboutUs": "О Hola",
-      "personalInformation": "Персональная информация",
+      "personalInformation": "Личная информация",
       "language": "Язык",
-      "save": "Сохранить"
+      "save": "Сохранить изменения",
+      "uploadPhoto": "Загрузить фото",
+      "deletePhoto": "Удалить фото",
+      "name": "Имя",
+      "dateOfBirth": "Дата рождения",
+      "changePassword": "Изменить пароль",
+      "labelPassword": "Введите адрес электронной почты, который вы использовали при регистрации, и мы вышлем вам код подтверждения",
+      "oldPassword": "Старый пароль",
+      "forgotPassword": "Забыли пароль?",
+      "newPassword": "Новый пароль",
+      "confirmNewPassword": "Подтвердите новый пароль",
+      "code": "Код подтверждения",
+      "passwordRecovery": "Восстановление пароля",
+      "errIncorrectEmail": "Неверный email",
+      "errorMeetPassword": "Пароль не соответствует критериям",
+      "errorRequiredField": "Заполните это поле",
+      "mismatchPassword": "Пароли не совпадают"
     }
   }
 }
