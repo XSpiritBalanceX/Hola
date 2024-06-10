@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { translate } from "@i18n";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import AdminEmailForm from "./AdminEmailForm";
+import AdminPasswordForm from "./AdminPasswordForm";
 import "./AdminRecoveryPassword.scss";
 
 const AdminRecoveryPassword = () => {
@@ -27,6 +28,7 @@ const AdminRecoveryPassword = () => {
           : t("passwordRecovery")}
       </Button>
       {part?.includes("email") && <AdminEmailForm />}
+      {!part?.includes("email") && <AdminPasswordForm />}
     </Box>
   );
 };

@@ -9,6 +9,9 @@ import "./AdminSettingsPage.scss";
 type TPartsOfSettings = {
   general: JSX.Element;
   change_password_email: JSX.Element;
+  recovery_password_email: JSX.Element;
+  change_password: JSX.Element;
+  recovery_password: JSX.Element;
 };
 
 const AdminSettingsPage = () => {
@@ -17,6 +20,9 @@ const AdminSettingsPage = () => {
   const partsOsSettings: TPartsOfSettings = {
     general: <AdminGeneralSettings />,
     change_password_email: <AdminRecoveryPassword />,
+    recovery_password_email: <AdminRecoveryPassword />,
+    change_password: <AdminRecoveryPassword />,
+    recovery_password: <AdminRecoveryPassword />,
   };
 
   return (
