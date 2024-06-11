@@ -3,6 +3,7 @@ import PaymentIcon from "@components/icons/PaymentIcon";
 import AnalyticsIcon from "@components/icons/AnalyticsIcon";
 import SupportIcon from "@components/icons/SupportIcon";
 import SettingFillIcon from "@components/icons/SettingFillIcon";
+import AddArticleIcon from "@components/icons/AddArticleIcon";
 import { useLocation } from "react-router-dom";
 import { translate } from "@i18n";
 import { NavLink } from "react-router-dom";
@@ -34,6 +35,23 @@ const AdminMenuLinks = () => {
           }
         />
         {t("users")}
+      </NavLink>
+      <NavLink
+        to={"/admin/articles/active"}
+        className={() =>
+          pathname.includes("articles") || pathname.includes("events")
+            ? "nav-link active"
+            : "nav-link"
+        }
+      >
+        <AddArticleIcon
+          fill={
+            pathname.includes("articles") || pathname.includes("events")
+              ? "#554cb6"
+              : "#bfc3cf"
+          }
+        />
+        {t("publications")}
       </NavLink>
       <NavLink to={"/admin/payments/all"} className="nav-link">
         <PaymentIcon

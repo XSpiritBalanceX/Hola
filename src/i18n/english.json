@@ -455,7 +455,8 @@
       "analytics": "Analytics",
       "supportRequests": "Support requests",
       "settings": "Settings",
-      "menu": "Menu"
+      "menu": "Menu",
+      "publications": "Publications"
     },
     "adminUsersPage": {
       "users": "Users",

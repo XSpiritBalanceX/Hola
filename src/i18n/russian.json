@@ -455,7 +455,8 @@
       "analytics": "Аналитика",
       "supportRequests": "Служба поддержки",
       "settings": "Настройки",
-      "menu": "Меню"
+      "menu": "Меню",
+      "publications": "Публикации"
     },
     "adminUsersPage": {
       "users": "Пользователи",
