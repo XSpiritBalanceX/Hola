@@ -1,1 +1,115 @@
 @import "../../variables";
+
+.adminCreateContainer {
+  padding: 35px 20px 60px 20px !important;
+  display: flex !important;
+  flex-direction: row;
+  width: 100% !important;
+  max-width: 100vw !important;
+  @media all and (max-width: 55em) {
+    flex-direction: column;
+  }
+  .adminCreateContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    .titleCreateAdmin {
+      @extend %h4;
+      margin: 0 0 20px 0;
+    }
+    .navigateCreateAdmin {
+      margin: 0 0 20px 0;
+      padding: 0;
+      @extend %h5;
+      text-transform: none;
+      color: map-get($theme-colors, "black");
+      svg {
+        margin-right: 15px;
+        fill: map-get($theme-colors, "black");
+      }
+    }
+    .createNewAdminForm {
+      width: 100%;
+      max-width: 312px;
+      @media all and (max-width: 40em) {
+        max-width: 100%;
+      }
+      .dateOfBirthAdminBox {
+        margin-bottom: 10px;
+      }
+      .newAdminFieldBox {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        .controlledFieldBox {
+          margin-bottom: 10px;
+        }
+        .newAdminLabel {
+          @extend %body-2;
+          color: map-get($theme-colors, "gray-2");
+          margin-bottom: 2px;
+          padding-left: 15px;
+        }
+        .newAdminLabel.errorAdminLabel {
+          color: map-get($theme-colors, "error");
+          @extend %body-2-medium;
+        }
+        .errorMessage {
+          @extend %messages;
+          margin-bottom: 10px;
+          color: map-get($theme-colors, "error");
+          padding-left: 10px;
+        }
+        .errorIcon {
+          color: map-get($theme-colors, "error");
+        }
+        .newAdminField {
+          height: 34px;
+          width: 100%;
+          .MuiInputBase-root.MuiInputBase-formControl {
+            height: 34px;
+            border-radius: 15px;
+            @extend %body-2-medium;
+            display: flex;
+            align-items: center;
+            background-color: map-get($theme-colors, "white");
+          }
+          input,
+          .MuiInputBase-input {
+            height: 30px;
+            padding: 0 15px;
+            color: map-get($theme-colors, "black");
+            width: 100%;
+            @extend %body-2-medium;
+          }
+          fieldset {
+            border: solid 1px map-get($theme-colors, "gray-2");
+          }
+          .MuiInputBase-root.MuiInputBase-formControl.Mui-error {
+            border: none;
+            background-color: map-get($theme-colors, "white");
+            fieldset {
+              border: solid 2px map-get($theme-colors, "error");
+            }
+          }
+          .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+            border: none;
+            background-color: map-get($theme-colors, "white");
+            fieldset {
+              border: solid 2px map-get($theme-colors, "blue");
+            }
+          }
+        }
+      }
+      .createNewAdminButton {
+        @extend %button;
+        @extend %button-blue;
+        text-transform: none;
+        width: 100%;
+        height: 34px;
+        margin-top: 10px;
+      }
+    }
+  }
+}

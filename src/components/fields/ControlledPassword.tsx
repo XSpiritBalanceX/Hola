@@ -106,6 +106,7 @@ const ControlledPassword = <T extends FieldValues>({
                 type={showPassword ? "text" : "password"}
                 onFocus={handleShowHints}
                 onBlur={handleHideHints}
+                error={!!error}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
