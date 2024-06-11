@@ -24,6 +24,7 @@ import AdminPaymentsPage from "@pages/admin_payments/AdminPaymentsPage";
 import AdminAnalyticsPage from "@pages/admin_analytics/AdminAnalyticsPage";
 import AdminSupportPage from "@pages/admin_support/AdminSupportPage";
 import AdminSettingsPage from "@pages/admin_settings/AdminSettingsPage";
+import CreateAdminPage from "@pages/admin_create_admin/CreateAdminPage";
 
 const RouterComponent = () => {
   const appRoutesUnauth = [
@@ -65,6 +66,7 @@ const RouterComponent = () => {
     { path: "/admin/analytics", element: <AdminAnalyticsPage /> },
     { path: "/admin/support", element: <AdminSupportPage /> },
     { path: "/admin/settings/:part", element: <AdminSettingsPage /> },
+    { path: "/admin/users/create_admin", element: <CreateAdminPage /> },
   ];
 
   return (

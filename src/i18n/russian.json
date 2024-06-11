@@ -476,7 +476,8 @@
       "matches": "Совпадения",
       "showChat": "Показать переписку",
       "userChat": "Личная переписка пользователей",
-      "emptyUsers": "Пользователи не найдены"
+      "emptyUsers": "Пользователи не найдены",
+      "createAdmin": "Создать администратора"
     },
     "adminPaymentsPage": {
       "payments": "Платежи",
@@ -549,6 +550,19 @@
       "errDateOfBirth": "Вам не может быть меньше 18 лет",
       "invalidDate": "Неверная дата",
       "send": "Отправить"
+    },
+    "adminCreateAdminPage": {
+      "users": "Пользователь",
+      "createAdmin": "Создать администратора",
+      "name": "Имя",
+      "dateOfBirth": "Дата рождения",
+      "password": "Пароль",
+      "save": "Сохранить",
+      "errIncorrectEmail": "Неверный email",
+      "errorMeetPassword": "Пароль не соответствует критериям",
+      "errorRequiredField": "Заполните это поле",
+      "errDateOfBirth": "Вам не может быть меньше 18 лет",
+      "invalidDate": "Неверная дата"
     }
   }
 }

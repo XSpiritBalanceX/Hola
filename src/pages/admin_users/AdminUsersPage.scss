@@ -67,9 +67,54 @@
     }
     .filterButtonsBox {
       margin: 15px 0 25px 0;
-      @media all and (max-width: 40em) {
-        display: flex;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      @media all and (max-width: 60em) {
         flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+      @media all and (max-width: 55em) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      @media all and (max-width: 45em) {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+      .createAdminButtonBox {
+        @media all and (max-width: 60em) {
+          margin-top: 10px;
+        }
+        @media all and (max-width: 55em) {
+          margin-top: 0;
+        }
+        @media all and (max-width: 45em) {
+          margin-top: 10px;
+        }
+        @media all and (max-width: 40em) {
+          width: 100%;
+          margin-top: 0;
+        }
+        button {
+          padding: 7px 20px;
+          text-transform: none;
+          @extend %button;
+          @extend %button-blue;
+          height: 35px;
+          @media all and (max-width: 40em) {
+            width: 100%;
+          }
+        }
+      }
+      .filtersBox {
+        @media all and (max-width: 40em) {
+          width: 100%;
+        }
       }
       .filterButton {
         padding: 7px 20px;

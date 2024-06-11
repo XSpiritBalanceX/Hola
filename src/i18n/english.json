@@ -476,7 +476,8 @@
       "matches": "Matches",
       "showChat": "Show correspondence",
       "userChat": "Users private correspondence",
-      "emptyUsers": "No users found"
+      "emptyUsers": "No users found",
+      "createAdmin": "Create an administrator"
     },
     "adminPaymentsPage": {
       "payments": "Payments",
@@ -549,6 +550,19 @@
       "errDateOfBirth": "You cannot be under 18 years old",
       "invalidDate": "Invalid date",
       "send": "Send"
+    },
+    "adminCreateAdminPage": {
+      "users": "Users",
+      "createAdmin": "Create an administrator",
+      "name": "Name",
+      "dateOfBirth": "Date of Birth",
+      "password": "Password",
+      "save": "Save",
+      "errIncorrectEmail": "Invalid email",
+      "errorMeetPassword": "Password does not meet the criteria",
+      "errorRequiredField": "Fill in this field",
+      "errDateOfBirth": "You cannot be under 18 years old",
+      "invalidDate": "Invalid date"
     }
   }
 }
