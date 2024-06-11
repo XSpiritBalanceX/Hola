@@ -456,7 +456,9 @@
       "supportRequests": "Служба поддержки",
       "settings": "Настройки",
       "menu": "Меню",
-      "publications": "Публикации"
+      "publications": "Публикации",
+      "article": "Статьи",
+      "events": "События"
     },
     "adminUsersPage": {
       "users": "Пользователи",

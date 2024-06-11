@@ -456,7 +456,9 @@
       "supportRequests": "Support requests",
       "settings": "Settings",
       "menu": "Menu",
-      "publications": "Publications"
+      "publications": "Publications",
+      "article": "Articles",
+      "events": "Events"
     },
     "adminUsersPage": {
       "users": "Users",
