@@ -6,16 +6,32 @@
   flex-direction: row;
   width: 100% !important;
   max-width: 100vw !important;
+  @media all and (max-width: 55em) {
+    flex-direction: column;
+  }
   .adminSettingsContent {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     width: 100%;
+    @media all and (max-width: 58em) {
+      flex-direction: column;
+    }
     .settingsLinksBox {
       display: flex;
       flex-direction: column;
       width: 330px;
       margin-right: 20px;
+      @media all and (max-width: 58em) {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        margin-right: 0;
+      }
+      @media all and (max-width: 40em) {
+        flex-direction: column;
+        width: auto;
+      }
       .nav-link {
         width: auto;
         height: 40px;
@@ -29,9 +45,23 @@
         padding: 10px 22px;
         @extend %body-2;
         color: map-get($theme-colors, "gray-2");
+        @media all and (max-width: 58em) {
+          margin-right: 20px;
+          width: 100%;
+        }
+        @media all and (max-width: 40em) {
+          margin: 0 0 20px 0;
+          padding: 10px 0;
+        }
         svg {
           margin-right: 10px;
+          @media all and (max-width: 40em) {
+            margin: 0 10px 0 22px;
+          }
         }
+      }
+      .nav-link:last-child {
+        margin-right: 0;
       }
       .nav-link.active {
         background-color: map-get($theme-colors, "blue");

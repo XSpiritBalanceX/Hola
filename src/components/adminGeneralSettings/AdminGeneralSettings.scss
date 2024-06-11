@@ -5,6 +5,9 @@
   border-radius: 20px;
   background-color: map-get($theme-colors, "white");
   padding: 23px 20px 43px 20px;
+  @media all and (max-width: 58em) {
+    width: auto;
+  }
   .titleAdminSettings {
     margin: 0;
     @extend %body-1-bold;
@@ -51,6 +54,9 @@
       flex-direction: column;
       max-width: 312px;
       width: 100%;
+      @media all and (max-width: 40em) {
+        max-width: 100%;
+      }
       .adminFormLabel {
         @extend %body-2;
         color: map-get($theme-colors, "gray-2");

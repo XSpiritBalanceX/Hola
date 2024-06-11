@@ -5,7 +5,10 @@
   border-radius: 20px;
   background-color: map-get($theme-colors, "white");
   padding: 23px 20px 23px 20px;
-  .aa {
+  @media all and (max-width: 58em) {
+    width: auto;
+  }
+  .itemPrivacy {
     margin: 0 0 10px 0;
     @extend %body-2;
   }

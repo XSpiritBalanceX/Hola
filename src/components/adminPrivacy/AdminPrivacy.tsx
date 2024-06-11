@@ -19,7 +19,7 @@ const AdminPrivacy = () => {
     <Box className="adminPrivacyBox">
       <p className="titlePrivacy">{t("privacy")}</p>
       {mockData.map((el, ind) => (
-        <Box key={ind} className="aa">
+        <Box key={ind} className="itemPrivacy">
           {el}
         </Box>
       ))}
