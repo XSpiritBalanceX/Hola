@@ -26,7 +26,8 @@ const mockUserData = [
     name: "Matt",
     age: 30,
     email: "mat@gmail.com",
-    acc_type: "free",
+    acc_type: "user",
+    subscription_type: "free",
     avatar:
       "https://rus.team/images/article/58829/avatar_16x9.webp?actual=1604332666",
     photos: [
@@ -87,7 +88,8 @@ const mockUserData = [
     name: "Kira",
     age: 29,
     email: "Kira1997@gmail.com",
-    acc_type: "free",
+    acc_type: "admin",
+    subscription_type: "",
     avatar:
       "https://gallery.alexandersakulin.com/storage/app/media/gallery/_Portrait/2021-Vika-EW/09-jun_21-EW-108783-v2_3-1800-60p.jpg",
     photos: [
@@ -147,7 +149,8 @@ const mockUserData = [
     name: "Mike",
     age: 23,
     email: "xMikex@gmail.com",
-    acc_type: "free",
+    acc_type: "user",
+    subscription_type: "free",
     avatar: "https://www.kino-teatr.ru/acter/album/52909/929591.jpg",
     photos: [
       "https://cs7.pikabu.ru/post_img/2019/03/08/4/15520220501617672.jpg",
@@ -231,7 +234,7 @@ const AdminUsersPage = () => {
     !id && navigate(`/admin/users`);
   };
 
-  const tableHead = [t("user"), "E-mail", t("accType")];
+  const tableHead = [t("user"), t("accType"), "E-mail", t("subscription")];
 
   const foundUser = users.find((el) => el.id === selectedUser);
 
@@ -283,6 +286,7 @@ const AdminUsersPage = () => {
                     email={el.email}
                     photo={el.avatar}
                     acc_type={el.acc_type}
+                    subscription_type={el.subscription_type}
                     cbHandleSelectedUser={handleSelectedUser}
                   />
                 ))

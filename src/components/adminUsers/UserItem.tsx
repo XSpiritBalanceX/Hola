@@ -11,6 +11,7 @@ const UserItem = ({
   photo,
   email,
   acc_type,
+  subscription_type,
   cbHandleSelectedUser,
 }: IUserItemProps) => {
   const { t } = translate("translate", { keyPrefix: "adminUsersPage" });
@@ -28,15 +29,25 @@ const UserItem = ({
         </Box>
       </TableCell>
       <TableCell>
+        <Box
+          className={`boxWithAccType ${acc_type === "user" ? "" : "adminText"}`}
+        >
+          <span className="mobileContent">{t("accType")}: </span>
+          {acc_type === "user" ? t("user") : t("admin")}
+        </Box>
+      </TableCell>
+      <TableCell>
         <Box className="boxWithEmail">
           <span className="mobileContent">E-mail: </span>
           {email}{" "}
         </Box>
       </TableCell>
       <TableCell>
-        <Box className="boxWithAccType">
-          <span className="mobileContent">{t("accType")}: </span>
-          {acc_type}
+        <Box className="boxWithSubscriptionType">
+          {acc_type !== "admin" && (
+            <span className="mobileContent">{t("subscription")}: </span>
+          )}
+          {subscription_type}
         </Box>
       </TableCell>
     </TableRow>

@@ -459,6 +459,7 @@
     },
     "adminUsersPage": {
       "users": "Users",
+      "admin": "Administrator",
       "all": "All",
       "new": "New",
       "suspended": "Suspended",

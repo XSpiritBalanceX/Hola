@@ -5,6 +5,7 @@ export interface IUserItemProps {
   photo: string;
   email: string;
   acc_type: string;
+  subscription_type: string;
   cbHandleSelectedUser: (id: number) => void;
 }
 
@@ -15,6 +16,7 @@ interface IUserInformation {
   age: number;
   email: string;
   acc_type: string;
+  subscription_type: string;
   avatar: string;
   photos: string[];
   description: string;
