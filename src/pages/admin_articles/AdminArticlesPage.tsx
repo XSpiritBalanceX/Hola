@@ -1,6 +1,7 @@
 import { Container, Box } from "@mui/material";
 import AdminMenu from "@components/adminMenu/AdminMenu";
 import AdminPublicationsMenu from "@components/adminPublicationsMenu/AdminPublicationsMenu";
+import AdminArticlesMenu from "./AdminArticlesMenu";
 import { translate } from "@i18n";
 import "./AdminArticlesPage.scss";
 
@@ -11,8 +12,10 @@ const AdminArticlesPage = () => {
     <Container className="adminArticlesPageContainer">
       <AdminMenu />
       <Box className="adminArticlesContent">
+        <p className="titleArticles">{t("publications")}</p>
         <Box className="adminArticlesBox">
           <AdminPublicationsMenu />
+          <AdminArticlesMenu />
         </Box>
       </Box>
     </Container>

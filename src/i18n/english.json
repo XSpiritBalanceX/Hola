@@ -567,6 +567,22 @@
       "errorRequiredField": "Fill in this field",
       "errDateOfBirth": "You cannot be under 18 years old",
       "invalidDate": "Invalid date"
+    },
+    "adminArticlesPage": {
+      "publications": "Publications",
+      "active": "Active",
+      "archive": "Archive",
+      "emptyArticle": "Create an article",
+      "uploadPhoto": "Upload a photo",
+      "deletePhoto": "Delete photo",
+      "editArticle": "Edit article",
+      "deleteArticle": "Delete article",
+      "newArticle": "New article",
+      "cover": "Cover",
+      "upload": "Download",
+      "title": "Heading",
+      "text": "Text",
+      "publish": "Publish"
     }
   }
 }

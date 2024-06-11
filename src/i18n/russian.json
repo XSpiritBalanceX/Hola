@@ -567,6 +567,22 @@
       "errorRequiredField": "Заполните это поле",
       "errDateOfBirth": "Вам не может быть меньше 18 лет",
       "invalidDate": "Неверная дата"
+    },
+    "adminArticlesPage": {
+      "publications": "Публикации",
+      "active": "Активная",
+      "archive": "Архив",
+      "emptyArticle": "Создайте статью",
+      "uploadPhoto": "Загрузить фото",
+      "deletePhoto": "Удалить фото",
+      "editArticle": "Редактировать статью",
+      "deleteArticle": "Удалить статью",
+      "newArticle": "Новая статья",
+      "cover": "Обложка",
+      "upload": "Загрузить",
+      "title": "Заголовок",
+      "text": "Текст",
+      "publish": "Опубликовать"
     }
   }
 }
