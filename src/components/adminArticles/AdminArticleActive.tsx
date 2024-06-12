@@ -8,6 +8,7 @@ import { IAdminArticleActiveProps } from "./TypesAdminArticles";
 import "./AdminArticles.scss";
 
 const mockData = {
+  id: 10,
   photo:
     /*  "https://images.pexels.com/photos/3680219/pexels-photo-3680219.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" */ "",
   title: "Lorem ipsum dolor sit amet",
