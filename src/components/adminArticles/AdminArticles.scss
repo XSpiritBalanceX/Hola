@@ -11,6 +11,8 @@
 .activeArticleContent {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  max-width: 721px;
   .activeArticlePhotoBox {
     display: flex;
     flex-direction: row;
@@ -44,6 +46,42 @@
         align-items: center;
         justify-content: center;
       }
+    }
+  }
+  .activeArticleTitleBox {
+    margin: 15px 0 2px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    p {
+      margin: 0 10px 0 0;
+      @extend %body-1-bold;
+    }
+    button {
+      text-transform: none;
+      @extend %button;
+      padding: 0;
+      color: map-get($theme-colors, "blue");
+      svg {
+        margin-right: 10px;
+      }
+    }
+  }
+  .activeArticleText {
+    @extend %body-2;
+    white-space: pre-line;
+  }
+  .deleteArticleButton {
+    margin: 15px 0 20px 0;
+    text-transform: none;
+    height: 24px;
+    padding: 0;
+    @extend %button;
+    color: map-get($theme-colors, "red");
+    svg {
+      margin-right: 10px;
     }
   }
 }

@@ -19,7 +19,11 @@ const AdminArticlesPage = () => {
         <p className="titleArticles">{t("publications")}</p>
         <Box className="adminArticlesBox">
           <AdminPublicationsMenu />
-          <AdminArticlesMenu />
+          {part !== "new" ? (
+            <AdminArticlesMenu />
+          ) : (
+            <p className="newArticleTitle">{t("newArticle")}</p>
+          )}
           {part === "active" && <AdminArticleActive />}
         </Box>
       </Box>

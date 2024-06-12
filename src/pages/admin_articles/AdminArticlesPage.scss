@@ -31,6 +31,11 @@
           color: map-get($theme-colors, "blue");
         }
       }
+      .newArticleTitle {
+        @extend %body-1-medium;
+        color: map-get($theme-colors, "blue");
+        margin: 20px 0 15px 0;
+      }
     }
   }
 }
