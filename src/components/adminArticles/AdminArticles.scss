@@ -85,3 +85,45 @@
     }
   }
 }
+
+.archiveArticlesBox {
+  max-width: 850px;
+  .itemArchiveArticle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 15px;
+    &:hover {
+      cursor: pointer;
+    }
+    img,
+    .emptyPhotoArchiveArticle {
+      width: 121px;
+      height: 121px;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+    .emptyPhotoArchiveArticle {
+      background-color: map-get($theme-colors, "black");
+      opacity: 0.2;
+    }
+    .articleInformationBox {
+      display: flex;
+      flex-direction: column;
+      width: calc(100% - 131px);
+      p {
+        margin: 0 0 2px 0;
+        @extend %body-1-bold;
+      }
+      .articleArchiveText {
+        @extend %body-2;
+      }
+    }
+  }
+  .archivePagination {
+    margin: 10px 0 0 0;
+    .MuiButtonBase-root.Mui-selected {
+      background-color: map-get($theme-colors, "light-blue-2");
+    }
+  }
+}

@@ -788,13 +788,20 @@
       color: map-get($theme-colors, "black");
     }
   }
+  .activateArticleButton,
   .closeArticleButton {
     text-transform: none;
-    @extend %button-blue;
     @extend %button;
     padding: 10px 20px;
     border-radius: 0;
     height: auto;
+  }
+  .activateArticleButton {
+    color: map-get($theme-colors, "blue");
+    margin-right: 10px;
+  }
+  .closeArticleButton {
+    @extend %button-blue;
   }
 }
 
