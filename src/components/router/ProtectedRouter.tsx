@@ -14,7 +14,7 @@ const ProtectedRouter = ({ children }: IProtectedRouterProps) => {
   if (!token || !isLogin) {
     return <Navigate to={"/login"} replace />;
   } else if (!isUser) {
-    return <Navigate to={"/admin/users"} replace />;
+    return <Navigate to={"/admin/users/all/1"} replace />;
   }
   return children;
 };

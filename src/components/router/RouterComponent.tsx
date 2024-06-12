@@ -57,7 +57,7 @@ const RouterComponent = () => {
   ];
 
   const appRoutesAdmin = [
-    { path: "/admin/users", element: <AdminUsersPage /> },
+    { path: "/admin/users/:type/:page", element: <AdminUsersPage /> },
     { path: "/admin/user/:userID", element: <AdminUsersPage /> },
     {
       path: "/admin/chat/:userID/:companionID",

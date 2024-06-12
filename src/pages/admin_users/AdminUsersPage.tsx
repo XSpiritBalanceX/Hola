@@ -231,7 +231,7 @@ const AdminUsersPage = () => {
 
   const handleSelectedUser = (id: number | null) => {
     id && navigate(`/admin/user/${id}`);
-    !id && navigate(`/admin/users`);
+    !id && navigate(`/admin/users/all/1`);
   };
 
   const tableHead = [t("user"), t("accType"), "E-mail", t("subscription")];

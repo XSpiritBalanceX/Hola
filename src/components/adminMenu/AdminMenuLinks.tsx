@@ -16,7 +16,7 @@ const AdminMenuLinks = () => {
   return (
     <>
       <NavLink
-        to={"/admin/users"}
+        to={"/admin/users/all/1"}
         className={() =>
           pathname.includes("users") ||
           pathname.includes("chat") ||

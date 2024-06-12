@@ -18,13 +18,20 @@ const ControlsListOfUsers = ({
 
   const handleChooseFilter = (e: React.MouseEvent<HTMLButtonElement>) => {
     cbHandleFilter(e.currentTarget.name);
+    navigate(`/admin/users/${e.currentTarget.name}/1`);
   };
 
   const handleNavigate = () => {
     navigate("/admin/users/create_admin");
   };
 
-  const filterButtons = ["all", "new", "suspended"];
+  const filterButtons = [
+    { label: t("all"), value: "all" },
+    { label: "Premium", value: "premium" },
+    { label: "Premium Student", value: "student" },
+    { label: "Free", value: "free" },
+    { label: t("blocked"), value: "blocked" },
+  ];
 
   return (
     <Box className="filterButtonsBox">
@@ -33,13 +40,13 @@ const ControlsListOfUsers = ({
           <Button
             key={ind}
             type="button"
-            name={el}
+            name={el.value}
             onClick={handleChooseFilter}
             className={`filterButton ${
-              selectedFilter === el ? "selectedButton" : ""
+              selectedFilter === el.value ? "selectedButton" : ""
             }`}
           >
-            {t(el)}
+            {el.label}
           </Button>
         ))}
       </Box>

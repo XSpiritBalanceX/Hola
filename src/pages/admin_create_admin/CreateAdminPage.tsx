@@ -12,7 +12,7 @@ const CreateAdminPage = () => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate("/admin/users");
+    navigate("/admin/users/all/1");
   };
   return (
     <Container className="adminCreateContainer">

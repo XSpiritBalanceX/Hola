@@ -481,7 +481,8 @@
       "showChat": "Show correspondence",
       "userChat": "Users private correspondence",
       "emptyUsers": "No users found",
-      "createAdmin": "Create an administrator"
+      "createAdmin": "Create an administrator",
+      "blocked": "Blocked"
     },
     "adminPaymentsPage": {
       "payments": "Payments",
