@@ -68,7 +68,7 @@ const AdminArticlesArchive = () => {
   const { part } = useParams();
   const navigate = useNavigate();
 
-  const [isOpenArticle, setIsOpenArticle] = useState(true);
+  const [isOpenArticle, setIsOpenArticle] = useState(false);
   const [selectedArticle, setSelectedArticle] = useState<null | number>(null);
 
   const [limit] = useState(5);
