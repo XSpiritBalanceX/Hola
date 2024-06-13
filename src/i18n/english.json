@@ -583,7 +583,8 @@
       "upload": "Download",
       "title": "Heading",
       "text": "Text",
-      "publish": "Publish"
+      "publish": "Publish",
+      "errorRequiredField": "Fill in this field"
     }
   }
 }

@@ -127,3 +127,121 @@
     }
   }
 }
+
+.changeArticleBox {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  .labelArticle {
+    @extend %body-2;
+    color: map-get($theme-colors, "gray-2");
+    margin: 0 0 10px 0;
+  }
+  .errorLabelArticle {
+    @extend %body-2-bold;
+    color: map-get($theme-colors, "error");
+  }
+  .errorMessage {
+    @extend %messages;
+    margin: 0 0 10px 0;
+    margin-bottom: 10px;
+    color: map-get($theme-colors, "error");
+    padding-left: 15px;
+  }
+  .articlePhotoBox,
+  .controlArticleBox {
+    display: flex;
+    flex-direction: column;
+  }
+  .articlePhotoBox {
+    margin-bottom: 15px;
+    img,
+    .uploadArticlePhotoLabel {
+      width: 120px;
+      height: 120px;
+      border-radius: 10px;
+    }
+    .uploadArticlePhotoLabel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: map-get($theme-colors, "blue");
+      @extend %body-2;
+      border: solid 2px map-get($theme-colors, "gray-2");
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  .controlArticleBox {
+    .labelArticle {
+      padding-left: 10px;
+    }
+    .articleField {
+      height: 34px;
+      .MuiInputBase-root.MuiInputBase-formControl {
+        height: 34px;
+        border-radius: 10px;
+        @extend %body-2-medium;
+        display: flex;
+        align-items: center;
+        background-color: map-get($theme-colors, "white");
+        fieldset {
+          border: solid 2px map-get($theme-colors, "gray-2");
+        }
+      }
+
+      input,
+      .MuiInputBase-input {
+        height: 30px;
+        padding: 0 15px;
+        color: map-get($theme-colors, "black");
+        width: 100%;
+        @extend %body-2-medium;
+      }
+      .MuiInputBase-root.MuiInputBase-formControl.Mui-error {
+        border: none;
+        background-color: map-get($theme-colors, "white");
+        fieldset {
+          border: solid 2px map-get($theme-colors, "error");
+        }
+      }
+      .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+        border: none;
+        background-color: map-get($theme-colors, "white");
+        .MuiSelect-select {
+          background-color: map-get($theme-colors, "white");
+        }
+        fieldset {
+          border: solid 2px map-get($theme-colors, "blue");
+        }
+      }
+    }
+    .textAreaArticle {
+      height: 327px;
+      border: solid 2px map-get($theme-colors, "gray-2");
+      border-radius: 15px;
+      width: 100%;
+      max-width: 96%;
+      padding: 5px 10px;
+      resize: none;
+      @extend %body-2;
+      &:focus {
+        outline: none;
+        border: solid 2px map-get($theme-colors, "blue") !important;
+      }
+    }
+    .textAreaArticle.errorTextArea {
+      border: solid 2px map-get($theme-colors, "error");
+    }
+  }
+  .submitArticleButton {
+    @extend %button;
+    @extend %button-blue;
+    text-transform: none;
+    height: 34px;
+    margin: 20px 0 80px 0;
+    width: 312px;
+  }
+}
