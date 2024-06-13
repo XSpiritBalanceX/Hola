@@ -17,6 +17,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    @media all and (max-width: 40em) {
+      width: 100%;
+    }
     img,
     .emptyPhotoArticles {
       width: 121px;
@@ -31,6 +34,9 @@
     .activeArticlesButtons {
       display: flex;
       flex-direction: column;
+      @media all and (max-width: 40em) {
+        width: calc(100% - 131px);
+      }
       button,
       .uploadButton {
         height: 34px;
@@ -38,6 +44,9 @@
         @extend %button;
         color: map-get($theme-colors, "blue");
         width: 200px;
+        @media all and (max-width: 40em) {
+          width: 100%;
+        }
       }
       .uploadButton {
         @extend %button-blue;
@@ -45,6 +54,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        @media all and (max-width: 40em) {
+          margin-bottom: 10px;
+        }
       }
     }
   }
@@ -55,6 +67,11 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    @media all and (max-width: 40em) {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
     p {
       margin: 0 10px 0 0;
       @extend %body-1-bold;
@@ -64,6 +81,10 @@
       @extend %button;
       padding: 0;
       color: map-get($theme-colors, "blue");
+      @media all and (max-width: 40em) {
+        order: -1;
+        margin-bottom: 10px;
+      }
       svg {
         margin-right: 10px;
       }
@@ -93,6 +114,13 @@
     flex-direction: row;
     align-items: center;
     margin-bottom: 15px;
+    @media all and (max-width: 40em) {
+      flex-direction: column;
+      align-items: flex-start;
+      border: solid 1px map-get($theme-colors, "gray-2");
+      border-radius: 15px;
+      padding: 10px;
+    }
     &:hover {
       cursor: pointer;
     }
@@ -102,6 +130,9 @@
       height: 121px;
       border-radius: 5px;
       margin-right: 10px;
+      @media all and (max-width: 40em) {
+        margin: 0 auto 10px auto;
+      }
     }
     .emptyPhotoArchiveArticle {
       background-color: map-get($theme-colors, "black");
@@ -111,6 +142,9 @@
       display: flex;
       flex-direction: column;
       width: calc(100% - 131px);
+      @media all and (max-width: 40em) {
+        width: 100%;
+      }
       p {
         margin: 0 0 2px 0;
         @extend %body-1-bold;
@@ -231,6 +265,9 @@
         outline: none;
         border: solid 2px map-get($theme-colors, "blue") !important;
       }
+      @media all and (max-width: 40em) {
+        max-width: 92%;
+      }
     }
     .textAreaArticle.errorTextArea {
       border: solid 2px map-get($theme-colors, "error");
@@ -243,5 +280,8 @@
     height: 34px;
     margin: 20px 0 80px 0;
     width: 312px;
+    @media all and (max-width: 40em) {
+      width: 100%;
+    }
   }
 }
