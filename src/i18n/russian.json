@@ -585,6 +585,29 @@
       "text": "Текст",
       "publish": "Опубликовать",
       "errorRequiredField": "Заполните это поле"
+    },
+    "adminEventsPage": {
+      "publications": "Публикации",
+      "active": "Активные",
+      "archive": "Архив",
+      "emptyEvents": "Добавьте события",
+      "deleteEvent": "Удалить событие",
+      "changeEvent": "Изменить событие",
+      "newEvent": "Новое событие",
+      "cover": "Обложка",
+      "upload": "Загрузить",
+      "category": "Категория",
+      "cinema": "Кино",
+      "theatre": "Театр",
+      "concert": "Концерт",
+      "art": "Искусство",
+      "creation": "Творчество",
+      "title": "Заголовок",
+      "time": "Время проведения",
+      "date": "Дата проведения",
+      "place": "Место проведения",
+      "publish": "Опубликовать",
+      "errorRequiredField": "Заполните это поле"
     }
   }
 }

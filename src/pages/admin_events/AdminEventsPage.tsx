@@ -3,6 +3,7 @@ import AdminMenu from "@components/adminMenu/AdminMenu";
 import { translate } from "@i18n";
 import { useParams } from "react-router-dom";
 import AdminPublicationsMenu from "@components/adminPublicationsMenu/AdminPublicationsMenu";
+import AdminEventsMenu from "./AdminEventsMenu";
 import "./AdminEventsPage.scss";
 
 const AdminEventsPage = () => {
@@ -17,6 +18,13 @@ const AdminEventsPage = () => {
         <p className="titleEvents">{t("publications")}</p>
         <Box className="adminEventsBox">
           <AdminPublicationsMenu />
+          {part === "new" ? (
+            <p className="newEventTitle">{t("newEvent")}</p>
+          ) : part === "edit" ? (
+            <p className="newEventTitle">{t("changeEvent")}</p>
+          ) : (
+            <AdminEventsMenu />
+          )}
         </Box>
       </Box>
     </Container>

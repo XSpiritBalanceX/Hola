@@ -19,6 +19,23 @@
       background-color: map-get($theme-colors, "white");
       padding: 20px 20px 22px 20px;
       min-height: 78vh;
+      .newEventTitle {
+        @extend %body-1-medium;
+        color: map-get($theme-colors, "blue");
+        margin: 20px 0 15px 0;
+      }
+      .adminEventsMenuBox {
+        margin: 20px 0 15px 0;
+        .nav-link {
+          @extend %body-1-medium;
+          margin-right: 34px;
+          text-decoration: none;
+          color: map-get($theme-colors, "gray-2");
+        }
+        .nav-link.active {
+          color: map-get($theme-colors, "blue");
+        }
+      }
     }
   }
 }

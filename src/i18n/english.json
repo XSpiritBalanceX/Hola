@@ -585,6 +585,29 @@
       "text": "Text",
       "publish": "Publish",
       "errorRequiredField": "Fill in this field"
+    },
+    "adminEventsPage": {
+      "publications": "Publications",
+      "active": "Active",
+      "archive": "Archive",
+      "emptyEvents": "Add events",
+      "deleteEvent": "Delete event",
+      "changeEvent": "Edit event",
+      "newEvent": "New event",
+      "cover": "Cover",
+      "upload": "Download",
+      "category": "Category",
+      "cinema": "Movie",
+      "theatre": "Theater",
+      "concert": "Concert",
+      "art": "Art",
+      "creation": "Creation",
+      "title": "Heading",
+      "time": "Time of the event",
+      "date": "The date of the event",
+      "place": "Location",
+      "publish": "Publish",
+      "errorRequiredField": "Fill in this field"
     }
   }
 }
