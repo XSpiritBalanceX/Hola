@@ -61,3 +61,67 @@
     }
   }
 }
+
+.archiveEventsBox {
+  .itemArchiveEventBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 110px;
+    margin-bottom: 15px;
+    max-width: 500px;
+    .eventPhotoArchive,
+    .emptyEventPhotoArchive {
+      width: 110px;
+      height: 110px;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+    .emptyEventPhotoArchive {
+      background-color: map-get($theme-colors, "black");
+      opacity: 0.2;
+    }
+    .itemArchiveEventInformation {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 110px;
+      .eventArchiveCategoryName {
+        .controlsEventArchiveBox {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          p {
+            margin: 0;
+            @extend %body-2-bold;
+          }
+          .publishEventButton {
+            padding: 0;
+            text-transform: none;
+            @extend %button;
+            color: map-get($theme-colors, "blue");
+            margin-left: 10px;
+            border-bottom: solid 1px map-get($theme-colors, "blue");
+            border-radius: 0;
+          }
+        }
+        .eventName {
+          @extend %h4;
+          margin-top: 3px;
+        }
+      }
+      .itemArchiveEventPlaceDate {
+        p {
+          margin: 0;
+          @extend %caption;
+        }
+      }
+    }
+  }
+  .archivePaginationEvents {
+    margin: 10px 0 0 0;
+    .MuiButtonBase-root.Mui-selected {
+      background-color: map-get($theme-colors, "light-blue-2");
+    }
+  }
+}

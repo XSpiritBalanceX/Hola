@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import AdminPublicationsMenu from "@components/adminPublicationsMenu/AdminPublicationsMenu";
 import AdminEventsMenu from "./AdminEventsMenu";
 import AdminEventActive from "@components/adminEvents/AdminEventActive";
+import AdminEventsArchive from "@components/adminEvents/AdminEventsArchive";
 import "./AdminEventsPage.scss";
 
 export type TEvent = {
@@ -46,6 +47,7 @@ const AdminEventsPage = () => {
           {part === "active" && (
             <AdminEventActive cbHandleEditEvent={handleEditEvent} />
           )}
+          {part?.includes("archive") && <AdminEventsArchive />}
         </Box>
       </Box>
     </Container>
