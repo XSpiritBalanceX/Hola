@@ -1,15 +1,33 @@
+import { useState } from "react";
 import { Container, Box } from "@mui/material";
 import AdminMenu from "@components/adminMenu/AdminMenu";
 import { translate } from "@i18n";
 import { useParams } from "react-router-dom";
 import AdminPublicationsMenu from "@components/adminPublicationsMenu/AdminPublicationsMenu";
 import AdminEventsMenu from "./AdminEventsMenu";
+import AdminEventActive from "@components/adminEvents/AdminEventActive";
 import "./AdminEventsPage.scss";
+
+export type TEvent = {
+  id: number;
+  photo: string;
+  category: number;
+  name: string;
+  date_start: string;
+  date_end: string;
+  place: string;
+};
 
 const AdminEventsPage = () => {
   const { t } = translate("translate", { keyPrefix: "adminEventsPage" });
 
+  const [editEvent, setEditEvent] = useState<null | TEvent>(null);
+
   const { part } = useParams();
+
+  const handleEditEvent = (data: TEvent) => {
+    setEditEvent(data);
+  };
 
   return (
     <Container className="adminEventsContainer">
@@ -24,6 +42,9 @@ const AdminEventsPage = () => {
             <p className="newEventTitle">{t("changeEvent")}</p>
           ) : (
             <AdminEventsMenu />
+          )}
+          {part === "active" && (
+            <AdminEventActive cbHandleEditEvent={handleEditEvent} />
           )}
         </Box>
       </Box>
