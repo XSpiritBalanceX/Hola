@@ -15,12 +15,23 @@
   height: 110px;
   margin-bottom: 15px;
   max-width: 500px;
+  @media all and (max-width: 40em) {
+    height: auto;
+    border: solid 1px map-get($theme-colors, "gray-2");
+    border-radius: 10px;
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
   .eventPhoto,
   .emptyEventPhoto {
     width: 110px;
     height: 110px;
     border-radius: 5px;
     margin-right: 10px;
+    @media all and (max-width: 40em) {
+      margin: 0 auto 10px auto;
+    }
   }
   .emptyEventPhoto {
     background-color: map-get($theme-colors, "black");
@@ -31,6 +42,10 @@
     flex-direction: column;
     justify-content: space-between;
     height: 110px;
+    @media all and (max-width: 40em) {
+      height: auto;
+      width: 100%;
+    }
     .eventCategoryName {
       .controlsEventBox {
         display: flex;
@@ -70,12 +85,23 @@
     height: 110px;
     margin-bottom: 15px;
     max-width: 500px;
+    @media all and (max-width: 40em) {
+      height: auto;
+      border: solid 1px map-get($theme-colors, "gray-2");
+      border-radius: 10px;
+      padding: 10px;
+      flex-direction: column;
+      align-items: flex-start;
+    }
     .eventPhotoArchive,
     .emptyEventPhotoArchive {
       width: 110px;
       height: 110px;
       border-radius: 5px;
       margin-right: 10px;
+      @media all and (max-width: 40em) {
+        margin: 0 auto 10px auto;
+      }
     }
     .emptyEventPhotoArchive {
       background-color: map-get($theme-colors, "black");
@@ -164,12 +190,18 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        @media all and (max-width: 40em) {
+          width: calc(100% - 130px);
+        }
         .deletePhotoEventButton {
           width: 150px;
           text-transform: none;
           @extend %button;
           height: 34px;
           color: map-get($theme-colors, "blue");
+          @media all and (max-width: 40em) {
+            width: 100%;
+          }
         }
         .uploadPhotoEventButton {
           @extend %button;
@@ -182,6 +214,9 @@
           justify-content: center;
           &:hover {
             cursor: pointer;
+          }
+          @media all and (max-width: 40em) {
+            width: 100%;
           }
         }
       }
