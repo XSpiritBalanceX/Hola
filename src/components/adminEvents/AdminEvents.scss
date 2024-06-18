@@ -125,3 +125,98 @@
     }
   }
 }
+
+.eventChangeBox {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  .labelEvent {
+    @extend %body-2;
+    color: map-get($theme-colors, "gray-2");
+    margin: 0 0 2px 0;
+  }
+  .errorLabelEvent {
+    @extend %body-2-bold;
+    color: map-get($theme-colors, "error");
+  }
+  .errorMessage {
+    @extend %messages;
+    margin: 0 0 15px 0;
+    color: map-get($theme-colors, "error");
+    padding-left: 15px;
+  }
+  .controlsEventBox {
+    display: flex;
+    flex-direction: column;
+    .labelEvent {
+      padding-left: 10px;
+    }
+    .controlledFieldBox {
+      margin-bottom: 0;
+    }
+    .eventField,
+    .eventField.filledInEventField {
+      height: 34px;
+      .MuiSelect-select.MuiInputBase-input {
+        padding: 10px 15px 0 15px;
+      }
+      .MuiInputBase-root.MuiInputBase-formControl {
+        height: 34px;
+        border-radius: 15px;
+        @extend %body-2-medium;
+        display: flex;
+        align-items: center;
+        background-color: map-get($theme-colors, "white");
+        fieldset {
+          border: solid 2px map-get($theme-colors, "gray-2");
+        }
+      }
+      input,
+      .MuiInputBase-input {
+        height: 30px;
+        padding: 0 15px;
+        color: map-get($theme-colors, "black");
+        width: 100%;
+        @extend %body-2-medium;
+      }
+      .MuiInputAdornment-root {
+        .MuiSvgIcon-root {
+          fill: map-get($theme-colors, "error");
+        }
+      }
+      .MuiInputBase-root.MuiInputBase-formControl.Mui-error {
+        border: none;
+        background-color: map-get($theme-colors, "white");
+        fieldset {
+          border: solid 2px map-get($theme-colors, "error");
+        }
+      }
+      .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+        border: none;
+        background-color: map-get($theme-colors, "white");
+        .MuiSelect-select {
+          background-color: map-get($theme-colors, "white");
+        }
+        fieldset {
+          border: solid 2px map-get($theme-colors, "blue");
+        }
+      }
+    }
+    .eventField.filledInEventField {
+      .MuiInputBase-root.MuiInputBase-formControl {
+        background-color: map-get($theme-colors, "light-blue-2");
+        fieldset {
+          border: solid 2px map-get($theme-colors, "light-blue-2");
+        }
+      }
+    }
+  }
+  .submitEventButton {
+    text-transform: none;
+    @extend %button;
+    @extend %button-blue;
+    width: 100%;
+    height: 34px;
+    margin: 50px 0 60px 0;
+  }
+}

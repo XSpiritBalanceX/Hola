@@ -7,6 +7,7 @@ import AdminPublicationsMenu from "@components/adminPublicationsMenu/AdminPublic
 import AdminEventsMenu from "./AdminEventsMenu";
 import AdminEventActive from "@components/adminEvents/AdminEventActive";
 import AdminEventsArchive from "@components/adminEvents/AdminEventsArchive";
+import AdminEventChange from "@components/adminEvents/AdminEventChange";
 import "./AdminEventsPage.scss";
 
 export type TEvent = {
@@ -48,6 +49,10 @@ const AdminEventsPage = () => {
             <AdminEventActive cbHandleEditEvent={handleEditEvent} />
           )}
           {part?.includes("archive") && <AdminEventsArchive />}
+          {part === "edit" && editEvent && (
+            <AdminEventChange event={editEvent} />
+          )}
+          {part === "new" && <AdminEventChange />}
         </Box>
       </Box>
     </Container>

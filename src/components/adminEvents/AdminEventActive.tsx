@@ -5,6 +5,7 @@ import moment from "moment";
 import { IAdminEventActiveProps } from "./TypesAdminEvents";
 import EditIcon from "@components/icons/EditIcon";
 import BucketIcon from "@components/icons/BucketIcon";
+import { useNavigate } from "react-router-dom";
 import "./AdminEvents.scss";
 
 const mockData: any[] = [
@@ -51,9 +52,12 @@ const mockData: any[] = [
 const AdminEventActive = ({ cbHandleEditEvent }: IAdminEventActiveProps) => {
   const { t } = translate("translate", { keyPrefix: "adminEventsPage" });
 
+  const navigate = useNavigate();
+
   const handleChooseEvent = (id: number) => {
     const currentEvent = mockData.find((el) => el.id === id);
     cbHandleEditEvent(currentEvent);
+    navigate("/admin/events/edit");
   };
 
   return (

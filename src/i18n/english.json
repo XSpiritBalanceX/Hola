@@ -603,11 +603,12 @@
       "art": "Art",
       "creation": "Creation",
       "title": "Heading",
-      "time": "Time of the event",
-      "date": "The date of the event",
+      "dateStart": "Event start date",
+      "dateEnd": "Event end date",
       "place": "Location",
       "publish": "Publish",
-      "errorRequiredField": "Fill in this field"
+      "errorRequiredField": "Fill in this field",
+      "invalidDate": "Invalid date"
     }
   }
 }
