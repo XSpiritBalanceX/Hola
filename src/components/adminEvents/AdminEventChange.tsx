@@ -18,6 +18,7 @@ import moment from "moment";
 import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
 import ControlledInput from "@components/fields/ControlledInput";
 import InputMask from "react-input-mask";
+import AdminEventPhoto from "./AdminEventPhoto";
 import "./AdminEvents.scss";
 
 const AdminEventChange = ({ event }: IAdminEventChangeProps) => {
@@ -71,10 +72,10 @@ const AdminEventChange = ({ event }: IAdminEventChangeProps) => {
     console.log(data);
   };
 
-  const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    const newPhoto = files && files[0];
-    setEventPhoto(newPhoto);
+  const handlePhotoUpload = (photo: File) => {
+    /* const files = e.target.files;
+    const newPhoto = files && files[0]; */
+    setEventPhoto(photo);
   };
 
   const handleChangeCategory = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -101,7 +102,10 @@ const AdminEventChange = ({ event }: IAdminEventChangeProps) => {
 
   return (
     <Box className="eventChangeBox">
-      <Box className="eventPhotoBox"></Box>
+      <AdminEventPhoto
+        currentEventPhoto={eventPhoto}
+        cbHandleEventPhoto={handlePhotoUpload}
+      />
       <form onSubmit={handleSubmit(handleSubmitEvent)}>
         <Box className="controlsEventBox">
           <FormLabel

@@ -608,7 +608,8 @@
       "place": "Место проведения",
       "publish": "Опубликовать",
       "errorRequiredField": "Заполните это поле",
-      "invalidDate": "Неверная дата"
+      "invalidDate": "Неверная дата",
+      "delete": "Удалить"
     }
   }
 }

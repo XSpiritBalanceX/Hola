@@ -608,7 +608,8 @@
       "place": "Location",
       "publish": "Publish",
       "errorRequiredField": "Fill in this field",
-      "invalidDate": "Invalid date"
+      "invalidDate": "Invalid date",
+      "delete": "Delete"
     }
   }
 }

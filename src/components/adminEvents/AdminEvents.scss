@@ -130,6 +130,63 @@
   display: flex;
   flex-direction: column;
   max-width: 400px;
+  .eventPhotoBox {
+    margin-bottom: 15px;
+    .labelEventPhoto {
+      @extend %body-2;
+      color: map-get($theme-colors, "gray-2");
+      margin: 0 0 5px 0;
+    }
+    .eventPhotoControlsBox {
+      display: flex;
+      flex-direction: row;
+      img,
+      .uploadEventPhotoLabel {
+        width: 120px;
+        height: 120px;
+        border-radius: 10px;
+      }
+      .uploadEventPhotoLabel {
+        border: solid 1px map-get($theme-colors, "gray-2");
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        @extend %body-2;
+        color: map-get($theme-colors, "blue");
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      .controlsEventButtonsBox {
+        margin-left: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .deletePhotoEventButton {
+          width: 150px;
+          text-transform: none;
+          @extend %button;
+          height: 34px;
+          color: map-get($theme-colors, "blue");
+        }
+        .uploadPhotoEventButton {
+          @extend %button;
+          @extend %button-blue;
+          height: 34px;
+          width: 150px;
+          color: map-get($theme-colors, "white");
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
   .labelEvent {
     @extend %body-2;
     color: map-get($theme-colors, "gray-2");
