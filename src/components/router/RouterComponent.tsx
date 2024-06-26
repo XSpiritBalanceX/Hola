@@ -29,6 +29,11 @@ import AdminArticlesPage from "@pages/admin_articles/AdminArticlesPage";
 import AdminEventsPage from "@pages/admin_events/AdminEventsPage";
 
 const RouterComponent = () => {
+  const appRoutesUnprotected = [
+    { path: "/forgot_password/:step", element: <ResetPasswordPage /> },
+    { path: "/reset_password/:step", element: <ResetPasswordPage /> },
+  ];
+
   const appRoutesUnauth = [
     { path: "/login", element: <AuthPage /> },
     { path: "/registration/info", element: <AuthPage /> },
@@ -42,8 +47,6 @@ const RouterComponent = () => {
     { path: "/profile/edit/:step", element: <EditProfilePage /> },
     { path: "/profile/settings", element: <ProfileSettingsPage /> },
     { path: "/settings/account", element: <AccountSettingsPage /> },
-    { path: "/reset_password/:step", element: <ResetPasswordPage /> },
-    { path: "/forgot_password/:step", element: <ResetPasswordPage /> },
     { path: "/privacy", element: <PrivacyPage /> },
     { path: "/subscription", element: <SubscriptionPage /> },
     { path: "/plan/:id", element: <PlanPage /> },
@@ -75,6 +78,9 @@ const RouterComponent = () => {
 
   return (
     <Routes>
+      {appRoutesUnprotected.map((el, ind) => (
+        <Route key={ind} path={el.path} element={el.element} />
+      ))}
       {appRoutesUnauth.map((el, ind) => (
         <Route
           key={ind}
