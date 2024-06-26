@@ -49,6 +49,7 @@ const RegistrationModal = ({
     );
     window.open(foundUserEmail?.site, "_blank");
     navigate("/login");
+    localStorage.removeItem("hola_login");
   };
 
   return (
