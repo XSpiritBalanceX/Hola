@@ -96,7 +96,7 @@ const UserSearchCardContainer = () => {
             })}
         </Box>
       ) : null}
-      {!users.length && !isError && <NoFoundPeople />}
+      {!users.length && !isError && !errorUsers && <NoFoundPeople />}
     </>
   );
 };

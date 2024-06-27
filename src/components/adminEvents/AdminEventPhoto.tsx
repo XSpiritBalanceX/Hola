@@ -16,6 +16,10 @@ const AdminEventPhoto = ({
     newPhoto && cbHandleEventPhoto(newPhoto);
   };
 
+  const handleDeletePhoto = () => {
+    cbHandleEventPhoto("");
+  };
+
   return (
     <Box className="eventPhotoBox">
       <FormLabel className={"labelEventPhoto"}>{t("cover")}</FormLabel>
@@ -55,7 +59,11 @@ const AdminEventPhoto = ({
               onChange={handlePhotoUpload}
               style={{ display: "none" }}
             />
-            <Button type="button" className="deletePhotoEventButton">
+            <Button
+              type="button"
+              className="deletePhotoEventButton"
+              onClick={handleDeletePhoto}
+            >
               {t("delete")}
             </Button>
           </Box>

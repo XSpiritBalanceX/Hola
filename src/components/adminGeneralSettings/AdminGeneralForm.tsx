@@ -36,7 +36,7 @@ const AdminGeneralForm = ({
   const validationSchema = Yup.object().shape({
     name: Yup.string().required(t("errorRequiredField")),
     email: Yup.string()
-      .required(t("errorRequiredEmail"))
+      .required(t("errorRequiredField"))
       .email(t("errIncorrectEmail")),
     date_of_birth: Yup.string()
       .required(t("errorRequiredField"))

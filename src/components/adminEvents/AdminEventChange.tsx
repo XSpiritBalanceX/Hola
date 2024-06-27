@@ -72,7 +72,7 @@ const AdminEventChange = ({ event }: IAdminEventChangeProps) => {
     console.log(data);
   };
 
-  const handlePhotoUpload = (photo: File) => {
+  const handlePhotoUpload = (photo: File | "") => {
     /* const files = e.target.files;
     const newPhoto = files && files[0]; */
     setEventPhoto(photo);

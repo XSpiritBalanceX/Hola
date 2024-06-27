@@ -18,5 +18,5 @@ export interface IChangeEvent {
 
 export interface IAdminEventPhotoProps {
   currentEventPhoto: string | File | null;
-  cbHandleEventPhoto: (photo: File) => void;
+  cbHandleEventPhoto: (photo: File | "") => void;
 }
