@@ -1,0 +1,140 @@
+@import "../../variables";
+
+.adminUsersChatContainer {
+  padding: 35px 10px 60px 10px !important;
+  display: flex !important;
+  flex-direction: row;
+  @media all and (max-width: 55em) {
+    flex-direction: column;
+    padding: 15px 20px 60px 20px !important;
+  }
+  .adminUsersChatContent {
+    width: 100%;
+  }
+  .controlsAdminUsersChat {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 30px;
+    @media all and (max-width: 45em) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .searchField {
+      @media all and (max-width: 45em) {
+        margin-top: 20px;
+        width: 100%;
+      }
+      .MuiInputBase-root {
+        height: 40px;
+        border-radius: 40px;
+        background-color: map-get($theme-colors, "white");
+        min-width: 400px;
+        @media all and (max-width: 70em) {
+          min-width: 100%;
+        }
+        fieldset {
+          border-color: map-get($theme-colors, "white");
+        }
+        .MuiInputAdornment-root {
+          svg {
+            fill: map-get($theme-colors, "blue");
+          }
+        }
+      }
+      .MuiInputBase-root.Mui-focused {
+        fieldset {
+          border-color: map-get($theme-colors, "blue");
+        }
+      }
+    }
+    button {
+      text-transform: none;
+      padding: 0;
+      height: 26px;
+      color: map-get($theme-colors, "black");
+      @extend %h5;
+      @media all and (max-width: 40em) {
+        height: 30px;
+        text-align: start;
+      }
+      svg {
+        margin-right: 15px;
+      }
+    }
+  }
+  .correspondenceContainer {
+    background-color: map-get($theme-colors, "white");
+    border-radius: 20px;
+    padding: 25px 0 15px 0;
+    .correspondenceItem {
+      margin-bottom: 10px;
+      .dateOfMessageBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @extend %body-1-medium;
+        line-height: 19px;
+        color: map-get($theme-colors, "gray-2");
+        margin-bottom: 10px;
+      }
+      .userInformation {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 5px;
+        .userPhoto {
+          width: 30px;
+          height: 30px;
+        }
+        p {
+          margin: 0;
+          @extend %body-2-medium;
+        }
+      }
+      .userInformation.rightItem {
+        justify-content: flex-end;
+        padding-right: 20px;
+        p {
+          order: -1;
+          margin-right: 10px;
+        }
+      }
+      .userInformation.leftItem {
+        padding-left: 20px;
+        .userPhoto {
+          margin-right: 10px;
+        }
+      }
+      .opponentMessage,
+      .userMessage {
+        width: 100%;
+        .rce-mbox {
+          border-radius: 15px !important;
+          padding: 12px !important;
+          .rce-mbox-body {
+            .rce-mbox-text {
+              @extend %body-2-medium;
+              line-height: 17px;
+            }
+            .rce-mbox-time {
+              @extend %caption;
+            }
+          }
+        }
+      }
+      .opponentMessage {
+        .rce-mbox {
+          background-color: map-deep-get($theme-colors, "background", "gray-3");
+        }
+      }
+      .userMessage {
+        .rce-mbox {
+          background-color: map-get($theme-colors, "light-blue-2");
+        }
+      }
+    }
+  }
+}

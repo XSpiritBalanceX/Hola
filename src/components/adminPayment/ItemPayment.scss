@@ -1,0 +1,102 @@
+@import "../../variables";
+
+.itemPaymentRow {
+  padding: 0;
+  vertical-align: top;
+  @media all and (max-width: 55em) {
+    display: flex !important;
+    flex-direction: column;
+  }
+  td {
+    border: none;
+    padding: 0;
+  }
+  .itemPaymentBox {
+    height: 47px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    @extend %body-2-medium;
+    @media all and (max-width: 55em) {
+      margin-bottom: 0;
+    }
+    .mobileText {
+      display: none;
+      @media all and (max-width: 55em) {
+        display: inline;
+        font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 21px;
+        color: map-get($theme-colors, "black");
+        margin-right: 5px;
+      }
+    }
+  }
+  .itemPaymentBox.nameAgeBox {
+    padding: 15px 5px 15px 20px;
+    border-radius: 15px 0 0 15px;
+    @media all and (max-width: 55em) {
+      border-radius: 15px 15px 0 0;
+      padding: 15px 20px 0 20px;
+      height: auto;
+    }
+  }
+  .itemPaymentBox.userEmailBox {
+    word-break: break-all;
+    padding: 15px 10px;
+    @media all and (max-width: 60em) {
+      max-width: 130px;
+    }
+    @media all and (max-width: 55em) {
+      max-width: 100%;
+      padding: 15px 20px 0 20px;
+      height: auto;
+    }
+  }
+  .itemPaymentBox.cardBox {
+    border-radius: 0 15px 15px 0;
+    padding: 15px 20px 15px 5px;
+    @media all and (max-width: 55em) {
+      margin-bottom: 20px;
+      border-radius: 0 0 15px 15px;
+      padding: 5px 20px 15px 20px;
+      height: auto;
+    }
+  }
+  .itemPaymentBox.datePaymentBox {
+    min-width: 160px;
+    padding: 15px 10px;
+    @media all and (max-width: 85em) {
+      min-width: auto;
+    }
+    @media all and (max-width: 55em) {
+      padding: 10px 20px 5px 20px;
+      height: auto;
+    }
+  }
+  .itemPaymentBox.paidBox,
+  .paidDateBox {
+    background-color: map-get($theme-colors, "light-green");
+  }
+  .itemPaymentBox.expectedBox,
+  .expectedDatedBox {
+    background-color: map-get($theme-colors, "red-light-1");
+  }
+  .itemPaymentBox.suspendedBox,
+  .suspendedDateBox {
+    background-color: map-get($theme-colors, "gray-3");
+    color: map-deep-get($theme-colors, "text", "gray-5");
+    .mobileText {
+      color: map-deep-get($theme-colors, "text", "gray-5");
+    }
+  }
+  .paidDateBox {
+    color: map-get($theme-colors, "success");
+    @extend %body-2-bold;
+  }
+  .expectedDatedBox {
+    color: map-get($theme-colors, "error");
+    @extend %body-2-bold;
+  }
+}

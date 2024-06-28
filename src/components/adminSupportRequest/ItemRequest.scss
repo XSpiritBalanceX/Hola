@@ -1,0 +1,77 @@
+@import "../../variables";
+
+.itemRequestRow {
+  padding: 0;
+  vertical-align: top;
+  @media all and (max-width: 53em) {
+    display: flex !important;
+    flex-direction: column;
+  }
+  td {
+    border: none;
+    padding: 0;
+  }
+  .itemRequestBox {
+    height: 51px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    @extend %body-2-medium;
+    background-color: map-get($theme-colors, "white");
+    @media all and (max-width: 53em) {
+      margin-bottom: 0;
+      height: auto;
+    }
+    .mobileText {
+      display: none;
+      @media all and (max-width: 53em) {
+        display: inline;
+        font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 21px;
+        color: map-get($theme-colors, "black");
+        margin-right: 5px;
+      }
+    }
+    .statusColor {
+      width: 10px;
+      height: 10px;
+      border-radius: 100%;
+      margin-right: 5px;
+    }
+  }
+  .itemRequestBox.idRequest {
+    padding: 0 16px 0 20px;
+    border-radius: 15px 0 0 15px;
+    @media all and (max-width: 53em) {
+      border-radius: 15px 15px 0 0;
+      padding: 16px 20px 5px 20px;
+    }
+  }
+  .statusBox,
+  .userNameAgeBox,
+  .emailBox,
+  .issueBox,
+  .dateBox {
+    padding: 0 16px;
+    @media all and (max-width: 53em) {
+      padding: 5px 20px;
+    }
+  }
+  .statusBox.closedRequest {
+    color: map-get($theme-colors, "gray-2");
+  }
+  .itemRequestBox.issueBox {
+    @extend %body-2-bold;
+  }
+  .itemRequestBox.timeBox {
+    border-radius: 0 15px 15px 0;
+    padding: 0 16px 0 25px;
+    @media all and (max-width: 53em) {
+      border-radius: 0 0 15px 15px;
+      margin-bottom: 20px;
+      padding: 5px 20px 16px 20px;
+    }
+  }
+}

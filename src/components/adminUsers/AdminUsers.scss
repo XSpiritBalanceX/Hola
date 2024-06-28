@@ -1,0 +1,357 @@
+@import "../../variables";
+
+.userItemRow {
+  padding: 0;
+  vertical-align: top;
+  @media all and (max-width: 40em) {
+    display: flex !important;
+    flex-direction: column;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  td {
+    border: none;
+    padding: 0;
+  }
+  .mobileContent {
+    display: none;
+    @media all and (max-width: 40em) {
+      display: inline;
+      font-family: "Montserrat", sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+    }
+  }
+  .boxWithAvatar {
+    margin-bottom: 15px;
+    border-radius: 20px 0 0 20px;
+    background-color: map-get($theme-colors, "white");
+    padding: 15px 0 15px 25px;
+    height: 90px;
+    @media all and (max-width: 40em) {
+      margin-bottom: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 10px 15px 10px 15px;
+      border-radius: 20px 20px 0 0;
+      height: auto;
+    }
+    p {
+      margin: 0 0 10px 0;
+      @extend %body-2-bold;
+      @media all and (max-width: 40em) {
+        order: 1;
+        margin: 0 0 0 15px;
+      }
+    }
+    .MuiAvatar-root {
+      width: 60px;
+      height: 60px;
+    }
+  }
+  .boxWithEmail,
+  .boxWithSubscriptionType,
+  .boxWithAccType {
+    padding: 15px 20px;
+    background-color: map-get($theme-colors, "white");
+    height: 90px;
+    @extend %body-2;
+    margin-bottom: 15px;
+    @media all and (max-width: 40em) {
+      height: auto;
+    }
+  }
+  .boxWithAccType.adminText {
+    color: map-get($theme-colors, "blue");
+    @extend %body-2-bold;
+    line-height: 26px;
+    .mobileContent {
+      color: map-get($theme-colors, "black");
+    }
+  }
+  .boxWithEmail,
+  .boxWithAccType {
+    @media all and (max-width: 40em) {
+      margin-bottom: 0;
+      padding: 0 15px;
+    }
+  }
+  .boxWithSubscriptionType {
+    border-radius: 0 20px 20px 0;
+    @media all and (max-width: 40em) {
+      border-radius: 0 0 20px 20px;
+      padding: 0 15px 15px 15px;
+    }
+  }
+}
+
+.selectedUserContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  .userIdInformationBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    .userStatusText {
+      color: map-get($theme-colors, "blue");
+      @extend %body-2-bold;
+    }
+    .buttonCloseUser {
+      text-transform: none;
+      @extend %h5;
+      line-height: 20px;
+      margin-right: 20px;
+      padding: 0;
+      color: map-get($theme-colors, "black");
+      svg {
+        margin-right: 15px;
+      }
+    }
+  }
+  .sectionName {
+    margin: 35px 0 10px 0;
+    @extend %h5;
+    color: map-get($theme-colors, "blue");
+  }
+  .userProfileInformationContainer {
+    background-color: map-get($theme-colors, "white");
+    border-radius: 20px;
+    padding: 25px 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    @media all and (max-width: 60em) {
+      flex-direction: column;
+    }
+    .sectionNameProfile {
+      @extend %body-2-bold;
+      margin: 0 0 10px 0;
+      @media all and (max-width: 60em) {
+        margin: 0;
+      }
+    }
+    .userAvatarBox {
+      max-width: 180px;
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      @media all and (max-width: 70em) {
+        margin-right: 15px;
+      }
+      @media all and (max-width: 60em) {
+        margin: 0 0 10px 0;
+        max-width: 100%;
+      }
+      .userName {
+        margin: 0 0 5px 0;
+        @extend %body-2-medium;
+      }
+      .userAvatar {
+        width: 60px;
+        height: 60px;
+      }
+    }
+    .userEmailBox {
+      max-width: 150px;
+      height: auto;
+      @media all and (max-width: 70em) {
+        margin-right: 15px;
+        max-width: 120px;
+      }
+      @media all and (max-width: 60em) {
+        margin: 0 0 10px 0;
+        max-width: 100%;
+      }
+      .userEmail {
+        margin: 0;
+        @extend %body-2-medium;
+        @media all and (max-width: 70em) {
+          word-wrap: break-word;
+        }
+      }
+    }
+    .userAccTypeBox {
+      max-width: 120px;
+      height: auto;
+      @media all and (max-width: 70em) {
+        margin-right: 15px;
+        max-width: 140px;
+      }
+      @media all and (max-width: 60em) {
+        margin: 0 0 10px 0;
+        max-width: 100%;
+      }
+      .userAccType {
+        margin: 0;
+        @extend %body-2-medium;
+      }
+    }
+    .userProfilePhotosBox {
+      max-width: 180px;
+      height: auto;
+      @media all and (max-width: 70em) {
+        margin-right: 15px;
+        max-width: 140px;
+      }
+      @media all and (max-width: 60em) {
+        margin: 0 0 10px 0;
+        max-width: 100%;
+      }
+      .userPhotos {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        img {
+          width: 55px;
+          height: 55px;
+          border-radius: 5px;
+          margin: 0 5px 5px 0;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .userDescriptionBox {
+      max-width: 300px;
+      height: auto;
+      @media all and (max-width: 70em) {
+        max-width: 200px;
+      }
+      @media all and (max-width: 60em) {
+        max-width: 100%;
+      }
+      .userDescription {
+        margin: 0;
+        @extend %body-2-medium;
+      }
+    }
+  }
+  .userSubscriptionBox {
+    display: flex;
+    flex-direction: row;
+    background-color: map-get($theme-colors, "white");
+    border-radius: 20px;
+    padding: 25px;
+    @media all and (max-width: 60em) {
+      flex-direction: column;
+    }
+    .itemSubscriptionBox {
+      display: flex;
+      flex-direction: column;
+      margin-right: 60px;
+      @media all and (max-width: 60em) {
+        margin: 0 0 15px 0;
+      }
+      .sectionNameSubscription {
+        margin: 0 0 10px 0;
+        @extend %body-2-bold;
+        @media all and (max-width: 60em) {
+          margin: 0;
+        }
+      }
+      .informationSection {
+        margin: 0;
+        @extend %body-2;
+      }
+      .informationSection.renewedUntil2 {
+        color: map-get($theme-colors, "success");
+        @extend %body-2-bold;
+      }
+    }
+    .itemSubscriptionBox:last-child {
+      margin-right: 0;
+    }
+  }
+  .userMatchesBox {
+    display: flex;
+    flex-direction: column;
+    background-color: map-get($theme-colors, "white");
+    border-radius: 20px;
+    padding: 20px 25px;
+    .userMatchItem {
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      @media all and (max-width: 60em) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .avatarNameBox {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 150px;
+        margin-right: 40px;
+        @media all and (max-width: 60em) {
+          width: 100%;
+          margin: 0;
+        }
+        p {
+          margin: 0;
+          @extend %body-2-bold;
+          word-wrap: break-word;
+          max-width: 80px;
+        }
+        .userMatchAvatar {
+          width: 60px;
+          height: 60px;
+          margin-right: 10px;
+        }
+      }
+    }
+    .userMatchItem:last-child {
+      margin-bottom: 0;
+    }
+    .userMatchEmail {
+      @extend %body-2;
+      margin: 0;
+      width: 220px;
+    }
+    .privateChatButton {
+      text-transform: none;
+      color: map-get($theme-colors, "blue");
+      @extend %body-2-bold;
+      text-decoration: underline;
+      height: auto;
+      padding: 0;
+    }
+  }
+  .controlsSelectedUserBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 25px;
+    .buttonMessage,
+    .buttonDelete,
+    .buttonBlock {
+      width: 34px;
+      height: 34px;
+      border-radius: 5px;
+      min-width: 34px;
+    }
+    .buttonMessage {
+      margin-right: 10px;
+      background-color: map-get($theme-colors, "light-blue-5");
+    }
+    .buttonDelete {
+      margin-right: 10px;
+      background-color: map-get($theme-colors, "light-blue-6");
+    }
+    .buttonBlock {
+      background-color: map-get($theme-colors, "red-light");
+      svg {
+        fill: map-get($theme-colors, "red");
+      }
+    }
+  }
+}

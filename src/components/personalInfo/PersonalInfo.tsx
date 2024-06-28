@@ -115,6 +115,7 @@ const PersonalInfo = () => {
       setLoading(true);
       const response = await signUp(compiledData);
       if (response.data.id) {
+        localStorage.setItem("hola_login", data.email);
         localStorage.setItem("hola_user_id", response.data.id.toString());
         navigate("/registration/interests");
       } else {

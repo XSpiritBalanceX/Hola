@@ -1,0 +1,132 @@
+@import "../../variables";
+
+.adminInformationContainer {
+  width: calc(100% - 380px);
+  border-radius: 20px;
+  background-color: map-get($theme-colors, "white");
+  padding: 23px 20px 43px 20px;
+  @media all and (max-width: 58em) {
+    width: auto;
+  }
+  .titleAdminSettings {
+    margin: 0;
+    @extend %body-1-bold;
+  }
+  .adminPhotoBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 25px 0 15px 0;
+    img {
+      width: 70px;
+      height: 70px;
+      border-radius: 100%;
+      margin-right: 10px;
+    }
+    .controlsPhotoBox {
+      display: flex;
+      flex-direction: column;
+      .uploadAdminPhoto {
+        width: 200px;
+        height: 34px;
+        @extend %button;
+        @extend %button-blue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 5px;
+      }
+      .deletePhoto {
+        text-transform: none;
+        color: map-get($theme-colors, "blue");
+        width: 200px;
+        height: 34px;
+        @extend %button;
+      }
+    }
+  }
+  .adminSettingsForm {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    .controlledAdminFieldBox {
+      display: flex;
+      flex-direction: column;
+      max-width: 312px;
+      width: 100%;
+      @media all and (max-width: 40em) {
+        max-width: 100%;
+      }
+      .adminFormLabel {
+        @extend %body-2;
+        color: map-get($theme-colors, "gray-2");
+        margin-bottom: 2px;
+        padding-left: 15px;
+      }
+      .adminFormLabel.errorLabel {
+        color: map-get($theme-colors, "error");
+        @extend %body-2-medium;
+      }
+      .errorMessage {
+        @extend %messages;
+        margin-bottom: 10px;
+        color: map-get($theme-colors, "error");
+        padding-left: 15px;
+      }
+      .adminField {
+        height: 34px;
+        .MuiInputBase-root.MuiInputBase-formControl,
+        .MuiSelect-select {
+          height: 34px;
+          border-radius: 15px;
+          @extend %body-2-medium;
+          display: flex;
+          align-items: center;
+          background-color: map-get($theme-colors, "light-blue-5");
+        }
+        input,
+        .MuiInputBase-input {
+          height: 30px;
+          padding: 0 15px;
+          color: map-get($theme-colors, "black");
+          width: 100%;
+          @extend %body-2-medium;
+        }
+        fieldset {
+          border: none;
+        }
+        .MuiInputBase-root.MuiInputBase-formControl.Mui-error {
+          border: none;
+          background-color: map-get($theme-colors, "white");
+          fieldset {
+            border: solid 2px map-get($theme-colors, "error");
+          }
+        }
+        .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+          border: none;
+          background-color: map-get($theme-colors, "white");
+          .MuiSelect-select {
+            background-color: map-get($theme-colors, "white");
+          }
+          fieldset {
+            border: solid 2px map-get($theme-colors, "blue");
+          }
+        }
+      }
+    }
+    .linkChangePassword {
+      margin: 20px 0 30px 0;
+      text-decoration: none;
+      @extend %body-1-bold;
+      color: map-get($theme-colors, "blue");
+    }
+    .adminSaveButton {
+      text-transform: none;
+      height: 34px;
+      width: 100%;
+      max-width: 312px;
+      @extend %button;
+      @extend %button-blue;
+    }
+  }
+}

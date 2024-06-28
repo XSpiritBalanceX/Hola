@@ -1,0 +1,44 @@
+@import "../../variables";
+
+.adminEventsContainer {
+  padding: 35px 20px 60px 20px !important;
+  display: flex !important;
+  flex-direction: row;
+  width: 100% !important;
+  max-width: 100vw !important;
+  @media all and (max-width: 55em) {
+    flex-direction: column;
+  }
+  .adminEventsContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .titleEvents {
+      @extend %h4;
+      margin: 0 0 20px 0;
+    }
+    .adminEventsBox {
+      border-radius: 20px;
+      background-color: map-get($theme-colors, "white");
+      padding: 20px 20px 22px 20px;
+      min-height: 78vh;
+      .newEventTitle {
+        @extend %body-1-medium;
+        color: map-get($theme-colors, "blue");
+        margin: 20px 0 15px 0;
+      }
+      .adminEventsMenuBox {
+        margin: 20px 0 15px 0;
+        .nav-link {
+          @extend %body-1-medium;
+          margin-right: 34px;
+          text-decoration: none;
+          color: map-get($theme-colors, "gray-2");
+        }
+        .nav-link.active {
+          color: map-get($theme-colors, "blue");
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,287 @@
+@import "../../variables";
+
+.emptyDataBox {
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @extend %h5;
+}
+
+.activeArticleContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 721px;
+  .activeArticlePhotoBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    @media all and (max-width: 40em) {
+      width: 100%;
+    }
+    img,
+    .emptyPhotoArticles {
+      width: 121px;
+      height: 121px;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+    .emptyPhotoArticles {
+      background-color: map-get($theme-colors, "black");
+      opacity: 0.2;
+    }
+    .activeArticlesButtons {
+      display: flex;
+      flex-direction: column;
+      @media all and (max-width: 40em) {
+        width: calc(100% - 131px);
+      }
+      button,
+      .uploadButton {
+        height: 34px;
+        text-transform: none;
+        @extend %button;
+        color: map-get($theme-colors, "blue");
+        width: 200px;
+        @media all and (max-width: 40em) {
+          width: 100%;
+        }
+      }
+      .uploadButton {
+        @extend %button-blue;
+        color: map-get($theme-colors, "white");
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @media all and (max-width: 40em) {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+  .activeArticleTitleBox {
+    margin: 15px 0 2px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    @media all and (max-width: 40em) {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+    p {
+      margin: 0 10px 0 0;
+      @extend %body-1-bold;
+    }
+    button {
+      text-transform: none;
+      @extend %button;
+      padding: 0;
+      color: map-get($theme-colors, "blue");
+      @media all and (max-width: 40em) {
+        order: -1;
+        margin-bottom: 10px;
+      }
+      svg {
+        margin-right: 10px;
+      }
+    }
+  }
+  .activeArticleText {
+    @extend %body-2;
+    white-space: pre-line;
+  }
+  .deleteArticleButton {
+    margin: 15px 0 20px 0;
+    text-transform: none;
+    height: 24px;
+    padding: 0;
+    @extend %button;
+    color: map-get($theme-colors, "red");
+    svg {
+      margin-right: 10px;
+    }
+  }
+}
+
+.archiveArticlesBox {
+  max-width: 850px;
+  .itemArchiveArticle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 15px;
+    @media all and (max-width: 40em) {
+      flex-direction: column;
+      align-items: flex-start;
+      border: solid 1px map-get($theme-colors, "gray-2");
+      border-radius: 15px;
+      padding: 10px;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+    img,
+    .emptyPhotoArchiveArticle {
+      width: 121px;
+      height: 121px;
+      border-radius: 5px;
+      margin-right: 10px;
+      @media all and (max-width: 40em) {
+        margin: 0 auto 10px auto;
+      }
+    }
+    .emptyPhotoArchiveArticle {
+      background-color: map-get($theme-colors, "black");
+      opacity: 0.2;
+    }
+    .articleInformationBox {
+      display: flex;
+      flex-direction: column;
+      width: calc(100% - 131px);
+      @media all and (max-width: 40em) {
+        width: 100%;
+      }
+      p {
+        margin: 0 0 2px 0;
+        @extend %body-1-bold;
+      }
+      .articleArchiveText {
+        @extend %body-2;
+      }
+    }
+  }
+  .archivePagination {
+    margin: 10px 0 0 0;
+    .MuiButtonBase-root.Mui-selected {
+      background-color: map-get($theme-colors, "light-blue-2");
+    }
+  }
+}
+
+.changeArticleBox {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  .labelArticle {
+    @extend %body-2;
+    color: map-get($theme-colors, "gray-2");
+    margin: 0 0 10px 0;
+  }
+  .errorLabelArticle {
+    @extend %body-2-bold;
+    color: map-get($theme-colors, "error");
+  }
+  .errorMessage {
+    @extend %messages;
+    margin: 0 0 10px 0;
+    margin-bottom: 10px;
+    color: map-get($theme-colors, "error");
+    padding-left: 15px;
+  }
+  .articlePhotoBox,
+  .controlArticleBox {
+    display: flex;
+    flex-direction: column;
+  }
+  .articlePhotoBox {
+    margin-bottom: 15px;
+    img,
+    .uploadArticlePhotoLabel {
+      width: 120px;
+      height: 120px;
+      border-radius: 10px;
+    }
+    .uploadArticlePhotoLabel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: map-get($theme-colors, "blue");
+      @extend %body-2;
+      border: solid 2px map-get($theme-colors, "gray-2");
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  .controlArticleBox {
+    .labelArticle {
+      padding-left: 10px;
+    }
+    .articleField {
+      height: 34px;
+      .MuiInputBase-root.MuiInputBase-formControl {
+        height: 34px;
+        border-radius: 10px;
+        @extend %body-2-medium;
+        display: flex;
+        align-items: center;
+        background-color: map-get($theme-colors, "white");
+        fieldset {
+          border: solid 2px map-get($theme-colors, "gray-2");
+        }
+      }
+
+      input,
+      .MuiInputBase-input {
+        height: 30px;
+        padding: 0 15px;
+        color: map-get($theme-colors, "black");
+        width: 100%;
+        @extend %body-2-medium;
+      }
+      .MuiInputBase-root.MuiInputBase-formControl.Mui-error {
+        border: none;
+        background-color: map-get($theme-colors, "white");
+        fieldset {
+          border: solid 2px map-get($theme-colors, "error");
+        }
+      }
+      .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+        border: none;
+        background-color: map-get($theme-colors, "white");
+        .MuiSelect-select {
+          background-color: map-get($theme-colors, "white");
+        }
+        fieldset {
+          border: solid 2px map-get($theme-colors, "blue");
+        }
+      }
+    }
+    .textAreaArticle {
+      height: 327px;
+      border: solid 2px map-get($theme-colors, "gray-2");
+      border-radius: 15px;
+      width: 100%;
+      max-width: 96%;
+      padding: 5px 10px;
+      resize: none;
+      @extend %body-2;
+      &:focus {
+        outline: none;
+        border: solid 2px map-get($theme-colors, "blue") !important;
+      }
+      @media all and (max-width: 40em) {
+        max-width: 92%;
+      }
+    }
+    .textAreaArticle.errorTextArea {
+      border: solid 2px map-get($theme-colors, "error");
+    }
+  }
+  .submitArticleButton {
+    @extend %button;
+    @extend %button-blue;
+    text-transform: none;
+    height: 34px;
+    margin: 20px 0 80px 0;
+    width: 312px;
+    @media all and (max-width: 40em) {
+      width: 100%;
+    }
+  }
+}

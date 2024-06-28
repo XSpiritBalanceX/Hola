@@ -104,7 +104,7 @@ const SignIn = () => {
           lengthValue={watch("password") && watch("password").length}
           className="signInPasswordField"
         />
-        <Link to={"/"} className="forgotPasswordLink">
+        <Link to={"/forgot_password/email"} className="forgotPasswordLink">
           {t("forgotPassword")}
         </Link>
         <Button type="submit" className="submitLoginForm">

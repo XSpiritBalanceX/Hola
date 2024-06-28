@@ -1,6 +1,7 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import ProtectedRouter from "./ProtectedRouter";
 import ProtectedRouterForLogged from "./ProtectedRouterForLogged";
+import ProtectedAdminRouter from "./ProtectedAdminRouter";
 import AuthPage from "@pages/auth/AuthPage";
 import ProfilePage from "@pages/profile/ProfilePage";
 import EditProfilePage from "@pages/edit_profile/EditProfilePage";
@@ -17,8 +18,22 @@ import UserProfilePage from "@pages/user_profile/UserProfilePage";
 import ChatsPage from "@pages/chats/ChatsPage";
 import UserChatPage from "@pages/user_chat/UserChatPage";
 import DashboardPage from "@pages/dashboard/DashboardPage";
+import AdminUsersPage from "@pages/admin_users/AdminUsersPage";
+import AdminUsersChat from "@pages/admin_users_chat/AdminUsersChat";
+import AdminPaymentsPage from "@pages/admin_payments/AdminPaymentsPage";
+import AdminAnalyticsPage from "@pages/admin_analytics/AdminAnalyticsPage";
+import AdminSupportPage from "@pages/admin_support/AdminSupportPage";
+import AdminSettingsPage from "@pages/admin_settings/AdminSettingsPage";
+import CreateAdminPage from "@pages/admin_create_admin/CreateAdminPage";
+import AdminArticlesPage from "@pages/admin_articles/AdminArticlesPage";
+import AdminEventsPage from "@pages/admin_events/AdminEventsPage";
 
 const RouterComponent = () => {
+  const appRoutesUnprotected = [
+    { path: "/forgot_password/:step", element: <ResetPasswordPage /> },
+    { path: "/reset_password/:step", element: <ResetPasswordPage /> },
+  ];
+
   const appRoutesUnauth = [
     { path: "/login", element: <AuthPage /> },
     { path: "/registration/info", element: <AuthPage /> },
@@ -32,8 +47,6 @@ const RouterComponent = () => {
     { path: "/profile/edit/:step", element: <EditProfilePage /> },
     { path: "/profile/settings", element: <ProfileSettingsPage /> },
     { path: "/settings/account", element: <AccountSettingsPage /> },
-    { path: "/reset_password/:step", element: <ResetPasswordPage /> },
-    { path: "/forgot_password/:step", element: <ResetPasswordPage /> },
     { path: "/privacy", element: <PrivacyPage /> },
     { path: "/subscription", element: <SubscriptionPage /> },
     { path: "/plan/:id", element: <PlanPage /> },
@@ -47,8 +60,27 @@ const RouterComponent = () => {
     { path: "/dashboard", element: <DashboardPage /> },
   ];
 
+  const appRoutesAdmin = [
+    { path: "/admin/users/:type/:page", element: <AdminUsersPage /> },
+    { path: "/admin/user/:userID", element: <AdminUsersPage /> },
+    {
+      path: "/admin/chat/:userID/:companionID",
+      element: <AdminUsersChat />,
+    },
+    { path: "/admin/payments/:paymentType", element: <AdminPaymentsPage /> },
+    { path: "/admin/analytics", element: <AdminAnalyticsPage /> },
+    { path: "/admin/support", element: <AdminSupportPage /> },
+    { path: "/admin/settings/:part", element: <AdminSettingsPage /> },
+    { path: "/admin/users/create_admin", element: <CreateAdminPage /> },
+    { path: "/admin/articles/:part", element: <AdminArticlesPage /> },
+    { path: "/admin/events/:part", element: <AdminEventsPage /> },
+  ];
+
   return (
     <Routes>
+      {appRoutesUnprotected.map((el, ind) => (
+        <Route key={ind} path={el.path} element={el.element} />
+      ))}
       {appRoutesUnauth.map((el, ind) => (
         <Route
           key={ind}
@@ -63,6 +95,13 @@ const RouterComponent = () => {
           key={ind}
           path={el.path}
           element={<ProtectedRouter>{el.element}</ProtectedRouter>}
+        />
+      ))}
+      {appRoutesAdmin.map((el, ind) => (
+        <Route
+          key={ind}
+          path={el.path}
+          element={<ProtectedAdminRouter>{el.element}</ProtectedAdminRouter>}
         />
       ))}
       <Route path="*" element={<Navigate to={"/login"} />} />

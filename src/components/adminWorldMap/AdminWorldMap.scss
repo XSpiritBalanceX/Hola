@@ -1,0 +1,230 @@
+@import "../../variables";
+
+.analyticsByUsersContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 49px;
+  @media all and (max-width: 70em) {
+    flex-direction: column;
+    align-items: center;
+  }
+  @media all and (max-width: 40em) {
+    margin-top: 20px;
+  }
+}
+
+.usersByLocationsBox {
+  max-width: 450px;
+  .titleBox {
+    @extend %body-1-bold;
+    margin: 0 0 23px 0;
+  }
+  @media all and (max-width: 80em) {
+    max-width: 400px;
+  }
+  @media all and (max-width: 70em) {
+    order: 1;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+.boxWithUsersLocations {
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  @media all and (max-width: 83em) {
+    width: 400px;
+  }
+  @media all and (max-width: 75em) {
+    width: 350px;
+  }
+  @media all and (max-width: 70em) {
+    width: 100%;
+  }
+  .emptyUsers {
+    @extend %body-2-bold;
+    color: map-get($theme-colors, "blue");
+    margin: 0;
+  }
+  .itemUserLocation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    .nameOfCountry {
+      @extend %body-2;
+      margin: 0;
+      width: 128px;
+      @media all and (max-width: 75em) {
+        width: 100px;
+      }
+    }
+    .containerForBar {
+      width: calc(100% - 128px);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      p {
+        margin: 0;
+        @extend %body-2-bold;
+      }
+    }
+    .barUsersBox {
+      height: 10px;
+      border-radius: 0 10px 10px 0;
+      margin-right: 10px;
+      background-color: map-get($theme-colors, "blue");
+    }
+  }
+}
+
+.worldMapContainer {
+  position: relative;
+  width: 648px;
+  height: 486px;
+  @media all and (max-width: 80em) {
+    max-width: 550px;
+    height: 400px;
+  }
+  @media all and (max-width: 70em) {
+    height: 300px;
+  }
+  @media all and (max-width: 40em) {
+    width: 100%;
+    height: 100%;
+    margin: 10px 0 20px 0;
+  }
+  .nameOfPart {
+    margin: 0;
+    position: absolute;
+    @extend %button;
+    font-size: 10px;
+    font-weight: 800;
+    @media all and (max-width: 40em) {
+      display: none;
+    }
+  }
+  .part_northAmerica {
+    color: map-deep-get($theme-colors, "map", "light-blue");
+    top: 90px;
+    left: 25px;
+    @media all and (max-width: 80em) {
+      top: 60px;
+    }
+    @media all and (max-width: 70em) {
+      top: 15px;
+      left: 15px;
+    }
+  }
+  .part_southAmerica {
+    color: map-deep-get($theme-colors, "map", "orange");
+    left: 170px;
+    bottom: 120px;
+    @media all and (max-width: 80em) {
+      left: 140px;
+      bottom: 80px;
+    }
+    @media all and (max-width: 70em) {
+      left: 140px;
+      bottom: 30px;
+    }
+  }
+  .part_europe {
+    color: map-deep-get($theme-colors, "map", "red");
+    top: 90px;
+    left: 320px;
+    @media all and (max-width: 80em) {
+      left: 270px;
+      top: 65px;
+    }
+    @media all and (max-width: 70em) {
+      left: 270px;
+      top: 20px;
+    }
+  }
+  .part_asia {
+    color: map-deep-get($theme-colors, "map", "yellow");
+    top: 90px;
+    right: 150px;
+    @media all and (max-width: 80em) {
+      right: 130px;
+      top: 60px;
+    }
+    @media all and (max-width: 70em) {
+      top: 15px;
+    }
+  }
+  .part_africa {
+    color: map-deep-get($theme-colors, "map", "light-green");
+    bottom: 130px;
+    right: 260px;
+    @media all and (max-width: 80em) {
+      right: 210px;
+      bottom: 105px;
+    }
+    @media all and (max-width: 70em) {
+      bottom: 60px;
+    }
+  }
+  .part_australia {
+    color: map-deep-get($theme-colors, "map", "purple");
+    bottom: 170px;
+    right: 125px;
+    @media all and (max-width: 80em) {
+      bottom: 140px;
+      right: 110px;
+    }
+    @media all and (max-width: 70em) {
+      bottom: 90px;
+    }
+  }
+  .selectedPart {
+    color: map-deep-get($theme-colors, "map", "blue");
+  }
+}
+
+.map-img {
+  width: 648px;
+  height: 486px;
+  @media all and (max-width: 80em) {
+    width: 550px;
+    height: 400px;
+  }
+  @media all and (max-width: 70em) {
+    height: 300px;
+  }
+  @media all and (max-width: 40em) {
+    width: 100%;
+    height: 100%;
+  }
+  .map-unselected {
+    fill: #699eaa;
+  }
+  #AF.map-unselected {
+    fill: map-deep-get($theme-colors, "map", "light-green");
+  }
+  #SA.map-unselected {
+    fill: map-deep-get($theme-colors, "map", "orange");
+  }
+  #EU.map-unselected {
+    fill: map-deep-get($theme-colors, "map", "red");
+  }
+  #AS.map-unselected {
+    fill: map-deep-get($theme-colors, "map", "yellow");
+  }
+  #NA.map-unselected {
+    fill: map-deep-get($theme-colors, "map", "light-blue");
+  }
+  #OC.map-unselected {
+    fill: map-deep-get($theme-colors, "map", "purple");
+  }
+  .map-selected {
+    fill: map-deep-get($theme-colors, "map", "blue");
+  }
+  .map-selected:hover,
+  .map-unselected:hover {
+    cursor: pointer;
+  }
+}
